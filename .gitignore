@@ -75,3 +75,4 @@ webpack-stats-production.json
 .vscode
 .cache
 *.sqlite3
+env
