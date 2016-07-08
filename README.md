@@ -104,9 +104,6 @@ Run fixtures (one time only)
 ```bash
 $ ./manage.py loaddata fixtures/*
 ```
-## Usage
-
-
 If everything above was successful, you can go ahead and start the server
 ```
 python manage.py runserver
