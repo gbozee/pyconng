@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+empty = object()
+def environ(key, default=empty):
+    try:
+        return os.environ[key]
+    except KeyError:
+        if default is empty:
+            raise RuntimeError('environment variable "%s" does not exist' % (key))
+        return default
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -58,8 +67,12 @@ WSGI_APPLICATION = 'pyconng.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': environ("DB_NAME"),
+        'USER': environ("DB_USER"),
+        'PASSWORD': environ("DB_PASSWORD"),
+        'HOST': environ("DB_HOST"),
+        'PORT': environ("DB_PORT"),
     }
 }
 
