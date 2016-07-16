@@ -44,7 +44,24 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "django.contrib.sites",
     'django.contrib.staticfiles',
+
+    # external
+    "account",
+
+    # symposion
+    "symposion",
+    "symposion.conference",
+    "symposion.speakers",
+    "symposion.proposals",
+    "symposion.reviews",
+    "symposion.schedule",
+    "symposion.sponsorship",
+    "symposion.teams",
+
+    # project
+    "pyconng",
 )
 
 MIDDLEWARE_CLASSES = (
