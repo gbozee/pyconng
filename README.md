@@ -83,11 +83,7 @@ touch .env
 
 Specify the below variables
 ```
-export DB_NAME="pyconng"
-export DB_USER="<dbuser>"
-export DB_PASSWORD="<dbpassword>"
-export DB_HOST="<dbhost>"
-export DB_PORT="<dbport>"
+export DATABASE_URL="postgres://<dbuser>:<dbpassword>@<dbhost>:<dbport>/pyconng"
 ```
 
 Make variable of your `.env` file available in the current shell session

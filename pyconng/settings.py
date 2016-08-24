@@ -10,6 +10,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import environ as environmental
+
+env = environmental.Env()
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 empty = object()
@@ -30,8 +34,6 @@ SECRET_KEY = 'qxl(3u+8%bb079sy%=^wxu5@)h68+hw#s_e6-lv3#n1^z^e4nm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -61,7 +63,7 @@ INSTALLED_APPS = (
     "symposion.teams",
 
     # project
-    "pyconng",
+    # "pyconng",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,17 +83,20 @@ WSGI_APPLICATION = 'pyconng.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': environ("DB_NAME"),
-        'USER': environ("DB_USER"),
-        'PASSWORD': environ("DB_PASSWORD"),
-        'HOST': environ("DB_HOST"),
-        'PORT': environ("DB_PORT"),
-    }
+    # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
+    'default': env.db('DATABASE_URL', default='postgres://postgres:postgres@127.0.0.1/pyconng'),
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': environ("DB_NAME"),
+#         'USER': environ("DB_USER"),
+#         'PASSWORD': environ("DB_PASSWORD"),
+#         'HOST': environ("DB_HOST"),
+#         'PORT': environ("DB_PORT"),
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -111,3 +116,37 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEMPLATES = [
+    {
+        # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
+        'DIRS': [
+            str(os.path.join(BASE_DIR, 'templates')),
+        ],
+        'OPTIONS': {
+            # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
+            'debug': DEBUG,
+            # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+            # https://docs.djangoproject.com/en/dev/ref/templates/api/#loader-types
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ],
+            # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                # Your stuff: custom template context processors go here,
+                'frontend.users.context_processors.consts',
+            ],
+        },
+    },
+]
