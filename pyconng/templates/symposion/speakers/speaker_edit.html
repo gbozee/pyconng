@@ -1,0 +1,32 @@
+{% extends "symposion/speakers/base.html" %}
+
+{% load bootstrap %}
+{% load i18n %}
+{% load pinax_boxes_tags %}
+{% load static from staticfiles %}
+
+{% block page_title %}{% trans "Edit Speaker Profile" %}{% endblock %}
+
+{% block body %}
+<div class="small-header poster-wrapper">
+  <h1>{% trans "Edit Speaker" %}</h1>
+</div>
+
+<div class="poster-wrapper">
+  <div class="container">
+    <div class="row">
+    {% box "speaker-profile" %}
+
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <legend>{% trans "Edit Speaker Profile" %}</legend>
+        {{ speaker_form|bootstrap }}
+        <div class="form-actions">
+            <input class="btn btn-primary" type="submit" value="Save" />
+            <a class="btn btn-default" href="{% url "dashboard" %}">Cancel</a>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

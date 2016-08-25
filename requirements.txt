@@ -2,3 +2,6 @@ Django==1.9.7
 django-environ==0.4.0
 psycopg2==2.6.2
 git+git://github.com/pinax/symposion.git
+django-debug-toolbar==1.4
+django-markitup==2.3.1
+django-crispy-forms==1.6.0
