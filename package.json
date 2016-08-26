@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Python Conference static site",
   "engines": {
-    "node": ">=6"
+    "node": ">=4"
   },
   "main": "",
   "scripts": {

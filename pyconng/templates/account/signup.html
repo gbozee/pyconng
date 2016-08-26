@@ -6,8 +6,8 @@
 
 {% block head_title %}{% trans "Sign up" %}{% endblock %}
 
-{% block body %}
-<div class="small-header poster-wrapper">
+{% block content %}
+<div class="small-header poster-wrapper smaller">
 </div>
 
 <div class="poster-wrapper">
@@ -25,14 +25,14 @@
             </form>
             <p class="login-signup">
                 <small>
-                    {% trans "Already have an account?" %}  <strong><a href="{% urlnext 'account_login' %}">{% trans "Log in" %}</a></strong>
+                    {% trans "Already have an account?" %}  <strong><a class="btn btn-link" href="{% urlnext 'account_login' %}">{% trans "Log in" %}</a></strong>
                 </small>
             </p>
         </div>
     </div>
   </div>
 </div>
-{% endblock %}
+{% endblock content %}
 
 {% block scripts %}
     {{ block.super }}

@@ -1,1 +1,11 @@
-{% extends "site_base_onecolumn.html" %}
+{#{% extends "theme_bootstrap/subnav_base.html" %}#}
+{% extends "base.html" %}
+
+{% load i18n %}
+{% block fixed_navbar %}scroll{% endblock fixed_navbar %}
+{% block content %}
+{% block body %}{% endblock body %}
+{% endblock content %}
+{% block body_class %}account{% endblock %}
+
+

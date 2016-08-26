@@ -56,7 +56,23 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     'django.contrib.staticfiles',
 
-    'account',
+    # external
+    "account",
+    "crispy_forms",
+    # "easy_thumbnails",
+    # "taggit",
+    # "reversion",
+    # "metron",
+    "sitetree",
+    "waffle",
+    "markitup",
+        
+    # pinax
+    "pinax.boxes",
+    # "pinax.eventlog",
+    "pinax.pages",
+    # "pinax.blog",
+    
     # symposion
     "symposion",
     "symposion.conference",
@@ -66,7 +82,6 @@ INSTALLED_APPS = (
     "symposion.schedule",
     "symposion.sponsorship",
     "symposion.teams",
-    "crispy_forms",
 
     # project
     "pyconng.proposals",
@@ -176,6 +191,8 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here,
+                "account.context_processors.account",
+                "symposion.reviews.context_processors.reviews",
                 'config.context_processors.consts',
             ],
         },
@@ -212,8 +229,8 @@ PROPOSAL_FORMS = {
     "talk-45-min": "djangocon.proposals.forms.TalkProposalForm",
     "open-space": "djangocon.proposals.forms.OpenSpaceProposalForm",
 }
-PINAX_PAGES_HOOKSET = "djangocon.hooks.PinaxPagesHookSet"
-PINAX_BOXES_HOOKSET = "djangocon.hooks.PinaxBoxesHookSet"
+PINAX_PAGES_HOOKSET = "config.hooks.PinaxPagesHookSet"
+PINAX_BOXES_HOOKSET = "config.hooks.PinaxBoxesHookSet"
 
 # adjust for number of reviews currenly about 1/5 (default: 3)
 SYMPOSION_VOTE_THRESHOLD = 6
@@ -237,3 +254,13 @@ DEFAULT_FROM_EMAIL = "DjangoCon US 2016 <noreply@djangocon.us>"
 
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+MIGRATION_MODULES = {
+    'sites': 'pyconng.contrib.sites.migrations'
+}
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
+SITE_ID = 1
+
+FIXTURE_DIRS = [
+    str(ROOT_DIR('fixtures')),
+]

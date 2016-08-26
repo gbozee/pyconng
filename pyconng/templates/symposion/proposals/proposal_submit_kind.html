@@ -1,6 +1,6 @@
 {% extends "symposion/proposals/base.html" %}
 
-{% load bootstrap %}
+{% load crispy_forms_tags %}
 {% load pinax_boxes_tags %}
 {% load i18n %}
 
@@ -19,7 +19,7 @@
 
     <form method="POST" action="" enctype="multipart/form-data" class="form-horizontal">
         {% csrf_token %}
-        {{ proposal_form|bootstrap }}
+        {{ proposal_form|crispy }}
         <div class="form-actions">
             <p>
                 You will be able to edit your proposal after it has been submitted. The program committee may ask questions, provide feedback, and even suggest changes to your proposal as part of the review processes.

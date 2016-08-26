@@ -1,6 +1,6 @@
 {% extends "symposion/proposals/base.html" %}
 
-{% load bootstrap %}
+{% load crispy_forms_tags %}
 
 {% block page_title %}Upload Document to '{{ proposal.title }}'{% endblock %}
 
@@ -15,7 +15,7 @@
 
     <form method="POST" action="" enctype="multipart/form-data" class="form form-horizontal">
         {% csrf_token %}
-        {{ form|bootstrap }}
+        {{ form|crispy }}
         <div class="form-actions">
             <input class="btn btn-primary" type="submit" value="Upload" />
         </div>

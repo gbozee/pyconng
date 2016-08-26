@@ -10386,3 +10386,65 @@ nav a#pull {
   background-color: transparent;
   border-color: #fff;
   color: #fff; }
+
+.account {
+  padding-bottom: 6em; }
+
+.small-header, .blog-header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  position: relative;
+  height: 200px;
+  background-size: cover;
+  color: #fff;
+  padding-bottom: 0; }
+
+.smaller {
+  height: 100px; }
+
+.auth .poster-wrapper {
+  position: relative;
+  border-left: 20px solid #fff;
+  border-right: 20px solid #fff;
+  background-color: #fbfaf6;
+  margin: 0 auto;
+  max-width: 1300px;
+  padding-top: 2em;
+  padding-bottom: 6em; }
+
+.auth .dashboard-card .panel-heading {
+  display: -ms-flexbox;
+  display: flex; }
+  .auth .dashboard-card .panel-heading h3 {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    margin: 0; }
+  .auth .dashboard-card .panel-heading .card-header-actions {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    margin-left: auto; }
+    .auth .dashboard-card .panel-heading .card-header-actions .btn {
+      padding: 6px 20px;
+      font-size: 10px; }
+
+.btn-link {
+  background-color: transparent;
+  color: #fe4918;
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0; }
+
+legend {
+  border: none;
+  margin-bottom: 5px;
+  margin-bottom: .5rem; }
+
+form legend {
+  padding: 0 0 1em 7.5px;
+  padding: 0 0 1em 0.75rem; }

@@ -7,6 +7,7 @@
 
 //At the end of the file
 @import "responsive";
+$primary_btn_color: #fe4918;
 
 html {
     font-smoothing: antialiased;
@@ -398,13 +399,13 @@ a:focus {
 }
 
 .btn {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     color: #fff;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border: 2px solid #fe4918;
+    border: 2px solid $primary_btn_color;
     padding: 15px 30px;
     margin-right: 8px;
     -webkit-border-radius: 3px;
@@ -424,13 +425,13 @@ a:focus {
 
 .btn.btn-tra {
     background-color: transparent;
-    color: #fe4918
+    color: $primary_btn_color
 }
 
 .white-color .btn {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     color: #fff;
-    border-color: #fe4918
+    border-color: $primary_btn_color
 }
 
 .white-color .btn.btn-tra {
@@ -452,9 +453,9 @@ a:focus {
 }
 
 .btn.btn-tra:hover,.btn.btn-tra:focus,.white-color .btn.btn-tra:hover,.white-color .btn.btn-tra:focus {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     color: #fff;
-    border-color: #fe4918
+    border-color: $primary_btn_color
 }
 
 .section-title {
@@ -482,7 +483,7 @@ a:focus {
     content: "";
     height: 2px;
     width: 100px;
-    background: #fe4918;
+    background: $primary_btn_color;
     margin: 20px auto;
     position: relative
 }
@@ -560,7 +561,7 @@ a:focus {
 }
 
 .navbar-nav>li>a.register-btn {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     color: #fff;
     font-size: 15px;
     font-weight: 700;
@@ -569,7 +570,7 @@ a:focus {
     margin-top: 10px;
     padding: 7px 18px;
     margin-left: 8px;
-    border: 2px solid #fe4918;
+    border: 2px solid $primary_btn_color;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -581,9 +582,9 @@ a:focus {
 }
 
 .navbar-nav>li>a.register-btn:focus {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     color: #fff;
-    border-color: #fe4918
+    border-color: $primary_btn_color
 }
 
 .navbar-nav>li>a.register-btn:hover {
@@ -593,7 +594,7 @@ a:focus {
 }
 
 .navbar-nav>li>a:hover {
-    color: #fe4918;
+    color: $primary_btn_color;
     background-color: transparent
 }
 
@@ -616,7 +617,7 @@ a:focus {
 }
 
 .header .navbar.scroll .navbar-nav>li>a:hover {
-    color: #fe4918
+    color: $primary_btn_color
 }
 
 .header .navbar.scroll .navbar-nav>li>a.register-btn:hover {
@@ -693,7 +694,7 @@ a:focus {
     line-height: 75px;
     text-transform: uppercase;
     display: inline-block;
-    border-bottom: 2px solid #fe4918;
+    border-bottom: 2px solid $primary_btn_color;
     margin-bottom: 25px;
     padding-bottom: 25px
 }
@@ -755,7 +756,7 @@ a:focus {
     background-color: rgba(229,229,229,.6);
     display: inline-block;
     margin-right: 5px;
-    border-bottom: 2px solid #fe4918
+    border-bottom: 2px solid $primary_btn_color
 }
 
 #intro-3-content #clock .cbox-1 {
@@ -802,7 +803,7 @@ a:focus {
 .abox-icon i {
     width: 20px;
     height: 20px;
-    color: #fe4918;
+    color: $primary_btn_color;
     font-size: 18px;
     line-height: 20px!important
 }
@@ -865,7 +866,7 @@ a:focus {
 }
 
 #promo {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     background-image: url(../images/thumbs/promo.png);
     background-attachment: fixed!important;
     background-repeat: no-repeat;
@@ -930,7 +931,7 @@ a:focus {
 
 .nav-tabs>li>a:hover,.nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus {
     color: #fff;
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     border: none
 }
 
@@ -954,7 +955,7 @@ a:focus {
 }
 
 .event-room {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-size: 14px;
     line-height: 14px;
     font-weight: 900;
@@ -1055,7 +1056,7 @@ a:focus {
 }
 
 .newsletter-form .form-control:focus {
-    border-color: #fe4918;
+    border-color: $primary_btn_color;
     outline: 0;
     box-shadow: none
 }
@@ -1064,7 +1065,7 @@ a:focus {
     height: 56px;
     color: #fff;
     padding: 12px 24px;
-    border: 2px solid #fe4918
+    border: 2px solid $primary_btn_color
 }
 
 .newsletter-form .btn i {
@@ -1072,8 +1073,8 @@ a:focus {
 }
 
 .newsletter-form .btn:focus {
-    border: 2px solid #fe4918;
-    background-color: #fe4918;
+    border: 2px solid $primary_btn_color;
+    background-color: $primary_btn_color;
     color: #fff;
     outline: 0;
     box-shadow: none
@@ -1137,8 +1138,8 @@ a:focus {
 
 .img-block .social-icons i:hover {
     color: #fff;
-    background-color: #fe4918;
-    border-color: #fe4918
+    background-color: $primary_btn_color;
+    border-color: $primary_btn_color
 }
 
 .img-block-wrapper-hover:hover {
@@ -1150,7 +1151,7 @@ a:focus {
 }
 
 .speaker-img-meta h4 {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-size: 18px;
     line-height: 18px;
     margin-bottom: 5px;
@@ -1164,7 +1165,7 @@ a:focus {
     font-weight: 900;
     padding-bottom: 10px;
     display: inline-block;
-    border-bottom: 2px solid #fe4918
+    border-bottom: 2px solid $primary_btn_color
 }
 
 .speaker-img-meta p {
@@ -1220,7 +1221,7 @@ a:focus {
 }
 
 .portfolio-item .overlay-content p {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-size: 14px;
     line-height: 14px;
     font-weight: 900;
@@ -1263,7 +1264,7 @@ a:focus {
 }
 
 #call-to-action {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     background-image: url(../images/thumbs/call-to-action.png);
     background-attachment: fixed!important;
     background-repeat: no-repeat;
@@ -1346,7 +1347,7 @@ a:focus {
 }
 
 .testinonial-author span {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-size: 16px;
     font-weight: 300;
     margin: 0 0 20px;
@@ -1369,8 +1370,8 @@ a:focus {
 }
 
 .flex-control-paging li a.flex-active,flex-control-paging li a:hover {
-    background: #fe4918;
-    border: 2px solid #fe4918
+    background: $primary_btn_color;
+    border: 2px solid $primary_btn_color
 }
 
 .video-block {
@@ -1405,7 +1406,7 @@ a:focus {
 }
 
 .video-icon i:hover {
-    color: #fe4918
+    color: $primary_btn_color
 }
 
 .pricing-table {
@@ -1463,7 +1464,7 @@ a:focus {
 }
 
 .pricing-table ul.features li.feature-disable i {
-    color: #fe4918
+    color: $primary_btn_color
 }
 
 .pricing-table ul.features li.feature-disable {
@@ -1478,18 +1479,18 @@ a:focus {
 }
 
 .pricing-table.highlight {
-    border: 2px solid #fe4918
+    border: 2px solid $primary_btn_color
 }
 
 .pricing-table.highlight h3,.pricing-table.highlight .price sup,.pricing-table.highlight .price span {
-    color: #fe4918
+    color: $primary_btn_color
 }
 
 .pricing-table.highlight .btn {
     margin: 20px 0 45px;
     padding: 16px 50px;
     color: #fff;
-    border-color: #fe4918
+    border-color: $primary_btn_color
 }
 
 .pricing-table.highlight .btn:hover {
@@ -1497,7 +1498,7 @@ a:focus {
 }
 
 span.sale-label {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     position: absolute;
     top: -12px;
     left: -57px;
@@ -1523,7 +1524,7 @@ span.sale-label {
 }
 
 .pricing-notice p a {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-weight: 900;
     text-decoration: underline
 }
@@ -1614,9 +1615,9 @@ span.sale-label {
 }
 
 #register-form #form_register_btn .btn:focus {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     color: #fff;
-    border-color: #fe4918;
+    border-color: $primary_btn_color;
     outline: 0;
     box-shadow: none
 }
@@ -1629,7 +1630,7 @@ span.sale-label {
 }
 
 .error {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-size: 16px;
     line-height: 18px;
     font-weight: 700
@@ -1661,7 +1662,7 @@ span.sale-label {
 }
 
 .blog-post-author h6 {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-size: 16px;
     line-height: 16px;
     margin-bottom: 0
@@ -1698,7 +1699,7 @@ span.sale-label {
 }
 
 .blog-post-text a:hover {
-    color: #fe4918
+    color: $primary_btn_color
 }
 
 .blog-post-data {
@@ -1711,7 +1712,7 @@ span.sale-label {
 }
 
 .blog-post-data i {
-    color: #fe4918
+    color: $primary_btn_color
 }
 
 #blog .owl-controls {
@@ -1734,8 +1735,8 @@ span.sale-label {
 }
 
 #blog .owl-pagination .owl-page.active,#blog .owl-pagination .owl-page:hover {
-    background: #fe4918;
-    border-color: #fe4918
+    background: $primary_btn_color;
+    border-color: $primary_btn_color
 }
 
 #sponsors {
@@ -1811,7 +1812,7 @@ span.sale-label {
 }
 
 .contact-info-item a {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-weight: 500;
     text-decoration: underline
 }
@@ -1846,7 +1847,7 @@ span.sale-label {
 }
 
 #join-us {
-    background-color: #fe4918;
+    background-color: $primary_btn_color;
     background-image: url(../images/thumbs/join-us.png);
     background-attachment: fixed!important;
     background-repeat: no-repeat;
@@ -1877,7 +1878,7 @@ span.sale-label {
 }
 
 a.foo-social {
-    color: #fe4918;
+    color: $primary_btn_color;
     background-color: rgba(229,229,229,.7);
     width: 60px;
     height: 60px;
@@ -1908,7 +1909,7 @@ a.foo-social:hover {
 }
 
 #footer-copyright a {
-    color: #fe4918;
+    color: $primary_btn_color;
     font-weight: 400
 }
 
@@ -1934,7 +1935,7 @@ a.foo-social:hover {
 }
 
 #scrollUp:hover {
-    background-color: #fe4918
+    background-color: $primary_btn_color
 }
 
 nav a#pull {
@@ -1975,7 +1976,7 @@ nav a#pull {
 }
 
 #stlChanger .chBut {
-    background: #fe4918;
+    background: $primary_btn_color;
     width: 40px;
     height: 40px;
     position: absolute;
@@ -1983,7 +1984,7 @@ nav a#pull {
     right: 0;
     z-index: 1000000;
     text-align: center;
-    border: 1px solid #fe4918;
+    border: 1px solid $primary_btn_color;
     border-left: none;
     border-radius: 0 4px 4px 0;
     -webkit-transition: all 300ms ease-in-out;
@@ -2047,7 +2048,7 @@ nav a#pull {
 
 .s_1:hover {
     color: #fff;
-    background-color: #fe4918
+    background-color: $primary_btn_color
 }
 
 .layout_color {
@@ -2084,3 +2085,4 @@ nav a#pull {
 }
 
 //Custom Styles
+@import "account";

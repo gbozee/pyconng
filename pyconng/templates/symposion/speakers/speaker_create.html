@@ -1,6 +1,6 @@
 {% extends "symposion/speakers/base.html" %}
 
-{% load bootstrap %}
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% load pinax_boxes_tags %}
 {% load static from staticfiles %}
@@ -21,7 +21,7 @@
         <form method="POST" action="" enctype="multipart/form-data">
             {% csrf_token %}
             <legend>{% trans "Create Speaker Profile" %}</legend>
-            {{ speaker_form|bootstrap }}
+            {{ speaker_form|crispy }}
             <div class="form-actions">
                 <input class="btn btn-primary" type="submit" value="Save" />
                 <a class="btn btn-default" href="{% url "dashboard" %}">Cancel</a>

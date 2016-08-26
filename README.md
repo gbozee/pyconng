@@ -99,12 +99,29 @@ Run migrations
 ```
 python manage.py migrate
 ```
+Run fixtures (one time only)
 
+```bash
+$ ./manage.py loaddata fixtures/*
+```
 ## Usage
+
 
 If everything above was successful, you can go ahead and start the server
 ```
 python manage.py runserver
+```
+
+## Extras
+For development, the project uses `gulp` and `webpack`
+
+```bash
+$ npm install
+$ npm run dev #webpack devserver starts.
+```
+In a new command prompt
+```bash
+$ gulp watch #Live scss editing
 ```
 
 ## Issue Reporting

@@ -1,13 +1,13 @@
-{% extends "site_base.html" %}
+{% extends "account/base.html" %}
 
 {% load account_tags %}
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% load static from staticfiles %}
 
-{% block head_title %}{% trans "Log in" %}{% endblock %}
+{% block header_title %}{% trans "Log in" %}{% endblock header_title %}
 
-{% block body %}
+{% block content %}
 <div class="small-header poster-wrapper">
   <h1>{% trans "Hi!" %}</h1>
 </div>
@@ -28,7 +28,7 @@
             {% if ACCOUNT_OPEN_SIGNUP %}
                 <p class="login-signup">
                     <small>
-                        {% trans "Don't have an account?" %}  <strong><a href="{% urlnext 'account_signup' %}">{% trans "Sign up" %}</a></strong>
+                        {% trans "Don't have an account?" %}  <strong><a href="{% urlnext 'account_signup' %}" class="btn btn-link">{% trans "Sign up" %}</a></strong>
                     </small>
                 </p>
             {% endif %}
@@ -36,7 +36,7 @@
     </div>
   </div>
 </div>
-{% endblock %}
+{% endblock content %}
 
 {% block scripts %}
     {{ block.super }}

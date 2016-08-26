@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				
 		<!-- SITE TITLE -->
-		<title>{{title}}</title>
+		<title>{% block header_title %}{{title}}{% endblock header_title %}</title>
 							
 		<!-- FAVICON AND TOUCH ICONS  -->
 		<link rel="shortcut icon" href="{% static 'images/icons/favicon.ico' %}" type="image/x-icon">
@@ -37,10 +37,11 @@
 		<!-- PAGE CONTENT
 		============================================= -->	
 		<div id="page" class="page-wrapper"> 
+			{% block navigation %}
 			<!-- HEADER 
 			============================================= -->
 			<header id="header" class="header">		
-				<div class="navbar navbar-fixed-top">	
+				<div class="navbar {% block fixed_navbar %}navbar-fixed-top{% endblock fixed_navbar %}">	
 					<div class="container"> 
 						<!-- Navigation Bar -->
 						<div class="navbar-header"> 
@@ -53,8 +54,8 @@
 							</button> 
 							<!-- LOGO IMAGE -->
 							<!-- Recommended sizes 150x34px; -->
-							<a class="navbar-brand logo-white" href="#intro-3"><img src="{% static 'images/logo-white.png' %}" alt="logo"></a>
-							<a class="navbar-brand logo-black" href="#intro-3"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+							<a class="navbar-brand logo-white" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt="logo"></a>
+							<a class="navbar-brand logo-black" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
 							
 						</div>	<!-- End Navigation Bar -->
 						
@@ -70,17 +71,28 @@
 								<li><a href="#pricing">Prices</a></li>	
 								<li><a href="#blog">Blog</a></li>														
 								<li><a href="#contacts">Venue</a></li>
+								{% block register_btn %}
 								<li><a class="register-btn" href="#pre-register">Register Now</a></li>								
 
+								{% endblock register_btn %}
+								
 							</ul>
 						</nav>  <!-- End Navigation Menu --> 
 					</div>	  <!-- End container -->
 				</div>	   <!-- End navbar fixed top  -->
 			</header>	<!-- END HEADER -->
-            {% block content %}
             
+			{% endblock navigation %}
+			<div class="{% block body_class %}{% endblock body_class %}">
+			{% if messages %} {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+            {% endfor %} {% endif %}
+
+			{% block content %}
             {% endblock content %}		
-			
+			{% block extra_body %}{% endblock extra_body %}
+			</div>
+            
 			<!-- FOOTER
 			============================================= -->
 			<footer id="footer" class="bg-dark p-top-40 p-bottom-40 footer division">

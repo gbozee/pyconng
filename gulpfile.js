@@ -23,7 +23,7 @@ var gulp = require('gulp'),
 
 // Relative paths function
 var pathsConfig = function(appName) {
-  this.app = './';
+  this.app = './pyconng';
 
   return {
     app: this.app,
