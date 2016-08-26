@@ -76,22 +76,10 @@ Feel free to assign any user credentials to the just created `pyconng` database
 
 ### Environment Variables
 
-Create a `.env` file in the root of the repository
-```
-touch .env
-```
-
 Specify the below variables
 ```
 export DATABASE_URL="postgres://<dbuser>:<dbpassword>@<dbhost>:<dbport>/pyconng"
 ```
-
-Make variable of your `.env` file available in the current shell session
-```
-source .env
-```
-
-_Note_: Do not check in your `.env` file to git
 
 ### Database Setup
 
