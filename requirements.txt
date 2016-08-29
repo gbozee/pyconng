@@ -1,0 +1,10 @@
+Django==1.9.7
+django-environ==0.4.0
+psycopg2==2.6.2
+git+git://github.com/pinax/symposion.git
+django-debug-toolbar==1.5
+django-markitup==2.3.1
+django-crispy-forms==1.6.0
+pinax-boxes==2.1.2
+pinax-pages==0.4.2
+django-waffle==0.11.1
