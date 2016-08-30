@@ -1,8 +1,9 @@
-{% extends "site_base.html" %}
+{% extends "symposion/speakers/base.html" %}
 
 {% load sitetree %}
 {% load i18n %}
-{% load bootstrap %}
+
+{% load crispy_forms_tags %}
 {% load static from staticfiles %}
 
 {% block body_class %}cms-page{% endblock %}
@@ -22,7 +23,7 @@
     <div class="row">
       <form method="POST" action="">
         {% csrf_token %}
-        {{ form|bootstrap }}
+        {{ form|crispy }}
         <div class="form-actions">
           <input class="btn btn-primary" type="submit" value="Save" />
         </div>
