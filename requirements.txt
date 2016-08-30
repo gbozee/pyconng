@@ -8,3 +8,4 @@ django-crispy-forms==1.6.0
 pinax-boxes==2.1.2
 pinax-pages==0.4.2
 django-waffle==0.11.1
+django-contact-form==1.2

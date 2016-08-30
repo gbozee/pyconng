@@ -1,6 +1,6 @@
-{% extends "site_base.html" %}
+{% extends "symposion/speakers/base.html" %}
 
-{% load bootstrap %}
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% load pinax_boxes_tags %}
 {% load static from staticfiles %}
@@ -21,7 +21,7 @@
       <form method="POST" action="{% url "sponsor_add" %}" class="form-horizontal">
         {% csrf_token %}
         <legend>{% trans "Add a Sponsor" %}</legend>
-        {{ form|bootstrap }}
+        {{ form|crispy }}
         <div class="form-actions">
           <input class="btn btn-primary" type="submit" value="Add" />
           <a class="btn btn-default" href="{% url "dashboard" %}">Cancel</a>

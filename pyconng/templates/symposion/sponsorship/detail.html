@@ -1,6 +1,7 @@
-{% extends "site_base.html" %}
+{% extends "symposion/speakers/base.html" %}
 
-{% load bootstrap %}
+
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% load static from staticfiles %}
 
@@ -21,7 +22,7 @@
     <form enctype="multipart/form-data" method="POST" action="" class="form-horizontal">
         {% csrf_token %}
         <fieldset>
-            {{ form|bootstrap }}
+            {{ form|crispy }}
         </fieldset>
 
         <h3>{{ sponsor.level }} Sponsor Benefits</h3>
