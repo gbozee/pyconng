@@ -1,1 +1,1 @@
-web: gunicorn config.wsgi:application
+web: python manage.py runserver
