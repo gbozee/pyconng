@@ -1,5 +1,6 @@
-{% extends "site_base.html" %}
+{% extends "symposion/base.html" %}
 
+{% load static %}
 {% load i18n %}
 
 {% block head_title %}Conference Schedule Edit{% endblock %}
@@ -10,7 +11,7 @@
 {% endblock %}
 
 {% block extra_head %}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css" />
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css" /> -->
 {% endblock %}
 
 {% block body %}
@@ -42,12 +43,12 @@
 {% endblock %}
 
 {% block extra_script %}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.js" type="text/javascript"></script>
+    <script src="{% static 'js/chosen.jquery.min.js' %}"></script>
     <script type="text/javascript">
         $(function() {
             $("a.edit-slot").click(function(e) {
                 $("#slotEditModal").load($(this).data("action"), function() {
-                    $("#id_presentation").chosen();
+                    $("#id_presentation").chosen({width: "100%"});
                     $("#slotEditModal").modal("show");
                 });
                 e.preventDefault();

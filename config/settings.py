@@ -225,10 +225,10 @@ AUTHENTICATION_BACKENDS = [
 
 CONFERENCE_ID = 1
 PROPOSAL_FORMS = {
-    "tutorial": "djangocon.proposals.forms.TutorialProposalForm",
-    "talk-25-min": "djangocon.proposals.forms.TalkProposalForm",
-    "talk-45-min": "djangocon.proposals.forms.TalkProposalForm",
-    "open-space": "djangocon.proposals.forms.OpenSpaceProposalForm",
+    "tutorial": "pyconng.proposals.forms.TutorialProposalForm",
+    "talk-25-min": "pyconng.proposals.forms.TalkProposalForm",
+    "talk-45-min": "pyconng.proposals.forms.TalkProposalForm",
+    "open-space": "pyconng.proposals.forms.OpenSpaceProposalForm",
 }
 PINAX_PAGES_HOOKSET = "config.hooks.PinaxPagesHookSet"
 PINAX_BOXES_HOOKSET = "config.hooks.PinaxBoxesHookSet"

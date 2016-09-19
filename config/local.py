@@ -10,6 +10,7 @@ ALLOWED_HOSTS = [
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 INSTALLED_APPS += (
     'debug_toolbar',
+    'django_extensions',
 )
 
 # Disable sending mail
