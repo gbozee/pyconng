@@ -11,3 +11,4 @@ django-waffle==0.11.1
 django-contact-form==1.2
 easy-thumbnails==2.3
 gunicorn
+whitenoise==3.0b1
