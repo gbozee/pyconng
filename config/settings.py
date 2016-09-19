@@ -256,9 +256,9 @@ DEFAULT_FROM_EMAIL = "DjangoCon US 2016 <noreply@djangocon.us>"
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-MIGRATION_MODULES = {
-    'sites': 'pyconng.contrib.sites.migrations'
-}
+# MIGRATION_MODULES = {
+#     'sites': 'pyconng.contrib.sites.migrations'
+# }
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
 
