@@ -59,20 +59,20 @@ INSTALLED_APPS = (
     # external
     "account",
     "crispy_forms",
-    # "easy_thumbnails",
+    "easy_thumbnails",
     # "taggit",
-    # "reversion",
+    "reversion",
     # "metron",
     "sitetree",
     "waffle",
     "markitup",
-        
+
     # pinax
     "pinax.boxes",
     # "pinax.eventlog",
     "pinax.pages",
     # "pinax.blog",
-    
+
     # symposion
     "symposion",
     "symposion.conference",
