@@ -4,31 +4,6 @@ This is the official website for Python Nigeria Conference
 
 ## Setting Up
 
-### Python
-
-Install python from brew
-```
-brew install python
-```
-
-To make sure you have the latest version of Python 2.7.x installed, run this code:
-```
-brew link python
-```
-
-If you get “Already linked” then good to go. Else, run
-```
-brew unlink python
-```
-This will remove the old version and link the newly installed version.
-
-### Getting the Code
-
-Clone this repository
-```
-git clone git@github.com:tsolarin/pyconng.git
-```
-
 Enter the directory
 ```
 cd pyconng
