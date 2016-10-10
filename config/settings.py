@@ -85,6 +85,7 @@ INSTALLED_APPS = (
 
     # project
     "pyconng.proposals",
+    "pyconng.core",
 )
 
 MIDDLEWARE_CLASSES = (
