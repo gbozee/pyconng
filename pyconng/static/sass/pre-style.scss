@@ -1,0 +1,46 @@
+.height_400{
+  height: 400px !important;
+}
+.account-links{
+  /* margin-bottom: 0.5em; */
+/* background-color: #CE624D; */
+  background-color: #136E8E;
+  text-align: center;
+  color: #DBF8EB;
+  font-weight: bold;
+  a {
+    display: inline-block;
+    color: #DBF8EB;
+    padding: 0.5em;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+  }
+}
+.padding-top_bottom-50{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.tiny_navbar{
+  padding: 0;
+  .navbar-nav > li > a {
+    line-height: 50px;
+  }
+}
+.front-page-facets{
+  display: flex;
+  text-align: center;
+  @media(max-width: 768px){
+    flex-direction: column;
+  }
+  .flex-items-thumbnail{
+    flex: 1 1;
+    // flex-grow: 1;
+    // flex-basis: 0;
+  }
+  h2{
+    margin-top: 10px;
+  }
+}

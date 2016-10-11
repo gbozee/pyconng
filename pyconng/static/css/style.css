@@ -11014,3 +11014,45 @@ form legend {
     background-color: #333;
     color: #fff;
     border-color: #333; }
+
+.height_400 {
+  height: 400px !important; }
+
+.account-links {
+  /* margin-bottom: 0.5em; */
+  /* background-color: #CE624D; */
+  background-color: #136E8E;
+  text-align: center;
+  color: #DBF8EB;
+  font-weight: bold; }
+  .account-links a {
+    display: inline-block;
+    color: #DBF8EB;
+    padding: 0.5em;
+    text-decoration: none; }
+    .account-links a:hover {
+      text-decoration: underline;
+      cursor: pointer; }
+
+.padding-top_bottom-50 {
+  padding-top: 50px;
+  padding-bottom: 50px; }
+
+.tiny_navbar {
+  padding: 0; }
+  .tiny_navbar .navbar-nav > li > a {
+    line-height: 50px; }
+
+.front-page-facets {
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center; }
+  @media (max-width: 768px) {
+    .front-page-facets {
+      -ms-flex-direction: column;
+          flex-direction: column; } }
+  .front-page-facets .flex-items-thumbnail {
+    -ms-flex: 1 1;
+        flex: 1 1; }
+  .front-page-facets h2 {
+    margin-top: 10px; }

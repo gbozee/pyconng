@@ -9,13 +9,14 @@ urlpatterns = [
     # url(r'^$', 'pyconng.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^home/$', TemplateView.as_view(template_name='pre-conference.html'), name='home'),
     url(r'^account/', include('account.urls')),
     url(r'^contact/', include('contact_form.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
 ]
 
-# symposion urls 
+# symposion urls
 urlpatterns += [
     url(r'^dashboard/', symposion_views.dashboard, name='dashboard'),
     url(r'^proposals/', include('symposion.proposals.urls')),

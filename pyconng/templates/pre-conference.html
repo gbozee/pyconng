@@ -1,0 +1,38 @@
+{% extends "apply.html" %} {% load static from staticfiles %} {% block extra_nav %}
+<div class="container">
+    <div class="row">
+        <div id="content_homepage-about" class="padding-top_bottom-50 ">
+            <div class="col-md-8 col-md-offset-2">
+                <p>PyCon is the largest annual gathering for the community that uses and develops the open-source Python programming language. PyCon is organized <a href="/2016/about/">by the Python community</a>, for the community. We try to keep registration
+                    far cheaper than most comparable technology conferences, to make PyCon accessible to the widest group possible. PyCon is a <a href="/2016/about/diversity/">diverse conference</a> dedicated to providing an enjoyable experience to everyone.
+                    Our <a href="/2016/about/code-of-conduct/">code of conduct</a> is intended to help everyone maintain the PyCon spirit. We thank all attendees and staff for observing it.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 padding-top_bottom-50">
+            <div class="front-page-facets narrow">
+                <div class="flex-items-thumbnail">
+                    <img src="{% static "images/home/tutorials-icon.png" %}">
+                    <h2>Registration opens October&nbsp;17</h2> Read our
+                    <a href="/2017/about/code-of-conduct/">Code of Conduct</a> and then start reading about
+                    <a href="/2017/events/">all of the events</a> that together make up the conference.
+                </div>
+                <div class="flex-items-thumbnail">
+                    <img src="{% static "images/home/conference-icon.png" %}">
+                    <h2><a href="/2017/speaking/">Propose a talk or tutorial</a></h2> The program committee builds the conference schedule by selecting presentations offered by Python community members like you.
+                </div>
+                <div class="flex-items-thumbnail">
+                    <img src="{% static "images/home/Sprints-Icon.png" %}">
+                    <h2><a href="/2017/sponsors/why-sponsor/"><b>Become a sponsor</b></a></h2> The companies and organizations who sponsor PyCon make the conference possible, and get to connect with a wide array of Python programmers.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
