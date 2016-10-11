@@ -1,0 +1,14 @@
+.DTTT.btn-group{
+  a.btn{
+    padding: 0;
+    background-color: transparent;
+    color: #337AC1;
+    border: none;
+    &:hover,&:focus{
+      background-color: #333;
+      color: #fff;
+      border-color: #333;
+    }
+  }
+
+}

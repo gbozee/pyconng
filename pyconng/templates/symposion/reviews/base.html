@@ -1,7 +1,8 @@
-{% extends "site_base.html" %}
+{% extends "symposion/base.html" %}
 
 {% load i18n %}
 {% load sitetree %}
+{% block stylings %}
 
 {% block extra_style %}
     <style type="text/css">
@@ -48,6 +49,7 @@
     </style>
 {% endblock %}
 
+{% endblock %}
 {% block body_class %}reviews{% endblock %}
 
 {% block body %}
@@ -58,7 +60,7 @@
 <div class="poster-wrapper">
   <div class="container">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
             {% block sidebar %}
             <ul class="nav nav-list well">
                 {% for section in review_sections %}
@@ -91,9 +93,9 @@
             </ul>
             {% endblock %}
         </div>
-        <div class="col-md-10">
-            {% block content %}
-            {% endblock content %}
+        <div class="col-md-9">
+            {% block actual_content %}
+            {% endblock actual_content %}
         </div>
     </div>
   </div>
@@ -108,7 +110,7 @@
         $(function() {
             $(".tip").tooltip();
             $("table.table-reviews").dataTable({
-                "sDom": "<'row'<'col-md-3'l><'col-md-3'T><'col-md-4'f>r>t<'row'<'col-md-3'i><'col-md-5'p>>",
+                "sDom": "<'row'<'col-md-4'l><'col-md-4'T><'col-md-4'f>r>t<'row'<'col-md-3'i><'col-md-5'p>>",
                 "sPaginationType": "bootstrap",
                 "bStateSave": true,
                 "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],

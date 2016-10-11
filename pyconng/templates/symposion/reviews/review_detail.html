@@ -1,14 +1,14 @@
 {% extends "symposion/reviews/base.html" %}
 
 {% load i18n %}
-{% load bootstrap %}
+{% load crispy_forms_tags %}
 {% load account_tags %}
 {% load waffle_tags %}
 {% load staticfiles %
 
 {% block review_heading %}Review{% endblock review_heading %}
 
-{% block content %}
+{% block actual_content %}
     {% if request.user.is_staff %}
         <div class="pull-right">
             <form class="result-form form-inline" method="POST" action="">
@@ -107,7 +107,7 @@
                         <legend>{% trans "Submit Review" %}</legend>
                         <p>Enter your vote and any comment to go along with it. You can revise your vote or comment multiple times with an existing vote (your previously recorded score will be replaced during calculations). <b>Your vote and comments are not public and will only be viewable by other reviewers.</b></p>
                         {% csrf_token %}
-                            {{ review_form|bootstrap }}
+                            {{ review_form|crispy }}
                             <div class="form-action">
                                 <input type="submit" class="btn btn-primary" name="vote_submit" value="Submit Review" />
                             </div>
@@ -187,7 +187,7 @@
                         {% endblocktrans %}
                     </p>
                     {% csrf_token %}
-                    {{ message_form|bootstrap }}
+                    {{ message_form|crispy }}
                     <div class="form-actions">
                         <input type="submit" class="btn btn-primary" name="message_submit" value="Send Message" />
                     </div>
