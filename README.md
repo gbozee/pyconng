@@ -71,5 +71,4 @@ $ gulp watch #Live scss editing
 If you have found a bug or if you have a feature request, please report them at this repository issues section.
 
 ## License
-
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
