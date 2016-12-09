@@ -77,3 +77,4 @@ webpack-stats-production.json
 *.sqlite3
 .env
 *.pyc
+startup.sh
