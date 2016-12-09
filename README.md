@@ -2,77 +2,59 @@
 
 This is the official website for Python Nigeria Conference
 
-## Setting Up
+## Setting Up the repo for development
+The project uses `python3`
 
-Enter the directory
-```
-cd pyconng
-```
+1. Before cloning the repo, create a parent folder
 
-### Virtual Environment
+2. clone the repo inside this folder just created 
+    ```
+    $ git clone https://github.com/pyung/pyconng.git pycon
+    ```
 
-Install virtualenv via pip
-```
-pip install virtualenv
-```
+3. Create a virtual environment and activate it 
+    ```
+    $ python -m venv venv
+    $ source venv\bin\activate
+    $ cd pycon
+    
+    # for window users
+    > venv\Scripts\activate
+    ```
+4. Install all the dependencies for the project
+    ```
+    (venv)$ pip install -r requirements.txt  
+    ```
+5. Ensure you have Postgres database installed on your system. visit [Postgres Download Section](https://www.postgresql.org/download/)
+to download postgres for your respective OS
 
-Create virtualenv
-```
-virtualenv env
-```
+6. Create a database using the default `postgres` user and create a db named `pyconng`
+    ```
+    $ createdb pyconng
 
-Activate virtualenv
-```
-source ./env/bin/activate
-```
+    ```
+    __This step isn't compulsory if you already have a database that you want to use or you are 
+    using `pgadmin3` to create the database.
 
-_Note_: You can name your virtual environment whatever you want but do not check in your virtual environment to git
+7. Setup an environmental variable to map the database configuration
+    ```
+    export DATABASE_URL=postgres://<dbuser>:<dbpassword>@<dbhost>:<dbport>/pyconng
+    ```
+8. Run migrations
+    ```
+    python manage.py migrate
+    ```
+9. Run fixtures (one time only)
 
-### Dependencies
+    ```bash
+    $ python manage.py loaddata fixtures/*
+    ```
+10. If everything above was successful, you can go ahead and start the server
+    ```
+    python manage.py runserver
+    ```
 
-Install the requirements
-```
-pip install -r requirements.txt
-```
-
-### Postgres
-
-Install postgres
-```
-brew install postgres
-```
-
-Create database
-```
-createdb pyconng
-```
-
-Feel free to assign any user credentials to the just created `pyconng` database
-
-### Environment Variables
-
-Specify the below variables
-```
-export DATABASE_URL="postgres://<dbuser>:<dbpassword>@<dbhost>:<dbport>/pyconng"
-```
-
-### Database Setup
-
-Run migrations
-```
-python manage.py migrate
-```
-Run fixtures (one time only)
-
-```bash
-$ ./manage.py loaddata fixtures/*
-```
-If everything above was successful, you can go ahead and start the server
-```
-python manage.py runserver
-```
-
-## Extras
+# Extras. Useful for frontend developers and designers
 For development, the project uses `gulp` and `webpack`
 
 ```bash
