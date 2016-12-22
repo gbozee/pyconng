@@ -2,17 +2,24 @@
 <nav id="navigation-menu" class="collapse navbar-collapse">
   <ul class="nav navbar-nav navbar-right">
 
-    <li><a href="#about">Programme</a></li>
+    {% comment %}<li><a href="#about">Programme</a></li>{% endcomment %}
     <li><a href="{% url 'pages_page' "cfp/" %}">Proposals</a></li>
     <li><a href="{% url "pages_page" "sponsors/information/" %}">Sponsor</a></li>
-    <li><a href="#portfolio">Venue</a></li>
-    <li><a href="#pricing">Code of Conduct</a></li>
+    {% comment %}<li><a href="#portfolio">Venue</a></li>{% endcomment %}
+    <li><a href="{% url "pages_page" "coc/" %}">Code of Conduct</a></li>
     <li><a href="{% url 'contact_form' %}">Contact</a></li>
+    {% if request.user.is_authenticated %}
+    <li><a class="register-btn" href="{% url 'dashboard' %}">Dashboard</a></li>
+
+    {% else %}
     <li><a href="{% url 'account_login' %}">Login</a></li>
     {% block register_btn %}
     <li><a class="register-btn" href="{% url 'account_signup' %}">Signup</a></li>
 
     {% endblock register_btn %}
 
+    {% endif %}
+
+    
   </ul>
 </nav>  <!-- End Navigation Menu -->

@@ -79,3 +79,4 @@ webpack-stats-production.json
 *.pyc
 startup.sh
 venv/
+tags
