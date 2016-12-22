@@ -8,8 +8,9 @@
     <li><a href="#portfolio">Venue</a></li>
     <li><a href="#pricing">Code of Conduct</a></li>
     <li><a href="{% url 'contact_form' %}">Contact</a></li>
+    <li><a href="{% url 'account_login' %}">Login</a></li>
     {% block register_btn %}
-    <li><a class="register-btn" href="#pre-register">Tickets</a></li>
+    <li><a class="register-btn" href="{% url 'account_signup' %}">Signup</a></li>
 
     {% endblock register_btn %}
 
