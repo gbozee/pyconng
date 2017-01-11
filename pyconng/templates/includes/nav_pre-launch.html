@@ -1,0 +1,17 @@
+<!-- Navigation Menu -->
+<nav id="navigation-menu" class="collapse navbar-collapse">
+  <ul class="nav navbar-nav navbar-right">
+
+    <li><a href="#about">Programme</a></li>
+    <li><a href="{% url 'pages_page' "cfp/" %}">Proposals</a></li>
+    <li><a href="{% url "pages_page" "sponsors/information/" %}">Sponsor</a></li>
+    <li><a href="#portfolio">Venue</a></li>
+    <li><a href="#pricing">Code of Conduct</a></li>
+    <li><a href="{% url 'contact_form' %}">Contact</a></li>
+    {% block register_btn %}
+    <li><a class="register-btn" href="#pre-register">Tickets</a></li>
+
+    {% endblock register_btn %}
+
+  </ul>
+</nav>  <!-- End Navigation Menu -->

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="author" content="Pycon">
+		<meta name="description" content="Pycon Conference Site"/>
+		<meta name="keywords" content="Python, Pycon Nigeria">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- SITE TITLE -->
+		<title>{% block header_title %}{{title}}{% endblock header_title %}</title>
+
+		<!-- FAVICON AND TOUCH ICONS  -->
+		<link rel="shortcut icon" href="{% static 'images/icons/favicon.ico' %}" type="image/x-icon">
+		<link rel="icon" href="{% static 'images/icons/favicon.ico' %}" type="image/x-icon">
+		<link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/icons/apple-touch-icon-144x144.png' %}">
+		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/icons/apple-touch-icon-114x114.png' %}">
+		<link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/icons/apple-touch-icon-72x72.png' %}">
+		<link rel="apple-touch-icon" href="{% static 'images/icons/apple-touch-icon.png' %}">
+
+		<!-- GOOGLE FONTS -->
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
+
+		<!-- TEMPLATE CSS -->
+		<link href="{% static 'css/style.css' %}" rel="stylesheet">
+		{% block stylings %}
+
+		{% endblock %}
+	</head>
+
+
+	<body>
+		<!-- PRELOADER
+		============================================= -->
+		<div class="animationload" style="display:none">
+			<div class="loader"></div>
+		</div>
+		<!-- PAGE CONTENT
+		============================================= -->
+		<div id="page" class="page-wrapper">
+			{% block navigation %}
+			<!-- HEADER
+			============================================= -->
+			<header id="header" class="header">
+				<div class="navbar {% block fixed_navbar %}navbar-fixed-top{% endblock fixed_navbar %}">
+					<div class="container">
+						<!-- Navigation Bar -->
+						<div class="navbar-header">
+							<!-- Responsive Menu Button -->
+							<button type="button" id="nav-toggle" class="navbar-toggle text-right" data-toggle="collapse" data-target="#navigation-menu">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<!-- LOGO IMAGE -->
+							<!-- Recommended sizes 150x34px; -->
+							<a class="navbar-brand logo-white" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt="logo"></a>
+							<a class="navbar-brand logo-black" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+
+						</div>	<!-- End Navigation Bar -->
+
+
+						{% include "includes/nav_pre-launch.html" %}
+					</div>	  <!-- End container -->
+				</div>	   <!-- End navbar fixed top  -->
+			</header>	<!-- END HEADER -->
+
+			{% endblock navigation %}
+			<div class="{% block body_class %}{% endblock body_class %}">
+			{% if messages %} {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+            {% endfor %} {% endif %}
+
+			{% block content %}
+            {% endblock content %}
+			{% block extra_body %}{% endblock extra_body %}
+			</div>
+
+			<!-- FOOTER
+			============================================= -->
+			<footer id="footer" class="bg-dark p-top-40 p-bottom-40 footer division">
+				<div class="container">
+					<div class="row">
+						<div id="footer-copyright" class="col-md-12 text-center">
+							<!-- FOOTER COPYRIGHT -->
+							<p>Copyright &copy; 2016 Eventry. All Rights Reserved</p>
+							<p>Landing Page Template Designed & Developed By: <a href="#">DSAThemes</a></p>
+						</div>
+					</div>
+				</div>	   <!-- End container -->
+			</footer>	<!-- END FOOTER -->
+		</div>	<!-- END PAGE CONTENT -->
+
+
+		<!-- EXTERNAL SCRIPTS
+		============================================= -->
+	    <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+	    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+			{% block extra_script %}
+			{% endblock %}
+        {% if development %}
+        <script src="http://localhost:8080/bundles/bundle.js"></script>
+        {% else %}
+        <script src="{% static 'js/bundle.js' %}"></script>
+        {% endif %}
+	</body>
+
+
+</html>

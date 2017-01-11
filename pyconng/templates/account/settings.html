@@ -1,0 +1,29 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block body_class %}account account-settings{% endblock %}
+
+{% block head_title %}{% trans "Account" %}{% endblock %}
+
+{% block content %}
+<div class="small-header poster-wrapper ">
+    <h1>{% trans "Account" %}</h1>
+</div>
+
+<div class="poster-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form method="POST" action="{% url "account_settings" %}">
+                    <legend>{% trans "Account" %}</legend>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

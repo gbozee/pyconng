@@ -1,0 +1,73 @@
+{% extends "symposion/base.html" %}
+
+{% load sitetree %}
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block body_class %}cms-page{% endblock %}
+
+{% block head_title %}{{ page.title }}{% endblock %}
+
+{% block breadcrumbs %}{% sitetree_breadcrumbs from "main" %}{% endblock %}
+{% block stylings %}
+  <style>
+  #intro-3{
+    height: 300px;
+  }
+  #intro-3-content {
+      padding-top: 50px;
+      padding-bottom: 50px;
+  }
+  #intro-3 .intro-txt h2 {
+      font-size: 40px;
+      line-height: 76px;
+  }
+  </style>
+{% endblock %}
+{% block body %}
+
+<!-- INTRO-3
+============================================= -->
+<section id="intro-3" class="intro-section">
+    <div class="overlay division">
+        <div class="container">
+            <div id="intro-3-content" class="row">
+                <!-- INTRO TEXT -->
+                <div class="col-md-12 col-lg-10 col-lg-offset-1 intro-txt text-center white-color">
+
+                    <!-- Title -->
+                    <h2>{{ page.title }}</h2>
+                </div>
+
+
+            </div>	 <!-- End Intro Content -->
+        </div>    <!-- End container -->
+    </div>	   <!-- End overlay -->
+</section>	<!-- END INTRO-3 -->
+
+
+<!-- <div class="small-header poster-wrapper">
+  <h1></h1>
+</div> -->
+
+<div class="poster-wrapper">
+  <div class="container">
+    {% if editable %}
+    <div class="row">
+      <a href="{% url 'pages_page_edit' page.path %}" class="btn btn-sm btn-default">
+        <i class="fa fa-pencil"></i>
+          Edit this page
+      </a>
+    </div>
+    {% endif %}
+
+    <div class="row">
+      <div class="col-md-9 col-md-offset-2 page-content">
+        {{ page.body_html|safe }}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+.alert{
+    text-align: center;
+}
+.account{
+    padding-bottom: 6em;   
+}
+.small-header, .blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    height: 200px;
+    background-size: cover;
+    color: #fff;
+    padding-bottom: 0;
+}
+.smaller{
+    height: 100px;
+}
+.auth{
+    .poster-wrapper {
+        position: relative;
+        border-left: 20px solid #fff;
+        border-right: 20px solid #fff;
+        background-color: #fbfaf6;
+        margin: 0 auto;
+        max-width: 1300px;
+        padding-top: 2em;
+        padding-bottom: 6em;
+    }
+    .dashboard-card {
+        .panel-heading {
+            display: flex;
+            h3{
+                align-self: flex-start;
+                margin: 0;
+            }
+            .card-header-actions {
+                align-self: flex-end;
+                margin-left: auto;
+                .btn{
+                    padding: 6px 20px;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+.btn-link{
+    background-color: transparent;
+    color: $primary_btn_color;
+    border-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+legend{
+    border: none;
+    margin-bottom: .5rem;
+}
+form {
+    legend {
+        padding: 0 0 1em 0.75rem;
+    }
+}

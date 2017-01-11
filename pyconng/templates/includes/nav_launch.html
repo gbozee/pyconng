@@ -1,0 +1,18 @@
+<!-- Navigation Menu -->
+<nav id="navigation-menu" class="collapse navbar-collapse">
+  <ul class="nav navbar-nav navbar-right">
+
+    <li><a href="#about">About</a></li>
+    <li><a href="{% url 'schedule_conference' %}">Schedule</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#portfolio">Gallery</a></li>
+    <li><a href="#pricing">Prices</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="{% url 'contact_form' %}">Contact</a></li>
+    {% block register_btn %}
+    <li><a class="register-btn" href="#pre-register">Register Now</a></li>
+
+    {% endblock register_btn %}
+
+  </ul>
+</nav>  <!-- End Navigation Menu --> 

@@ -1,0 +1,19 @@
+{% load i18n crispy_forms_tags %}
+<form id="slotEditForm" class="modal-form" method="POST" action="{% url "schedule_slot_edit" slug slot.pk %}">
+  <div class="modal-dialog" role="document">
+   <div class="modal-content">
+
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">&times;</a>
+            <h3>{% trans "Edit Slot" %}</h3>
+        </div>
+        <div class="modal-body" style="height:350px">
+            {% csrf_token %}
+            {{ form|crispy }}
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+   </div>
+ </div>
+</form>

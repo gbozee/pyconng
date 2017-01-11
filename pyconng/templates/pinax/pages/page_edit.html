@@ -1,0 +1,34 @@
+{% extends "symposion/speakers/base.html" %}
+
+{% load sitetree %}
+{% load i18n %}
+
+{% load crispy_forms_tags %}
+{% load static from staticfiles %}
+
+{% block body_class %}cms-page{% endblock %}
+
+{% block head_title %}Edit Page{% endblock %}
+
+{% block page_title %}{% trans "Edit page at:" %} {{ path }}{% endblock %}
+{% block breadcrumbs %}{% sitetree_breadcrumbs from "main" %}{% endblock %}
+
+{% block body %}
+
+<div class="small-header poster-wrapper">
+</div>
+
+<div class="poster-wrapper">
+  <div class="container">
+    <div class="row">
+      <form method="POST" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-actions">
+          <input class="btn btn-primary" type="submit" value="Save" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

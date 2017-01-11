@@ -4,31 +4,6 @@ This is the official website for Python Nigeria Conference
 
 ## Setting Up
 
-### Python
-
-Install python from brew
-```
-brew install python
-```
-
-To make sure you have the latest version of Python 2.7.x installed, run this code:
-```
-brew link python
-```
-
-If you get “Already linked” then good to go. Else, run
-```
-brew unlink python
-```
-This will remove the old version and link the newly installed version.
-
-### Getting the Code
-
-Clone this repository
-```
-git clone git@github.com:tsolarin/pyconng.git
-```
-
 Enter the directory
 ```
 cd pyconng
@@ -76,22 +51,10 @@ Feel free to assign any user credentials to the just created `pyconng` database
 
 ### Environment Variables
 
-Create a `.env` file in the root of the repository
-```
-touch .env
-```
-
 Specify the below variables
 ```
 export DATABASE_URL="postgres://<dbuser>:<dbpassword>@<dbhost>:<dbport>/pyconng"
 ```
-
-Make variable of your `.env` file available in the current shell session
-```
-source .env
-```
-
-_Note_: Do not check in your `.env` file to git
 
 ### Database Setup
 
@@ -99,12 +62,26 @@ Run migrations
 ```
 python manage.py migrate
 ```
+Run fixtures (one time only)
 
-## Usage
-
+```bash
+$ ./manage.py loaddata fixtures/*
+```
 If everything above was successful, you can go ahead and start the server
 ```
 python manage.py runserver
+```
+
+## Extras
+For development, the project uses `gulp` and `webpack`
+
+```bash
+$ npm install
+$ npm run dev #webpack devserver starts.
+```
+In a new command prompt
+```bash
+$ gulp watch #Live scss editing
 ```
 
 ## Issue Reporting

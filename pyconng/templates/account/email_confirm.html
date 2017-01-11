@@ -1,0 +1,26 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Confirm Email" %}{% endblock %}
+
+{% block content %}
+<div class="small-header poster-wrapper ">
+  <h1>{% trans "Confirm Email" %}</h1>
+</div>
+
+<div class="poster-wrapper">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form method="post" action="{% url "account_confirm_email" key=confirmation.key %}">
+                <legend>{% trans "Confirm Email" %}</legend>
+                <fieldset>
+                    {% csrf_token %}
+                    <p>{% blocktrans with email=confirmation.email_address.email %}Confirm email address <b>{{ email }}</b>?{% endblocktrans %}</p>
+                    <button type="submit" class="btn btn-primary">{% trans "Confirm" %}</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

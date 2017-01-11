@@ -1,0 +1,15 @@
+{% extends "symposion/reviews/base.html" %}
+
+{% load bootstrap %}
+
+{% block review_heading %}Bulk Accept{% endblock review_heading %}
+
+{% block content %}
+    <form action="" method="POST" class="uniForm" accept-charset="utf-8">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <div class="form-actions">
+            <input class="btn btn-primary" type="submit" name="submit" value="submit" />
+        </div>
+    </form>
+{% endblock %}

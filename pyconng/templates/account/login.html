@@ -1,0 +1,48 @@
+{% extends "account/base.html" %}
+
+{% load account_tags %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load static from staticfiles %}
+
+{% block header_title %}{% trans "Log in" %}{% endblock header_title %}
+
+{% block content %}
+<div class="small-header poster-wrapper">
+  <h1>{% trans "Hi!" %}</h1>
+</div>
+<div class="poster-wrapper">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                <legend>{% trans "Log in to an existing account" %}</legend>
+                {% csrf_token %}
+                {{ form|crispy }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
+                <a href="{% url "account_password_reset" %}" class="btn btn-link">{% trans "Forgot your password?" %}</a>
+            </form>
+            {% if ACCOUNT_OPEN_SIGNUP %}
+                <p class="login-signup">
+                    <small>
+                        {% trans "Don't have an account?" %}  <strong><a href="{% urlnext 'account_signup' %}" class="btn btn-link">{% trans "Sign up" %}</a></strong>
+                    </small>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#id_username').focus();
+        });
+    </script>
+{% endblock %}

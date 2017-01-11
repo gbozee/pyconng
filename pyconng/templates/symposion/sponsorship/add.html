@@ -1,0 +1,34 @@
+{% extends "symposion/speakers/base.html" %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load pinax_boxes_tags %}
+{% load static from staticfiles %}
+
+{% block head_title %}{% trans "Add a Sponsor" %}{% endblock %}
+
+{% block body_class %}sponsorships{% endblock %}
+
+{% block body %}
+
+<div class="blog-header poster-wrapper ">
+  <h1>{% trans "About Our Sponsors" %}</h1>
+</div>
+
+<div class="poster-wrapper">
+  <div class="container">
+    <div class="row">
+      <form method="POST" action="{% url "sponsor_add" %}" class="form-horizontal">
+        {% csrf_token %}
+        <legend>{% trans "Add a Sponsor" %}</legend>
+        {{ form|crispy }}
+        <div class="form-actions">
+          <input class="btn btn-primary" type="submit" value="Add" />
+          <a class="btn btn-default" href="{% url "dashboard" %}">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
