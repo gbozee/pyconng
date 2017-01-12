@@ -7,6 +7,7 @@
     <div class="post-list">
       {% for post in post_list %}
         <div class="post">
+          
           <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
           {% include "pinax/blog/dateline.html" %}
           <div class="teaser">{{ post.teaser_html|safe }}</div>

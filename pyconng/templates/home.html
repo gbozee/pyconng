@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load pinax_boxes_tags %}
+{% load waffle_tags %}
 {% block content %}
 <!-- INTRO-3
 ============================================= -->
@@ -7,26 +9,7 @@
     <div class="overlay division">
         <div class="container">		
             <div id="intro-3-content" class="row"> 
-                <!-- INTRO TEXT -->
-                <div class="col-md-12 col-lg-10 col-lg-offset-1 intro-txt text-center white-color">
-                    
-                    <!-- Title -->
-                    <h4>September 11-13, Melbourne, Australia</h4>
-                    <h2>Eventry 2016 Annual Web Developers Conference </h2> 
-                    
-                    <!-- Text -->
-                    <p class="p-lg">Lorem ipsum dolor sit amet, turpis dolores adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis 
-                        natoque undo euismod et magnis dis parturient montes, nascetur ridiculus
-                    </p>
-
-                    <!-- COUNTDOWN ELEMENT 	-->
-                    <div class="m-top-40">
-                        <p>Conference Starts in:</p>
-                        <div id="clock"></div>
-                    </div>	
-                </div>
-
-                                                    
+                {% box "homepage_banner" %}
             </div>	 <!-- End Intro Content -->
         </div>    <!-- End container -->
     </div>	   <!-- End overlay -->

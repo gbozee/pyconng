@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body_tag %}
+
+<body class="{% block body_class %}{% endblock body_class %}">
+    {% block body %}{% endblock body %}
+</body>
+
+{% endblock body_tag %}
+
+</html>

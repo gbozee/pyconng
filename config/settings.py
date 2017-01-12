@@ -71,8 +71,8 @@ INSTALLED_APPS = (
     "pinax.boxes",
     # "pinax.eventlog",
     "pinax.pages",
-    # "pinax.blog",
-
+    "pinax.blog",
+    'pinax.images',
     # symposion
     "symposion",
     "symposion.conference",
