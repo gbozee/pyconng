@@ -1,4 +1,7 @@
-{% extends "apply.html" %} {% load static from staticfiles %} {% block extra_nav %}
+{% extends "apply.html" %} 
+{% load static from staticfiles %} 
+{% load pinax_boxes_tags %} 
+{% block extra_nav %}
 <div class="container">
     <div class="row">
         <div id="content_homepage-about" class="padding-top_bottom-50 ">
@@ -11,28 +14,58 @@
 
     </div>
 </div>
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1 padding-top_bottom-50">
             <div class="front-page-facets narrow">
-                <div class="flex-items-thumbnail">
-                    <img src="{% static "images/home/tutorials-icon.png" %}">
-                    <h2>Registration opens October&nbsp;17</h2> Read our
-                    <a href="/2017/about/code-of-conduct/">Code of Conduct</a> and then start reading about
-                    <a href="/2017/events/">all of the events</a> that together make up the conference.
-                </div>
-                <div class="flex-items-thumbnail">
-                    <img src="{% static "images/home/conference-icon.png" %}">
-                    <h2><a href="/2017/speaking/">Propose a talk or tutorial</a></h2> The program committee builds the conference schedule by selecting presentations offered by Python community members like you.
-                </div>
-                <div class="flex-items-thumbnail">
-                    <img src="{% static "images/home/Sprints-Icon.png" %}">
-                    <h2><a href="/2017/sponsors/why-sponsor/"><b>Become a sponsor</b></a></h2> The companies and organizations who sponsor PyCon make the conference possible, and get to connect with a wide array of Python programmers.
-                </div>
+            <div class="flex-items-thumbnail">
+                <img class="icon-size" src="{% static "images/home/light-bulb.png" %}">
+                {% box "icon_1_text" %}
             </div>
+            <div class="flex-items-thumbnail">
+                <img class="icon-size" src="{% static "images/home/conference.png" %}">
+                {% box "icon_2_text" %}
+            </div>
+            <div class="flex-items-thumbnail">
+                <img class="icon-size" src="{% static "images/home/team.png" %}">
+                {% box "icon_3_text" %}
+            </div>
+
+        </div>    
         </div>
 
     </div>
+    
 </div>
+
+<!-- BECOME A SPONSOR
+============================================= -->	
+<section id="become-sponsor" class="wide-100 become-sponsor division">	
+    <div class="container">
+        <div class="row white-color">
+        
+        
+            <div class="col-md-8">
+            
+                <!-- Title -->
+                <h3 class="h3-thin">Interested in becoming a sponsor?</h3>
+                <p>If your company is interested in sponsoring Eventry Conference this year, we’d love to hear from you. Send us a quick email and we’ll 
+                    get right back to you with some more information and our sponsorship brochure
+                </p>	
+                
+            </div>
+            
+            <!-- Button -->
+            <div class="col-md-4 text-center">						
+                <a href="{% url 'sponsor_apply' %}" class="btn btn-lg">Request Now</a>							
+            </div>
+        
+        
+        </div>	<!-- End row -->
+    </div>	  <!-- End container -->
+</section>  <!-- END BECOME A SPONSOR -->		
+
+
 {% endblock %}

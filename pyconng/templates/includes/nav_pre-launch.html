@@ -3,22 +3,23 @@
   <ul class="nav navbar-nav navbar-right">
 
     {% comment %}<li><a href="#about">Programme</a></li>{% endcomment %}
-    <li><a href="{% url 'pages_page' "cfp/" %}">Proposals</a></li>
-    <li><a href="{% url "pages_page" "sponsors/information/" %}">Sponsor</a></li>
+    <li><a href="#sponsors">Sponsor</a></li>
     {% comment %}<li><a href="#portfolio">Venue</a></li>{% endcomment %}
     <li><a href="{% url "pages_page" "coc/" %}">Code of Conduct</a></li>
+    <li><a href="#contacts">Venue</a></li>
+    <li><a href="{% url "pinax_blog:blog" %}">Blog</a></li>
     <li><a href="{% url 'contact_form' %}">Contact</a></li>
     {% if request.user.is_authenticated %}
-    <li><a class="register-btn" href="{% url 'dashboard' %}">Dashboard</a></li>
+    {% comment %}<li><a class="register-btn" href="{% url 'dashboard' %}">Dashboard</a></li>{% endcomment %}
 
     {% else %}
     <li><a href="{% url 'account_login' %}">Login</a></li>
     {% block register_btn %}
-    <li><a class="register-btn" href="{% url 'account_signup' %}">Signup</a></li>
 
     {% endblock register_btn %}
 
     {% endif %}
+    <li><a class="register-btn" href="#">Request Tickets</a></li>
 
     
   </ul>
