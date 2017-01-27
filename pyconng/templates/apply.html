@@ -25,7 +25,7 @@
               <ul class="dropdown-menu">
                 <li><a href="{% url 'pages_page' 'about/' %}">What is Pycon</a></li>
                 <li><a href="{% url 'pages_page' "coc/" %}">Code of Conduct</a></li>
-                <li><a href="{% url 'pages_page' "staff-information/" %}">Staff Information</a></li>
+                
               </ul>
             </li>
           </ul>
@@ -43,9 +43,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sponsorship <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="{% url 'pages_page' "sponsors/information/" %}">Why Sponsor Pycon</a></li>
-                <li><a href="#">Prospectus</a></li>
-                <li><a href="#">Application Form</a></li>
-                <li><a href="#">Estimated Sponsor Fees</a></li>
+                <li><a href="{% url 'sponsor_apply' %}">Application Form</a></li>
               </ul>
             </li>
           </ul>
@@ -61,6 +59,7 @@
            <ul class="nav navbar-nav navbar-right">
              {% if request.user.is_authenticated %}
              <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+             <li><a href="{% url 'account_logout' %}">Logout</a></li>
              {% else %}
 
         <li><a class="login" href="{% url "account_login" %}">Log in</a>
@@ -87,6 +86,7 @@
 
   </div>
 </nav>
+{% block home_banner %}
 <section id="intro-3" style="height: 250px !important" class="intro-section height_400">
     <div class="overlay division">
         <div class="container">
@@ -97,6 +97,8 @@
         </div>    <!-- End container -->
     </div>	   <!-- End overlay -->
 </section>	<!-- END INTRO-3 -->
+
+{% endblock home_banner %}
 {% block extra_nav %}
 
 {% endblock %}

@@ -11,6 +11,7 @@
     <li><a href="{% url 'contact_form' %}">Contact</a></li>
     {% if request.user.is_authenticated %}
     {% comment %}<li><a class="register-btn" href="{% url 'dashboard' %}">Dashboard</a></li>{% endcomment %}
+    <li><a href="{% url 'account_logout' %}">Logout</a></li>
 
     {% else %}
     <li><a href="{% url 'account_login' %}">Login</a></li>
