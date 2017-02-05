@@ -1,8 +1,109 @@
 {% extends "base.html" %}
+{% load static %}
 {% block body_tag %}
 
 <body class="{% block body_class %}{% endblock body_class %}">
+
+{% block navigation %}
+<!-- INTRO-3
+============================================= -->
+<nav class="tiny_navbar navbar navbar-default">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="navbar-header">
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Pycon <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'pages_page' 'about/' %}">What is Pycon</a></li>
+                <li><a href="{% url 'pages_page' "coc/" %}">Code of Conduct</a></li>
+                
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Speak at Pycon <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'pages_page' "speaking/overview/" %}">Overview</a></li>
+                <li><a href="{% url 'pages_page' "speaking/propose-talk/" %}">Proposing a Talk</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sponsorship <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'pages_page' "sponsors/information/" %}">Why Sponsor Pycon</a></li>
+                <li><a href="{% url 'sponsor_apply' %}">Application Form</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registration<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'pages_page' "registration/information/" %}">Registration Information</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'pinax_blog:blog' %}" >Blog</a>
+              </li>
+          </ul>
+           <ul class="nav navbar-nav navbar-right">
+             {% if request.user.is_authenticated %}
+             <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+             <li><a href="{% url 'account_logout' %}">Logout</a></li>
+             {% else %}
+
+        <li><a class="login" href="{% url "account_login" %}">Log in</a>
+        </li>
+        <li class="dropdown">
+          <a class="signup" href={% url "account_signup"%}>Sign up</a>
+
+          {% comment %}<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a>{% endcomment %}
+            </li>
+             {% endif %}
+          </ul>
+        </li>
+      </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+{% block extra_nav %}
+
+{% endblock %}
+
+{% endblock %}
+
     {% block body %}{% endblock body %}
+	<!-- EXTERNAL SCRIPTS
+		============================================= -->
+	    <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+	    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+			{% block extra_script %}
+			{% endblock %}
+        {% if development %}
+        <script src="http://localhost:8080/bundles/bundle.js"></script>
+        {% else %}
+        <script src="{% static 'js/bundle.js' %}"></script>
+        {% endif %}
 </body>
 
 {% endblock body_tag %}

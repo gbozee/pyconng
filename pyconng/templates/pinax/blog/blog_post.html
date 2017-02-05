@@ -1,5 +1,16 @@
 {% extends "pinax/blog/blog_base.html" %}
-
+{% block stylings %}
+{{block.super}}
+<style>
+.post{
+    border-bottom: 0;
+  }
+  .blog-post{
+      padding: 0;
+  }
+</style>
+  
+{% endblock stylings %}
 {% block body_class %}blog blog-post{% endblock %}
 
 {% block head_title_base %}{{ post.title }} | {{ SITE_NAME }}{% endblock %}

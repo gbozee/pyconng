@@ -13,6 +13,26 @@
 </div>
 {% endblock %} 
 {% block content %}
+
+<section id="become-sponsor" class="wide-100 become-sponsor division">	
+    <div class="container">
+        <div class="row white-color">
+        
+        
+            <div class="col-md-8">
+                {% box "speaker_box" %}                
+            </div>
+            
+            <!-- Button -->
+            <div class="col-md-4 text-center">						
+                <a href="{% url 'speaker_create' %}" class="btn btn-lg">Become a speaker</a>							
+            </div>
+        
+        
+        </div>	<!-- End row -->
+    </div>	  <!-- End container -->
+</section>  <!-- END BECOME A SPONSOR -->		
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1 padding-top_bottom-50">
