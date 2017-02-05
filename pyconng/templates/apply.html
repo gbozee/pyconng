@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load pinax_boxes_tags %}
+{% load pinax_boxes_tags static %}
 {% block stylings %}
 {{block.super}}
 <style>
@@ -16,18 +16,12 @@
     <div class="row">
       <div class="col-md-12">
         <div class="navbar-header">
+          <a class="navbar-brand logo-white" href="{% url 'home' %}"><img style="margin-top: -10px;" src="{% static 'images/logo.svg' %}" alt="logo" height="60"></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Pycon <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url 'pages_page' 'about/' %}">What is Pycon</a></li>
-                <li><a href="{% url 'pages_page' "coc/" %}">Code of Conduct</a></li>
-                
-              </ul>
-            </li>
+            <li><a href="{% url 'pages_page' "coc/" %}">Code of Conduct</a></li>
           </ul>
           <ul class="nav navbar-nav">
             <li class="dropdown">
