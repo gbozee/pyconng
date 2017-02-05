@@ -62,9 +62,13 @@
     {% endif %}
 
     <div class="row">
+      {% if 'venue' in page.path %}
+        {{page.body_html|safe}}
+      {% else %}
       <div class="col-md-9 col-md-offset-2 page-content">
         {{ page.body_html|safe }}
       </div>
+      {% endif %}
     </div>
 
   </div>
