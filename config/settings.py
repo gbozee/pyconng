@@ -202,7 +202,7 @@ TEMPLATES = [
 ]
 
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 ACCOUNT_EMAIL_AUTHENTICATION = False
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
@@ -248,11 +248,11 @@ ADMINS = [
 ]
 
 MANAGERS = [
-    ('DjangoCon US', 'hello@djangocon.us'),
+    ('DjangoCon US', 'hello@pycon.ng'),
 ]
 
 SERVER_EMAIL = ''
-DEFAULT_FROM_EMAIL = "DjangoCon US 2016 <noreply@djangocon.us>"
+DEFAULT_FROM_EMAIL = "Pycon Nigeria 2017 <noreply@pycon.ng>"
 
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -266,3 +266,9 @@ SITE_ID = 1
 FIXTURE_DIRS = [
     str(ROOT_DIR('fixtures')),
 ]
+INSTALLED_APPS += ("anymail", )
+ANYMAIL = {
+    "MAILGUN_API_KEY": "key-f06af096671b80dd2e8537f05cc1f7ab",
+    "MAILGUN_SENDER_DOMAIN": "sandboxc2682008090d490bb4e17cc7d06aed71.mailgun.org"
+}
+EMAIL_BACKEND = "anymail.backends.mailgun.MailgunBackend"

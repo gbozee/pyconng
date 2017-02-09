@@ -14,3 +14,4 @@ easy-thumbnails==2.3
 gunicorn
 whitenoise==3.0b1
 django-extensions
+django-anymail==0.8
