@@ -14,7 +14,7 @@ INSTALLED_APPS += (
 )
 
 # Disable sending mail
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
 # Including a default secret key since this is just for development
