@@ -269,6 +269,6 @@ FIXTURE_DIRS = [
 INSTALLED_APPS += ("anymail", )
 ANYMAIL = {
     "MAILGUN_API_KEY": "key-f06af096671b80dd2e8537f05cc1f7ab",
-    "MAILGUN_SENDER_DOMAIN": "sandboxc2682008090d490bb4e17cc7d06aed71.mailgun.org"
+    "MAILGUN_SENDER_DOMAIN": "pycon.ng"
 }
 EMAIL_BACKEND = "anymail.backends.mailgun.MailgunBackend"
