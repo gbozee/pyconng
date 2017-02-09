@@ -202,7 +202,7 @@ TEMPLATES = [
 ]
 
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 ACCOUNT_EMAIL_AUTHENTICATION = False
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
