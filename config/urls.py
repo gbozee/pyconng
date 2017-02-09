@@ -2,6 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 from symposion import views as symposion_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 
@@ -33,4 +35,4 @@ urlpatterns += [
     url(r'^boxes/', include('pinax.boxes.urls')),
     url(r'^blog/', include('pinax.blog.urls', namespace="pinax_blog")),
     url(r'^', include('pinax.pages.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
