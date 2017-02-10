@@ -24,8 +24,10 @@ sftp-config.json
 __pycache__
 
 # Logs
+logs
 *.log
 pip-log.txt
+npm-debug.log*
 
 # Unit test / coverage reports
 .coverage
@@ -49,7 +51,6 @@ htmlcov
 
 # npm
 node_modules/
-bower_components/
 
 # Compass
 .sass-cache
@@ -58,25 +59,8 @@ bower_components/
 .env
 
 # User-uploaded media
-frontend/media/
+python_nigeria/media/
 
-# Hitch directory
-tests/.hitch
 
-# Hitch directory
-tests/.hitch
 
-# Webpack
-frontend/static/frontend/dist/
-webpack-stats.json
-webpack-stats-production.json
-
-*.js.map
-.vscode
-.cache
-*.sqlite3
-.env
-*.pyc
-startup.sh
-venv/
-tags
+staticfiles/

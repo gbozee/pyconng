@@ -1,0 +1,46 @@
+# Wheel 0.25+ needed to install certain packages on CPython 3.5+
+# like Pillow and psycopg2
+# See http://bitly.com/wheel-building-fails-CPython-35
+# Verified bug on Python 3.5.1
+wheel==0.29.0
+
+# Bleeding edge Django
+django==1.9.9
+
+# Configuration
+django-environ==0.4.1
+whitenoise==3.3.0
+
+
+# Forms
+django-braces==1.11.0
+django-crispy-forms==1.6.1
+
+# Models
+django-model-utils==2.6.1
+
+# Images
+Pillow==4.0.0
+
+
+# Python-PostgreSQL Database Adapter
+psycopg2==2.6.2
+
+# Redis support
+django-redis==4.7.0
+redis>=2.10.5
+
+
+
+
+
+# Your custom requirements go here
+
+django-contact-form==1.2
+easy-thumbnails==2.3
+pinax-boxes==2.1.2
+pinax-blog==6.0.1
+django-markitup==2.3.1
+pinax-pages==0.4.2
+django-waffle==0.11.1
+git+git://github.com/pinax/symposion.git

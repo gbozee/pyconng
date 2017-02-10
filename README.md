@@ -25,7 +25,7 @@ The project uses `python3`
     ```
 4. Install all the dependencies for the project
     ```
-    (venv)$ pip install -r requirements.txt  
+    (venv)$ pip install -r requirements/local.txt  
     ```
 5. Ensure you have Postgres database installed on your system. visit [Postgres Download Section](https://www.postgresql.org/download/)
 to download postgres for your respective OS
