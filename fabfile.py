@@ -1,7 +1,7 @@
 import os
 from fabric.api import local, run, cd, env, sudo, settings, lcd
 from fabric.decorators import hosts
-env.hosts = ['pycon@www.pycon.ng']
+env.hosts = ['pycon@104.236.214.189']
 
 password = os.getenv('PRODUCTION_PASSWORD', '')
 
@@ -9,8 +9,8 @@ password = os.getenv('PRODUCTION_PASSWORD', '')
 def common_code(code_dir):
     with settings(user="pycon", password=password):
         with cd(code_dir):
-            sudo("pwd")
-            sudo("git pull")
+            run("pwd")
+            run("git pull")
             sudo("docker-compose up -d")
 
 
