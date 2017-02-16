@@ -264,6 +264,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
     "symposion.teams.backends.TeamPermissionsBackend",
     "account.auth_backends.UsernameAuthenticationBackend",
+    "django.contrib.auth.backends.ModelBackend",
 )
 
 # Some really nice defaults

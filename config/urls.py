@@ -8,9 +8,9 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from symposion import views as symposion_views
 from django.views import defaults as default_views
-
+from . import views as o_views
 urlpatterns = [
-     # Examples:
+    # Examples:
     # url(r'^$', 'pyconng.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^home/$', TemplateView.as_view(template_name='home.html'), name='home_page'),
@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^reviews/', include('symposion.reviews.urls')),
     url(r'^schedule/', include('symposion.schedule.urls')),
     url(r'^speaker/', include('symposion.speakers.urls')),
+    url(r'^sponsors/apply', o_views.sponsor_apply, name="sponsor_apply"),
     url(r'^sponsors/', include('symposion.sponsorship.urls')),
     url(r'^teams/', include('symposion.teams.urls')),
 
