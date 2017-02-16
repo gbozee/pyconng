@@ -41,9 +41,9 @@ class NewSponsorApplicationForm(forms.ModelForm):
 
     def save(self, commit=True):
         obj = super(NewSponsorApplicationForm, self).save(commit=False)
-        user, _ = User.objects.get_or_create(email=obj.contact_email,
-                                             defaults=dict(first_name=obj.name,
-                                                          username=obj.contact_name))
+        user, _ = User.objects.get_or_create(
+            username=obj.contact_name,email=obj.contact_email,
+            defaults=dict(first_name=obj.name))
         obj.applicant = user
         if commit:
             obj.save()
