@@ -9,9 +9,10 @@ import logging
 import os
 import time
 from zipfile import ZipFile, ZipInfo
-
+from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib import messages
+from django.views.generic import RedirectView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import render_to_response, redirect, get_object_or_404
@@ -84,3 +85,9 @@ def sponsor_apply(request):
     return render_to_response("symposion/sponsorship/apply.html", {
         "form": form,
     }, context_instance=RequestContext(request))
+
+
+class HomeRedirectView(RedirectView):
+    permanent = False
+    pattern_name = 'home'
+    query_string=True

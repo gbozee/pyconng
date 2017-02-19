@@ -3,10 +3,10 @@
   <ul class="nav navbar-nav navbar-right">
 
     {% comment %}<li><a href="#about">Programme</a></li>{% endcomment %}
-    <li><a href="{% url 'home_page' %}#sponsors">Sponsor</a></li>
+    <!--<li><a href="{% url 'home_page' %}#sponsors">Sponsor</a></li>-->
     {% comment %}<li><a href="#portfolio">Venue</a></li>{% endcomment %}
     <li><a href="{% url "pages_page" "coc/" %}">Code of Conduct</a></li>
-    <li><a href="{% url 'pages_page' "venue/" %}">Venue</a></li>
+    <!--<li><a href="{% url 'pages_page' "venue/" %}">Venue</a></li>-->
     <li><a href="{% url "pinax_blog:blog" %}">Blog</a></li>
     <li><a href="{% url 'contact_form' %}">Contact</a></li>
     {% if request.user.is_authenticated %}
