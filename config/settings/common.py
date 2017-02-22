@@ -287,10 +287,10 @@ ACCOUNT_USER_DISPLAY = lambda user: user.email
 
 CONFERENCE_ID = 1
 PROPOSAL_FORMS = {
-    "tutorial": "pyconng.proposals.forms.TutorialProposalForm",
-    "talk-25-min": "pyconng.proposals.forms.TalkProposalForm",
-    "talk-45-min": "pyconng.proposals.forms.TalkProposalForm",
-    "open-space": "pyconng.proposals.forms.OpenSpaceProposalForm",
+    "tutorial": "python_nigeria.proposals.forms.TutorialProposalForm",
+    "talk-25-min": "python_nigeria.proposals.forms.TalkProposalForm",
+    "talk-45-min": "python_nigeria.proposals.forms.TalkProposalForm",
+    "open-space": "python_nigeria.proposals.forms.OpenSpaceProposalForm",
 }
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'
