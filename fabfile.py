@@ -11,6 +11,7 @@ def common_code(code_dir):
         with cd(code_dir):
             run("pwd")
             run("git pull")
+            sudo("docker-compose build")
             sudo("docker-compose up -d")
 
 
@@ -20,3 +21,7 @@ def deploy_current():
     code_dir = '/home/pycon/pyconng'
     common_code(code_dir)
 
+def display_logs():
+    with settings(user="pycon", password=password):
+        cd("/home/pycon/pyconng")
+        sudo("docker-compose logs --follow django")

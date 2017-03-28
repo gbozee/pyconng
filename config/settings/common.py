@@ -197,6 +197,8 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
+                  "account.context_processors.account",
+                "symposion.reviews.context_processors.reviews"
             ],
         },
     },
@@ -264,6 +266,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
     "symposion.teams.backends.TeamPermissionsBackend",
     "account.auth_backends.UsernameAuthenticationBackend",
+    "django.contrib.auth.backends.ModelBackend",
 )
 
 # Some really nice defaults
@@ -285,10 +288,10 @@ ACCOUNT_USER_DISPLAY = lambda user: user.email
 
 CONFERENCE_ID = 1
 PROPOSAL_FORMS = {
-    "tutorial": "pyconng.proposals.forms.TutorialProposalForm",
-    "talk-25-min": "pyconng.proposals.forms.TalkProposalForm",
-    "talk-45-min": "pyconng.proposals.forms.TalkProposalForm",
-    "open-space": "pyconng.proposals.forms.OpenSpaceProposalForm",
+    "tutorial": "python_nigeria.proposals.forms.TutorialProposalForm",
+    "talk-25-min": "python_nigeria.proposals.forms.TalkProposalForm",
+    "talk-45-min": "python_nigeria.proposals.forms.TalkProposalForm",
+    "open-space": "python_nigeria.proposals.forms.OpenSpaceProposalForm",
 }
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'

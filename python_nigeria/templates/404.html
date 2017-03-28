@@ -1,9 +1,45 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylings %}
+  <style>
+    h1 {
+      color: white;
+    }
+
+    .error-code {
+      margin-top: 40px;
+      font-size: 6em;
+      color: tomato;
+    }
+  </style>
+{% endblock %}
+
+{% block nav_pre_launch %}{% endblock %}
+
+{% block logo-images %}
+  <a class="navbar-brand logo-white" href="{% url 'home' %}">
+      <img src="{% static 'images/logo.svg' %}" alt="logo" height="60">
+  </a>
+{% endblock %}
 
 {% block title %}Page Not found{% endblock %}
 
-{% block content %}
-<h1>Page Not found</h1>
+{% block content %}{% endblock %}
 
-<p>This is not the page you were looking for.</p>
-{% endblock content %}
+
+{% block footer %}
+  <footer id="footer" class="bg-dark p-top-40 p-bottom-40 footer division">
+    <div class="container">
+      <div class="row">
+        <div id="footer-copyright" class="col-md-12 text-center">
+          <h1 class="error-code">404!</h1>
+          <br />
+          <h1>Page Not found</h1>
+          <br />
+          <p>Please check your URL or go back to the <a href="{% url 'home' %}">Homepage</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock %}
