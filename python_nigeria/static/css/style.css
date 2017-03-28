@@ -11056,3 +11056,11 @@ form legend {
         flex: 1 1; }
   .front-page-facets h2 {
     margin-top: 10px; }
+
+
+/* Custom styles */
+.btn-link:hover {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    color: #FE4918 !important;
+}
