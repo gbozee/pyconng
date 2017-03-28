@@ -42,7 +42,7 @@ to download postgres for your respective OS
     ```
     export DATABASE_URL=postgres://<dbuser>:<dbpassword>@<dbhost>:<dbport>/pyconng
     # remember to set this environment variable
-    export DJANGO_SETTINGS_MODULE=config.local
+    export DJANGO_SETTINGS_MODULE=config.settings.local
     ```
 8. Run migrations
     ```
