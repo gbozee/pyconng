@@ -71,6 +71,10 @@ def sponsor_apply(request):
                       ("A new sponsor just applied\n %s"
                        "%s \n %s") % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
                       "noreply@pycon.ng", ["hello@pycon.ng"])
+            send_mail("[Pycon NG] Thanks for being a Sponsor",
+                      ("Thank you for choosing to sponsor Pycon NG. \n You "
+                       "should be contacted shortly by the Sponsorship team. "
+                       "\n"), "no_reply@pycon.ng", [sponsor.contact_email])
             user = sponsor.applicant
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
