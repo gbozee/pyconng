@@ -23,6 +23,7 @@ from django.contrib.auth import login
 from symposion.sponsorship.forms import SponsorApplicationForm, Sponsor, forms
 
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 
 class NewSponsorApplicationForm(forms.ModelForm):
@@ -43,7 +44,7 @@ class NewSponsorApplicationForm(forms.ModelForm):
     def save(self, commit=True):
         obj = super(NewSponsorApplicationForm, self).save(commit=False)
         user, _ = User.objects.get_or_create(
-            username=obj.contact_name,email=obj.contact_email,
+            username=obj.contact_name, email=obj.contact_email,
             defaults=dict(first_name=obj.name))
         obj.applicant = user
         if commit:
@@ -66,6 +67,10 @@ def sponsor_apply(request):
         form = NewSponsorApplicationForm(request.POST, **params)
         if form.is_valid():
             sponsor = form.save()
+            send_mail("New Sponsor Application",
+                      ("A new sponsor just applied\n %s"
+                       "%s \n %s") % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
+                      "noreply@pycon.ng", ["hello@pycon.ng"])
             user = sponsor.applicant
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
@@ -90,4 +95,4 @@ def sponsor_apply(request):
 class HomeRedirectView(RedirectView):
     permanent = False
     pattern_name = 'home'
-    query_string=True
+    query_string = True
