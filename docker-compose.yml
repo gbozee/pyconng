@@ -44,7 +44,7 @@ services:
       - "0.0.0.0:80:80"
 
     environment:
-      - MY_DOMAIN_NAME=www.pycon.ng
+      - MY_DOMAIN_NAME=pycon.ng
     ports:
       - "0.0.0.0:80:80"
       - "0.0.0.0:443:443"
