@@ -76,7 +76,7 @@
 			</header>	<!-- END HEADER -->
 
 			{% endblock navigation %}
-			<div class="{% block body_class %}{% endblock body_class %} page-content">
+			<div class="{% block body_class %}{% endblock body_class %} padding-bottom-50">
 			{% if messages %} {% for message in messages %}
             <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
             {% endfor %} {% endif %}

@@ -11059,6 +11059,10 @@ form legend {
 
 
 /* Custom styles */
+.padding-bottom-50 {
+  padding-bottom: 50px;
+}
+
 .btn-link:hover {
     border-color: transparent !important;
     background-color: transparent !important;
@@ -11068,10 +11072,6 @@ form legend {
 
 .intro-section {
   margin-bottom: 60px;
-}
-
-.page-content {
-  padding-bottom: 30px;
 }
 
 /* End custom styles  */
