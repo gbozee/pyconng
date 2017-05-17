@@ -11064,3 +11064,14 @@ form legend {
     background-color: transparent !important;
     color: #FE4918 !important;
 }
+
+
+.intro-section {
+  margin-bottom: 60px;
+}
+
+.page-content {
+  padding-bottom: 30px;
+}
+
+/* End custom styles  */
