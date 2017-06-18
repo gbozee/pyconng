@@ -24,6 +24,16 @@ from symposion.sponsorship.forms import SponsorApplicationForm, Sponsor, forms
 
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from account.views import LoginView
+from account.forms import LoginUsernameForm
+
+
+class LoginForm(LoginUsernameForm):
+    username = forms.CharField(label=_("Username/Email"), max_length=30)
+
+
+class NewLoginView(LoginView):
+    form_class = LoginForm
 
 
 class NewSponsorApplicationForm(forms.ModelForm):

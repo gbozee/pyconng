@@ -51,7 +51,7 @@ DJANGO_APPS = (
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
-    "account", # registration
+    "account",  # registration
     "easy_thumbnails",
     # "taggit",
     "reversion",
@@ -197,7 +197,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
-                  "account.context_processors.account",
+                "account.context_processors.account",
                 "symposion.reviews.context_processors.reviews"
             ],
         },
@@ -281,7 +281,9 @@ ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_SIGNUP_REDIRECT_URL = "dashboard"
 ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = False
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
-ACCOUNT_USER_DISPLAY = lambda user: user.email
+
+
+def ACCOUNT_USER_DISPLAY(user): return user.email
 
 
 # Symposion settings
@@ -310,3 +312,11 @@ MARKITUP_FILTER = ["symposion.markdown_parser.parse", {}]
 MARKITUP_SKIN = "markitup/skins/simple"
 
 THEME_CONTACT_EMAIL = 'hello@pycon.us'
+PAYSTACK_BASE_URL = ""
+PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY", default="sk_test_a551e347b4fc7af40b897f1fc217ce3642d1faa7")
+PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY", default="pk_test_fbc2f1812af67479da1306edc72890e0702f052e")
+
+AUTHENTICATION_BACKENDS = [
+    # 'django.contrib.auth.backends.ModelBackend',
+    'config.backend.EmailBackend'
+]

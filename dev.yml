@@ -14,6 +14,8 @@ services:
       - DB_USER=python_nigeria
       - DB_PASS=postgres
       - DB_NAME=python_nigeria
+    ports:
+      - "5448:5432"
 
   django:
     build:
@@ -30,7 +32,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "8007:8000"
     links:
       - postgres
 

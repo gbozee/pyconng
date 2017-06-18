@@ -25,3 +25,12 @@ def display_logs():
     with settings(user="pycon", password=password):
         cd("/home/pycon/pyconng")
         sudo("docker-compose logs --follow django")
+
+def start():
+    local('docker-compose -f dev.yml up -d django')
+
+def logs():
+    local('docker-compose -f dev.yml logs --follow --tail=10 django')
+    
+def console():
+    local('docker exec -i -t pyconng_django_1 bash')
