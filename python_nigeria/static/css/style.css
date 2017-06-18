@@ -11059,8 +11059,19 @@ form legend {
 
 
 /* Custom styles */
+.padding-bottom-50 {
+  padding-bottom: 50px;
+}
+
 .btn-link:hover {
     border-color: transparent !important;
     background-color: transparent !important;
     color: #FE4918 !important;
 }
+
+
+.intro-section {
+  margin-bottom: 60px;
+}
+
+/* End custom styles  */
