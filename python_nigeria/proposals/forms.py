@@ -1,7 +1,7 @@
 from django import forms
 from markitup.widgets import MarkItUpWidget
 
-from .models import OpenSpaceProposal, TalkProposal, TutorialProposal
+from .models import OpenSpaceProposal, TalkProposal
 
 
 class ProposalForm(forms.ModelForm):
@@ -58,7 +58,7 @@ class TalkProposalForm(ProposalForm):
         }
 
 
-class TutorialProposalForm(ProposalForm):
+"""class TutorialProposalForm(ProposalForm):
 
     class Meta:
         model = TutorialProposal
@@ -75,3 +75,4 @@ class TutorialProposalForm(ProposalForm):
             "abstract": MarkItUpWidget(),
             "additional_notes": MarkItUpWidget(),
         }
+"""
