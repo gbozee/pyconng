@@ -49,8 +49,8 @@ class TalkProposal(Proposal):
     pass
 
 
-# class TutorialProposal(Proposal):
-#     pass
+class TutorialProposal(Proposal):
+    pass
 
 
 class OpenSpaceProposal(ProposalBase):
