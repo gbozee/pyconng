@@ -266,7 +266,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
     "symposion.teams.backends.TeamPermissionsBackend",
     "account.auth_backends.UsernameAuthenticationBackend",
-    "django.contrib.auth.backends.ModelBackend",
+    "account.auth_backends.EmailAuthenticationBackend",
+    "django.contrib.auth.backends.ModelBackend"
 )
 
 # Some really nice defaults
@@ -315,8 +316,3 @@ THEME_CONTACT_EMAIL = 'hello@pycon.us'
 PAYSTACK_BASE_URL = ""
 PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY", default="sk_test_a551e347b4fc7af40b897f1fc217ce3642d1faa7")
 PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY", default="pk_test_fbc2f1812af67479da1306edc72890e0702f052e")
-
-AUTHENTICATION_BACKENDS = [
-    # 'django.contrib.auth.backends.ModelBackend',
-    'config.backend.EmailBackend'
-]

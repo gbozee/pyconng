@@ -30,6 +30,7 @@ from account.forms import LoginUsernameForm
 
 class LoginForm(LoginUsernameForm):
     username = forms.CharField(label=_("Username/Email"), max_length=30)
+    authentication_fail_message = _("The Login/and or password you specified are not correct.")
 
 
 class NewLoginView(LoginView):
