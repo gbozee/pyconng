@@ -30,6 +30,8 @@ services:
     depends_on:
       - postgres
       - redis
+    volumes:
+      - /home/pycon/speaker_photos:/app/python_nigeria/media/speaker_photos
     command: /gunicorn.sh
     env_file: ./env.example
 
