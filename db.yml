@@ -1,0 +1,19 @@
+version: '2'
+
+#/var/lib/docker/volumes/5b4608f64ff57963bb0956d4d1a4ce167550d173170fab0e18370252ae046a1b/
+#/var/lib/docker/volumes/6ba6a52a35d6985e0e62d5bde7e96860970ee677bf3fa60c0eba5342c433e87b/
+#/var/lib/docker/volumes/93dd505319af9d2c6add49a625b37120a6e852b0cdf40936e991b2c892966858/
+#/var/lib/docker/volumes/c3207b08088cba63470b5d8d321942775a9d99a291a4751f82e6f56fb245967e/
+
+
+services:
+  postgres_restore:
+    build: ./compose/postgres
+    volumes:
+      - /var/lib/docker/volumes/5b4608f64ff57963bb0956d4d1a4ce167550d173170fab0e18370252ae046a1b/data:/var/lib/postgresql/data
+    environment:
+      - DB_USER=python_nigeria
+      - DB_PASS=postgres
+      - DB_NAME=python_nigeria
+    ports:
+      - "5022:5432"
