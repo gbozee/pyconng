@@ -20,7 +20,21 @@
     <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         <legend>{% trans "Edit Speaker Profile" %}</legend>
-        {{ speaker_form|crispy }}
+        {{ speaker_form.non_field_errors }}
+
+        {{ speaker_form.name|as_crispy_field }}
+        {{ speaker_form.biography|as_crispy_field }}
+
+        {{ speaker_form.photo.errors }}
+        {{ speaker_form.photo }}
+        {% if not speaker_form.photo.errors %}
+          <p class="help-block error"><strong>The image size must not be above 600kb.</strong></p>
+        {% endif %}
+
+        <br />
+
+        {{ speaker_form.twitter_username|as_crispy_field }}
+
         <div class="form-actions">
             <input class="btn btn-primary" type="submit" value="Save" />
             <a class="btn btn-default" href="{% url "dashboard" %}">Cancel</a>

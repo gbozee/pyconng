@@ -11074,4 +11074,13 @@ form legend {
   margin-bottom: 60px;
 }
 
+.warning {
+  color: #a94442;
+}
+
+.errorlist {
+  color: #a94442;
+  font-weight: bold;
+}
+
 /* End custom styles  */

@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(
         template_name='pre-conference.html'), name='home'),
     url(r'^account/login/$', o_views.NewLoginView.as_view(), name='account_login'),
+    url(r'^speaker/edit/(?:(?P<pk>\d+)/)?$', o_views.NewSpeakerEditView.as_view(),
+        name='speaker_edit'),
     url(r'^account/', include('account.urls')),
     url(r'^contact/', include('contact_form.urls')),
     url(r'^admin/', include(admin.site.urls)),
@@ -53,7 +55,6 @@ urlpatterns += [
     url(r'^sponsors/apply', o_views.sponsor_apply, name="sponsor_apply"),
     url(r'^sponsors/', include('symposion.sponsorship.urls')),
     url(r'^teams/', include('symposion.teams.urls')),
-
     url(r'^boxes/', include('pinax.boxes.urls')),
     url(r'^blog/', include('pinax.blog.urls', namespace="pinax_blog")),
     url(r'^', include('pinax.pages.urls')),

@@ -12,15 +12,20 @@ from zipfile import ZipFile, ZipInfo
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib import messages
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, FormView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import render_to_response, redirect, get_object_or_404
+from django.shortcuts import render
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django import forms
 
 from django.contrib.auth import login
 from symposion.sponsorship.forms import SponsorApplicationForm, Sponsor, forms
+from symposion.speakers.forms import SpeakerForm
+from symposion.speakers.models import Speaker
 
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -35,6 +40,64 @@ class LoginForm(LoginUsernameForm):
 
 class NewLoginView(LoginView):
     form_class = LoginForm
+
+
+class NewSpeakerEditForm(SpeakerForm):
+    """Add extra Validation to the SpeakerEdit form."""
+
+    def clean_photo(self):
+        """Make sure photo isn't greater than 600kb."""
+        photo = self.cleaned_data['photo']
+        photo_size = photo.size
+
+        if photo_size > 600000:
+            raise forms.ValidationError(
+                _('The image size must not be more than 600kb '
+                  'Please upload a smaller one.')
+                )
+        return photo
+
+
+class NewSpeakerEditView(LoginRequiredMixin, FormView):
+    """CBV Implementation of Symposions speaker_edit view."""
+    form_class = NewSpeakerEditForm
+    template_name = 'symposion/speakers/speaker_edit.html'
+
+    def get_speaker(self, pk=None):
+        """Get speaker by id or currently logged in user"""
+        if pk is None:
+            try:
+                speaker = self.request.user.speaker_profile
+            except Speaker.DoesNotExist:
+                return redirect("speaker_create")
+        else:
+            if self.request.user.is_staff:
+                speaker = get_object_or_404(Speaker, pk=pk)
+            else:
+                raise Http404()
+
+        return speaker
+
+    def get(self, request, pk=None, *args, **kwargs):
+        speaker = self.get_speaker(pk=pk)
+
+        form = self.form_class(instance=speaker)
+
+        return render(request, "symposion/speakers/speaker_edit.html", {
+            "speaker_form": form,
+        })
+
+    def post(self, request, pk=None, *args, **kwargs):
+        speaker = self.get_speaker(pk=pk)
+        form = self.form_class(request.POST, request.FILES, instance=speaker)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Speaker profile updated.")
+            return redirect("dashboard")
+
+        return render(request, "symposion/speakers/speaker_edit.html", {
+            "speaker_form": form,
+        })
 
 
 class NewSponsorApplicationForm(forms.ModelForm):
