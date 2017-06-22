@@ -10,10 +10,10 @@ services:
   postgres_restore:
     build: ./compose/postgres
     volumes:
-      - /var/lib/docker/volumes/c3207b08088cba63470b5d8d321942775a9d99a291a4751f82e6f56fb245967e/_data/9.6:/var/lib/postgresql/9.6
+      - /var/lib/docker/volumes/1e3dc503a318d32e7bd13df25aeec11650635a9cab7e9640aa082d87dfa7357f/_data/9.6:/var/lib/postgresql/9.6
     environment:
-      - DB_USER=python_nigeria
-      - DB_PASS=postgres
-      - DB_NAME=python_nigeria
+      - DB_USER=pyconnigeria
+      - DB_PASS=thepyconsite
+      - DB_NAME=pyconnigeria
     ports:
       - "5022:5432"
