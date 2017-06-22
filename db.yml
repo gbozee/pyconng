@@ -10,7 +10,7 @@ services:
   postgres_restore:
     build: ./compose/postgres
     volumes:
-      - /var/lib/docker/volumes/6ba6a52a35d6985e0e62d5bde7e96860970ee677bf3fa60c0eba5342c433e87b/_data/9.6/main:/var/lib/postgresql/9.6/main
+      - /var/lib/docker/volumes/93dd505319af9d2c6add49a625b37120a6e852b0cdf40936e991b2c892966858/_data:/var/lib/postgresql
     environment:
       - DB_USER=python_nigeria
       - DB_PASS=postgres
