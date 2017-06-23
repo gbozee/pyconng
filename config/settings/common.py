@@ -59,6 +59,7 @@ THIRD_PARTY_APPS = (
     "sitetree",
     "waffle",
     "markitup",
+    "import_export",
 
     # pinax
     "pinax.boxes",
