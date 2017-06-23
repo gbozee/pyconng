@@ -20,8 +20,7 @@ services:
     links:
       - postgres:master
     env_file: ./env.example
-
-
+   
   django:
     build:
       context: .
