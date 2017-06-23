@@ -43,4 +43,5 @@ pinax-blog==6.0.1
 django-markitup==2.3.1
 pinax-pages==0.4.2
 django-waffle==0.11.1
+django-import-export==0.5.1
 git+git://github.com/pinax/symposion.git
