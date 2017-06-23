@@ -1,0 +1,60 @@
+version: '2'
+
+volumes:
+  postgres_data2: {}
+  postgres_backup2: {}
+
+services:
+  postgres:
+    build: ./compose/postgres
+    volumes:
+      - postgres_data2:/var/lib/postgresql/data
+      - postgres_backup2:/backups
+    env_file: ./env.example
+    # ports:
+    #   - "5433:5432"
+    
+
+  postgres_slave:
+    build: ./compose/postgres
+    links:
+      - postgres:master
+    env_file: ./env.example
+
+  dbdata:
+    command: 'true'
+    image: busybox
+    volumes:
+    - /var/lib/postgresql/data
+    - /tmp/
+    - /var/tuteria
+    - /var/tuteria_media
+    - /code/administration/static
+  
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    user: django
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - /home/pycon/speaker_photos:/app/python_nigeria/media/speaker_photos
+    command: /gunicorn.sh
+    env_file: ./env.example
+
+  nginx:
+    build:
+      context: ./compose/nginx
+      dockerfile: Dockerfile-dev
+    depends_on:
+      - django
+
+    ports:
+      - "0.0.0.0:8090:80"
+
+
+  redis:
+    image: redis:latest
+

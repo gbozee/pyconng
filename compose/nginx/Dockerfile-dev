@@ -1,0 +1,4 @@
+FROM nginx:latest
+ADD nginx-local.conf /etc/nginx/nginx.conf
+
+
