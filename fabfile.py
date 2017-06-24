@@ -11,7 +11,7 @@ def common_code(code_dir):
         with cd(code_dir):
             run("pwd")
             run("git pull")
-            sudo("docker-compose build --no-cache")
+            sudo("docker-compose build")
             sudo("docker-compose up -d")
 
 
