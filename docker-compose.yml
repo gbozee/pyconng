@@ -3,6 +3,7 @@ version: '2'
 volumes:
   postgres_data: {}
   postgres_backup: {}
+  media_backups: {}
 
 services:
   postgres:
@@ -25,12 +26,12 @@ services:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
-    user: django
+    # user: django
     depends_on:
       - postgres
       - redis
     volumes:
-      - /home/pycon/speaker_photos:/app/python_nigeria/media/speaker_photos
+      - media_backups:/var/pyconng
     command: /gunicorn.sh
     env_file: ./env.example
 
@@ -50,6 +51,7 @@ services:
       - "0.0.0.0:80:80"
       - "0.0.0.0:443:443"
     volumes:
+      - media_backups:/var/pyconng
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/lib/letsencrypt:/var/lib/letsencrypt
 

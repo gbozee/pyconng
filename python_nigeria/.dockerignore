@@ -3,3 +3,8 @@
 !.env
 !.pylintrc
 venv*
+.vscode
+*/.cache*
+*/__pycache__*
+!.pyc
+docs*
