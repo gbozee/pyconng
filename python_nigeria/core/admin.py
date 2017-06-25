@@ -8,14 +8,18 @@ from import_export import resources
 User = get_user_model()
 admin.site.unregister(User)
 
+
 class UserResource(resources.ModelResource):
 
     class Meta:
         model = User
         fields = ('username', 'email')
+        exclude = ("date_joined", "is_active", 'password',
+                   'is_staff',)
 
 
 class UserAdmin(UserAdmin, ImportExportModelAdmin):
     resource_class = UserResource
+
 
 admin.site.register(User, UserAdmin)
