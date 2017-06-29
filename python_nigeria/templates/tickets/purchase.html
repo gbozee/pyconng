@@ -1,0 +1,447 @@
+{% extends "apply.html" %} 
+{% load static from staticfiles %} 
+{% load pinax_boxes_tags %} 
+{% block head_title %}
+    Purchase Ticket |
+{% endblock head_title %}
+{% block stylings %}
+{{block.super}}
+<style>
+    .margin-top-50{
+        margin-top: 50px;
+    }
+    .margin-bottom-20{
+        margin-bottom: 20px;
+    }
+    .text-left{
+        text-align: left;
+    }
+    h2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .text-left h3{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .table {
+    width: 100%;
+    max-width: 100%;
+    border-top: 2px solid #8d897c;
+    margin-bottom: 1.5em;
+}
+    table {
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.table th, .table td {
+    padding: 8px;
+    /* vertical-align: top; */
+    border-top: 1px solid #d4d2cd;
+    line-height: 1.5em;
+    text-align: left;
+}
+#form-cart .total {
+    padding: 0.75em 0;
+    text-align: center;
+    background: #f8c7d2;
+}
+section {
+    padding: 1.5em 0;
+}
+h3.no-margin{
+    margin-top: -20px;
+
+}
+</style>
+{% endblock stylings %}
+{% block home_banner %}
+{% endblock home_banner %}
+{% block content %}
+<div class="container text-left margin-top-50">
+    <div class="row">
+<div class="page clearfix">
+    
+    
+    
+
+
+
+
+
+
+
+
+
+<form id="form-cart" action="https://ep2017.europython.eu/p3/cart/" method="post" class="">
+
+<section>
+    <div class="grid-container">
+    <div class="grid-100">
+
+        <h1>Buy tickets (1 of 2)</h1>
+
+        <div class="page-summary">
+            <p>Select conference tickets and additional services.</p>
+        </div>
+
+        
+
+    </div><!--/grid -->
+</div><!-- /grid-container -->
+</section>
+
+<!--
+= ORDER TYPE ===================================================================
+-->
+<section>
+    <div class="grid-container">
+    <div class="grid-100">
+
+        
+        <fieldset class="order-type">
+        <div class="row">
+           
+<div class="control-group no-label field select choicefield col-sm-6 margin-bottom-20">
+     <h3 class="no-margin">Billing type</h3>
+            <p>Select the entity you are purchasing tickets for.</p>
+            
+    <label class="control-label" for="id_order_type">Order type <span>(required)</span></label>
+    <div class="controls">
+        <select name="order_type" class="input-xlarge form-control" id="id_order_type">
+            
+            <option value="non-deductible" selected="">Personal Purchase</option>
+            
+            <option value="deductible">Company Purchase</option>
+            
+        </select>
+        
+    </div>
+</div>
+            
+        </div>
+
+
+            <p>
+              Please note: Invoices for personal purchases will not include a company name and thus will not be usable to get a VAT refund.<br>
+              You have to select "Company Purchase", if you want to buy a business ticket.<br>
+            </p>
+        </fieldset>
+    </div><!--/grid -->
+</div><!-- /grid-container -->
+</section>
+
+<!--
+= TICKETS ======================================================================
+-->
+<section>
+    <div class="grid-container">
+    <div class="grid-100">
+        <fieldset class="tickets conference-tickets">
+            
+            <legend>Conference tickets</legend>
+                <p>All conference tickets prices are 22% VAT included. (Max. 6 tickets)</p>
+                <table id="ticket_table" class="table">
+                    <colgroup><col>
+
+                    <col style="background: #E5E2D3">
+                    <col style="background: #E5E2D3">
+
+                    <col>
+                    <col>
+
+                    <col style="background: #E5E2D3">
+                    <col style="background: #E5E2D3">
+
+                    </colgroup><thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th colspan="2">Student</th>
+                            <th colspan="2">Personal</th>
+                            <th colspan="2">Business</th>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Price</th>
+                            <th>Q.ty</th>
+                            <th>Price</th>
+                            <th>Q.ty</th>
+                            <th>Price</th>
+                            <th>Q.ty</th>
+                        </tr>
+                    </thead>
+
+                <script type="text/javascript">
+                    $("#ticket_table").change(max_tickets);
+                    function max_tickets() {
+                        //alert("The text has been changed.");
+                        t = document.getElementById("ticket_table");
+                        inp_list = t.getElementsByTagName("input");
+                        var changed = (1<0)
+                        for (i = 0; i < inp_list.length; i++) {
+                            val = inp_list[i].value
+                                if (val > 6) {
+                                    inp_list[i].value = 6;
+                                    changed = (1>0);
+                                }
+                        }
+                        if (changed) {
+                            location.reload();
+                        }
+                    }
+                </script>
+
+                    <tbody>
+                        
+
+<tr>
+    <td>EuroPython 2017 - Regular Ticket<br><small>Ticket to attend EuroPython at the regular ticket price.</small></td>
+    
+        <td class="fare" data-fare="TRSS">
+            
+            <div id="fare-TRSS" data-amount="130.00">€ <span class="fare">130.00</span></div>
+            
+        </td> 
+        <td class="fare" data-fare="TRSS">
+            
+            <input type="text" size="2" name="TRSS" value="">
+            
+        </td>
+    
+        <td class="fare" data-fare="TRSP">
+            
+            <div id="fare-TRSP" data-amount="375.00">€ <span class="fare">375.00</span></div>
+            
+        </td> 
+        <td class="fare" data-fare="TRSP">
+            
+            <input type="text" size="2" name="TRSP" value="">
+            
+        </td>
+    
+        <td class="fare disabled" data-fare="TRSC">
+            
+            <div id="fare-TRSC" data-amount="677.10">€ <span class="fare">677.10</span></div>
+            
+        </td> 
+        <td class="fare disabled" data-fare="TRSC">
+            
+            <input type="text" size="2" name="TRSC" value="" disabled="disabled">
+            
+        </td>
+    
+</tr>
+
+<tr>
+    <td><br><small></small></td>
+    
+        <td class="fare" data-fare="">
+            
+        </td> 
+        <td class="fare" data-fare="">
+            
+        </td>
+    
+        <td class="fare" data-fare="">
+            
+        </td> 
+        <td class="fare" data-fare="">
+            
+        </td>
+    
+        <td class="fare" data-fare="">
+            
+        </td> 
+        <td class="fare" data-fare="">
+            
+        </td>
+    
+</tr>
+
+<tr>
+    <td><br><small></small></td>
+    
+        <td class="fare" data-fare="">
+            
+        </td> 
+        <td class="fare" data-fare="">
+            
+        </td>
+    
+        <td class="fare" data-fare="">
+            
+        </td> 
+        <td class="fare" data-fare="">
+            
+        </td>
+    
+        <td class="fare" data-fare="">
+            
+        </td> 
+        <td class="fare" data-fare="">
+            
+        </td>
+    
+</tr>
+
+
+                    </tbody>
+                </table>
+                <div class="total">
+                    Conference tickets total (VAT inc.) <b>€ 0</b>
+                </div>
+            
+        </fieldset>
+
+    </div><!--/grid -->
+</div><!-- /grid-container -->
+</section>
+
+<!-- MAL: Disable hotel bookings, since can no longer provide this service.
+
+<section>
+    <div class="grid-container">
+    <div class="grid-100">
+        
+        <fieldset class="tickets hotel-reservations">
+            
+            <h3>Hotel rooms are currently sold out</h3>
+            
+        </fieldset>
+    </div>
+    </div>
+</section>
+
+-->
+
+<!--
+= OTHER ========================================================================
+-->
+<section>
+    <div class="grid-container">
+    <div class="grid-100">
+
+            
+            <fieldset class="tickets other-goodies">
+                <legend>Other Goodies</legend>
+                <div class="">
+                    
+<table class="table">
+    <thead>
+        
+        <tr>
+            <th>Goodies name</th>
+            
+            <th>Price</th>
+            <th>Q.ty</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+    
+    <tr>
+        <td>
+            Social event: EuroPython going (Coco)nuts <a href="https://ep2017.europython.eu/p3/cart/#" class="trigger-overlay" rel="div[data-fare=VOUPE03]">(details)</a>
+            
+        </td>
+        
+        
+        <td class="fare" data-fare="VOUPE03">
+            
+            <label id="fare-VOUPE03" data-amount="25.00">€ <span class="fare">25.00</span>
+            
+        </label></td>
+        <td class="fare" data-fare="VOUPE03">
+            
+            <input type="text" name="VOUPE03" size="2">
+            
+        </td>
+        
+        
+    </tr>
+    
+
+    </tbody>
+</table>
+
+                </div>
+                <div class="total">
+                    Other Goodies total (VAT inc.): <b>€ 0</b>
+                </div>
+            </fieldset>
+            
+
+            
+    </div><!--/grid -->
+</div><!-- /grid-container -->
+</section>
+
+<!--
+= COUPON ======================================================================
+-->
+<section>
+    <div class="grid-container">
+    <div class="grid-100">
+
+        <fieldset class="tickets coupon">
+            <legend>Coupon code</legend>
+            
+<div class="control-group coupon field textinput charfield">
+    <label class="control-label" for="id_coupon">Insert your discount code and save money!</label>
+    <div class="controls">
+        <input id="id_coupon" maxlength="10" name="coupon" size="10" type="text">
+        
+    </div>
+</div>
+ <span></span>
+            
+        </fieldset>
+
+    </div><!--/grid -->
+
+</div><!-- /grid-container -->
+</section>
+
+<!--
+= TOTAL AND PROCEED ============================================================
+-->
+
+<section>
+    <div class="grid-container">
+    <div class="grid-100">
+
+            <fieldset class="tickets">
+                <div class="total grand">
+                    Grand total (VAT inc.) <b>€ 0</b>
+                </div>
+            </fieldset>
+
+            <fieldset style="margin-top: 20px;">
+                <button class="btn btn-primary" value="" name="" type="submit">Proceed to Checkout →</button>
+            </fieldset>
+            <input type="hidden" name="csrfmiddlewaretoken" value="ckGdArbYmq25GSN9mlt25GLTRsPD9W1b">
+        <script type="text/javascript">
+            
+        </script>
+        <script src="css/cart.js"></script>
+
+
+    </div><!--/grid -->
+</div><!-- /grid-container -->
+</section>
+
+</form>
+
+    
+
+
+
+</div>
+    </div>
+
+</div>
+            {% endblock content %}

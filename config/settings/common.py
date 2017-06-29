@@ -84,6 +84,7 @@ LOCAL_APPS = (
     "python_nigeria.proposals",
     "python_nigeria.core",
     # Your stuff: custom apps go here
+    "python_nigeria.tickets",
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

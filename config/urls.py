@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^account/', include('account.urls')),
     url(r'^contact/', include('contact_form.urls')),
     url(r'^admin/', include(admin.site.urls)),
-
+    url(r'^tickets/', include("python_nigeria.tickets.urls", namespace="tickets"))
 ]
 
 if settings.DEBUG:

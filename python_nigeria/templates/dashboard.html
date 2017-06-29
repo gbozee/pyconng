@@ -17,6 +17,20 @@
 
 <div class="poster-wrapper">
   <div class="container">
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-md-3">
+<a href="{% url "tickets:detail" %}" class="btn btn-primary btn-block">View Ticket</a>
+      
+      </div>
+      <div class="col-md-3">
+<a href="#" class="btn btn-primary btn-block">View Schedule</a>
+      
+      </div>
+      {% comment %}<div class="col-md-3">
+<a href="" class="btn btn-primary btn-block"></a>
+      </div>{% endcomment %}
+      
+    </div>
     <div class="row">
 
       <div class="panel dashboard-card panel-default">
@@ -137,6 +151,50 @@
                     applying themselves.
                 </p>
             {% endif %}
+        </div>
+      </div>
+
+      <div class="panel panel-default dashboard-card">
+        <div class="panel-heading card-header">
+          <h3>Your Orders</h3>
+        </div>
+        <div class="card-block panel-body">
+          
+              <table class="table">
+                  <tbody><tr>
+                      <th>Orders</th>
+                      <th>Date</th>
+                      <th>Invoice</th>
+                  </tr>
+                  
+                      <tr>
+
+    <td>O/17.0565</td>
+
+    <td>	26 May 2017 </td>
+
+    <td> N/A </td>
+</tr>
+                      <tr>
+
+    <td>O/17.0565</td>
+
+    <td>	26 May 2017 </td>
+
+    <td> N/A </td>
+</tr>
+
+                  
+              </tbody></table>
+          
+
+          
+              
+              
+
+              
+              
+          
         </div>
       </div>
 

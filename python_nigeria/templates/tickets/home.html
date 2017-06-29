@@ -1,0 +1,160 @@
+{% extends "apply.html" %} 
+{% load static from staticfiles %} 
+{% load pinax_boxes_tags %} 
+{% block head_title %}
+    Tickets Page |
+{% endblock head_title %}
+{% block stylings %}
+{{block.super}}
+<style>
+    .margin-top{
+        margin-top: 20px;
+    }
+    .text-left{
+        text-align: left;
+    }
+    h2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .text-left h3{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock stylings %}
+{% block home_banner %}
+<section id="intro-3" style="height: 250px !important" class="intro-section height_400">
+    <div class="overlay division">
+        <div class="container">
+            <div id="intro-3-content" style="padding-top: 65px;" class="row">
+                <!-- INTRO TEXT -->
+                <div class="col-md-12 col-lg-10 col-lg-offset-1 intro-txt text-center white-color">
+
+                    <!-- Title -->
+                    <h3>Pycon Nigeria Ticket Store </h3>
+                    <div class="margin-top">
+                        <a href="{% url "tickets:purchase" %}" class="btn btn-primary btn-lg">Book your ticket now</a>
+                    </div>
+                 </div>
+            </div>	 <!-- End Intro Content -->
+        </div>    <!-- End container -->
+    </div>	   <!-- End overlay -->
+</section>	<!-- END INTRO-3 -->
+
+{% endblock home_banner %}
+{% block content %}
+<div class="container text-left">
+    <div class="row">
+<p>You can pay using Stripe (credit card) or Paypal. Unless otherwise mentioned, all prices include 22% Italian VAT. Tickets are invoiced by the <a href="https://ep2017.europython.eu/en/europython/python-italia/" class=" ">Python Italia APS</a>.</p>
+
+<p ><em>Please note that we are currently experiencing a problem with the invoice email generator. We have switched to our HTML invoice generator, so that you can download invoices from your account (check under "Orders, invoices and coupons"). </em></p>
+
+<p >&nbsp;</p>
+
+<h2 id="Ticket-sales-plan">Ticket sales plan</h2>
+
+<p>Tickets for EuroPython will be sold in three phases, with increasing prices closer to the event:</p>
+
+<ul>
+	<li><strike>Early-Bird Rate</strike>: We will have 200 very cheap tickets available when we open up ticket sales. They offer an up to 50% discount over the standard rate and are usually sold out within a few days.</li>
+	<li>Standard Rate: Normal rate tickets will be available shortly after the early-bird sales have ended and commence until either the conference sells out or a few weeks before the event.</li>
+	<li>On-Desk Rate: Close to the conference, we will switch to on-desk ticket rates, if we still have tickets left.</li>
+</ul>
+
+<h2 id="Ticket-types">Ticket types</h2>
+
+<h3 id="Regular-Full-Conference-Passes">Regular Full Conference Passes</h3>
+
+<p >We will have the following three categories of ticket prices for the full conference tickets (all 8 days):</p>
+
+<ul>
+	<li><strong>Student full ticket: EUR 130.00</strong> incl. 22% VAT<br>
+	(only available for pupils, students and postdoctoral researchers; please bring your student card or declaration from University, stating your affiliation, starting and end dates of your contract)</li>
+	<li><strong>Personal full ticket: EUR 375.00</strong> incl. 22% VAT<br>
+	(for people enjoying Python from home)</li>
+	<li><strong>Business full ticket: EUR 555.00</strong> excl. VAT, EUR 677.10 incl. 22% VAT<br>
+	(for people using Python to make a living)</li>
+</ul>
+
+<p>We would like to encourage you to pick a ticket types that reasonably fits your personal situation. If a company is paying for your ticket and you need a proper VAT receipt (the personal tickets do not include a company name), please buy a&nbsp;<em>business ticket</em>. If you are using Python as a hobby or as freelancer and don't need a VAT receipt, the&nbsp;<em>personal ticket</em>&nbsp;is for you. Finally, if you are a student/postdoc researcher working in academia, we have the highly subsidized&nbsp;<em>student ticket</em>&nbsp;for you.</p>
+
+<p>If you would like to support EuroPython, please consider getting a higher priced ticket. We assure you that your contribution will be put to good use. Thank you!</p>
+
+<h3 id="On-Desk-Day-Passes">On-Desk Day Passes</h3>
+
+<p>To make things more affordable especially for students/postdocs and other people who want to attend only a single day, we have day passes. These are valid for one day of the 8 conference days (valid for the day when they are purchased):</p>
+
+<p ><em>Prices will be announced when we open on-desk ticket sales<br>
+about one month before the event.</em></p>
+
+<ul>
+	<li>Student conference day pass: EUR xx.00 (only available for students and postdoctoral researchers; please bring your student card or declaration from University, stating your affiliation, starting and end dates of your contract.)</li>
+	<li>Personal conference day pass: EUR xxx.00 (for people enjoying Python from home)</li>
+	<li>Business conference day pass: EUR xxx.00</li>
+</ul>
+
+<p>If you have questions about our ticket prices, the process, etc. please check our <a href="https://ep2017.europython.eu/en/faq/" class=" ">FAQ document</a> for answers. If you still have questions, please consult our <a href="mailto:helpdesk@europython.eu" class=" ">EuroPython Helpdesk</a>.</p>
+
+<h2 id="Extras">Extras</h2>
+
+<p>You will also be able to order tickets for extra events, which are not included in the conference ticket price:</p>
+
+<ul>
+	<li>EuroPython Social Event: EUR (average dinner price) per person</li>
+</ul>
+
+<h2 id="Refund-policy">Refund policy</h2>
+
+<p>The conference ticket is fully refundable&nbsp;except for our administrative (bank, online payments services, etc) costs <strong>until June 8th 24:00 CEST</strong>.</p>
+
+<p ><u><strong>Refunds are no longer possible after that date, no exceptions, sorry.</strong></u></p>
+
+<p>In case you wish to cancel your ticket, please provide us with your bank details so we can issues the refunds by sending the details to our <a href="mailto:refunds@europython.eu">refunds@europython.eu</a> email address.</p>
+
+<p>Please note that we will processing refunds mostly after the conference, since we will be too busy with other things before and during the conference.</p>
+
+<h2 id="The-price-of-the-ticket-includes-">The price of the ticket includes:</h2>
+
+<h3 id="More-than-150-talks-exciting-keynotes-interesting-tutorials-beginner-workshops">More than 150 talks, exciting keynotes, interesting tutorials, beginner workshops</h3>
+
+<p>Sprints, hallway sessions, meetings with friends are all included for free :-)</p>
+
+<h3 id="A-chance-to-vote-the-talks-to-choose-your-own-schedule">A chance to vote the talks to choose your own schedule</h3>
+
+<p>By registering before the end of the voting process, you'll have the chance to&nbsp;<b>vote the submitted abstracts</b>&nbsp;and give your contribution to the final schedule of the conference. Register now to be able to vote!</p>
+
+<h3 id="Lunch-Coffee-Breaks">Lunch &amp; Coffee Breaks</h3>
+
+<p>One buffet lunch and two coffee breaks per day are offered during the conference.</p>
+
+<p>Please note that we won't be serving breakfast.</p>
+
+<h3 id="Free-Wi-Fi">Free Wi-Fi</h3>
+
+<p>Wi-Fi Internet Connectivity is available during all conference days. You'll be able to use it with your laptop, mobile phone or other mobile devices.</p>
+
+<h3 id="Recruiting-Session">Recruiting Session</h3>
+
+<p>There will be a special recruiting session for people looking for a new job. Easily get into contact with one of the conference sponsors. Many of them are hiring and would love to talk to you.</p>
+
+<h3 id="T-Shirts-Gadgets-Prizes">T-Shirts, Gadgets &amp; Prizes</h3>
+
+<p>Every full conference participant will receive the official conference T-shirt (we have multiple sizes available) and some gadgets offered by our sponsors.</p>
+
+<h2 id="The-price-of-the-ticket-does-NOT-include-the-social-event">The price of the ticket does NOT include the social event!</h2>
+
+<p ><em>Social event ticket sales will open closer to the event.<br>
+Please watch </em><a href="http://blog.europython.eu/" class=" ">our blog</a><em> for announcements.</em></p>
+
+<p>If you want to come to the social event, you will need to buy a social event ticket. We'll only have a limited number of tickets available, so please book them early.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+  
+        </div>
+    </div>
+
+</div>
+            {% endblock content %}
