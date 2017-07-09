@@ -1,0 +1,682 @@
+{% extends "apply.html" %} 
+{% load static from staticfiles %} 
+{% load pinax_boxes_tags %} 
+{% block head_title %}
+    Purchase Ticket |
+{% endblock head_title %}
+{% block stylings %}
+{{block.super}}
+<link rel="stylesheet" href="{% static "css/all.css" %}">
+<style>
+    .margin-top-50{
+        margin-top: 50px;
+    }
+    .margin-bottom-20{
+        margin-bottom: 20px;
+    }
+    .text-left{
+        text-align: left;
+    }
+    h2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .text-left h3{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .table {
+    width: 100%;
+    max-width: 100%;
+    border-top: 2px solid #8d897c;
+    margin-bottom: 1.5em;
+}
+    table {
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.table th, .table td {
+    padding: 8px;
+    /* vertical-align: top; */
+    border-top: 1px solid #d4d2cd;
+    line-height: 1.5em;
+    text-align: left;
+}
+#form-cart .total {
+    padding: 0.75em 0;
+    text-align: center;
+    background: #f8c7d2;
+}
+section {
+    padding: 1.5em 0;
+}
+h3.no-margin{
+    margin-top: -20px;
+
+}
+</style>
+{% endblock stylings %}
+{% block home_banner %}
+{% endblock home_banner %}
+{% block content %}
+<div class="container text-left margin-top-50">
+    <div class="row">
+<div class="page clearfix">
+    
+    
+
+<section>
+    <div class="grid-container">
+    <div class="grid-100">
+        <h1>Your tickets</h1>
+
+        
+    </div><!-- /grid -->
+
+	<div class="grid-100">You can edit the tickets by hovering over them with the mouse.<br><br></div>
+        
+            <div class="grid-50">
+                
+<div data-ticket="4446" assign-ticket="4446" class="ticket conference" data-fare="TRSP" data-order="3360" data-orderitem="4893">
+    
+    
+        
+            <div class="alert ">
+                
+            </div>
+        
+    
+
+    
+    
+    
+    
+    <div class="preview">
+    
+        <h2>EuroPython 2017 - Regular Ticket</h2>
+        <div class="preview-inner">
+            
+                <div class="media">
+                    
+                        
+                        <img class="avatar pull-left media-object" src="css/headshot-default.jpg" alt="" width="49" height="49">
+                    
+                    <div class="media-body">
+                        <h3 class="media-heading">Aisha Bello</h3>
+                        <div class="tagline">Python Enthusiast for developing countries</div>
+                        <div class="python-experience">
+                           
+                        </div>
+                        <div class="ticket-id">
+                           Ticket ID: 4446
+                        </div>
+                    </div><!-- media-body -->
+                </div><!-- /media -->
+            
+        </div>
+        
+            
+            <div class="ticket-commands">
+                <p>
+                    <a href="https://ep2017.europython.eu/p3/tickets/#" class="edit-button" rel="div[data-ticket=4446] .overlay">Edit this ticket</a>
+                    
+                        <br><a href="https://ep2017.europython.eu/p3/tickets/#" class="assign-button">Assign ticket to someone else</a>
+                    
+                    
+                    
+                </p>
+            </div>
+            
+        
+    
+    </div>
+
+    <div class="ticket-additional-info">
+    
+        
+        <p>Additional information (this won't show up on the ticket)</p>
+        <dl class="dl-horizontal">
+            <dt>Attending on days:</dt>
+            <dd>Sun, 09 Jul; Mon, 10 Jul; Tue, 11 Jul; Wed, 12 Jul; Thu, 13 Jul; Fri, 14 Jul; Sat, 15 Jul.</dd>
+            <dt>Diet:</dt>
+            <dd>Omnivorous</dd>
+            <dt>Shirt size:</dt>
+            <dd>XXL (female)</dd>
+        </dl>
+        
+    
+    </div>
+
+
+    <div class="overlay"><a class="close"></a>
+        
+        <form id="form-ticket-edit" action="https://ep2017.europython.eu/p3/tickets/4446/" class="form-horizontal" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="ckGdArbYmq25GSN9mlt25GLTRsPD9W1b">
+        
+            <fieldset>
+                    
+                        
+                            <h2>Ticket for Aisha Bello</h2>
+                        
+                        
+                        <div>Want to change name? <a href="https://ep2017.europython.eu/accounts/profile/">Edit your account</a>.</div>
+                        
+                    
+                    
+<div class="control-group no-label field hiddeninput emailfield">
+    <label class="control-label" for="id_t4446-assigned_to">Assigned to</label>
+    <div class="controls">
+        <input id="id_t4446-assigned_to" maxlength="254" name="t4446-assigned_to" type="hidden" value="aishabello2050@gmail.com">
+        
+            <span class="help-block">EMail of the attendee for whom this ticket was bought.</span>
+        
+    </div>
+</div>
+
+                    
+                    <p class="clearfix">
+                        <img style="float:left; margin-right: .75em;" class="avatar" src="css/headshot-default.jpg" alt="" width="49" height="49"><!-- halved size -->
+                    
+                    
+                    
+                    
+                        <span>
+                            <i class="fa fa-globe"></i>
+                            
+                            Your <a href="https://ep2017.europython.eu/conference/p/aisha-bello">profile</a> is <b>publicly visible</b>.
+                            
+                        </span>
+                    
+                    </p>
+                    
+<div class="control-group  field textinput charfield">
+    <label class="control-label" for="id_t4446-tagline">Tagline</label>
+    <div class="controls">
+        <input id="id_t4446-tagline" maxlength="60" name="t4446-tagline" type="text" value="Python Enthusiast for developing countries">
+        
+            <span class="help-block">a (funny?) tagline that will be displayed on the badge<br>Eg. CEO of FooBar Inc.; Super Python fanboy; Simple is better than complex.</span>
+        
+    </div>
+</div>
+
+                    
+<div class="control-group  field select typedchoicefield">
+    <label class="control-label" for="id_t4446-diet">Diet <span>(required)</span></label>
+    <div class="controls">
+        <select name="t4446-diet" class="input-xlarge" id="id_t4446-diet">
+            
+            <option value="omnivorous" selected="">Omnivorous</option>
+            
+            <option value="vegetarian">Vegetarian</option>
+            
+            <option value="other">Other</option>
+            
+        </select>
+        
+    </div>
+</div>
+
+                    
+<div class="control-group  field select typedchoicefield">
+    <label class="control-label" for="id_t4446-shirt_size">Shirt size <span>(required)</span></label>
+    <div class="controls">
+        <select name="t4446-shirt_size" class="input-xlarge" id="id_t4446-shirt_size">
+            
+            <option value="fs">S (female)</option>
+            
+            <option value="fm">M (female)</option>
+            
+            <option value="fl">L (female)</option>
+            
+            <option value="fxl">XL (female)</option>
+            
+            <option value="fxxl" selected="">XXL (female)</option>
+            
+            <option value="fxxxl">3XL (female)</option>
+            
+            <option value="s">S (male)</option>
+            
+            <option value="m">M (male)</option>
+            
+            <option value="l">L (male)</option>
+            
+            <option value="xl">XL (male)</option>
+            
+            <option value="xxl">XXL (male)</option>
+            
+            <option value="xxxl">3XL (male)</option>
+            
+            <option value="xxxxl">4XL (male)</option>
+            
+        </select>
+        
+    </div>
+</div>
+
+                    
+<div class="control-group  field select typedchoicefield">
+    <label class="control-label" for="id_t4446-python_experience">Python experience <span>(required)</span></label>
+    <div class="controls">
+        <select name="t4446-python_experience" class="input-xlarge" id="id_t4446-python_experience">
+            
+            <option value="0" selected="">no comment</option>
+            
+            <option value="1">1 star  (just starting)</option>
+            
+            <option value="2">2 stars (beginner)</option>
+            
+            <option value="3">3 stars (intermediate)</option>
+            
+            <option value="4">4 stars (expert))</option>
+            
+            <option value="5">5 stars (guru level)</option>
+            
+        </select>
+        
+    </div>
+</div>
+
+                    
+<div class="control-group  field checkboxselectmultiple multiplechoicefield">
+    <label class="control-label" for="id_t4446-days">Probable days of attendance</label>
+    <div class="controls">
+        <ul id="id_t4446-days"><li><label for="id_t4446-days_0"><input checked="checked" id="id_t4446-days_0" name="t4446-days" type="checkbox" value="2017-07-09"> Sun, 09 Jul</label></li>
+<li><label for="id_t4446-days_1"><input checked="checked" id="id_t4446-days_1" name="t4446-days" type="checkbox" value="2017-07-10"> Mon, 10 Jul</label></li>
+<li><label for="id_t4446-days_2"><input checked="checked" id="id_t4446-days_2" name="t4446-days" type="checkbox" value="2017-07-11"> Tue, 11 Jul</label></li>
+<li><label for="id_t4446-days_3"><input checked="checked" id="id_t4446-days_3" name="t4446-days" type="checkbox" value="2017-07-12"> Wed, 12 Jul</label></li>
+<li><label for="id_t4446-days_4"><input checked="checked" id="id_t4446-days_4" name="t4446-days" type="checkbox" value="2017-07-13"> Thu, 13 Jul</label></li>
+<li><label for="id_t4446-days_5"><input checked="checked" id="id_t4446-days_5" name="t4446-days" type="checkbox" value="2017-07-14"> Fri, 14 Jul</label></li>
+<li><label for="id_t4446-days_6"><input checked="checked" id="id_t4446-days_6" name="t4446-days" type="checkbox" value="2017-07-15"> Sat, 15 Jul</label></li>
+<li><label for="id_t4446-days_7"><input id="id_t4446-days_7" name="t4446-days" type="checkbox" value="2017-07-16"> Sun, 16 Jul</label></li></ul>
+        
+            <span class="help-block">This ticket grants you full access to the conference. The above selection is just for helping out the organizers</span>
+        
+    </div>
+</div>
+
+            </fieldset>
+            <fieldset>
+                <button class="btn btn-primary" name="" value="" type="submit">Save</button>
+            </fieldset>
+        
+        </form>
+        
+    </div>
+
+    <script type="text/javascript">
+        try {
+            $('div[data-ticket=4446] .edit-button').overlay();
+        }
+        catch(e) {
+        }
+    </script>
+
+
+
+</div>
+
+
+
+
+            </div><!--/grid -->
+            
+        
+            <div class="grid-50">
+                
+<div data-ticket="4729" assign-ticket="4729" class="ticket event" data-fare="VOUPE03" data-order="3525" data-orderitem="5232">
+    
+    
+        
+            <div class="alert ">
+                
+            </div>
+        
+    
+
+    
+    
+    
+    
+    <div class="preview">
+    
+        <h2>Social event: EuroPython going (Coco)nuts</h2>
+        
+            
+                <div class="ticket-name">Edit this ticket</div>
+                <div class="ticket-footer"></div>
+            
+        
+        
+        <div class="ticket-commands">
+            <p>
+                <a href="https://ep2017.europython.eu/p3/tickets/#" class="edit-button" rel="div[data-ticket=4729] .overlay">Edit information</a>
+            </p>
+            
+            
+        </div>
+        
+    
+    </div>
+
+    <div class="ticket-additional-info">
+    
+        
+        
+        
+        
+    
+    </div>
+
+
+    <div class="overlay"><a class="close"></a>
+        
+        <form id="form-ticket-edit" action="https://ep2017.europython.eu/p3/tickets/4729/" class="form-horizontal" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="ckGdArbYmq25GSN9mlt25GLTRsPD9W1b">
+        
+            <fieldset>
+                
+                
+    <div class="field charfield">
+        <label for="id_t4729-name">Name</label>
+        <input id="id_t4729-name" maxlength="60" name="t4729-name" type="text">
+        <div class="help-text">Real name of the person that will attend this specific event.</div>
+        
+    </div>
+
+                
+            </fieldset>
+            <fieldset>
+                <button class="btn btn-primary" name="" value="" type="submit">Save</button>
+            </fieldset>
+        
+        </form>
+        
+    </div>
+
+    <script type="text/javascript">
+        try {
+            $('div[data-ticket=4729] .edit-button').overlay();
+        }
+        catch(e) {
+        }
+    </script>
+
+
+
+</div>
+
+
+
+
+            </div><!--/grid -->
+            <hr>
+        
+        <style type="text/css">
+            #id_bank,
+            #id_reason {
+                height: 4.5em; /*  Couple of lines, padding inc. */
+            }
+        </style>
+        <div id="refund-form" class="overlay">
+            <h2>Refund Ticket</h2>
+            <form action="https://ep2017.europython.eu/p3/tickets/" method="POST">
+                <p>You are eligible for commission-free refund through PayPal.</p>
+                
+    <div class="field required charfield">
+        <label for="id_reason">Reason<span class="required">(required)</span></label>
+        <textarea cols="40" id="id_reason" maxlength="200" name="reason" rows="10"></textarea>
+        <div class="help-text">Please enter the reason of your refund request</div>
+        
+    </div>
+
+                <div class="refund-method">
+                    <h3>Choose the refund method</h3>
+                    <label><input type="radio" name="rmethod" value="paypal">Through PayPal</label>
+                    <label><input type="radio" name="rmethod" value="bank" checked="">Through bank transfer</label>
+                    <div class="paypal" style="display:none">
+                        
+    <div class="field emailfield">
+        <label for="id_paypal">Your paypal address</label>
+        <input id="id_paypal" name="paypal" type="email">
+        <div class="help-text">If you prefer to receive payment via paypal</div>
+        
+    </div>
+
+                    </div>
+                    <div class="bank">
+                        
+    <div class="field charfield">
+        <label for="id_bank">Bank routing information</label>
+        <textarea cols="40" id="id_bank" name="bank" rows="10"></textarea>
+        <div class="help-text">Please specify IBAN, BIC and bank address (if in Europe) or any needed information for a worldwide transfer</div>
+        
+    </div>
+
+                    </div>
+                    <p><b>Note</b>: you are responsible for the commission fees, if any.</p>
+                </div>
+                <button class="btn btn-primary" type="submit">Ask for Refund</button>
+            </form>
+        </div><!-- /overlay -->
+</div><!-- /grid-container -->
+</section>
+
+
+<script type="text/javascript">//<![CDATA[
+(function() {
+    function reload_ticket(ticket) {
+        var id = ticket.attr('data-ticket');
+        var url = '/p3/tickets/' + id + '/';
+        $.get(url, function(data) {
+            ticket.replaceWith(data);
+            setup_fragment($('div.ticket[data-ticket=' + id + ']'));
+        })
+    }
+    $('#refund-form form').ajaxForm({
+        success: function(response, status, xhr, form) {
+            var trigger = form.data('trigger');
+            if(trigger) {
+                reload_ticket(trigger.parents('div.ticket'));
+                trigger.overlay().close();
+            }
+        },
+        error: function(xhr, textStarus, error) {
+            if(xhr.responseText) {
+                var errors = JSON.parse(xhr.responseText);
+                form_errors($('#refund-form form'), errors);
+            }
+        }
+    });
+    function _error() {
+        
+        alert("Cannot save the ticket.\u005CnUse the web chat, or contact info@euroython.eu, for assistance.");
+    }
+    function _success(message, container) {
+        function w(response, status, xhr, form) {
+            /*
+            * se una form è di tipo multipart/form-data viene inviata
+            * tramite un iframe (non via XHR), jQuery non ha modo di
+            * conoscere lo status code e non viene mai chiamato l'error
+            * handler.
+            */
+            if((form.attr('enctype') == 'multipart/form-data') && (response.indexOf('errorlist') != -1)) {
+                _error();
+            }
+            else {
+                if(!container)
+                    container = form.parents('div.ticket');
+                var p = container.parent();
+                container.replaceWith(response)
+                setup_fragment(p);
+                feedback(message);
+            }
+        }
+        return w;
+    }
+    $('div.ticket form').live('submit', function(e) {
+        /*
+        * non mi piace impedire il submit da tasto invio, ma devo essere
+        * sicuro che venga eseguito il codice collegato con i
+        * button[type=submit]. Nota che con FF e chrome ( e forse con altri
+        * browser) questo non è un problema, perché la pressione dell'invio in
+        * un input causa l'evento click nel input/button di tipo submit
+        */
+
+        e.preventDefault();
+    });
+    $('div.ticket form button[type=submit]').live('click', function(e) {
+        e.preventDefault();
+        var form = $(e.target).parents('form');
+        var container = form.parents('div.ticket');
+        form.ajaxSubmit({
+            success: _success('Ticket saved'),
+            beforeSubmit: function(arr, form, options) {
+                /*
+                * L'unico campo che assolutamente voglio è il nome del
+                * partecipante.
+                */
+                var ticket = form.parents('.ticket');
+                var f = ticket_field(form, 'ticket_name');
+                if(f.length == 0)
+                    f = ticket_field(form, 'name');
+                if(f.length && $.trim(f.val()) == '') {
+                    
+                    alert("Please enter the name");
+                    f.focus();
+                    return false;
+                }
+                return true;
+            },
+            error: _error
+        });
+    });
+
+    function ticket_field(form, field_name) {
+        var tid = $(form).parents('div.ticket').attr('data-ticket');
+        return $("input[name=t" + tid + "-" + field_name + "]", form);
+    }
+
+
+    $('div.ticket .assign-button').live('click', function(e) {
+        e.preventDefault();
+
+        
+        var email = $.trim(prompt("Enter the email of the person you want to assign the ticket to. The person will have to have registered an account using this email address on our website in order for the assignement to work."));
+
+        if(!email){
+            alert("No email address given -- cannot assign ticket.");
+            return;
+        }
+
+        if(email == "aishabello2050@gmail.com") {
+            
+            alert("Please don\u0027t use your own email address.");
+            return;
+        }
+
+        var ticket = $(e.target).parents('.ticket');
+        var form = $('form', ticket);
+
+        ticket_field(form, 'assigned_to').val(email);
+        //alert(ticket_field(form, 'assigned_to').val());
+        //var tid = $(form).parents('div.ticket').attr('data-ticket');
+        //$("input[name=t" + tid + "-assigned_to]", form).value = email;
+
+
+        form.ajaxSubmit({
+            target: form.parents('div.ticket'),
+            replaceTarget: true,
+            success: function() {
+                
+                feedback("ticket assigned to" + " " + email);
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("Sorry, something went wrong... "+
+                      "Status:="+textStatus + " Error:="+errorThrown);
+                }
+        });
+    });
+
+
+    $('div.ticket .reclaim-button').live('click', function(e) {
+        e.preventDefault();
+        
+        if(window.confirm("Are you sure to reclaim this ticket")) {
+            var ticket = $(e.target).parents('.ticket');
+            var form = $('form', ticket);
+
+            ticket_field(form, 'assigned_to').val('')
+            //alert(ticket_field(form, 'assigned_to').val());
+
+
+            form.ajaxSubmit({
+                target: form.parents('div.ticket'),
+                replaceTarget: true,
+                success: function() {
+                    
+                    feedback("ticket reclaimed")
+                }
+            });
+        }
+    });
+    function setup_refund_form(ticket) {
+        var trigger = $('.refund-button', ticket);
+        var refund_type = trigger.data('refund-type');
+        var order = ticket.data('order');
+        var item = ticket.data('orderitem');
+
+        var form = $('#refund-form form');
+        if(!form.data('init')) {
+            form.data('init', 1);
+            form
+                .find('input[name=rmethod]')
+                .click(function(e) {
+                    var p = form.find('.refund-method .paypal');
+                    var b = form.find('.refund-method .bank');
+                    if(e.target.value == 'paypal') {
+                        p.show();
+                        b.hide();
+                    }
+                    else {
+                        p.hide();
+                        b.show();
+                    }
+                });
+        }
+        form.data('trigger', trigger);
+        form.get(0).action = '/accounts/orders/' + order + '/' + item + '/refund';
+
+        if(refund_type == 'payment') {
+            form
+                .children('h3')
+                    .hide()
+                    .end()
+                .children('.refund-method')
+                    .show();
+        }
+        else {
+            form
+                .children('h3')
+                    .show()
+                    .end()
+                .children('.refund-method')
+                    .hide();
+        }
+        form.get(0).reset();
+    }
+    $('div.ticket .refund-button').live('click', function(e) {
+        e.preventDefault();
+        var ticket = $(e.target).parents('.ticket');
+        setup_refund_form(ticket)
+    });
+})();
+//]]>
+</script>
+
+</div>
+    </div>
+
+</div>
+            {% endblock content %}

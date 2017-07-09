@@ -24,10 +24,11 @@ services:
     command: /start-dev.sh
     depends_on:
       - postgres
+    restart: always
     environment:
-      - POSTGRES_USER=python_nigeria
+      - POSTGRES_USER=pyconnigeria
       - POSTGRES_PASSWORD=postgres
-      - DATABASE_URL=postgres://python_nigeria:postgres@postgres/python_nigeria
+      - DATABASE_URL=postgres://pyconnigeria:postgres@postgres/pyconnigeria
       - USE_DOCKER=yes
     volumes:
       - .:/app

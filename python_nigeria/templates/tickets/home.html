@@ -1,0 +1,37 @@
+{% extends "apply.html" %} 
+{% load static from staticfiles %} 
+{% load pinax_boxes_tags %} 
+{% block head_title %}
+    Tickets Page |
+{% endblock head_title %}
+{% block stylings %}
+{{block.super}}
+<style>
+    .margin-top{
+        margin-top: 20px;
+    }
+    .text-left{
+        text-align: left;
+    }
+    h2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .text-left h3{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock stylings %}
+{% block home_banner %}
+<section id="intro-3" style="height: 250px !important" class="intro-section height_400">
+    <div class="overlay division">
+        <div class="container">
+           {% box "ticket_header" %}
+        </div>    <!-- End container -->
+    </div>	   <!-- End overlay -->
+</section>	<!-- END INTRO-3 -->
+
+{% endblock home_banner %}
+{% block content %}
+{% box "ticket_content" %}            {% endblock content %}
