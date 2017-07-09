@@ -14,9 +14,10 @@
 <div class="small-header poster-wrapper">
   <h1>{% trans "Dashboard" %}</h1>
 </div>
-
 <div class="poster-wrapper">
   <div class="container">
+    
+{% if request.user.is_staff %}
     <div class="row" style="margin-bottom: 20px;">
       <div class="col-md-3">
 <a href="{% url "tickets:detail" %}" class="btn btn-primary btn-block">View Ticket</a>
@@ -31,6 +32,7 @@
       </div>{% endcomment %}
       
     </div>
+    {% endif %}
     <div class="row">
 
       <div class="panel dashboard-card panel-default">
@@ -153,7 +155,7 @@
             {% endif %}
         </div>
       </div>
-
+      {% if request.user.is_staff %}
       <div class="panel panel-default dashboard-card">
         <div class="panel-heading card-header">
           <h3>Your Orders</h3>
@@ -197,7 +199,7 @@
           
         </div>
       </div>
-
+{% endif %}
     {% if review_sections %}
 
       <div class="card dashboard-card">

@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backups
-    env_file: ./env.example
+    env_file: ./new.env
     ports:
       - "5433:5432"
     
@@ -20,7 +20,7 @@ services:
     build: ./compose/postgres
     links:
       - postgres:master
-    env_file: ./env.example
+    env_file: ./new.env
    
   django:
     build:
@@ -33,7 +33,7 @@ services:
     volumes:
       - media_backups:/var/pyconng
     command: /gunicorn.sh
-    env_file: ./env.example
+    env_file: ./new.env
 
   nginx:
     build: ./compose/nginx
