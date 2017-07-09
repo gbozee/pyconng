@@ -80,3 +80,4 @@ webpack-stats-production.json
 startup.sh
 venv/
 tags
+new.env
