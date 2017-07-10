@@ -16,15 +16,5 @@ urlpatterns = [
     url(regex=r'client-payment-cancelled/(?P<order>[\w.@+-]+)/$',
         view=csrf_exempt(views.FailedPaymentRedirectView.as_view()),
         name='request_cancelled_redirect'),
-    url(r'^paystack/callback/(?P<order>[\w.@+-]+)$', view=csrf_exempt(
-        views.PaystackCallBackView.as_view()), name='callback_paystack'),
-    url(r'^paystack/authorize/(?P<order>[\w.@+-]+)$',
-        view=views.PaystackAuthorizationView.as_view(), name='authorize_paystack'),
-    url(r'^paystack/webhook',
-        view=csrf_exempt(views.paystack_webhook), name='p_stack_webhook'),
-    url(r'^paystack/callback',
-        view=csrf_exempt(views.paystack_webhook), name='p_stack_callback'),
-    url(r'^paystack/validate/(?P<order>[\w.@+-]+)/(?P<code>[\w.@+-]+)$',
-        view=views.validate_paystack_ref, name='validate_paystack'),
-
+    
 ]

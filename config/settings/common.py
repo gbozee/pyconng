@@ -44,7 +44,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 
     # Useful template tags:
-    # 'django.contrib.humanize',
+    'django.contrib.humanize',
 
     # Admin
     'django.contrib.admin',
@@ -315,6 +315,6 @@ MARKITUP_FILTER = ["symposion.markdown_parser.parse", {}]
 MARKITUP_SKIN = "markitup/skins/simple"
 
 THEME_CONTACT_EMAIL = 'hello@pycon.us'
-PAYSTACK_BASE_URL = ""
+PAYSTACK_BASE_URL = "https://api.paystack.co"
 PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY", default="sk_test_a551e347b4fc7af40b897f1fc217ce3642d1faa7")
 PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY", default="pk_test_fbc2f1812af67479da1306edc72890e0702f052e")

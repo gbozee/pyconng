@@ -8,43 +8,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@login_required
-def validate_paystack_ref(request, order, code):
-    v = PayStack().validate_transaction(code)
-    if v:
-        try:
-            d = services.DepositMoneyService(order)\
-                .paystack_validation(v['amount_paid'])
-            a = wallet_service.WalletService(request.user.id)
-            a.update_paystack_auth_code(v['authorization_code'])
-            return JsonResponse({'status': True})
-        except services.error_exception():
-            d = services.SingleRequestService(order)
-            d.pay_processing_fee()
-            return JsonResponse({'status': True})
-    else:
-        return JsonResponse({'status': False})
-
-
-def paystack_webhook(request):
-    return JsonResponse(json.dumps(request.POST), safe=False)
-
-
-class PaystackAuthorizationView(LoginRequiredMixin, RedirectView):
-    permanent = False
-    query_string = True
-
-    def get_redirect_url(self, *args, **kwargs):
-        if self.request.GET.get('ttype') == 'processing_fee':
-            self.service = services.SingleRequestService(kwargs['order'])
-        else:
-            self.service = services.DepositMoneyService(kwargs['order'])
-        response, outcome = self.service.paystack_payment_outcome(self.request)
-        if outcome:
-            if self.request.GET.get('ttype') != 'processing_fee':
-                messages.error(
-                    self.request, "Sorry This Transaction Failed. Please Try again or use other payment options")
-        return response
 
 
 class OnlinePaymentRedirectView(RedirectView):

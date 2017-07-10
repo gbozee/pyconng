@@ -1,0 +1,90 @@
+{% extends "apply.html" %}
+{% load humanize %}
+{% block stylings %}
+{{block.super}}
+<style>
+     .margin-top-50{
+        margin-top: 50px;
+    }
+    .form-style{
+        font-size: 20px;
+    line-height: 2.5;
+    }
+</style>
+{% endblock stylings %}
+{% block home_banner %}
+
+{% endblock home_banner %}
+{% block content %}
+<div class="container margin-top-50">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Order Summary</h4>
+            </div>
+            <div class="panel-body">
+                   <div class="invoice-items">
+                        {% for display in tickets %}
+                            <div class="invoice-items-row">
+                            <div class="col-sm-8 col-xs-6">{{display.quantity}} {{display.ticket_type.name}} Ticket{{display.quantity|pluralize}} Order #{{display.order}}</div>
+                            <div class="col-sm-4 col-xs-6 text-right"><b>NGN {{display.amount|intcomma}}</b></div>
+                        </div>
+                        
+                        {% endfor %}
+                                                                                                                                                                                                                                                                                                            <div class="invoice-items-divider"></div>
+                        <div class="invoice-items-row">
+                            <div class="col-sm-8 col-xs-6"><b>Subtotal</b></div>
+                            <div class="col-sm-4 col-xs-6 text-right"><b>NGN {{total|intcomma}}</b></div>
+                        </div>
+                        
+                        <div class="invoice-items-divider"></div>
+                        <div class="invoice-items-row">
+                            <div class="col-sm-8 col-xs-6"><b>Total</b></div>
+                            <div class="col-sm-4 col-xs-6 text-right"><b>NGN {{total|intcomma}}</b></div>
+                        </div>
+                    </div>
+                           
+                <form id="paystack-card-form">
+                    <script src="https://js.paystack.co/v1/inline.js"></script>
+                     <div class="col-xs-12 col-md-6 col-md-offset-3 col-xs-offset-0">
+<button onclick="payWithPaystack()" class="btn btn-primary btn-lg btn-block" type="button">
+                    Make Payment
+                </button>
+                </div>
+                    </form>
+               
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block extra_script %}
+<script>
+    function payWithPaystack(e){
+        var handler = PaystackPop.setup({
+      key: "{{public_key}}",
+      email: '{{request.user.email}}',
+      amount: parseInt("{{total}}")*100,
+      ref: '{{slug}}', // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+      },
+      callback: function(response){
+           $.get('/tickets/paystack/validate/'+'{{slug}}/'+response.trxref).then(function(data){
+                console.log(data);
+                if(data.status == true){
+                    window.location.href="/dashboard/"
+                }else{
+                    window.location.href="/tickets/checkout/{{data.order}}/"
+                    alert("We couldn't verify this transaction. If it was successful please notify info@tuteria.com")
+                }
+           }) // window.location.reload()
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+    }
+</script>
+{% endblock extra_script %}

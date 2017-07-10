@@ -1,6 +1,7 @@
 import requests
 from django.conf import settings
 import logging
+import random
 
 logger = logging.getLogger(__name__)
 
@@ -170,3 +171,18 @@ class PayStack(object):
             "Parallex Bank": "526",
         }
         return options[bank_name]
+
+def generate_code(referral_class, key='order'):
+    def _generate_code():
+        t = "ABCDEFGHIJKLOMNOPQRSTUVWXYZ1234567890"
+        return "".join([random.choice(t) for i in range(12)])
+
+    code = _generate_code()
+    if key == 'slug':
+        kwargs = {'slug': code}
+    else:
+        kwargs = {'order': code}
+    while referral_class.objects.filter(**kwargs).exists():
+        code = _generate_code()
+    return code
+
