@@ -1,4 +1,4 @@
-var currency = "€";
+var currency = "₦";
 $(function() {
   function toggleBusiness(status) {
     if (status) {

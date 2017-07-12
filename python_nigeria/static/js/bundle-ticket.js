@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-var currency = "€";
+var currency = "₦";
 $(function() {
   function toggleBusiness(status) {
     if (status) {
