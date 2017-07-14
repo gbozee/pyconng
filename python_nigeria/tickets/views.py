@@ -77,10 +77,14 @@ class PurchaseView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PurchaseView, self).get_context_data(**kwargs)
+        ticket_price = TicketPrice.objects.all()
+
+        def amount(y):
+            return [x.amount for x in ticket_price if x.name == y][0]
         tickets = [
-            {'data_fare': 'TRSS', 'amount': 130},
-            {'data_fare': 'TRSP', 'amount': 375},
-            {'data_fare': 'TRSC', 'amount': 677.10}
+            {'data_fare': 'TRSS', 'amount': amount('Student')},
+            {'data_fare': 'TRSP', 'amount': amount("Personal")},
+            {'data_fare': 'TRSC', 'amount': amount("Company")}
         ]
         context.update(tickets=tickets)
         return context
@@ -91,7 +95,7 @@ class CheckoutView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         self.item = get_object_or_404(Ticket, order=self.kwargs['order'])
-        
+
         response = super(CheckoutView, self).get(request, *args, **kwargs)
         if self.item.status == Ticket.PAYED:
             messages.warning(self.request, "You have already paid for this ticket order")
@@ -102,7 +106,7 @@ class CheckoutView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CheckoutView, self).get_context_data(**kwargs)
         if self.item.multiple_tickets:
-            others =  Ticket.objects.issued(self.request.user)
+            others = Ticket.objects.issued(self.request.user)
         else:
             others = [self.item]
         total = sum(x.amount for x in others)

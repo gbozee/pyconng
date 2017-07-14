@@ -26,12 +26,13 @@ from django.contrib.auth import login
 from symposion.sponsorship.forms import SponsorApplicationForm, Sponsor, forms
 from symposion.speakers.forms import SpeakerForm
 from symposion.speakers.models import Speaker
-
+from symposion import views as symposion_views
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from account.views import LoginView
 from account.forms import LoginUsernameForm
-
+from account.decorators import login_required
+from python_nigeria.tickets.models import Ticket
 
 class LoginForm(LoginUsernameForm):
     username = forms.CharField(label=_("Username/Email"), max_length=30)
@@ -174,3 +175,13 @@ class HomeRedirectView(RedirectView):
     permanent = False
     pattern_name = 'home'
     query_string = True
+
+
+@login_required
+def dashboard(request):
+    if request.session.get("pending-token"):
+        return redirect("speaker_create_token",
+                        request.session["pending-token"])
+    orders = Ticket.objects.filter(user=request.user,status=Ticket.PAYED)
+    
+    return render(request, "dashboard.html",{"orders":orders})

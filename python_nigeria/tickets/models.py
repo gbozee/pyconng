@@ -1,6 +1,7 @@
 from django.db import models
 from config.utils import PayStack, generate_code
 from django.conf import settings
+from django.utils import timezone
 
 
 class Coupon(models.Model):
@@ -31,6 +32,11 @@ class TicketQuerySet(models.QuerySet):
                 user=user, multiple_tickets=True, status=Ticket.ISSUED)
         return self
 
+    def update_payment(self):
+        return self.update(
+            date_paid=timezone.now(), 
+            status=Ticket.PAYED, made_payment=True)
+
 
 class Ticket(models.Model):
     ISSUED = 1
@@ -44,7 +50,7 @@ class Ticket(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              related_name="tickets")
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
-
+    date_paid = models.DateTimeField(null=True)
     made_payment = models.BooleanField(default=False)
     status = models.IntegerField(default=ISSUED, choices=STATUS)
     paystack_access_code = models.URLField(blank=True, null=True)
@@ -78,10 +84,8 @@ class Ticket(models.Model):
         new_amount = full_payment
         others = Ticket.objects.issued(self.user).values_list('pk', flat=True)
         if self.pk in others:
-            Ticket.objects.filter(pk__in=others).update(
-                status=self.PAYED, made_payment=True)
-        Ticket.objects.filter(pk=self.pk).update(
-            status=self.PAYED, made_payment=True)
+            Ticket.objects.filter(pk__in=others).update_payment()
+        Ticket.objects.filter(pk=self.pk).update_payment()
 
     def change_order(self):
         old_ticket = self.order

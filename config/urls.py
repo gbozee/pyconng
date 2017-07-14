@@ -47,7 +47,7 @@ if settings.DEBUG:
 
 urlpatterns += [
     # Your stuff: custom urls includes go here
-    url(r'^dashboard/', symposion_views.dashboard, name='dashboard'),
+    url(r'^dashboard/', o_views.dashboard, name='dashboard'),
     url(r'^proposals/', include('symposion.proposals.urls')),
     url(r'^reviews/', include('symposion.reviews.urls')),
     # url(r'^schedule/', include('symposion.schedule.urls')),

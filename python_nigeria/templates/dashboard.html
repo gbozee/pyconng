@@ -155,7 +155,7 @@
             {% endif %}
         </div>
       </div>
-      {% if request.user.is_staff %}
+      {% if orders|length > 0 %}
       <div class="panel panel-default dashboard-card">
         <div class="panel-heading card-header">
           <h3>Your Orders</h3>
@@ -163,40 +163,23 @@
         <div class="card-block panel-body">
           
               <table class="table">
-                  <tbody><tr>
+                <tbody>
+                  <tr>
                       <th>Orders</th>
                       <th>Date</th>
                       <th>Invoice</th>
                   </tr>
                   
+                  {% for order in orders %}
                       <tr>
-
-    <td>O/17.0565</td>
-
-    <td>	26 May 2017 </td>
-
-    <td> N/A </td>
-</tr>
-                      <tr>
-
-    <td>O/17.0565</td>
-
-    <td>	26 May 2017 </td>
-
-    <td> N/A </td>
-</tr>
-
-                  
-              </tbody></table>
-          
-
-          
-              
-              
-
-              
-              
-          
+                        <td>{{order.pk}}</td>
+                        <td>	{{order.date_paid|date:"d M o"}} </td>
+                        <td> N/A </td>
+                                
+                  </tr>
+                      {% endfor %}
+                </tbody>
+              </table>
         </div>
       </div>
 {% endif %}
