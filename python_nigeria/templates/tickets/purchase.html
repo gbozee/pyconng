@@ -123,9 +123,15 @@ h3.no-margin{
                     </colgroup><thead>
                         <tr>
                             <th>&nbsp;</th>
-                            <th colspan="2">Student</th>
-                            <th colspan="2">Personal</th>
-                            <th colspan="2">Business</th>
+                            <th colspan="2">Student {% if tickets.0.amount < 4000 %}
+                             <small>(Early Bird)</small>
+                            {% endif %} </th>
+                            <th colspan="2">Personal {% if tickets.0.amount < 6000 %}
+                             <small>(Early Bird)</small>
+                            {% endif %} </th>
+                            <th colspan="2">Business {% if tickets.0.amount < 12000 %}
+                             <small>(Early Bird)</small>
+                            {% endif %} </th>
                         </tr>
                         <tr>
                             <th>&nbsp;</th>
@@ -146,6 +152,7 @@ h3.no-margin{
 <tr>
     <td>PyconNG 2017 - Regular Ticket<br><small>Ticket to attend PyconNG at the regular ticket price.</small></td>
     {% for ticke in tickets %}
+        {% if ticke.amount > 0 %}
         <td class="fare" data-fare="{{ticke.data_fare}}">
             
             <div id="fare-{{ticke.data_fare}}" data-amount="{{ticke.amount}}">
@@ -154,6 +161,13 @@ h3.no-margin{
         <td class="fare" data-fare="{{ticke.data_fare}}">
             <input type="text" size="2" name="{{ticke.data_fare}}" value="">            
         </td>
+        {% else %}
+        <td class="fare">
+            Exhausted
+        </td>
+        <td class="fare">
+        </td>
+        {% endif %}
     
     {% endfor %}
 </tr>
@@ -227,7 +241,12 @@ h3.no-margin{
             </fieldset>
 
             <fieldset style="margin-top: 20px;">
+                {% if tickets.0.amount > 0 or tickets.1.amount > 0 or tickets.2.amount > 0 %}
+                
                 <button id="checkoutbtn" class="btn btn-primary" value="" name="" type="submit">Proceed to Checkout →</button>
+                {% else %}
+                <strong>No available tickets</strong>
+                {% endif %}
             </fieldset>
         <script type="text/javascript">
             

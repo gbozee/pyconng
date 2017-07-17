@@ -10,12 +10,59 @@ class Coupon(models.Model):
     percentage = models.IntegerField(default=5)
 
 
+class TicketPriceQuerySet(models.QuerySet):
+    def with_tickets_purchased(self):
+        return self.filter(ticket__status=Ticket.PAYED).annotate(purchased_count=models.Sum('ticket__quantity'))
+
+    
 class TicketPrice(models.Model):
     name = models.CharField(max_length=100, blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    early_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    early_price_count = models.IntegerField(default=0) 
+    regular_count = models.IntegerField(default=0)
+    objects = TicketPriceQuerySet.as_manager()
+
+    EARLY_BIRD = {
+        'Company': {"amount": 12000, "count": 5},
+        'Personal': {"amount": 6000, "count": 10},
+        'Student': {"amount": 3000, "count": 5}
+    }
+    REGULAR = {
+        'Company':{"amount": 20000, "count": 60},
+        'Personal':{"amount": 10000, "count": 120},
+        'Student':{"amount": 4000, "count": 20},
+    }
 
     def __str__(self):
         return self.name
+
+    @property
+    def current_price(self):
+        current_count = Ticket.objects.ticket_type_purchased_count(
+            self.name,self.early_price_count
+        )
+        if current_count:
+            return self.early_price
+        current_count = Ticket.objects.ticket_type_purchased_count(
+            self.name,self.regular_count+self.early_price_count
+        )
+        if current_count:
+            return self.amount
+        return None
+        
+
+    @classmethod
+    def populate_count_price(cls):
+        for o in cls.objects.all():
+            if o.early_price == 0:
+                record = dict(cls.EARLY_BIRD)[o.name]
+                o.early_price = record['amount']
+                o.early_price_count = record['count']
+                regular = dict(cls.REGULAR)[o.name]
+                o.regular_count = regular['count']
+                o.amount = regular['amount']
+                o.save()
 
     @classmethod
     def create_ticket_types(cls):
@@ -34,10 +81,25 @@ class TicketQuerySet(models.QuerySet):
 
     def update_payment(self):
         return self.update(
-            date_paid=timezone.now(), 
+            date_paid=timezone.now(),
             status=Ticket.PAYED, made_payment=True)
 
+    def ticket_type_purchased_count(self, _type, condition):
+        query = self.filter(status=Ticket.PAYED)\
+            .filter(ticket_type__name=_type)\
+            .aggregate(count=models.Sum('quantity'))['count'] or 0
+        return query < condition
 
+    def remaining(self, _type_name):
+        tt = TicketPrice.objects.get(name=_type_name)
+        count = self.filter(ticket_type__name=_type_name,status=Ticket.PAYED)\
+            .aggregate(
+                purchased_count=models.Sum('quantity'))['purchased_count']
+        return tt.early_price_count + tt.regular_count - count
+
+
+
+   
 class Ticket(models.Model):
     ISSUED = 1
     PAYED = 2

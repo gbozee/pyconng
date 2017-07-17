@@ -28,11 +28,60 @@ class PurchaseForm(forms.Form):
         personal = cleaned_data.get('TRSP')
         return company, student, personal
 
+    def validate_TRSC(self):
+        data = self.cleaned_data['TRSC']
+        remaining = TicketPrice.objects.remaining("Company")
+        if remaining < data:
+            raise forms.ValidationError("There is remaining {} Business Tickets left".format(
+                remaining
+            ))
+        return data
+
+    def validate_TRSS(self):
+        data = self.cleaned_data['TRSS']
+        remaining = TicketPrice.objects.remaining("Student")
+        if remaining < data:
+            raise forms.ValidationError("There is remaining {} Student Ticket(s) left".format(
+                remaining
+            ))
+        return data
+
+    def validate_TRSP(self):
+        data = self.cleaned_data['TRSP']
+        remaining = TicketPrice.objects.remaining("Personal")
+        if remaining < data:
+            raise forms.ValidationError("There is remaining {} Personal Tickets left".format(
+                remaining
+            ))
+        return data
+
+
     def clean(self):
         cleaned_data = super(PurchaseForm, self).clean()
         company, student, personal = self.get_data(cleaned_data)
         if not company and not student and not personal:
             raise forms.ValidationError("Ticket Quantity must be inputed")
+        if personal:
+            data = cleaned_data['TRSP']
+            remaining = Ticket.objects.remaining("Personal")
+            if remaining < data:
+                raise forms.ValidationError("There is remaining {} Personal Tickets left".format(
+                    remaining
+                ))
+        if student:
+            data = cleaned_data['TRSS']
+            remaining = Ticket.objects.remaining("Student")
+            if remaining < data:
+                raise forms.ValidationError("There is remaining {} Student Ticket(s) left".format(
+                    remaining
+                ))
+        if company:
+            data = cleaned_data['TRSC']
+            remaining = Ticket.objects.remaining("Company")
+            if remaining < data:
+                raise forms.ValidationError("There is remaining {} Business Tickets left".format(
+                    remaining
+                ))
         return cleaned_data
 
     def save(self, user, coupon=0):
@@ -43,10 +92,11 @@ class PurchaseForm(forms.Form):
                 tick = Ticket.create(user=user, ticket_name=ticket[1].name)
                 tick.quantity = ticket[0]
                 tick.ticket_type = ticket[1]
-                tick.amount = tick.quantity * \
-                    tick.ticket_type.amount * (100 - coupon) / 100
-                tick.save()
-                tickets.append(tick)
+                if tick.ticket_type.current_price:
+                    tick.amount = tick.quantity * \
+                        tick.ticket_type.amount * (100 - coupon) / 100
+                    tick.save()
+                    tickets.append(tick)
         if len(tickets) > 1:
             Ticket.objects.filter(pk__in=[x.pk for x in tickets]).update(
                 multiple_tickets=True
@@ -80,7 +130,7 @@ class PurchaseView(TemplateView):
         ticket_price = TicketPrice.objects.all()
 
         def amount(y):
-            return [x.amount for x in ticket_price if x.name == y][0]
+            return [x.current_price for x in ticket_price if x.name == y][0]
         tickets = [
             {'data_fare': 'TRSS', 'amount': amount('Student')},
             {'data_fare': 'TRSP', 'amount': amount("Personal")},
