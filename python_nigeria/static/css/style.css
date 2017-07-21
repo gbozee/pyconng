@@ -7514,9 +7514,6 @@ button.close {
   user-select: none;
   -webkit-tap-highlight-color: transparent; }
 
-.grabbing {
-  cursor: url(grabbing.png) 8 8, move; }
-
 .owl-carousel .owl-wrapper, .owl-carousel .owl-item {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -8037,7 +8034,6 @@ html[xmlns] .slides {
   height: 50px;
   margin: -20px 0 0;
   display: block;
-  background: url(../img/icons/bg_direction_nav.png) no-repeat 0 0;
   position: absolute;
   top: 50%;
   z-index: 10;
@@ -10775,7 +10771,6 @@ nav a#pull {
   background-color: #fe4918; }
 
 .layout_color {
-  background: url(../img/color-scheme/light.jpg) no-repeat top center;
   width: 142px;
   height: 30px;
   display: inline-block;
