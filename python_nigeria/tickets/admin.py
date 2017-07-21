@@ -1,7 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Ticket, TicketPrice, Coupon
+from .models import (
+    Ticket, TicketPrice, Coupon, TicketSale
+)
 
 
 @admin.register(Ticket)
@@ -12,7 +14,7 @@ class TicketAdmin(admin.ModelAdmin):
 
 @admin.register(TicketPrice)
 class TicketPriceAdmin(admin.ModelAdmin):
-    list_display = ['name', 'amount', 'current_price','early_price_count','regular_count', 'total','remaining']
+    list_display = ['name', 'amount', 'current_price', 'early_price_count', 'regular_count', 'total', 'remaining']
 
     def total(self, obj):
         return obj.purchased_count
@@ -33,3 +35,8 @@ class CouponAdmin(admin.ModelAdmin):
 
     def mark_as_expired(self, request, queryset):
         queryset.update(expired=True)
+
+
+@admin.register(TicketSale)
+class TicketSaleAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'diet', 'tagline','ticket']

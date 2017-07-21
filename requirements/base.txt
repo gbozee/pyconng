@@ -45,3 +45,5 @@ pinax-pages==0.4.2
 django-waffle==0.11.1
 django-import-export==0.5.1
 git+git://github.com/pinax/symposion.git
+django-hijack==2.1.4
+django-hijack-admin==2.1.4

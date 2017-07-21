@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
+from hijack_admin.admin import HijackUserAdminMixin
 
 User = get_user_model()
 admin.site.unregister(User)
@@ -18,8 +19,10 @@ class UserResource(resources.ModelResource):
                    'is_staff',)
 
 
-class UserAdmin(UserAdmin, ImportExportModelAdmin):
+class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
     resource_class = UserResource
-
+    list_display = UserAdmin.list_display + (
+        'hijack_field',  # Hijack button
+    )
 
 admin.site.register(User, UserAdmin)

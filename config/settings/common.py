@@ -76,6 +76,9 @@ THIRD_PARTY_APPS = (
     "symposion.schedule",
     "symposion.sponsorship",
     "symposion.teams",
+    'hijack',
+    'compat',
+    'hijack_admin',
 )
 
 # Apps specific for this project go here.
@@ -318,3 +321,7 @@ THEME_CONTACT_EMAIL = 'hello@pycon.us'
 PAYSTACK_BASE_URL = "https://api.paystack.co"
 PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY", default="sk_test_a551e347b4fc7af40b897f1fc217ce3642d1faa7")
 PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY", default="pk_test_fbc2f1812af67479da1306edc72890e0702f052e")
+
+HIJACK_LOGIN_REDIRECT_URL = '/dashboard/'  # Where admins are redirected to after hijacking a user
+HIJACK_LOGOUT_REDIRECT_URL = '/admin/auth/user/'  # Where admins are redirected to after releasing a user
+HIJACK_ALLOW_GET_REQUESTS = True

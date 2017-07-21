@@ -1617,7 +1617,7 @@ h4 { font-size: 20px; font-size: 2rem; font-weight: bold; margin: 1em 0 0.5em 0;
 .ticket .preview .tagline { color: #2b2a26; font-style: italic; margin-bottom: 0.75em; }
 .ticket .preview .fa-star { color: gold; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); }
 
-.ticket.conference .preview h2 { background: #ffb81c; }
+.ticket.conference .preview h2 { background: #1cff77; }
 
 .ticket.partner .preview h2 { background: #301D1D; }
 

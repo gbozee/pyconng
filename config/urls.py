@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^account/login/$', o_views.NewLoginView.as_view(), name='account_login'),
     url(r'^speaker/edit/(?:(?P<pk>\d+)/)?$', o_views.NewSpeakerEditView.as_view(),
         name='speaker_edit'),
+        url(r'^hijack/', include('hijack.urls')),
     url(r'^account/', include('account.urls')),
     url(r'^contact/', include('contact_form.urls')),
     url(r'^admin/', include(admin.site.urls)),

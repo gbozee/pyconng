@@ -17,16 +17,18 @@
 <div class="poster-wrapper">
   <div class="container">
     
-{% if request.user.is_staff %}
+{% if my_ticket %}
     <div class="row" style="margin-bottom: 20px;">
       <div class="col-md-3">
-<a href="{% url "tickets:detail" %}" class="btn btn-primary btn-block">View Ticket</a>
+<a href="{% url "tickets:detail" my_ticket.ticket_id %}" class="btn btn-primary btn-block">View Ticket</a>
       
       </div>
-      <div class="col-md-3">
-<a href="#" class="btn btn-primary btn-block">View Schedule</a>
-      
-      </div>
+      {% if request.user.is_staff %}
+            <div class="col-md-3">
+              <a href="#" class="btn btn-primary btn-block">View Schedule</a>
+            
+            </div>
+      {% endif %}
       {% comment %}<div class="col-md-3">
 <a href="" class="btn btn-primary btn-block"></a>
       </div>{% endcomment %}
@@ -166,15 +168,23 @@
                 <tbody>
                   <tr>
                       <th>Orders</th>
+                      <th>Qty</th>
                       <th>Date</th>
-                      <th>Invoice</th>
+                      <th>Action</th>
                   </tr>
                   
                   {% for order in orders %}
                       <tr>
-                        <td>{{order.pk}}</td>
+                        <td>
+                        <a href="{% if not order.created_tickets %}{% url 'tickets:create_ticket' order.pk  %}{% else %}{% url 'tickets:detail' order.pk %}{% endif %}">{{order.pk}}</a>
+                         </td>
+                        <td>{{order.quantity}}</td>
                         <td>	{{order.date_paid|date:"d M o"}} </td>
-                        <td> N/A </td>
+                        <td>{% if order.created_tickets %}
+                        N/A
+                        {% else %}
+                        <a href="{% url 'tickets:create_ticket' order.pk %}" class="btn btn-sm btn-primary">Update Ticket details</a>
+                        {% endif %}  </td>
                                 
                   </tr>
                       {% endfor %}

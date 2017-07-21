@@ -32,7 +32,7 @@ from django.core.mail import send_mail
 from account.views import LoginView
 from account.forms import LoginUsernameForm
 from account.decorators import login_required
-from python_nigeria.tickets.models import Ticket
+from python_nigeria.tickets.models import Ticket,TicketSale
 
 class LoginForm(LoginUsernameForm):
     username = forms.CharField(label=_("Username/Email"), max_length=30)
@@ -182,6 +182,6 @@ def dashboard(request):
     if request.session.get("pending-token"):
         return redirect("speaker_create_token",
                         request.session["pending-token"])
-    orders = Ticket.objects.filter(user=request.user,status=Ticket.PAYED)
-    
-    return render(request, "dashboard.html",{"orders":orders})
+    orders = Ticket.objects.not_booked(request.user)
+    my_ticket = TicketSale.objects.filter(user=request.user).first()
+    return render(request, "dashboard.html",{"orders":orders,'my_ticket':my_ticket})

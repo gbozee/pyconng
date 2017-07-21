@@ -2,7 +2,7 @@ from django.db import models
 from config.utils import PayStack, generate_code
 from django.conf import settings
 from django.utils import timezone
-
+from django.db import transaction
 
 class Coupon(models.Model):
     value = models.CharField(max_length=10)
@@ -14,12 +14,12 @@ class TicketPriceQuerySet(models.QuerySet):
     def with_tickets_purchased(self):
         return self.filter(ticket__status=Ticket.PAYED).annotate(purchased_count=models.Sum('ticket__quantity'))
 
-    
+
 class TicketPrice(models.Model):
     name = models.CharField(max_length=100, blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     early_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
-    early_price_count = models.IntegerField(default=0) 
+    early_price_count = models.IntegerField(default=0)
     regular_count = models.IntegerField(default=0)
     objects = TicketPriceQuerySet.as_manager()
 
@@ -29,9 +29,9 @@ class TicketPrice(models.Model):
         'Student': {"amount": 3000, "count": 5}
     }
     REGULAR = {
-        'Company':{"amount": 20000, "count": 60},
-        'Personal':{"amount": 10000, "count": 120},
-        'Student':{"amount": 4000, "count": 20},
+        'Company': {"amount": 20000, "count": 60},
+        'Personal': {"amount": 10000, "count": 120},
+        'Student': {"amount": 4000, "count": 20},
     }
 
     def __str__(self):
@@ -40,17 +40,16 @@ class TicketPrice(models.Model):
     @property
     def current_price(self):
         current_count = Ticket.objects.ticket_type_purchased_count(
-            self.name,self.early_price_count
+            self.name, self.early_price_count
         )
         if current_count:
             return self.early_price
         current_count = Ticket.objects.ticket_type_purchased_count(
-            self.name,self.regular_count+self.early_price_count
+            self.name, self.regular_count + self.early_price_count
         )
         if current_count:
             return self.amount
         return None
-        
 
     @classmethod
     def populate_count_price(cls):
@@ -92,14 +91,16 @@ class TicketQuerySet(models.QuerySet):
 
     def remaining(self, _type_name):
         tt = TicketPrice.objects.get(name=_type_name)
-        count = self.filter(ticket_type__name=_type_name,status=Ticket.PAYED)\
+        count = self.filter(ticket_type__name=_type_name, status=Ticket.PAYED)\
             .aggregate(
                 purchased_count=models.Sum('quantity'))['purchased_count']
         return tt.early_price_count + tt.regular_count - count
 
+    def not_booked(self, user):
+        return self.filter(user=user, status=Ticket.PAYED).annotate(cc=models.Count('ticketsale'))\
+            .filter(cc=0)
 
 
-   
 class Ticket(models.Model):
     ISSUED = 1
     PAYED = 2
@@ -119,6 +120,15 @@ class Ticket(models.Model):
     ticket_type = models.ForeignKey(TicketPrice, null=True, blank=True)
     quantity = models.IntegerField(default=1)
     multiple_tickets = models.BooleanField(default=False)
+    created_tickets = models.BooleanField(default=False)
+
+    @property
+    def full_name(self):
+        full_name = "%s %s" % (self.user.first_name, self.user.last_name)
+        return full_name.strip()
+
+    def __str__(self):
+        return self.pk
 
     @staticmethod
     def create(user=None, **kwargs):
@@ -162,3 +172,34 @@ class Ticket(models.Model):
         if self.pk in data:
             Ticket.objects.filter(
                 user=self.user, multiple_tickets=True).update(status=self.PAYED)
+
+
+    @transaction.atomic
+    def create_sales(self, **kwargs):
+        for x in range(self.quantity):
+            w = TicketSale(**kwargs)
+            w.ticket = self
+            w.user = self.user
+            w.save()
+        self.created_tickets = True
+        self.save()
+        return self
+
+class TicketSale(models.Model):
+    ticket = models.ForeignKey(Ticket)
+    full_name = models.CharField(max_length=150)
+    diet = models.CharField(max_length=30, choices=(
+        ('Omnivorous', 'Omnivorous'),
+        ('Vegetarian', 'Vegetarian'),
+        ('Others', 'Others'),), default="Omnivorous")
+    tagline = models.CharField(max_length=100)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="assigned_tickets")
+
+
+    @property
+    def name(self):
+        return self.ticket.ticket_type.name
+
+    @property
+    def the_ticket_id(self):
+        return "%04d" % self.pk

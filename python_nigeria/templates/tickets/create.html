@@ -1,0 +1,56 @@
+{% extends "symposion/speakers/base.html" %}
+{% load add_attr %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load pinax_boxes_tags %}
+{% load static from staticfiles %}
+
+{% block page_title %}{% trans "Create Ticket Detail" %}{% endblock %}
+
+{% block body %}
+<div class="small-header poster-wrapper">
+  <h1>{% trans "Create Ticket Detail" %}</h1>
+</div>
+
+<div class="poster-wrapper">
+  <div class="container">
+    <div class="row">
+        <div  class="col-md-6 col-md-offset-3">
+        {% box "ticket-create" %}
+
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <legend>{% trans "Create Ticket" %}</legend>
+            
+                    <div class="control-group  field textinput charfield">
+                      <label class="control-label" for="id_t4446-tagline">Full Name</label>
+                      <div class="controls">
+                        {{ticket_form.full_name|add_attributes:"class:form-control"}}
+                      </div>
+                    </div>
+
+                    <div class="control-group  field textinput charfield">
+                      <label class="control-label" for="id_t4446-tagline">Tagline</label>
+                      <div class="controls">
+                        {{ticket_form.tagline|add_attributes:"class:form-control"}}
+                        <span class="help-block">a (funny?) tagline that will be displayed on the badge<br>Eg. CEO of FooBar Inc.; Super Python fanboy; Simple is better than complex.</span>
+                      </div>
+                    </div>
+
+                    <div class="control-group  field select typedchoicefield">
+                      <label class="control-label" for="id_t4446-diet">Diet <span>(required)</span></label>
+                      <div class="controls">
+                        {{ticket_form.diet|add_attributes:"class:form-control"}}
+
+                      </div>
+                    </div>
+                    <br />
+            <div class="form-actions">
+                <input class="btn btn-primary" type="submit" value="Save" />
+            </div>
+        </form>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

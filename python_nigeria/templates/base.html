@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-{% load static %}
+{% load staticfiles %}
+
+{% load hijack_tags %}
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -25,6 +27,7 @@
 
 		<!-- TEMPLATE CSS -->
 		<link href="{% static 'css/style.css' %}" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
 
 		<!-- INLINE CSS STYLES -->
 		{% block stylings %}
@@ -35,6 +38,7 @@
 
 {% block body_tag %}
 <body>
+	{% hijack_notification %}
 		<!-- PRELOADER
 		============================================= -->
 		<div class="animationload" style="display:none">

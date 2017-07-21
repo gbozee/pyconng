@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import (
+    TemplateView, RedirectView, DetailView, FormView)
 from django.http.response import JsonResponse
 from django import forms
 from django.conf import settings
@@ -9,8 +10,11 @@ import logging
 from config.utils import PayStack
 import json
 # Create your views here.
-from .models import Ticket, TicketPrice, Coupon
+from .models import (
+    Ticket, TicketPrice, Coupon, TicketSale)
 logger = logging.getLogger(__name__)
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 
 class TicketHomeView(TemplateView):
@@ -54,7 +58,6 @@ class PurchaseForm(forms.Form):
                 remaining
             ))
         return data
-
 
     def clean(self):
         cleaned_data = super(PurchaseForm, self).clean()
@@ -148,7 +151,8 @@ class CheckoutView(TemplateView):
 
         response = super(CheckoutView, self).get(request, *args, **kwargs)
         if self.item.status == Ticket.PAYED:
-            messages.warning(self.request, "You have already paid for this ticket order")
+            messages.warning(
+                self.request, "You have already paid for this ticket order")
             self.item.update_others()
             return redirect('dashboard')
         return response
@@ -165,8 +169,37 @@ class CheckoutView(TemplateView):
         return context
 
 
-class TicketDetailPage(TemplateView):
+class TicketEditForm(forms.ModelForm):
+    class Meta:
+        model = TicketSale
+        fields = ['full_name', 'diet', 'tagline']
+
+    def save(self, **kwargs):
+        return super().save(commit=kwargs.get('commit', True))
+
+
+class TicketDetailPage(DetailView):
     template_name = 'tickets/detail.html'
+    model = Ticket
+    pk_url_kwarg = 'order'
+
+    def get(self, request, *args, **kwargs):
+        result = super().get(request, *args, **kwargs)
+        if not self.object.created_tickets:
+            messages.error(request, "This ticket appears to be invalid")
+            return redirect('dashboard')
+        return result
+
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        sales = self.object.ticketsale_set.select_related(
+            'ticket__ticket_type').filter(user=self.request.user)
+        if 'forms' not in kwargs:
+            forms = [{'form': TicketEditForm(
+                instance=x), 'ticket': x} for x in sales]
+            context.update(tickets=forms)
+        return context
 
 
 def valid_coupons(request):
@@ -217,3 +250,101 @@ class PaystackCallBackView(RedirectView):
             self.request, "Sorry there was an error in this transaction. contact info@tuteria.com")
         d = d.change_order()
         return reverse('tickets:checkout_view', args=[d.order])
+
+
+class TicketCreateForm(forms.Form):
+    full_name = forms.CharField()
+    tagline = forms.CharField()
+    diet = forms.ChoiceField(choices=(
+        ('Omnivorous', 'Omnivorous'),
+        ('Vegetarian', 'Vegetarian'),
+        ('Others', 'Others'),))
+
+    def save(self, ticket):
+        if not ticket.created_tickets:
+            return ticket.create_sales(**self.cleaned_data)
+        return ticket
+
+
+class CreateTicketview(DetailView):
+    model = Ticket
+    pk_url_kwarg = 'order'
+
+    template_name = 'tickets/create.html'
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = TicketCreateForm(request.POST)
+        if form.is_valid():
+            result = form.save(self.object)
+            return redirect(reverse("tickets:detail", args=[result.pk]))
+        messages.error(request, "There are errors with the form")
+        return self.render_to_response(
+            self.get_context_data(
+                ticket_form=form
+            ))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if not 'ticket_form' in kwargs:
+            form = TicketCreateForm(initial={
+                'full_name': self.object.full_name
+            })
+            context.update(ticket_form=form)
+        return context
+
+
+class TicketTransferForm(forms.Form):
+    email = forms.EmailField()
+
+    def clean(self):
+        data = super().clean()
+        if not User.objects.filter(email=data.get('email')).exists():
+            self.add_error('email', "This email doesn't exist on the platform")
+        return data
+
+    def save(self, ticket=None):
+        email = self.cleaned_data['email']
+        old_owner = ticket.user
+        email_user = User.objects.get(email=email)
+        ticket.user = email_user
+        ticket.save()
+        # send email to new user on ticket
+        send_mail(
+            "Ticket Transfer",
+            ("{} just trasfered a PyconNG {} ticket \n. "
+             "Go to the dashboard to view details. \n"
+             "{}.\n Ensure you update the ticket details.").format(old_owner.email, ticket.name,
+                          "https://www.pycon.ng/dashboard"), 'noreply@pycon.ng', [email])
+        return ticket
+
+
+class SalesTicketView(RedirectView):
+    query_string = True
+
+    def get_object(self):
+        return TicketSale.objects.get(pk=self.kwargs['pk'])
+
+    def get_redirect_url(self, *args, **kwargs):
+        self.object = self.get_object()
+        request = self.request
+        transfer = request.GET.get('transfer')
+        print(request.GET)
+        if transfer:
+            form = TicketTransferForm(request.POST)
+        else:
+            form = TicketEditForm(request.POST, instance=self.object)
+        if form.is_valid():
+            result = form.save(ticket=self.object)
+            if transfer:
+                messages.success(request, "Ticket has be transfered to {}".format(
+                    result.user.email
+                ))
+        else:
+            print(form.errors)
+            if transfer:
+                messages.error(request,"The email doesn't exist")
+            else:
+                messages.error(
+                    request, "Please ensure all fields in the form is filled.")
+        return reverse('tickets:detail', args=[self.object.ticket.pk])
