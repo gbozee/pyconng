@@ -4,6 +4,7 @@ volumes:
   postgres_data: {}
   postgres_backup: {}
   media_backups: {}
+  static_backups: {}
 
 services:
   postgres:
