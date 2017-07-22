@@ -97,7 +97,7 @@ class PurchaseForm(forms.Form):
                 tick.ticket_type = ticket[1]
                 if tick.ticket_type.current_price:
                     tick.amount = tick.quantity * \
-                        tick.ticket_type.amount * (100 - coupon) / 100
+                        tick.ticket_type.current_price * (100 - coupon) / 100
                     tick.save()
                     tickets.append(tick)
         if len(tickets) > 1:
