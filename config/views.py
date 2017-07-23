@@ -1,4 +1,7 @@
 from __future__ import unicode_literals
+import datetime
+import pytz
+from django.utils import timezone
 try:
     from io import StringIO
 except:
@@ -184,4 +187,9 @@ def dashboard(request):
                         request.session["pending-token"])
     orders = Ticket.objects.not_booked(request.user)
     my_ticket = TicketSale.objects.filter(user=request.user).first()
-    return render(request, "dashboard.html",{"orders":orders,'my_ticket':my_ticket})
+    deadline = datetime.datetime(2017, 7, 28, 23, 59,00,00,pytz.UTC)
+    difference = deadline - timezone.now()
+    overide = request.user.email in ["pyconnigeria@pycon.ng"]
+    can_submit = difference.days > 0 or overide
+    return render(request, "dashboard.html",{"orders":orders,'my_ticket':my_ticket,
+'can_submit':can_submit})

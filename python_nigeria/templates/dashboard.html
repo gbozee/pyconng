@@ -51,9 +51,12 @@
               <a href="{% url "speaker_edit" %}" class="btn btn-primary btn-sm">
                   <i class="fa fa-pencil"></i> Edit your speaker profile
               </a>
-              <a href="{% url "proposal_submit" %}" class="btn btn-primary btn-sm">
+                {% if can_submit %}
+                  <a href="{% url "proposal_submit" %}" class="btn btn-primary btn-sm">
                   <i class="fa fa-plus-sign"></i> Submit a new proposal
               </a>
+                {% endif %}
+              
           </div>
           {% endif %}
         </div>
