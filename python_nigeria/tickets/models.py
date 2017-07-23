@@ -93,7 +93,7 @@ class TicketQuerySet(models.QuerySet):
         tt = TicketPrice.objects.get(name=_type_name)
         count = self.filter(ticket_type__name=_type_name, status=Ticket.PAYED)\
             .aggregate(
-                purchased_count=models.Sum('quantity'))['purchased_count']
+                purchased_count=models.Sum('quantity'))['purchased_count'] or 0
         return tt.early_price_count + tt.regular_count - count
 
     def not_booked(self, user):
