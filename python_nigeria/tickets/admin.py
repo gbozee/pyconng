@@ -39,4 +39,7 @@ class CouponAdmin(admin.ModelAdmin):
 
 @admin.register(TicketSale)
 class TicketSaleAdmin(admin.ModelAdmin):
-    list_display = ['full_name', 'diet', 'tagline','ticket']
+    list_display = ['the_ticket_id', 'full_name', 'diet', 'tagline','ticket']
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).order_by('pk')
