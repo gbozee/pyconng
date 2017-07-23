@@ -12,6 +12,8 @@ def common_code(code_dir):
             run("pwd")
             run("git pull")
             sudo("docker-compose build")
+            sudo("docker-compose kill django")
+            sudo("docker-compose rm django")
             sudo("docker-compose up -d")
 
 
