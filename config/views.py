@@ -36,6 +36,49 @@ from account.views import LoginView
 from account.forms import LoginUsernameForm
 from account.decorators import login_required
 from python_nigeria.tickets.models import Ticket,TicketSale
+from symposion.reviews.views import  (
+    access_not_permitted,get_object_or_404,ProposalBase,
+    ProposalSection,proposals_generator,ReviewAssignment
+)
+
+@login_required
+def review_section(request, section_slug, assigned=False, reviewed="all"):
+
+    if not request.user.has_perm("reviews.can_review_%s" % section_slug):
+        return access_not_permitted(request)
+
+    section = get_object_or_404(ProposalSection, section__slug=section_slug)
+    queryset = ProposalBase.objects.filter(kind__section=section.section)\
+        .select_related('speaker')
+
+    if assigned:
+        assignments = ReviewAssignment.objects.filter(user=request.user)\
+            .values_list("proposal__id")
+        queryset = queryset.filter(id__in=assignments)
+
+    # passing reviewed in from reviews.urls and out to review_list for
+    # appropriate template header rendering
+    if reviewed == "all":
+        queryset = queryset.select_related("result").select_subclasses()
+        reviewed = "all_reviews"
+    elif reviewed == "reviewed":
+        queryset = queryset.filter(reviews__user=request.user)
+        reviewed = "user_reviewed"
+    else:
+        queryset = queryset.exclude(reviews__user=request.user).exclude(
+            speaker__user=request.user)
+        reviewed = "user_not_reviewed"
+
+    proposals = proposals_generator(request, queryset)
+
+    ctx = {
+        "proposals": proposals,
+        "section": section,
+        "reviewed": reviewed,
+    }
+
+    return render(request, "symposion/reviews/review_list.html", ctx)
+
 
 class LoginForm(LoginUsernameForm):
     username = forms.CharField(label=_("Username/Email"), max_length=30)
@@ -194,7 +237,7 @@ def dashboard(request):
                         request.session["pending-token"])
     orders = Ticket.objects.not_booked(request.user)
     my_ticket = TicketSale.objects.filter(user=request.user).first()
-    deadline = datetime.datetime(2017, 7, 29, 23, 59,00,00,pytz.UTC)
+    deadline = datetime.datetime(2017, 7, 29, 11, 59,00,00,pytz.UTC)
     difference = deadline - timezone.now()
     overide = request.user.email in ["pyconnigeria@pycon.ng"]
     can_submit = difference.days > 0 or overide
