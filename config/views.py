@@ -48,6 +48,13 @@ class NewLoginView(LoginView):
 
 class NewSpeakerEditForm(SpeakerForm):
     """Add extra Validation to the SpeakerEdit form."""
+    class Meta(SpeakerForm.Meta):
+        help_texts = {
+            'biography':_("A little bit about you.  Edit using "
+                "<a href='http://warpedvisions.org/projects/markdown-cheat-sheet/' "
+                "target='_blank'>"
+                "Markdown</a>.")
+        }
 
     def clean_photo(self):
         """Make sure photo isn't greater than 600kb."""
