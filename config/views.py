@@ -187,7 +187,7 @@ def dashboard(request):
                         request.session["pending-token"])
     orders = Ticket.objects.not_booked(request.user)
     my_ticket = TicketSale.objects.filter(user=request.user).first()
-    deadline = datetime.datetime(2017, 7, 28, 23, 59,00,00,pytz.UTC)
+    deadline = datetime.datetime(2017, 7, 29, 23, 59,00,00,pytz.UTC)
     difference = deadline - timezone.now()
     overide = request.user.email in ["pyconnigeria@pycon.ng"]
     can_submit = difference.days > 0 or overide
