@@ -101,14 +101,15 @@ class NewSpeakerEditForm(SpeakerForm):
 
     def clean_photo(self):
         """Make sure photo isn't greater than 600kb."""
-        photo = self.cleaned_data['photo']
-        photo_size = photo.size
+        photo = self.cleaned_data.get('photo')
+        if photo:
+            photo_size = photo.size
 
-        if photo_size > 600000:
-            raise forms.ValidationError(
-                _('The image size must not be more than 600kb '
-                  'Please upload a smaller one.')
-                )
+            if photo_size > 600000:
+                raise forms.ValidationError(
+                    _('The image size must not be more than 600kb '
+                    'Please upload a smaller one.')
+                    )
         return photo
 
 
