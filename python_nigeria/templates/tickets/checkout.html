@@ -1,5 +1,5 @@
 {% extends "apply.html" %}
-{% load humanize %}
+{% load humanize pinax_boxes_tags %}
 {% block stylings %}
 {{block.super}}
 <style>
@@ -18,6 +18,8 @@
 {% block content %}
 <div class="container margin-top-50">
     <div class="row">
+        {% box "ticket_purchase_notice" %}
+                
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4>Order Summary</h4>
