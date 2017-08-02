@@ -53,7 +53,7 @@ urlpatterns += [
     # url(r'^reviews/section/(?P<section_slug>[\w\-]+)/all/$', o_views.review_section, {"reviewed": "all"}, name="review_section"),
     
     url(r'^reviews/', include('symposion.reviews.urls')),
-    # url(r'^schedule/', include('symposion.schedule.urls')),
+    url(r'^schedule/', include('symposion.schedule.urls')),
     url(r'^speaker/', include('symposion.speakers.urls')),
     url(r'^sponsors/apply', o_views.sponsor_apply, name="sponsor_apply"),
     url(r'^sponsors/', include('symposion.sponsorship.urls')),

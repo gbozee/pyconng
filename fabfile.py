@@ -3,7 +3,7 @@ from fabric.api import local, run, cd, env, sudo, settings, lcd
 from fabric.decorators import hosts
 env.hosts = ['pycon@104.236.214.189']
 
-password = os.getenv('PRODUCTION_PASSWORD', '')
+password = os.getenv('PYCON_PRODUCTION_PASSWORD', '')
 
 
 def common_code(code_dir):

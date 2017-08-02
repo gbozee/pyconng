@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-{% load static from staticfiles %}
-{% load proposal_tags %}
+{% load static from staticfiles  %}
+{% load proposal_tags pinax_boxes_tags %}
 {% load review_tags %}
 {% load teams_tags %}
 
@@ -16,7 +16,9 @@
 </div>
 <div class="poster-wrapper">
   <div class="container">
-    
+    {% if orders|length > 0 and not my_ticket %}
+    {% box "ticket_purchase_notice" %}
+    {% endif %}
 {% if my_ticket %}
     <div class="row" style="margin-bottom: 20px;">
       <div class="col-md-3">
@@ -25,7 +27,7 @@
       </div>
       {% if request.user.is_staff %}
             <div class="col-md-3">
-              <a href="#" class="btn btn-primary btn-block">View Schedule</a>
+              <a href="/schedule" class="btn btn-primary btn-block">View Schedule</a>
             
             </div>
       {% endif %}

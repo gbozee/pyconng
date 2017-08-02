@@ -14,8 +14,20 @@
 
 {% block content %}
 
+
+<div class="poster-wrapper schedule-wrapper">
+  <div class="container">
+    <div class="row">
+
+    <div class="page-head">
+
+        {% block breadcrumbs %}{% endblock %}
+    </div>
+    
+    
 <!-- EVENT SCHEDULE
 ============================================= -->
+<style>.wide-100{padding-top:50px}</style>
 <section id="schedule" class="bg-grey wide-100 schedule-section division">
     <div class="container">
 
@@ -26,6 +38,7 @@
 
                 <!-- Title -->
                 <h3>Conference <span>Schedule</span></h3>
+                {% box "schedule_top" %}
                 <p>Eventry full schedule of keynotes, sessions & workshops</p>
 
             </div>
@@ -37,20 +50,16 @@
             <div class="col-md-12">
                 <div id="tabs-holder">
                     <div class="tab-content">
-
-
                         <!-- SCHEDULE TABS NAV -->
                         <div class="row">
-
                             <!-- Schedule Tabs Navigation -->
                             <div class="col-md-12 tabs-nav m-bottom-50 text-center">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li class="active"><a href="#tab-1" role="tab" data-toggle="tab"><span>Day 1, Sunday</span> 11 September 2016</a></li>
-                                    <li><a href="#tab-2" role="tab" data-toggle="tab"><span>Day 2, Monday</span> 12 September 2016</a></li>
-                                    <li><a href="#tab-3" role="tab" data-toggle="tab"><span>Day 3, Tuesday</span> 13 September 2016</a></li>
+                                    <li class="active"><a href="#tab-1" role="tab" data-toggle="tab"><span>Day 1, Firday</span> 15 September 2017</a></li>
+                                    <li><a href="#tab-2" role="tab" data-toggle="tab"><span>Day 2, Saturday</span> 16 September 2017</a></li>
+                                    {% comment %} <li><a href="#tab-3" role="tab" data-toggle="tab"><span>Day 3, Tuesday</span> 13 September 2016</a></li> {% endcomment %}
                                 </ul>
                             </div>
-
                         </div>
 
 
@@ -506,230 +515,6 @@
 
                         </div>	<!-- END SCHEDULE TAB #2 CONTENT (DAY #2) -->
 
-
-                        <!-- SCHEDULE TAB #3 CONTENT (DAY #3) -->
-                        <div id="tab-3" class="tab-pane day-3">
-
-
-                            <!-- SCHEDULE EVENT #3-1 -->
-                            <div class="row schedule-event b-bottom grey">
-
-                                <!-- Event Time / Event Room -->
-                                <div class="col-md-2 event-data">
-                                    <span class="event-time">9:00AM</span>
-                                    <span class="event-room">Room 104B</span>
-                                </div>
-
-                                <!-- Event Speakers -->
-                                <div class="col-md-4 col-lg-3 event-speaker clearfix">
-
-                                    <!-- Keynote Speaker -->
-                                    <div class="keynote-speaker">
-                                        <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-8.jpg' %}" alt="Speaker Name"></div>
-                                        <div class="speaker-data">
-                                            <h5>Evelyn Martinez</h5>
-                                            <p>Founder, Company Name</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- Event Description -->
-                                <div class="col-md-6 col-lg-7 event-description">
-                                    <h4>Taciti sociosqu ad litora torquent per conubia</h4>
-                                    <p>Sed dui accumsan mollis in ac velit. Quisque erat diam, sodales vitae, consequat consequat nibh. Donec vel sapien augue cursus turpis nec velit sodales</p>
-
-                                    <!-- Description List -->
-                                    <ul class="event-description-list">
-                                        <li><i class="fa fa-angle-right" aria-hidden="true"></i> Cum sociis natoque et magnis dis parturient</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-
-                            <!-- SCHEDULE EVENT #3-2 -->
-                            <div class="row schedule-event b-bottom">
-
-                                <!-- Event Time / Event Room -->
-                                <div class="col-md-2 event-data">
-                                    <span class="event-time">11:00AM - 12:30PM</span>
-                                    <span class="event-room">Room 102D</span>
-                                </div>
-
-                                <!-- Event Speakers -->
-                                <div class="col-md-4 col-lg-3 event-speaker clearfix">
-
-                                    <!-- Keynote Speaker -->
-                                    <div class="keynote-speaker">
-                                        <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-1.jpg' %}" alt="Speaker Name"></div>
-                                        <div class="speaker-data">
-                                            <h5>Robert Peterson</h5>
-                                            <p>CEO of Company Name</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- Event Description -->
-                                <div class="col-md-6 col-lg-7 event-description">
-                                    <h4>Maecenas laoreet augue egestas vitae egestas</h4>
-                                    <p>Praesent eu elit aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Ut nulla. Vivamus bibendum,
-                                        nulla ut congue fringilla lorem
-                                    </p>
-                                </div>
-
-                            </div>
-
-
-                            <!-- SCHEDULE EVENT #3-3 -->
-                            <div class="row schedule-event b-bottom grey">
-
-                                <!-- Event Time/Event Room -->
-                                <div class="col-md-2 event-data">
-                                    <span class="event-time">1:00PM - 1:30PM</span>
-                                    <span class="event-room">Cafeteria</span>
-                                </div>
-
-                                <!-- Event Description -->
-                                <div class="col-md-10 event-description">
-                                    <h4>Afternoon Break</h4>
-                                    <p>Four fantastic types of coffee from the awesome CoffeeeBox Melbourne</p>
-                                </div>
-
-                            </div>
-
-
-                            <!-- SCHEDULE EVENT #3-4 -->
-                            <div class="row schedule-event b-bottom">
-
-                                <!-- Event Time / Event Room -->
-                                <div class="col-md-2 event-data">
-                                    <span class="event-time">2:00PM - 4:00PM</span>
-                                    <span class="event-room">Room 104C</span>
-                                </div>
-
-                                <!-- Event Speakers -->
-                                <div class="col-md-4 col-lg-3 event-speaker clearfix">
-
-                                    <!-- Keynote Speaker -->
-                                    <div class="keynote-speaker">
-                                        <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-7.jpg' %}" alt="Speaker Name"></div>
-                                        <div class="speaker-data">
-                                            <h5>Matthew Anderson</h5>
-                                            <p>Author of "Some Book"</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Keynote Speaker -->
-                                    <div class="keynote-speaker m-top-10">
-                                        <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-6.jpg' %}" alt="Speaker Name"></div>
-                                        <div class="speaker-data">
-                                            <h5>Charlotte Johnson</h5>
-                                            <p>Founder, Company Name</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- Event Description -->
-                                <div class="col-md-6 col-lg-7 event-description">
-                                    <h4>Maecenas laoreet augue egestas vitae egestas</h4>
-                                    <p>Praesent eu elit aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Ut nulla. Vivamus bibendum,
-                                        nulla ut congue fringilla lorem
-                                    </p>
-
-                                    <!-- Description List -->
-                                    <ul class="event-description-list">
-                                        <li><i class="fa fa-angle-right" aria-hidden="true"></i> Luctus neque rhoncus ipsum viverra</li>
-                                        <li><i class="fa fa-angle-right" aria-hidden="true"></i> Vitae auctor eros erat nec magna morbi</li>
-                                        <li><i class="fa fa-angle-right" aria-hidden="true"></i> Cum sociis natoque et magnis dis parturient</li>
-                                    </ul>
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- SCHEDULE EVENT #3-5 -->
-                            <div class="row schedule-event b-bottom grey">
-
-                                <!-- Event Time / Event Room -->
-                                <div class="col-md-2 event-data">
-                                    <span class="event-time">5:00PM - 7:30PM</span>
-                                    <span class="event-room">Room 103</span>
-                                </div>
-
-                                <!-- Event Speakers -->
-                                <div class="col-md-4 col-lg-3 event-speaker clearfix">
-
-                                    <!-- Keynote Speaker -->
-                                    <div class="keynote-speaker">
-                                        <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-8.jpg' %}" alt="Speaker Name"></div>
-                                        <div class="speaker-data">
-                                            <h5>Evelyn Martinez</h5>
-                                            <p>Founder, Company Name</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- Event Description -->
-                                <div class="col-md-6 col-lg-7 event-description">
-                                    <h4>Pulvinar phasele nibh, ac massa</h4>
-                                    <p>Maecenas laoreet augue egestas vitae volutpat suscipit egestas lobortis magna, amet mauris interdum lectus luctus</p>
-
-                                    <!-- Description List -->
-                                    <ul class="event-description-list">
-                                        <li><i class="fa fa-angle-right" aria-hidden="true"></i> Luctus neque rhoncus ipsum viverra</li>
-                                        <li><i class="fa fa-angle-right" aria-hidden="true"></i> Cum sociis natoque et magnis dis parturient</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-
-                            <!-- SCHEDULE EVENT #3-6 -->
-                            <div class="row schedule-event">
-
-                                <!-- Event Time / Event Room -->
-                                <div class="col-md-2 event-data">
-                                    <span class="event-time">8:30PM - 9:30PM</span>
-                                    <span class="event-room">Main Hall</span>
-                                </div>
-
-                                <!-- Event Description -->
-                                <div class="col-md-10 event-description">
-                                    <h4>Cocktail Reception</h4>
-                                    <p>Get to know fellow attendees over complimentary cocktails in the beautiful Any Place HalL atrium</p>
-                                    <p class="event-description-notice">*All attendees must be 21+. Nametag required. No guests.</p>
-                                </div>
-
-                            </div>
-
-
-                            <!-- SCHEDULE EVENT #3-7 -->
-                            <div class="row schedule-event grey">
-
-                                <!-- Event Time / Event Room -->
-                                <div class="col-md-2 event-data">
-                                    <span class="event-time">10:00PM - 12:00PM</span>
-                                    <span class="event-room">Bowling Club</span>
-                                </div>
-
-                                <!-- Event Description -->
-                                <div class="col-md-10 event-description">
-                                    <h4>After Party</h4>
-                                    <p>Close out the Eventry'16 conference with a bang at our always-incredible afterparty with a set from <strong>DJ DreamHouse</strong> (aka Storm).
-                                        Unwind with all your new friends at our fun-filled after party featuring games, music, and drinks</p>
-                                    <p class="event-description-notice">*All attendees must be 21+. Nametag required. No guests.</p>
-                                </div>
-
-                            </div>
-
-                        </div>	<!-- END SCHEDULE TAB #3 CONTENT (DAY #3) -->
-
-
                     </div>
                 </div>
             </div>
@@ -746,22 +531,6 @@
 
     </div>	  <!-- End container -->
 </section>	<!-- END EVENT SCHEDULE -->
-
-
-
-<div class="blog-header poster-wrapper ">
-  <h1>Conference Schedule</h1>
-</div>
-
-<div class="poster-wrapper schedule-wrapper">
-  <div class="container">
-    <div class="row">
-
-    <div class="page-head">
-
-        {% block breadcrumbs %}{% endblock %}
-    </div>
-    {% box "schedule_top" %}
 
     {% for section in sections %}
         {% cache 600 "schedule-table" section.schedule.section %}
