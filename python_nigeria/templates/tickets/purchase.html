@@ -126,15 +126,20 @@ h3.no-margin{
                             <th colspan="2">Student {% if tickets.0.amount < 4000 %}
                              <small>(Early Bird)</small>
                             {% endif %} </th>
-                            <th colspan="2">Personal {% if tickets.0.amount < 6000 %}
+                            <th colspan="2">Personal {% if tickets.1.amount < 6000 %}
                              <small>(Early Bird)</small>
                             {% endif %} </th>
-                            <th colspan="2">Business {% if tickets.0.amount < 12000 %}
+                            <th colspan="2">Business {% if tickets.2.amount < 12000 %}
+                             <small>(Early Bird)</small>
+                            {% endif %} </th>
+                            <th colspan="2">Paetron {% if tickets.3.amount < 50000 %}
                              <small>(Early Bird)</small>
                             {% endif %} </th>
                         </tr>
                         <tr>
                             <th>&nbsp;</th>
+                            <th>Price</th>
+                            <th>Q.ty</th>
                             <th>Price</th>
                             <th>Q.ty</th>
                             <th>Price</th>

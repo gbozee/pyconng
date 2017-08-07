@@ -25,18 +25,29 @@ class PurchaseForm(forms.Form):
     TRSC = forms.IntegerField(required=False)
     TRSS = forms.IntegerField(required=False)
     TRSP = forms.IntegerField(required=False)
+    TRSPP = forms.IntegerField(required=False)
 
     def get_data(self, cleaned_data):
         company = cleaned_data.get('TRSC')
         student = cleaned_data.get('TRSS')
         personal = cleaned_data.get('TRSP')
-        return company, student, personal
+        paetron = cleaned_data.get('TRSPP')
+        return company, student, personal, paetron
 
     def validate_TRSC(self):
         data = self.cleaned_data['TRSC']
         remaining = TicketPrice.objects.remaining("Company")
         if remaining < data:
             raise forms.ValidationError("There is remaining {} Business Tickets left".format(
+                remaining
+            ))
+        return data
+
+    def validate_TRSPP(self):
+        data = self.cleaned_data['TRSPP']
+        remaining = TicketPrice.objects.remaining("Paetron")
+        if remaining < data:
+            raise forms.ValidationError("There is remaining {} Paetron Tickets left".format(
                 remaining
             ))
         return data
@@ -61,8 +72,9 @@ class PurchaseForm(forms.Form):
 
     def clean(self):
         cleaned_data = super(PurchaseForm, self).clean()
-        company, student, personal = self.get_data(cleaned_data)
-        if not company and not student and not personal:
+        company, student, personal,paetron = self.get_data(cleaned_data)
+        
+        if not company and not student and not personal and not paetron:
             raise forms.ValidationError("Ticket Quantity must be inputed")
         if personal:
             data = cleaned_data['TRSP']
@@ -78,6 +90,13 @@ class PurchaseForm(forms.Form):
                 raise forms.ValidationError("There is remaining {} Student Ticket(s) left".format(
                     remaining
                 ))
+        if paetron:
+            data = cleaned_data['TRSPP']
+            remaining = Ticket.objects.remaining("Paetron")
+            if remaining < data:
+                raise forms.ValidationError("There is remaining {} Paetron Tickets left".format(
+                    remaining
+                ))
         if company:
             data = cleaned_data['TRSC']
             remaining = Ticket.objects.remaining("Company")
@@ -88,9 +107,9 @@ class PurchaseForm(forms.Form):
         return cleaned_data
 
     def save(self, user, coupon=0):
-        company, student, personal = self.get_data(self.cleaned_data)
+        company, student, personal,paetron = self.get_data(self.cleaned_data)
         tickets = []
-        for ticket in zip([company, student, personal], TicketPrice.create_ticket_types()):
+        for ticket in zip([company, student, personal,paetron], TicketPrice.create_ticket_types()):
             if ticket[0]:
                 tick = Ticket.create(user=user, ticket_name=ticket[1].name)
                 tick.quantity = ticket[0]
@@ -137,7 +156,8 @@ class PurchaseView(TemplateView):
         tickets = [
             {'data_fare': 'TRSS', 'amount': amount('Student')},
             {'data_fare': 'TRSP', 'amount': amount("Personal")},
-            {'data_fare': 'TRSC', 'amount': amount("Company")}
+            {'data_fare': 'TRSC', 'amount': amount("Company")},
+            {'data_fare': 'TRSPP', 'amount': amount("Paetron")}
         ]
         context.update(tickets=tickets)
         return context

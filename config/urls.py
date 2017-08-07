@@ -14,7 +14,7 @@ urlpatterns = [
     # Examples:
     # url(r'^404$', TemplateView.as_view(template_name='500.html'), name='404'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^home/$', TemplateView.as_view(template_name='home.html'), name='home_page'),
+    # url(r'^home/$', TemplateView.as_view(template_name='home.html'), name='home_page'),
     # url(r'^home/$', o_views.HomeRedirectView.as_view(), name='home_page'),
     url(r'^$', TemplateView.as_view(
         template_name='pre-conference.html'), name='home'),

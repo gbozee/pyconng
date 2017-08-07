@@ -13,6 +13,7 @@ class Coupon(models.Model):
 class TicketPriceQuerySet(models.QuerySet):
     def with_tickets_purchased(self):
         return self.filter(ticket__status=Ticket.PAYED).annotate(purchased_count=models.Sum('ticket__quantity'))
+        # return self.annotate(purchased_count=models.Sum('ticket__quantity'))
 
 
 class TicketPrice(models.Model):
@@ -68,7 +69,8 @@ class TicketPrice(models.Model):
         company, _ = cls.objects.get_or_create(name='Company')
         personal, _ = cls.objects.get_or_create(name='Personal')
         student, _ = cls.objects.get_or_create(name='Student')
-        return company, student, personal
+        paetron,_ = cls.objects.get_or_create(name="Paetron")
+        return company, student, personal,paetron
 
 
 class TicketQuerySet(models.QuerySet):
