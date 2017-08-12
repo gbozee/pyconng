@@ -15,7 +15,7 @@ from zipfile import ZipFile, ZipInfo
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib import messages
-from django.views.generic import RedirectView, FormView
+from django.views.generic import RedirectView, FormView,TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import render_to_response, redirect, get_object_or_404
@@ -40,7 +40,7 @@ from symposion.reviews.views import  (
     access_not_permitted,get_object_or_404,ProposalBase,
     ProposalSection,proposals_generator,ReviewAssignment
 )
-
+from symposion.sponsorship.models import Sponsor
 @login_required
 def review_section(request, section_slug, assigned=False, reviewed="all"):
 
@@ -244,3 +244,26 @@ def dashboard(request):
     can_submit = difference.days > 0 or overide
     return render(request, "dashboard.html",{"orders":orders,'my_ticket':my_ticket,
 'can_submit':can_submit})
+
+
+class HomePage(TemplateView):
+    template_name='pre-conference.html'
+
+    def get_context_data(self, **kwargs):
+       context = super().get_context_data(**kwargs)
+       sponsors = [
+           {"url":"","image":"images/thumbs/sponsor-1.png"},
+           {"url":"","image":"images/thumbs/sponsor-2.png"},
+           {"url":"","image":"images/thumbs/sponsor-3.png"},
+           {"url":"","image":"images/thumbs/sponsor-4.png"},
+           {"url":"","image":"images/thumbs/sponsor-5.png"},
+           {"url":"","image":"images/thumbs/sponsor-6.png"},
+           {"url":"","image":"images/thumbs/sponsor-7.png"},
+           {"url":"","image":"images/thumbs/sponsor-8.png"},
+           {"url":"","image":"images/thumbs/sponsor-9.png"},
+           {"url":"","image":"images/thumbs/sponsor-10.png"},
+           {"url":"","image":"images/thumbs/sponsor-11.png"},
+           {"url":"","image":"images/thumbs/sponsor-12.png"},
+       ]
+       context.update(sponsors=sponsors)
+       return context

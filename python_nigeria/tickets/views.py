@@ -106,7 +106,7 @@ class PurchaseForm(forms.Form):
                 ))
         return cleaned_data
 
-    def save(self, user, coupon=0):
+    def save(self, user, coupon=None):
         company, student, personal,paetron = self.get_data(self.cleaned_data)
         tickets = []
         for ticket in zip([company, student, personal,paetron], TicketPrice.create_ticket_types()):
@@ -115,8 +115,13 @@ class PurchaseForm(forms.Form):
                 tick.quantity = ticket[0]
                 tick.ticket_type = ticket[1]
                 if tick.ticket_type.current_price:
+                    precentage = 0
+                    if coupon:
+                        percentage = coupon.percentage 
                     tick.amount = tick.quantity * \
-                        tick.ticket_type.current_price * (100 - coupon) / 100
+                        tick.ticket_type.current_price * (100 - percentage) / 100
+                    if coupon:
+                        tick.coupon_usage = coupon
                     tick.save()
                     tickets.append(tick)
         if len(tickets) > 1:
@@ -131,9 +136,13 @@ class PurchaseView(TemplateView):
 
     def coupon_value(self, coupon):
         if coupon:
-            result = Coupon.objects.filter(value__icontains=coupon).first()
-            return result.percentage
-        return 0
+            result = Coupon.objects.filter(value__iexact=coupon, expired=False).first()
+            if result.usages.count() <= result.number_of_usage:
+                return result
+            else:
+                result.expired = True
+                result.save()
+        return None
 
     def post(self, request, *args, **kwargs):
         logger.info(request.POST)
@@ -225,9 +234,10 @@ class TicketDetailPage(DetailView):
 def valid_coupons(request):
     value = request.GET.get('value')
     if value:
-        result = Coupon.objects.filter(value__icontains=value).first()
+        result = Coupon.objects.filter(value__iexact=value, expired=False).first()
         if result:
-            return JsonResponse({'status': result.percentage})
+            if result.is_valid():
+                return JsonResponse({'status': result.percentage})
     return JsonResponse({'status': 0})
 
 

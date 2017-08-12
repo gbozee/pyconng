@@ -7,7 +7,11 @@ from django.db import transaction
 class Coupon(models.Model):
     value = models.CharField(max_length=10)
     expired = models.BooleanField(default=False)
+    number_of_usage = models.IntegerField(default=1)
     percentage = models.IntegerField(default=5)
+
+    def is_valid(self):
+        return self.usages.count() < self.number_of_usage and not self.expired
 
 
 class TicketPriceQuerySet(models.QuerySet):
@@ -123,6 +127,7 @@ class Ticket(models.Model):
     quantity = models.IntegerField(default=1)
     multiple_tickets = models.BooleanField(default=False)
     created_tickets = models.BooleanField(default=False)
+    coupon_usage = models.ForeignKey(Coupon,related_name='usages',null=True,blank=True)
 
     @property
     def full_name(self):

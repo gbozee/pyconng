@@ -10,6 +10,7 @@ from .models import (
 class TicketAdmin(admin.ModelAdmin):
     list_display = ['user', 'order', 'ticket_type', 'amount', 'status', 'multiple_tickets', 'quantity']
     list_filter = ['ticket_type__name', 'status']
+    search_fields = ['user__email', 'user__username']
 
 
 @admin.register(TicketPrice)
@@ -30,8 +31,11 @@ class TicketPriceAdmin(admin.ModelAdmin):
 
 @admin.register(Coupon)
 class CouponAdmin(admin.ModelAdmin):
-    list_display = ['value', 'expired']
+    list_display = ['value', 'expired', 'number_of_usage', 'counts']
     actions = 'mark_as_expired'
+
+    def counts(self, obj):
+        return obj.usages.count()
 
     def mark_as_expired(self, request, queryset):
         queryset.update(expired=True)
@@ -39,7 +43,11 @@ class CouponAdmin(admin.ModelAdmin):
 
 @admin.register(TicketSale)
 class TicketSaleAdmin(admin.ModelAdmin):
-    list_display = ['the_ticket_id', 'full_name', 'diet', 'tagline','ticket']
+    list_display = ['the_ticket_id', 'full_name', 'ticket_type', 'diet', 'tagline', 'ticket']
+    list_filter = ['ticket__ticket_type']
 
     def get_queryset(self, request):
         return super().get_queryset(request).order_by('pk')
+
+    def ticket_type(self, obj):
+        return obj.ticket.ticket_type

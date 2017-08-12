@@ -15,6 +15,8 @@ def common_code(code_dir):
             sudo("docker-compose kill django")
             sudo("docker-compose rm django")
             sudo("docker-compose up -d")
+            sudo("docker-compose run django python manage.py collectstatic --noinput")
+            sudo("docker-compose run django python manage.py migrate --noinput")
 
 
 def deploy_current():
@@ -29,6 +31,7 @@ def display_logs():
         sudo("docker-compose logs --follow django")
 
 def start():
+    local('docker-compose -f dev.yml kill django')
     local('docker-compose -f dev.yml up -d django')
 
 def logs():

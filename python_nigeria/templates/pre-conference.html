@@ -60,6 +60,47 @@
     
 </div>
 
+            
+<!-- SPONSORS
+============================================= -->				
+<section id="sponsors" class="bg-grey wide-90 sponsors-section division">
+    <div class="container">	
+
+        
+        <!-- SECTION TITLE -->				
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 section-title">
+            
+                <!-- Title -->
+                <h3>Partners/Sponsors</h3>	
+                <p>A huge thanks to all our amazing partners. We couldn’t have a conference without you!</p>	
+                                            
+            </div>
+        </div>
+
+    
+        <div class="row">
+            <ul class="sponsors-holder text-center">
+        
+                {% for sponsor in sponsors %}
+                
+                <li class="col-xs-6 col-sm-4 col-md-3 m-bottom-10">
+                    <a href="http://www.gogole.com?{{sponsor.url}}">
+                    <img class="img-responsive" src="{% static sponsor.image %}" alt="sponsor-logo">
+                    </a>
+                </li>
+                                           
+                {% endfor %}                                                  
+                <!-- SPONSOR LOGO -->      
+                
+            </ul>
+        </div>	<!-- End row -->
+        
+        
+    </div>	   <!-- End container -->
+</section>  <!-- END SPONSORS -->
+
+
 <!-- BECOME A SPONSOR
 ============================================= -->	
 <section id="become-sponsor" class="wide-100 become-sponsor division">	

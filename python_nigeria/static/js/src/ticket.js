@@ -36,6 +36,7 @@ $(function() {
     }, 0);
     $(".total b").text(`${currency} ${total}`);
     $(".total.grand b").text(`${currency} ${total}`);
+    
   });
   $("#id_coupon").on("blur", function(e) {
     var text = e.target.value;
