@@ -20,7 +20,7 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
+          <!-- <ul class="nav navbar-nav">
             <li><a href="{% url 'pages_page' "coc/" %}">Code of Conduct</a></li>
           </ul>
           <ul class="nav navbar-nav">
@@ -40,9 +40,9 @@
                 <li><a href="{% url 'sponsor_apply' %}">Application Form</a></li>
               </ul>
             </li>
-          </ul>
+          </ul> -->
           {% box "other_navigations_items" %}
-          <ul class="nav navbar-nav">
+          <!-- <ul class="nav navbar-nav">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registration<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url 'pinax_blog:blog' %}" >Blog</a>
               </li>
-          </ul>
+          </ul> -->
            <ul class="nav navbar-nav navbar-right">
              {% if request.user.is_authenticated %}
              <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
