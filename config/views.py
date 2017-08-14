@@ -15,7 +15,7 @@ from zipfile import ZipFile, ZipInfo
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib import messages
-from django.views.generic import RedirectView, FormView,TemplateView
+from django.views.generic import RedirectView, FormView, TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import render_to_response, redirect, get_object_or_404
@@ -35,12 +35,14 @@ from django.core.mail import send_mail
 from account.views import LoginView
 from account.forms import LoginUsernameForm
 from account.decorators import login_required
-from python_nigeria.tickets.models import Ticket,TicketSale
-from symposion.reviews.views import  (
-    access_not_permitted,get_object_or_404,ProposalBase,
-    ProposalSection,proposals_generator,ReviewAssignment
+from python_nigeria.tickets.models import Ticket, TicketSale
+from symposion.reviews.views import (
+    access_not_permitted, get_object_or_404, ProposalBase,
+    ProposalSection, proposals_generator, ReviewAssignment
 )
 from symposion.sponsorship.models import Sponsor
+
+
 @login_required
 def review_section(request, section_slug, assigned=False, reviewed="all"):
 
@@ -93,10 +95,10 @@ class NewSpeakerEditForm(SpeakerForm):
     """Add extra Validation to the SpeakerEdit form."""
     class Meta(SpeakerForm.Meta):
         help_texts = {
-            'biography':_("A little bit about you.  Edit using "
-                "<a href='http://warpedvisions.org/projects/markdown-cheat-sheet/' "
-                "target='_blank'>"
-                "Markdown</a>.")
+            'biography': _("A little bit about you.  Edit using "
+                           "<a href='http://warpedvisions.org/projects/markdown-cheat-sheet/' "
+                           "target='_blank'>"
+                           "Markdown</a>.")
         }
 
     def clean_photo(self):
@@ -108,8 +110,8 @@ class NewSpeakerEditForm(SpeakerForm):
             if photo_size > 600000:
                 raise forms.ValidationError(
                     _('The image size must not be more than 600kb '
-                    'Please upload a smaller one.')
-                    )
+                      'Please upload a smaller one.')
+                )
         return photo
 
 
@@ -238,32 +240,21 @@ def dashboard(request):
                         request.session["pending-token"])
     orders = Ticket.objects.not_booked(request.user)
     my_ticket = TicketSale.objects.filter(user=request.user).first()
-    deadline = datetime.datetime(2017, 7, 29, 11, 59,00,00,pytz.UTC)
+    deadline = datetime.datetime(2017, 7, 29, 11, 59, 00, 00, pytz.UTC)
     difference = deadline - timezone.now()
     overide = request.user.email in ["pyconnigeria@pycon.ng"]
     can_submit = difference.days > 0 or overide
-    return render(request, "dashboard.html",{"orders":orders,'my_ticket':my_ticket,
-'can_submit':can_submit})
+    return render(request, "dashboard.html", {"orders": orders, 'my_ticket': my_ticket,
+                                              'can_submit': can_submit})
 
 
 class HomePage(TemplateView):
-    template_name='pre-conference.html'
+    template_name = 'pre-conference.html'
 
     def get_context_data(self, **kwargs):
-       context = super().get_context_data(**kwargs)
-       sponsors = [
-           {"url":"","image":"images/thumbs/sponsor-1.png"},
-           {"url":"","image":"images/thumbs/sponsor-2.png"},
-           {"url":"","image":"images/thumbs/sponsor-3.png"},
-           {"url":"","image":"images/thumbs/sponsor-4.png"},
-           {"url":"","image":"images/thumbs/sponsor-5.png"},
-           {"url":"","image":"images/thumbs/sponsor-6.png"},
-           {"url":"","image":"images/thumbs/sponsor-7.png"},
-           {"url":"","image":"images/thumbs/sponsor-8.png"},
-           {"url":"","image":"images/thumbs/sponsor-9.png"},
-           {"url":"","image":"images/thumbs/sponsor-10.png"},
-           {"url":"","image":"images/thumbs/sponsor-11.png"},
-           {"url":"","image":"images/thumbs/sponsor-12.png"},
-       ]
-       context.update(sponsors=sponsors)
-       return context
+        context = super().get_context_data(**kwargs)
+        xx = Sponsor.objects.select_related('image_link').all()
+        sponsors = [{"url": x.external_url, 'image': x.image_link.image} for x in xx]
+
+        context.update(sponsors=sponsors)
+        return context

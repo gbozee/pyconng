@@ -84,11 +84,11 @@
         
                 {% for sponsor in sponsors %}
                 
-                <!-- <li class="col-xs-6 col-sm-4 col-md-3 m-bottom-10">
-                    <a href="http://www.gogole.com?{{sponsor.url}}">
-                    <img class="img-responsive" src="{% static sponsor.image %}" alt="sponsor-logo">
+                <li class="col-xs-6 col-sm-4 col-md-3 m-bottom-10">
+                    <a target="_blank" href="{{sponsor.url}}">
+                    <img class="img-responsive" src="{{sponsor.image.url}}" alt="sponsor-logo">
                     </a>
-                </li> -->
+                </li>
                                            
                 {% endfor %}                                                  
                 <!-- SPONSOR LOGO -->      
