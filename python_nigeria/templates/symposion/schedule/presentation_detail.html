@@ -1,11 +1,29 @@
 {% extends "site_base.html" %}
 
-{% load markitup_tags %}
+{% load markitup_tags static %}
 {% load pinax_boxes_tags %}
 {% load sitetree %}
+{% block stylings %}
+<style>
+  .ccc  h3{
+    margin-bottom: 10px;
+  }
+  .description,.abstract{
+    margin-bottom: 20px;
+  }
+  @media(min-width: 1200px){
+    .speaker .img-block{
+      width: 80%;
+      margin: auto;
 
+    }
+  }
+</style>
+{% endblock stylings %}
 {% block head_title %}Presentation: {{ presentation.title }}{% endblock %}
-
+{% block header_style %}
+style="position:absolute;"
+{% endblock header_style %}
 {% block breadcrumbs %}{% sitetree_breadcrumbs from "main" %}{% endblock %}
 {% block home_banner %}
 <section id="intro-3" style="height: 250px !important" class="intro-section height_400">
@@ -16,9 +34,9 @@
               <div class="col-md-12 col-lg-10 col-lg-offset-1 intro-txt text-center white-color">
                 
                   <!-- Title -->
-                  <h4>September 15 & 16, Lagos, Nigeria</h4>
-                  <h3>PyCon Nigeria Annual Conference </h3>
-
+                  <h4>PyCon Nigeria Annual Conference </h4>
+                  <h3>{{ presentation.title }}</h3>
+                  
                 </div>
           </div>	 <!-- End Intro Content -->
       </div>    <!-- End container -->
@@ -27,40 +45,55 @@
 {% endblock %}
 {% block body %}
 
-<div class="small-header poster-wrapper presentation-header">
-  <h1>{{ presentation.title }}</h1>
-  <h2>
-    {% for speaker in presentation.speakers %}
-      <a href="{% url "speaker_profile" speaker.pk %}">{{ speaker }}</a>{% if not forloop.last %}, {% endif %}
-    {% endfor %}
-  </h2>
-
-  {% if presentation.slot %}
-    <span class="presentation-date">
-      {{ presentation.slot.day.date|date:"l" }}
-      {{ presentation.slot.start}}&ndash;{{ presentation.slot.end }}
-    </h4>
-  {% endif %}
-</div>
 
 <div class="poster-wrapper presentation-content">
   <div class="container">
     <div class="row">
-      <div class="presentation-level">Audience level: <span class="label label-pill label-level">{{ presentation.proposal.get_audience_level_display }}</span></div>
-    </div>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 page-content">
+        <div class="col-md-4  col-md-push-8 m-bottom-50">			
+          {% for speaker in presentation.speakers %}
+            <div class="speaker">
+                
+                <!-- Speaker Photo  -->	
+                <div class="img-block">
+                
+                    <!-- Photo Hower Content -->	
+                    <div class="img-block-wrapper-hover">
+                        <div class="social-icons">
+                            <a href="https://www.tuwitter.com/{{speaker.twitter_username}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo Link -->	
+                    <img class="img-responsive" src="{% if speaker.photo %}{{speaker.photo.url}}{% else %}{% static 'images/placeholder.png' %}{% endif %}" alt="speaker-foto" >
+                    
+                </div>
+                    
+                <!-- Speaker Meta  -->	
+                    
+                <div class="speaker-img-meta">
+                    <h4>
+                        {{ speaker.name }}
+                      </h4>
+                      <p>{{speaker.biography}}</p>
+                      
+                    </div>
+                    
+                  </div>
+                  {% endfor %}
+          </div>			
+    
+      <div class="ccc col-md-8 col-md-pull-4 ">
         <h3>Description</h3>
         <div class="description">{{ presentation.description }}</div>
-
+        
         <h3>Abstract</h3>
         <div class="abstract">{{ presentation.abstract|render_markup|safe}}</div>
+        <div class="presentation-level">Audience level: <span class="label label-pill label-level">{{ presentation.proposal.get_audience_level_display }}</span></div>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 page-content">
-      {% box "presentation_bottom" %}
-      </div>
+      
+        {% box "presentation_bottom" %}
     </div>
   </div>
 </div>

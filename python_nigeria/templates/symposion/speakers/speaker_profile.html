@@ -1,16 +1,34 @@
 {% extends "site_base.html" %}
 
-{% load i18n %}
+{% load i18n static %}
 {% load thumbnail %}
 {% load markitup_tags %}
-
+{% block header_style %}
+style="position:absolute;"
+{% endblock header_style %}
 {% block head_title %}{{ speaker.name }}{% endblock %}
-
+{% block home_banner %}
+<section id="intro-3" style="height: 250px !important" class="intro-section height_400">
+    <div class="overlay division">
+        <div class="container">
+            <div id="intro-3-content" style="padding-top: 65px;" class="row">
+                <!-- INTRO TEXT -->
+                <div class="col-md-12 col-lg-10 col-lg-offset-1 intro-txt text-center white-color">
+                  
+                    <!-- Title -->
+                    <h4>PyCon Nigeria Annual Conference </h4>
+                    <h3>{% trans "Our Speakers" %}</h3>
+                    
+                  </div>
+            </div>	 <!-- End Intro Content -->
+        </div>    <!-- End container -->
+    </div>	   <!-- End overlay -->
+  </section>	<!-- END INTRO-3 -->
+  
+{% endblock home_banner %}
 {% block body %}
-<div class="small-header poster-wrapper">
-  <h1>{% trans "Our Speakers" %}</h1>
-</div>
-
+<!-- SPEAKERS
+============================================= -->		
 <div class="poster-wrapper speaker-profile">
   <div class="container">
     <div class="row">

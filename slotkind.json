@@ -1,0 +1,27 @@
+[
+  {
+    "model": "symposion_schedule.slotkind",
+    "pk": 1,
+    "fields": { "schedule": 1, "label": "Break" }
+  },
+  {
+    "model": "symposion_schedule.slotkind",
+    "pk": 2,
+    "fields": { "schedule": 1, "label": "Announcement" }
+  },
+  {
+    "model": "symposion_schedule.slotkind",
+    "pk": 3,
+    "fields": { "schedule": 1, "label": "Keynote" }
+  },
+  {
+    "model": "symposion_schedule.slotkind",
+    "pk": 4,
+    "fields": { "schedule": 1, "label": "Session" }
+  },
+  {
+    "model": "symposion_schedule.slotkind",
+    "pk": 5,
+    "fields": { "schedule": 1, "label": "Lightning Talks" }
+  }
+]

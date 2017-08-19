@@ -16,6 +16,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     # url(r'^home/$', TemplateView.as_view(template_name='home.html'), name='home_page'),
     url(r'^home/$', o_views.HomeRedirectView.as_view(), name='home_page'),
+    # url(r'^schedule/$', o_views.ScheduleConferenceView.as_view(), name='schedule_conference'),
     url(r'^$', o_views.HomePage.as_view(), name='home'),
     url(r'^account/login/$', o_views.NewLoginView.as_view(), name='account_login'),
     url(r'^speaker/edit/(?:(?P<pk>\d+)/)?$', o_views.NewSpeakerEditView.as_view(),

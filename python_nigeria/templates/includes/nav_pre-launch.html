@@ -1,28 +1,16 @@
 <!-- Navigation Menu -->
+{% load pinax_boxes_tags %}
 <nav id="navigation-menu" class="collapse navbar-collapse">
+  
+    {% box "post_links" %}
   <ul class="nav navbar-nav navbar-right">
-
-    {% comment %}
-    <li><a href="#about">Programme</a></li>{% endcomment %}
-    <!--<li><a href="{% url 'home_page' %}#sponsors">Sponsor</a></li>-->
-    {% comment %}
-    <li><a href="#portfolio">Venue</a></li>{% endcomment %}
-    <li><a href="{% url "pages_page" "coc/" %}">Code of Conduct</a></li>
-    <!--<li><a href="{% url 'pages_page' "venue/" %}">Venue</a></li>-->
-    <li><a href="{% url "pinax_blog:blog" %}">Blog</a></li>
-    <li><a href="{% url 'contact_form' %}">Contact</a></li>
-    {% if request.user.is_authenticated %} {% comment %}
-    <li><a class="register-btn" href="{% url 'dashboard' %}">Dashboard</a></li>{% endcomment %}
-    <li><a href="{% url 'account_logout' %}">Logout</a></li>
-
+    {% if request.user.is_authenticated %}
+    <li><a  href="{% url 'dashboard' %}">Dashboard</a></li>
+    
     {% else %}
     <li><a href="{% url 'account_login' %}">Login</a></li>
     {% block register_btn %} {% endblock register_btn %} {% endif %}
     <li>
-      {% comment %}<form class="padding-top-50">
-        <script src="https://js.paystack.co/v1/inline.js"></script>
-        <button id="paystack_btn" class="btn btn-success pull-right big-btn" type="button"> Pay with Paystack</button>
-      </form>{% endcomment %}
       <a class="register-btn" href="{% url 'tickets:home' %}">Request Tickets</a>
     </li>
 

@@ -7,10 +7,16 @@ from import_export import resources
 from hijack_admin.admin import HijackUserAdminMixin
 from symposion.sponsorship.admin import SponsorAdmin
 from .models import Sponsor, SponsorImage
+from symposion.speakers.models import Speaker
 User = get_user_model()
 admin.site.unregister(User)
 admin.site.unregister(Sponsor)
+admin.site.unregister(Speaker)
 
+@admin.register(Speaker)
+class SpeakerAdmin(admin.ModelAdmin):
+    list_display=["name",'pk', "email", "created", "twitter_username"]
+    search_fields=["name"]
 
 class UserResource(resources.ModelResource):
 
