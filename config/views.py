@@ -239,7 +239,7 @@ def dashboard(request):
         return redirect("speaker_create_token",
                         request.session["pending-token"])
     orders = Ticket.objects.not_booked(request.user)
-    my_ticket = TicketSale.objects.filter(user=request.user).first()
+    my_ticket = TicketSale.objects.filter(user=request.user)
     deadline = datetime.datetime(2017, 7, 29, 11, 59, 00, 00, pytz.UTC)
     difference = deadline - timezone.now()
     overide = request.user.email in ["pyconnigeria@pycon.ng"]

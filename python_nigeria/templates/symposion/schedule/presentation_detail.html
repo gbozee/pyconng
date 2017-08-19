@@ -7,7 +7,24 @@
 {% block head_title %}Presentation: {{ presentation.title }}{% endblock %}
 
 {% block breadcrumbs %}{% sitetree_breadcrumbs from "main" %}{% endblock %}
+{% block home_banner %}
+<section id="intro-3" style="height: 250px !important" class="intro-section height_400">
+  <div class="overlay division">
+      <div class="container">
+          <div id="intro-3-content" style="padding-top: 65px;" class="row">
+              <!-- INTRO TEXT -->
+              <div class="col-md-12 col-lg-10 col-lg-offset-1 intro-txt text-center white-color">
+                
+                  <!-- Title -->
+                  <h4>September 15 & 16, Lagos, Nigeria</h4>
+                  <h3>PyCon Nigeria Annual Conference </h3>
 
+                </div>
+          </div>	 <!-- End Intro Content -->
+      </div>    <!-- End container -->
+  </div>	   <!-- End overlay -->
+</section>	<!-- END INTRO-3 -->
+{% endblock %}
 {% block body %}
 
 <div class="small-header poster-wrapper presentation-header">

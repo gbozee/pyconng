@@ -16,15 +16,23 @@
 </div>
 <div class="poster-wrapper">
   <div class="container">
-    {% if orders|length > 0 and not my_ticket %}
+    {% if orders|length > 0 and my_ticket|length == 0 %}
     {% box "ticket_purchase_notice" %}
     {% endif %}
-{% if my_ticket %}
+{% if my_ticket|length > 0 %}
     <div class="row" style="margin-bottom: 20px;">
+      {% for tic in my_ticket  %}
       <div class="col-md-3">
-<a href="{% url "tickets:detail" my_ticket.ticket_id %}" class="btn btn-primary btn-block">View Ticket</a>
+<a href="{% url "tickets:detail" tic.ticket_id %}" class="btn btn-primary btn-block">
+ {% if my_ticket|length > 1 %}
+ {{tic.full_name}}<br/>
+ {% else %}
+ {% endif %} View Ticket
+</a>
       
       </div>
+      
+      {% endfor %}
       {% if request.user.is_staff %}
             <div class="col-md-3">
               <a href="/schedule" class="btn btn-primary btn-block">View Schedule</a>
