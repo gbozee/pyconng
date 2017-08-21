@@ -115,11 +115,14 @@ class PurchaseForm(forms.Form):
                 tick.quantity = ticket[0]
                 tick.ticket_type = ticket[1]
                 if tick.ticket_type.current_price:
-                    precentage = 0
+                    percentage = 0
+                    print(coupon)
                     if coupon:
                         percentage = coupon.percentage 
+                        print(percentage)
                     tick.amount = tick.quantity * \
-                        tick.ticket_type.current_price * (100 - precentage) / 100
+                        tick.ticket_type.current_price * (100 - percentage) / 100
+                    print(tick.amount)
                     if coupon:
                         tick.coupon_usage = coupon
                     tick.save()
@@ -151,7 +154,7 @@ class PurchaseView(TemplateView):
         if form.is_valid():
             coupon = request.POST.get('coupon')
             c_value = self.coupon_value(coupon)
-            helper = form.save(request.user, c_value)
+            helper = form.save(request.user, coupon=c_value)
             return redirect('tickets:checkout_view', helper.pk)
         messages.error(request, form.errors)
         return self.render_to_response(self.get_context_data())
