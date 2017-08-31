@@ -20,6 +20,13 @@
   }
 </style>
 {% endblock stylings %}
+
+{% block logo-images %}
+<!-- LOGO IMAGE -->
+<!-- Recommended sizes 150x34px; -->
+<a class="navbar-brand logo-white" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt="logo" height="60"></a>
+<a class="navbar-brand logo-black" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt="logo" height="60"></a>
+{% endblock %}
 {% block head_title %}Presentation: {{ presentation.title }}{% endblock %}
 {% block header_style %}
 style="position:absolute;"

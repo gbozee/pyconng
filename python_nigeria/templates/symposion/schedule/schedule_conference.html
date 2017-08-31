@@ -12,6 +12,12 @@ style="position:absolute;"
 {% endblock header_style %}
 {% block right %}
 {% endblock %}
+{% block logo-images %}
+<!-- LOGO IMAGE -->
+<!-- Recommended sizes 150x34px; -->
+<a class="navbar-brand logo-white" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt="logo" height="60"></a>
+<a class="navbar-brand logo-black" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt="logo" height="60"></a>
+{% endblock %}
 {% block home_banner %}
 <section id="intro-3" style="height: 250px !important" class="intro-section height_400">
     <div class="overlay division">
