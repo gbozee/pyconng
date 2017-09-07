@@ -24,8 +24,7 @@ class TicketAdmin(admin.ModelAdmin):
 
 
 @admin.register(TicketPrice)
-class TicketPriceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = TicketSaleResource
+class TicketPriceAdmin(admin.ModelAdmin):
     list_display = ['name', 'amount', 'current_price', 'early_price_count', 'regular_count', 'total', 'remaining']
 
     def total(self, obj):
@@ -53,7 +52,8 @@ class CouponAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 
 @admin.register(TicketSale)
-class TicketSaleAdmin(admin.ModelAdmin):
+class TicketSaleAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = TicketSaleResource
     list_display = ['the_ticket_id', 'full_name', 'ticket_type', 'diet', 'tagline', 'ticket']
     list_filter = ['ticket__ticket_type']
 
