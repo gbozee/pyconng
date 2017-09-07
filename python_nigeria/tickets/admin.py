@@ -1,10 +1,20 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
+from import_export import resources
 
 # Register your models here.
 from .models import (
     Ticket, TicketPrice, Coupon, TicketSale
 )
 
+class TicketSaleResource(resources.ModelResource):
+    ticket_type = resources.Field()
+    class Meta:
+        model = TicketSale
+        fields = ('the_ticket_id', 'full_name', 'diet', 'tagline', 'ticket')
+
+    def dehydrate_ticket_type(self, obj):
+        return obj.ticket.ticket_type
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
@@ -14,7 +24,8 @@ class TicketAdmin(admin.ModelAdmin):
 
 
 @admin.register(TicketPrice)
-class TicketPriceAdmin(admin.ModelAdmin):
+class TicketPriceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = TicketSaleResource
     list_display = ['name', 'amount', 'current_price', 'early_price_count', 'regular_count', 'total', 'remaining']
 
     def total(self, obj):
@@ -30,7 +41,7 @@ class TicketPriceAdmin(admin.ModelAdmin):
 
 
 @admin.register(Coupon)
-class CouponAdmin(admin.ModelAdmin):
+class CouponAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['value', 'expired', 'number_of_usage', 'counts']
     actions = 'mark_as_expired'
 
