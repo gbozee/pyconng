@@ -9,12 +9,16 @@ from .models import (
 
 class TicketSaleResource(resources.ModelResource):
     ticket_type = resources.Field()
+    email = resources.Field()
     class Meta:
         model = TicketSale
         fields = ('the_ticket_id', 'full_name', 'diet', 'tagline', 'ticket')
 
     def dehydrate_ticket_type(self, obj):
         return obj.ticket.ticket_type
+
+    def dehydrate_email(self, obj):
+        return obj.user.email
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
