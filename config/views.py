@@ -156,9 +156,10 @@ class NewSpeakerEditView(LoginRequiredMixin, FormView):
             "speaker_form": form,
         })
 
+from captcha.fields import ReCaptchaField
 
 class NewSponsorApplicationForm(forms.ModelForm):
-
+    captcha = ReCaptchaField()
     def __init__(self, *args, **kwargs):
         super(NewSponsorApplicationForm, self).__init__(*args, **kwargs)
 

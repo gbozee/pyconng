@@ -79,6 +79,7 @@ THIRD_PARTY_APPS = (
     'hijack',
     'compat',
     'hijack_admin',
+    'captcha',
 )
 
 # Apps specific for this project go here.
@@ -325,3 +326,6 @@ PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY", default="pk_test_fbc2f1812af674
 HIJACK_LOGIN_REDIRECT_URL = '/dashboard/'  # Where admins are redirected to after hijacking a user
 HIJACK_LOGOUT_REDIRECT_URL = '/admin/auth/user/'  # Where admins are redirected to after releasing a user
 HIJACK_ALLOW_GET_REQUESTS = True
+
+RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY", default="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI")
+RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY",default='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe')
