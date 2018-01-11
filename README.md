@@ -3,7 +3,7 @@
 This is the official website for Python Nigeria Conference
 
 ## Setting Up the repo for development
-The project uses `python3`
+The project uses `python3` specifically python3.6
 
 1. Before cloning the repo, create a parent folder
 
