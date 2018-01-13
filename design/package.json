@@ -1,0 +1,15 @@
+{
+  "name": "design",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jquery-slim": "^3.0.0",
+    "node-sass": "^4.7.2",
+    "popper.js": "^1.12.9"
+  }
+}

@@ -1,0 +1,77 @@
+@import "./scss/bootstrap.scss";
+
+$font_name: "Maison Neue Book";
+$default_font: $font_name, -apple-system,  system-ui, sans-serif;
+$site_color: #000000;
+$primary_color: #02efa8;
+$default_font_size: 14px;
+$defualt-font-line-height: 17px;
+// $regular_font_size:
+
+@mixin fonts($font_size: $default_font_size,
+$line-height: $defualt-font-line-height) {
+  font-size: $font_size;
+}
+@font-face {
+  font-family: $font_name;
+  src: url("./fonts/MaisonNeue-Book.eot?#iefix");
+  src: url("./fonts/MaisonNeue-Book.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/MaisonNeue-Book.woff") format("woff"),
+    url("./fonts/MaisonNeue-Book.svg#@{icon-font-svg-id}") format("svg");
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+button {
+  font-family: $default_font;
+}
+a {
+  text-decoration: none;
+}
+// button { // &.primary { // background-color: $primary_color;
+// }
+// }
+.bg-dark {
+    background-color: black !important;
+}
+#navbar {
+  background-color: black;
+  .navbar-nav {
+    align-items: center;
+    .nav-item {
+      margin-right: 40px;
+      button {
+        padding: 15px 44px;
+        border: none;
+        font-weight: 700;
+        border-radius: 0;
+        color: black;
+      }
+    }
+  }
+  // padding: 38px 63px;
+  // color: white;
+  // position: relative;
+  // .left {
+  // display: inline;
+  // }
+  // .nav-btn,
+  // #nav-check {
+  // display: none;
+  // }
+  // ul.right {
+  // align-items: center;
+  // display: flex;
+  // justify-content: space-between;
+  // list-style-type: none;
+  // text-transform: uppercase;
+  // a {
+  // color: white;
+  // }
+  // button {
+  // text-transform: uppercase;
+  // }
+  // }
+}
