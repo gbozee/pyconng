@@ -1,4 +1,4 @@
-# Pycon Nigeria
+# Pycon Nigeria 2018
 
 This is the official website for Python Nigeria Conference
 
@@ -61,15 +61,14 @@ to download postgres for your respective OS
     ```
 
 # Extras. Useful for frontend developers and designers
-For development, the project uses `gulp` and `webpack`
+This is important to those who would be working on converting
+the mockups to actual html/css
 
 ```bash
-$ npm install
-$ npm run dev #webpack devserver starts.
-```
-In a new command prompt
-```bash
-$ gulp watch #Live scss editing
+$ cd design
+$ npm install -g parcel-bundler
+$ npm install  #or yarn install if yarn is used
+$ yarn start
 ```
 
 ## The cloud9 url is at https://ide.c9.io/gbozee/pyconng

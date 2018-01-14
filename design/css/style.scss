@@ -1,11 +1,15 @@
 @import "./scss/bootstrap.scss";
 
-$font_name: "Maison Neue Book";
+$font_name: "Maison Neue Mono";
 $default_font: $font_name, -apple-system,  system-ui, sans-serif;
 $site_color: #000000;
 $primary_color: #02efa8;
+$text_color: white;
 $default_font_size: 14px;
 $defualt-font-line-height: 17px;
+$desktop: 992px;
+$big-desktop: 1500px;
+$mobile: 544px;
 // $regular_font_size:
 
 @mixin fonts($font_size: $default_font_size,
@@ -16,8 +20,19 @@ $line-height: $defualt-font-line-height) {
   font-family: $font_name;
   src: url("./fonts/MaisonNeue-Book.eot?#iefix");
   src: url("./fonts/MaisonNeue-Book.eot?#iefix") format("embedded-opentype"),
-    url("./fonts/MaisonNeue-Book.woff") format("woff"),
+    url("./fonts/MaisonNeueWEB-Book.woff") format("woff"),
     url("./fonts/MaisonNeue-Book.svg#@{icon-font-svg-id}") format("svg");
+}
+@font-face {
+  font-family: "Maison Neue Mono";
+  src: url("./fonts/MaisonNeue-Mono.eot?#iefix");
+  src: url("./fonts/MaisonNeue-Mono.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/maisonneuemono.ttf") format("ttf"),
+    url("./fonts/MaisonNeue-Mono.woff") format("woff");
+}
+@font-face {
+  font-family: "Maison Neue Bold";
+  src: url("./fonts/MaisonNeueWEB-Bold.woff") format("woff");
 }
 * {
   box-sizing: border-box;
@@ -34,7 +49,7 @@ a {
 // }
 // }
 .bg-dark {
-    background-color: black !important;
+  background-color: black !important;
 }
 #navbar {
   background-color: black;
@@ -42,6 +57,7 @@ a {
     align-items: center;
     .nav-item {
       margin-right: 40px;
+      text-transform: uppercase;
       button {
         padding: 15px 44px;
         border: none;
@@ -51,27 +67,51 @@ a {
       }
     }
   }
-  // padding: 38px 63px;
-  // color: white;
-  // position: relative;
-  // .left {
-  // display: inline;
-  // }
-  // .nav-btn,
-  // #nav-check {
-  // display: none;
-  // }
-  // ul.right {
-  // align-items: center;
-  // display: flex;
-  // justify-content: space-between;
-  // list-style-type: none;
-  // text-transform: uppercase;
-  // a {
-  // color: white;
-  // }
-  // button {
-  // text-transform: uppercase;
-  // }
-  // }
+  @media (min-width: $desktop) {
+    height: 120px;
+  }
+  &.home {
+    @media(min-width: $desktop){
+      background-color: transparent !important;
+    }
+    & + #header-section {
+      margin-top: -70px;
+      padding-top: 120px;
+      @media (min-width: $desktop) {
+        margin-top: -120px;
+        padding-top: 186px;
+        height: 750px;
+      }
+    }
+  }
+}
+#header-section {
+  background: url("../img/backgrounds/pycon-homepage-bg.jpg");
+  background-size: cover;
+  h1 {
+    color: $primary_color;
+    font-size: 85px;
+    text-transform: uppercase;
+    @media(max-width:$mobile){
+      font-size: 3.5rem;
+    }
+  }
+  p {
+    color: $text_color;
+    font-size: 20px;
+    line-height: 2;
+    @media(min-width: $desktop){
+    &.lead{
+        width: 60%;
+      }
+    }
+  }
+  @media (min-width: $desktop) {
+    height: 630px;
+  }
+  & .container {
+    @media (min-width: $big-desktop) {
+      max-width: 1450px;
+    }
+  }
 }
