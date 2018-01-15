@@ -74,7 +74,7 @@ a {
     @media(min-width: $desktop){
       background-color: transparent !important;
     }
-    & + #header-section {
+    & + #header-section, & + #speakers-section {
       margin-top: -70px;
       padding-top: 120px;
       @media (min-width: $desktop) {
@@ -83,15 +83,21 @@ a {
         height: 750px;
       }
     }
+    & + #speakers-section {
+      @media (min-width: $desktop) {
+        height: 100%;
+      }
+    }
   }
 }
-#header-section {
-  background: url("../img/backgrounds/pycon-homepage-bg.jpg");
-  background-size: cover;
+
+#header-section, #speakers-section {
   h1 {
     color: $primary_color;
-    font-size: 85px;
     text-transform: uppercase;
+    letter-spacing: 10px;
+    font-size: 64px;
+    line-height: 74px;
     @media(max-width:$mobile){
       font-size: 3.5rem;
     }
@@ -114,4 +120,23 @@ a {
       max-width: 1450px;
     }
   }
+}
+
+#header-section {
+  background: url("../img/backgrounds/pycon-homepage-bg.jpg");
+  background-size: cover;
+}
+
+#speakers-section {
+  background: url("../img/backgrounds/speaker-page-bg.jpg");
+  background-size: cover;
+}
+
+.section-description {
+  opacity: 0.06;
+  color: #000000;
+  font-family: "Maison Neue Mono";
+  font-size: 59px;
+  letter-spacing: 10px;
+  line-height: 71px;
 }
