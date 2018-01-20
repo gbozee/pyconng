@@ -143,12 +143,9 @@ button {
 }
 
 #bottom-description {
-  /*Breakout of bootstrap container and grid*/
-  margin:1em -97% !important; /* old browsers (without calc) fallback */
-  margin:1em calc(50% - 47vw) !important;
-
   margin-top: 110px !important;
   padding-top: 90px;
+  padding-bottom: 90px;
   background-color: #F7F7F7;
 
   h2 {
@@ -241,3 +238,59 @@ button {
 }
 
 /* End styles for Speaker's page */
+
+#footer {
+  background-color: #232323;
+  padding: 61px 252px 0px 96px;
+  @media(max-width:$mobile){
+    padding: 15px;
+    padding-top: 30px;
+  }
+
+  h4, p {
+    color: #FFFFFF;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 22px;
+  }
+
+  p {
+    opacity: 0.5;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 1px;
+  }
+
+  a {
+    color: #02efa8;
+  }
+
+  .main-footer-content div {
+    @media(max-width:$mobile){
+      margin-top: 30px;
+    }
+  }
+
+  .credits {
+    margin-top: 88px;
+    margin-bottom: 96px;
+  }
+
+  .heart-image {
+    height: 19.9px;
+    width: 24px;
+  }
+
+  .pycon-snake-image {
+    height: 163px;
+    width: 241px;
+    margin-left: 102%;
+    @media(max-width:$mobile){
+      margin-left: 28%;
+    }
+  }
+}
