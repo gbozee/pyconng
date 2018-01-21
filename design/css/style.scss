@@ -3,6 +3,7 @@
 $mono_font_name: "Maison Neue Mono";
 $normal_font_name: "Maison Neue";
 $default_font: $normal_font_name, -apple-system,  system-ui, sans-serif;
+$text_font: $mono_font_name, -apple-system, system-ui, sans-serif;
 $site_color: #000000;
 $primary_color: #02efa8;
 $text_color: white;
@@ -63,38 +64,7 @@ button {
   color: $primary_color;
 }
 
-#navbar {
-  background-color: black;
-  .navbar-nav {
-    align-items: center;
-    .nav-item {
-      margin-right: 40px;
-      text-transform: uppercase;
-    }
-  }
-  @media (min-width: $desktop) {
-    height: 120px;
-  }
-  &.home {
-    @media(min-width: $desktop){
-      background-color: transparent !important;
-    }
-    & + #header-section, & + #speakers-section {
-      margin-top: -70px;
-      padding-top: 120px;
-      @media (min-width: $desktop) {
-        margin-top: -120px;
-        padding-top: 186px;
-        height: 750px;
-      }
-    }
-    & + #speakers-section {
-      @media (min-width: $desktop) {
-        height: 100%;
-      }
-    }
-  }
-}
+@import "./navbar.scss";
 
 #header-section, #speakers-section {
   font-family: $mono_font_name;
@@ -128,48 +98,55 @@ button {
   }
 }
 
+.content-section{
+  display: flex;
+  font-family: $text_font;
+  .sidebar{
+    width: 30px;
+    .python-start{
+      position: absolute;
+    margin-top: -23px;
+    margin-left: 18px;
+    }
+    .numbers{
+      line-height: 30px;
+      font-size: 9px;
+      color: #757575;
+      border-right: 1px solid #C0C0C0;
+
+    }
+  }
+}
+h3.section-title{
+  text-transform: uppercase;
+  font-size: 17px;
+  background-color: $primary_color;
+  width: fit-content;
+  color:#FFFFFF;
+  padding: 8px 30px 10px 23px;
+}
 .section-description {
   opacity: 0.06;
   color: #000000;
-  font-family: "Maison Neue Mono";
-  margin-top: 45px;
+  font-family: $text_font;
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: 59px;
   letter-spacing: 10px;
   line-height: 71px;
+  text-transform: uppercase;
   @media(max-width:$mobile){
     font-size: 1.3rem;
     letter-spacing: 0px;
   }
 }
-
-#bottom-description {
-  margin-top: 110px !important;
-  padding-top: 90px;
-  padding-bottom: 90px;
-  background-color: #F7F7F7;
-
-  h2 {
-    font-size: 32px;
-  }
-
-  p {
-    font-family: $mono_font_name;
-    color: #000000;
-    font-size: 16px;
-    line-height: 36px;
-  }
-
-  button {
-    font-size: 16px;
-    @media(max-width:$mobile){
-      font-size: 13px;
-      font-weight: bold !important;
-      padding: 15px !important;
-    }
+#about-section{
+  h1.header-text{
+    font-size: 59px;	
+    letter-spacing: 10px;	
+    line-height: 71px;
   }
 }
-
-
 /* Styles for the home page */
 
 #header-section {
@@ -181,116 +158,6 @@ button {
 
 
 /* Styles for the speakers page */
-
-#speakers-section {
-  background: url("../img/backgrounds/speaker-page-bg.jpg");
-  background-size: cover;
-}
-
-#speaker {
-  color: #000000;
-  margin-top: 45px;
-  h1, h2 {
-    color: #11BD8A;
-  }
-
-  h1 {
-    font-size: 36px;
-  }
-
-  h2 {
-    font-size: 27px;
-  }
-
-  ul {
-    list-style: none;
-    margin-left: -35px;
-    font-family: $mono_font_name;
-    font-size: 17px;
-    li {
-      line-height: 34px;
-      margin-top: 24px;
-    }
-    li:last-child {
-      font-family: $normal_font_name;
-    }
-  }
-
-  .speaker-name {
-    padding-top: 20px;
-  }
-
-  .speaker-image {
-    height: 351px;
-    width: 268px;
-  }
-
-  .speaker-description {
-    @media(min-width:$desktop){
-      margin-left: -39px;
-    }
-  }
-
-  p {
-    font-family: $mono_font_name;
-    font-size: 17px;
-  }
-}
-
+@import "./speakers.scss";
 /* End styles for Speaker's page */
-
-#footer {
-  background-color: #232323;
-  padding: 61px 252px 0px 96px;
-  @media(max-width:$mobile){
-    padding: 15px;
-    padding-top: 30px;
-  }
-
-  h4, p {
-    color: #FFFFFF;
-  }
-
-  h4 {
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    line-height: 22px;
-  }
-
-  p {
-    opacity: 0.5;
-    font-size: 17px;
-    line-height: 20px;
-    letter-spacing: 1px;
-  }
-
-  a {
-    color: #02efa8;
-  }
-
-  .main-footer-content div {
-    @media(max-width:$mobile){
-      margin-top: 30px;
-    }
-  }
-
-  .credits {
-    margin-top: 88px;
-    margin-bottom: 96px;
-  }
-
-  .heart-image {
-    height: 19.9px;
-    width: 24px;
-  }
-
-  .pycon-snake-image {
-    height: 163px;
-    width: 241px;
-    margin-left: 102%;
-    @media(max-width:$mobile){
-      margin-left: 28%;
-    }
-  }
-}
+@import "./footer.scss";
