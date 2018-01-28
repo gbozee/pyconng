@@ -1,105 +1,51 @@
-<!doctype html>
-<html lang="en">
-
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./css/style.scss">
-    <!-- Bootstrap CSS -->
-
-    <title>Speakers</title>
-  </head>
-
+<extends src="./base.html">
   <body>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark home">
-      <a class="navbar-brand" href="#">
-        <img src="./img/logo-light.svg" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              Speak
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Schedule</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Workshop</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./speakers.html">Speaker</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Location</a>
-          </li>
-          <li class="nav-item">
-            <button class="btn btn-success">BUY TICKETS</button>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div id="speakers-section" class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <p>>>> Meet the Python lords</p>
-        <h1 class="display-4">SPEAKERS</h1>
-      </div>
-    </div>
-
-    <div class="main-content container">
-      <h1 class="section-description text-right">&lt;PYCON SPEAKERS /&gt;</h1>
-
-      <div id="speaker" class="row">
-        <div class="col-sm-12 col-md-3 speaker-name">
-          <h1 class="text-green font-weight-bold">Ivan <br /> Vosloo</h1>
-
-          <ul>
-            <li>Twitter</li>
-            <li>Website</li>
-            <li class="font-weight-bold font-italic">Sept. 15 — 12:30am</li>
-          </ul>
-        </div>
-        <div class="col-sm-12 col-md-4">
-          <img class="speaker-image" src="./img/speakers/Speaker-1.jpg" />
-        </div>
-        <div class="col-sm-12 col-md-5 speaker-description">
-          <h2 class="text-green font-weight-bold">Developer and Mentor, Reahl</h2>
-          <p class="text-justify">
-            Ivan runs a small consultancy in South Africa, from
-            which he mentors agile teams in the financial industry.
-            This includes helping programmers to apply practices such
-            as testing, pair programming and object oriented design within
-            the context of existing systems that have grown convoluted and
-            debilitating over time (something which makes the application of such practices challenging)
-          </p>
+    <block name="title">Speakers</block>
+    <block name="header-section">
+      <div id="speakers-section" class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <p>>>> Meet the Python lords</p>
+          <h1 class="display-4">SPEAKERS</h1>
         </div>
       </div>
-    </div>
+    </block>
+    <block name="content">
+      <div class="main-content container">
+        <h1 class="section-description text-right">&lt;PYCON SPEAKERS /&gt;</h1>
 
-    <div>
+        <div id="speaker" class="row">
+          <div class="col-sm-12 col-md-3 speaker-name">
+            <h1 class="text-green font-weight-bold">Ivan
+              <br /> Vosloo</h1>
+
+            <ul>
+              <li>Twitter</li>
+              <li>Website</li>
+              <li class="font-weight-bold font-italic">Sept. 15 — 12:30am</li>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <img class="speaker-image" src="./img/speakers/Speaker-1.jpg" />
+          </div>
+          <div class="col-sm-12 col-md-5 speaker-description">
+            <h2 class="text-green font-weight-bold">Developer and Mentor, Reahl</h2>
+            <p class="text-justify">
+              Ivan runs a small consultancy in South Africa, from which he mentors agile teams in the financial industry. This includes
+              helping programmers to apply practices such as testing, pair programming and object oriented design within
+              the context of existing systems that have grown convoluted and debilitating over time (something which makes
+              the application of such practices challenging)
+            </p>
+          </div>
+        </div>
+      </div>
       <div id="bottom-description">
         <div class="col-sm-12 col-md-8 offset-md-2">
           <h2 class="text-center font-weight-bold">Interested to Speak at PyCon 2018?</h2>
           <br />
 
           <p class="text-justify">
-            We want you to submit a proposal. We are interested in a range of topics including
-            web development, Design, Data Science, Networks and anything else related to Python
+            We want you to submit a proposal. We are interested in a range of topics including web development, Design, Data Science,
+            Networks and anything else related to Python
           </p>
         </div>
 
@@ -107,46 +53,5 @@
           <button class="btn btn-success btn-lg btn-block">YES! I WANT TO BE A SPEAKER</button>
         </div>
       </div>
-
-      <footer id="footer">
-        <div class="row main-footer-content">
-          <div class="col-sm-12 col-md-3">
-            <img src="./img/logo-light.svg" alt="footer-logo">
-          </div>
-
-          <div class="col-sm-12 col-md-3">
-            <h4>CONTACT US</h4>
-            <br />
-            <p>info@pyconng.com</p>
-            <p>+2348012345596</p>
-          </div>
-
-          <div class="col-sm-12 col-md-3">
-            <h4>LEGAL STUFF</h4>
-            <br />
-            <p>CODE OF CONDUCT</p>
-            <p>PRIVACY POLICY</p>
-          </div>
-
-          <div class="col-sm-12 col-md-3">
-            <h4>FOLLOW US</h4>
-            <br />
-            <p>FB, TWITTER, INSTAGRAM, FLICKR</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12 col-md-6 offset-md-4">
-            <p class="credits text-white">&lt;/&gt; WITH <img class="heart-image" src="./img/heart-2@2x.png" alt="heart-image" /> BY PYCON FOLKS. DESIGNED BY <a href="#">SAGE</a></p>
-          </div>
-
-          <div class="col-sm-12 col-md-2">
-            <img class="pycon-snake-image" src="./img/pycon-snake@2x.png" alt="pycon-snake-image" />
-          </div>
-        </div>
-      </footer>
-    </div>
-
-    <script src="./js/index.js"></script>
-  </body>
-</html>
+    </block>
+</extends>
