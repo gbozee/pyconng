@@ -73,7 +73,7 @@ button, .link-button {
 
 @import "./navbar.scss";
 
-#header-section, #speakers-section, #purchase-tickets-section {
+#header-section, #speakers-section, #purchase-tickets-section, #code-of-conduct-section {
   font-family: $mono_font_name;
   h1 {
     color: $primary_color;
@@ -148,7 +148,7 @@ h3.section-title{
     letter-spacing: 0px;
   }
 }
-#about-section, #speaker-section, #workshop-section,#venue-section,#sponsorship-section{
+#about-section, #speaker-section, #workshop-section,#venue-section,#sponsorship-section, #code-of-conduct-section{
   --bottom-padding: 70px;
   h1.header-text{
     font-size: 59px;	
@@ -199,21 +199,55 @@ h3.section-title{
       }
     }
 }
-/* Styles for the home page */
+
+// *********************
+//  #Styles for the home page
+// *********************
 
 #header-section {
   background: url("../img/backgrounds/pycon-homepage-bg.jpg");
   background-size: cover;
 }
 
-/* End styles for the home page */
+
+// *********************
+//  #End styles for the home page
+// *********************
 
 
-/* Styles for the speakers page */
+// *********************
+//  #Styles for the speakers page
+// *********************
+
 @import "./speakers.scss";
 
-/*Styles for the purchase tickets page*/
+// *********************
+//  #End styles for the speakers page
+// *********************
+
+
+// *********************
+//  #Styles for the purchase tickets page
+// *********************
+
 @import "./purchase-tickets.scss";
 
-/* End styles for Speaker's page */
+// *********************
+//  #End styles for the purchase tickets page
+// *********************
+
+
+// *********************
+//  #Styles for the purchase tickets page
+// *********************
+@import "./code-of-conduct.scss";
+
+// *********************
+//  #Styles for the footer
+// *********************
+
 @import "./footer.scss";
+
+// *********************
+//  #End styles for the footer
+// *********************
