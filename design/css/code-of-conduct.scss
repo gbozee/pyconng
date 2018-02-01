@@ -1,0 +1,61 @@
+#code-of-conduct-section {
+  background: url("../img/backgrounds/code-of-conduct.jpg");
+  background-size: cover;
+}
+
+
+#code-of-conduct {
+  max-width: 750px;
+  margin-top: 10%;
+  margin-left: 15%;
+  p {
+    color: $site_color;
+    font-family: $mono_font_name;
+    margin-bottom: 10%;
+    strong {
+      font-weight: 700;
+    }
+  }
+  #code-aims {
+    p {
+      opacity: 0.4;
+      font-size: 25px;
+      letter-spacing: -1px;
+      line-height: 47px;
+    }
+  }
+
+  #code-conduct {
+    p {
+  	  font-size: 17px;
+  	  font-weight: 300;
+  	  line-height: 34px;
+    }
+  }
+
+  #code-contact {
+    .code-contact__head {
+      height: 57px;
+  	  width: 315px;
+  	  background-color: #11BD8A;
+      p {
+        color: $text_color;
+        font-size: 23px;
+        letter-spacing: -1px;
+        line-height: 28px;
+        padding: 16px;
+      }
+      margin-bottom: 5%;
+    }
+    p {
+  	  font-size: 17px;
+  	  font-weight: 300;
+  	  line-height: 34px;
+    }
+    .contact {
+      p:nth-child(1) {
+        margin-bottom: 1%
+      }
+    }
+  }
+}
