@@ -6,6 +6,7 @@ $default_font: $normal_font_name, -apple-system,  system-ui, sans-serif;
 $text_font: $mono_font_name, -apple-system, system-ui, sans-serif;
 $site_color: #000000;
 $primary_color: #02efa8;
+$primary_color_text:#11BD8A; 
 $text_color: white;
 $default_font_size: 14px;
 $defualt-font-line-height: 17px;
@@ -154,6 +155,81 @@ h3.section-title{
     letter-spacing: 0px;
   }
 }
+@mixin header_text(){
+  font-size: 24px;	
+  font-weight: bold;	
+  line-height: 29px;
+  margin-bottom: 12px;
+}
+#speaker-section{
+  margin-bottom: 80px;
+  .speaker-list{
+    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 49px;
+    grid-row-gap: 80px;
+    @media(max-width: 768px){
+      grid-template-columns: 1fr;
+      
+    }
+    // grid-auto-rows: 200px;
+    .speaker-detail{
+      // display: flex;
+      // flex-direction: column;
+      img{
+        width: 100%;
+        height: 100%;
+        margin-bottom: 18px;
+      }
+      h3{
+        color: $primary_color_text;
+        @include header_text();
+      }
+      p{
+        margin-bottom: 15;
+        font-size: 17px;
+        line-height: 20px;
+      }
+      @media(max-width: 768px){
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+  .call-to-action{
+    --bottom-margin: 35px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    .action-area{
+      h3{
+        @include header_text();
+      }
+      img{
+        margin-bottom: var(--bottom-margin);
+      }
+    }
+    p{
+      max-width: 380px;
+      color: #1E1E1E;
+      opacity: 0.6;
+    }
+    @media(max-width: 768px){
+      flex-direction: column;
+      .action-area{
+        margin-bottom: var(--bottom-margin);
+      }
+      p{
+        max-width: 100%;
+      }
+    }
+  }
+}
 #about-section, #speaker-section, #workshop-section,#venue-section,#sponsorship-section{
   --bottom-padding: 70px;
   h1.header-text{
@@ -167,6 +243,9 @@ h3.section-title{
     padding-top: var(--top-padding);
     padding-bottom: var(--bottom-padding);
     display: flex;
+    @media(max-width: 768px){
+      flex-direction: column;
+    }
     .description{
       flex: 2;
       padding-right: var(--padding-width);
@@ -178,6 +257,9 @@ h3.section-title{
       grid-row-gap: 34px;
       grid-template-columns: 1fr 1fr;
       padding-left: var(--padding-width);
+      @media(max-width: 768px){
+        padding-left: 0;
+      }
       .highlight-detail{
         h1{
           color: var(--text-color);
