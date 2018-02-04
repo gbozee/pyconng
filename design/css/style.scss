@@ -132,6 +132,7 @@ button, .link-button {
   }
 }
 h3.section-title{
+  display: inline-block;
   text-transform: uppercase;
   font-size: 17px;
   background-color: var(--text-color);
@@ -145,7 +146,7 @@ h3.section-title{
   color: #000000;
   font-family: $text_font;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   font-size: 59px;
   letter-spacing: 10px;
   line-height: 71px;
@@ -198,20 +199,46 @@ h3.section-title{
       }
     }
   }
-  .call-to-action{
+  &+.call-to-action{
     --bottom-margin: 35px;
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
+    background-color: rgba(2,239,168,0.03);
+    border: 1px solid rgba(17,189,138,0.5);
+    padding: 68px 20px 100px;
+    margin-bottom: 50px;
+
+    & > div{
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      @media(max-width: $mobile){
+        flex-direction: column;
+      }
+      
+    }
     .action-area{
       h3{
         @include header_text();
       }
       img{
         margin-bottom: var(--bottom-margin);
+      }
+      a{
+        --bgColor: #CEFFF0;
+        display: inline-block;
+        border: 1px solid #11BD8A;
+        background-color: var(--bgColor);
+        padding: 17.5px 41px;
+        margin-top: 30px;
+        color: #000000;
+        font-weight: bold;
+        &:hover{
+          text-decoration: none !important;
+          cursor: pointer;
+          background-color: darken($color: #CEFFF0, $amount: 20);
+        }
       }
     }
     p{
@@ -227,6 +254,134 @@ h3.section-title{
       p{
         max-width: 100%;
       }
+    }
+  }
+}
+#workshop-section{
+  .section-description{
+    margin-bottom: 20px;
+  }
+  .workshops-details{
+    display: flex;
+    justify-content: space-around;
+    @media(max-width:$mobile){
+      flex-direction: column;
+    }
+    .workshop-detail{
+      &:first-child{
+        flex: 1.3;
+      }
+      &:last-child{
+        flex: 1.5;
+      }
+      .img-container{
+        // height: 360px;
+        &+div{
+          margin-top: 20px;
+        }
+        
+      }
+      img{
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+  a{
+    --bgColor: #CEFFF0;
+        display: inline-block;
+        border: 1px solid #11BD8A;
+        padding: 17.5px 41px;
+        margin-top: 30px;
+        color: #000000;
+        font-weight: bold;
+        &:hover{
+          text-decoration: none !important;
+          cursor: pointer;
+          background-color: darken($color: #CEFFF0, $amount: 20);
+        }
+  }
+}
+#venue-section{
+  margin-bottom: 35px;
+  .location-images{
+    display: grid;
+    margin-bottom: 70px;
+    grid-template-columns: 1fr 1fr;
+    & >div{
+      position: relative;
+      &:first-child{
+      }
+      &:last-child{
+            img{
+              position: absolute;
+              top: 30px;
+              left: -30px;
+              z-index: -1;
+            }
+      }
+    }
+    img{
+      max-width: 100%;
+      
+      // max-height: 100%;
+    }
+  }
+}
+#sponsorship-section{
+  
+  .sponsor-images{
+    display: grid;
+    margin-bottom: 70px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 92px;
+    grid-column-gap: 50px;
+    img{
+      max-width: 70%;
+    }
+    @media(max-width: $mobile){
+      grid-template-columns: 1fr;
+      text-align: center;
+      img{
+        max-width: 50%;
+      }
+    }
+
+  }
+
+}
+.call-to-action-area{
+  background-color: #F7F7F7;
+  padding: 66px 256px;
+  text-align: center;
+  @media(max-width: $mobile){
+    padding: 20px 10px;
+    margin-left: -30px;
+  }
+  h3{
+    font-weight: bold;
+    margin-bottom: 23px;
+    @media(max-width: $mobile){
+      // font-size: 25px;
+    }
+  }
+  p{
+    margin-bottom: 23px;
+    span{
+      color: $primary_color_text;
+    }
+  }
+  a{
+    padding: 15px 44px !important;
+    border: none !important;
+    font-weight: 700 !important;
+    border-radius: 0 !important;
+    color: black !important;
+    display: inline-block;
+    background-color: $primary_color;
+    &:hover{
+      cursor: pointer;
+      // background-color: darken($color: buttonface, 20);
     }
   }
 }
