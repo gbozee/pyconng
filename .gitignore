@@ -86,3 +86,4 @@ design/dist
 
 # Parcel-bundler
 /design/dist
+*startup.sh
