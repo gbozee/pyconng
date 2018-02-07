@@ -1,0 +1,55 @@
+{% load static %}
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark {{class}}">
+    <a class="navbar-brand" href="designs/dist/031f3d4713898318dffd6554a4686cc9.html">
+        <img src="{% static 'designs/dist/55fec6b81a7e87ef7a928e3e7e65f618.svg' %}" alt=""> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false"> Speak </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="designs/dist/c3fda4b21761e5a6ad4ef21c8f1dac9a.html">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Schedule</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Workshop</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="designs/dist/96846e8f23343cd63183e193f705b5dd.html">Speaker</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="designs/dist/445a8089283c66fc40062f4f7e0d07e9.html">Location</a>
+            </li>
+            <li class="nav-item">
+                <a href="designs/dist/83dfd8b971de1adeeb96cc8aace504fd.html" class="link-button btn btn-success">BUY TICKETS</a>
+            </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                </li>
+                {% else %}
+            
+                <li class="nav-item">
+                    <a class="nav-link" class="login" href="{% url " account_login " %}">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link signup" href={% url "account_signup"%}>Sign up</a>
+                </li>
+                {% endif %}
+        </ul>
+
+    </div>
+</nav>

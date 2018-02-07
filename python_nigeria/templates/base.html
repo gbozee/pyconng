@@ -1,142 +1,75 @@
-<!DOCTYPE html>
-{% load static %}
+<!doctype html>
+{% load static %} {% load hijack_tags %}
 
-{% load hijack_tags %}
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="author" content="Pycon">
-		<meta name="description" content="Pycon Conference Site"/>
-		<meta name="keywords" content="Python, Pycon Nigeria">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- SITE TITLE -->
-		<title>{% block head_title %}{{title}}{% endblock head_title %}Pycon Nigeria</title>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Pycon">
+    <meta name="description" content="Pycon Conference Site" />
+    <meta name="keywords" content="Python, Pycon Nigeria 2018">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- FAVICON AND TOUCH ICONS  -->
-		<link rel="shortcut icon" href="{% static 'images/icons/favicon.ico' %}" type="image/x-icon">
-		<link rel="icon" href="{% static 'images/icons/favicon.ico' %}" type="image/x-icon">
-		<link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/icons/apple-touch-icon-144x144.png' %}">
-		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/icons/apple-touch-icon-114x114.png' %}">
-		<link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/icons/apple-touch-icon-72x72.png' %}">
-		<link rel="apple-touch-icon" href="{% static 'images/icons/apple-touch-icon.png' %}">
+    <!-- FAVICON AND TOUCH ICONS  -->
+    <link rel="shortcut icon" href="{% static 'images/icons/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/icons/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/icons/apple-touch-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/icons/apple-touch-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/icons/apple-touch-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/icons/apple-touch-icon.png' %}">
 
-		<!-- GOOGLE FONTS -->
-		<link href='https://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap CSS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="{% static 'designs/dist/3def92b007890507cd3d78fe146e0d96.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
 
-		<!-- TEMPLATE CSS -->
-		<link href="{% static 'css/style.css' %}" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
+    
+    <!-- SITE TITLE -->
 
-		<!-- INLINE CSS STYLES -->
-		{% block stylings %}
+    <title>{% block head_title %}{{title}}{% endblock head_title %}Pycon Nigeria</title>
 
-		{% endblock %}
-		{% comment %} <style>
-			.btn{
-				background-color: #1cff77;
-				border-color: #1cff77;
-			}
-			.nav-tabs > li > a:hover, .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-				background-color: #1cff77;
-				
-			}
-			.section-title p:after {
-				background: #1cff77;
-			}
-		</style> {% endcomment %}
-	</head>
-
+</head>
 {% block body_tag %}
 <body>
-	{% hijack_notification %}
-		<!-- PRELOADER
-		============================================= -->
-		<div class="animationload" style="display:none">
-			<div class="loader"></div>
-		</div>
-		<!-- PAGE CONTENT
-		============================================= -->
-		<div id="page" class="page-wrapper">
-			{% block navigation %}
-			<!-- HEADER
-			============================================= -->
-			<header id="header" class="header">
-				<div {% block header_style %}{% endblock header_style %}  class="navbar {% block fixed_navbar %}navbar-fixed-top{% endblock fixed_navbar %}">
-					<div class="container">
-						<!-- Navigation Bar -->
-						<div class="navbar-header">
-							<!-- Responsive Menu Button -->
-							<button type="button" id="nav-toggle" class="navbar-toggle text-right" data-toggle="collapse" data-target="#navigation-menu">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
+    {% hijack_notification %}
 
-							{% block logo-images %}
-							<!-- LOGO IMAGE -->
-							<!-- Recommended sizes 150x34px; -->
-							<a class="navbar-brand logo-white" href="{% url 'home' %}"><img src="{% static 'images/logo3.png' %}" alt="logo" height="60"></a>
-							<a class="navbar-brand logo-black" href="{% url 'home' %}"><img src="{% static 'images/logo3.png' %}" alt="logo" height="60"></a>
-							{% endblock %}
+  {% block navigation %}
+      {% include "includes/navigation.html" with class="home" %}
+      <!-- remove the class if we want to have a background color for the navbar -->
+  {% endblock %}
 
-						</div>	<!-- End Navigation Bar -->
+    {% block header-section %}
+    {% endblock %}
+    
+    <div class="content-section container-fluid">
+        {% block sidebar-counter %}
+            <div class="sidebar">
+                <span class="python-start"> &#60;&#47; </span>
+                <div class="numbers">
+                    <!-- Inserted with jQuery -->
+                </div>
+            </div>
+        {% endblock %}
+        <div class="main-content container">
+                 {% if messages %} {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                {% endfor %} {% endif %}
 
-						{% block nav_pre_launch %}
-						{% include "includes/nav_pre-launch.html" %}
-						{% endblock %}
-					</div>	  <!-- End container -->
-				</div>	   <!-- End navbar fixed top  -->
-			</header>	<!-- END HEADER -->
-
-			{% endblock navigation %}
-			<div class="{% block body_class %}{% endblock body_class %} padding-bottom-50">
-			{% if messages %} {% for message in messages %}
-            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-            {% endfor %} {% endif %}
-
-			{% block content %}
-            {% endblock content %}
+            {% block content %}
+            {% endblock %}
 			{% block extra_body %}{% endblock extra_body %}
-			</div>
+        </div>
+    </div>
+    {% block footer %}
+        {% include "includes/footer.html" %}
+    {% endblock %}
+    <script src="{% static 'designs/dist/8081b84912ac59bcef8762f268eb18e9.js' %}"></script> </body>
 
-			{% block footer %}
-			<!-- FOOTER
-			============================================= -->
-			<footer id="footer" class="bg-dark p-top-40 p-bottom-40 footer division">
-				<div class="container">
-					<div class="row">
-						<div id="footer-copyright" class="col-md-12 text-center">
-							<!-- FOOTER COPYRIGHT -->
-							<p>Copyright &copy; 2017 Python Nigeria</p>
-							<img height="165" class="img img-responsive" src="{% static "images/logo-white.png" %}" alt="">
-							<div class="hidden">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-						</div>
-					</div>
-				</div>	   <!-- End container -->
-			</footer>	<!-- END FOOTER -->
-			{% endblock %}
-		</div>	<!-- END PAGE CONTENT -->
-
-
-		<!-- EXTERNAL SCRIPTS
-		============================================= -->
-	    <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
-	    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-			{% block extra_script %}
-			 {% if development %}
-				<script src="http://localhost:8080/bundles/bundle.js"></script>
-				{% else %}
-				<script src="{% static 'js/bundle.js' %}"></script>
-				{% endif %}
-			{% endblock %}
-       
-	</body>
+</body>
 
 {% endblock body_tag %}
-
-
 
 </html>
