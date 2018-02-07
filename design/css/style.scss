@@ -80,7 +80,7 @@ button, .link-button {
 
 @import "./navbar.scss";
 
-#header-section, #speakers-section, #tickets-section, #purchase-tickets-section {
+#header-section, #speakers-section, #purchase-tickets-section, #code-of-conduct-section {
   font-family: $mono_font_name;
   h1 {
     color: $primary_color;
@@ -388,8 +388,8 @@ h3.section-title{
 #about-section, #speaker-section, #workshop-section,#venue-section,#sponsorship-section{
   --bottom-padding: 70px;
   h1.header-text{
-    font-size: 59px;	
-    letter-spacing: 10px;	
+    font-size: 59px;
+    letter-spacing: 10px;
     line-height: 71px;
   }
   .about-details{
@@ -419,12 +419,12 @@ h3.section-title{
         h1{
           color: var(--text-color);
           margin-bottom: 0;
-          font-size: 72px; 
+          font-size: 72px;
           line-height: 72px;
         }
       }
     }
-   
+
   }
    .image-section{
       display: flex;
@@ -442,23 +442,67 @@ h3.section-title{
       }
     }
 }
-/* Styles for the home page */
+
+// *********************
+//  #Styles for the home page
+// *********************
 
 #header-section {
   background: url("../img/backgrounds/pycon-homepage-bg.jpg");
   background-size: cover;
 }
 
-/* End styles for the home page */
+
+// *********************
+//  #End styles for the home page
+// *********************
 
 
-/* Styles for the speakers page */
+// *********************
+//  #Styles for the speakers page
+// *********************
+
 @import "./speakers.scss";
 
-/** Styles for the tickets page */
-@import "./tickets.scss";
+// *********************
+//  #End styles for the speakers page
+// *********************
 
-/*Styles for the purchase tickets page*/
+
+// *********************
+//  #Styles for the purchase tickets page
+// *********************
+
 @import "./purchase-tickets.scss";
 
+// *********************
+//  #End styles for the purchase tickets page
+// *********************
+
+
+// *********************
+//  #Styles for the code of conduct page
+// *********************
+@import "./code-of-conduct.scss";
+
+// *********************
+//  #End styles for the code of conduct page
+// *********************
+
+// *********************
+//  #Styles for the purchase tickets complete page
+// *********************
+@import "./purchase-tickets-complete.scss";
+
+// *********************
+//  #End styles for the purchase tickets complete page
+// *********************
+
+// *********************
+//  #Styles for the footer
+// *********************
 @import "./footer.scss";
+
+// *********************
+//  #End styles for the footer
+// *********************
