@@ -3,6 +3,9 @@ version: '2'
 volumes:
   postgres_data_dev: {}
   postgres_backup_dev: {}
+  
+  postgres_data_dev2: {}
+  postgres_backup_dev2: {}
 
 services:
   postgres:
@@ -16,6 +19,18 @@ services:
       - DB_NAME=pyconnigeria
     ports:
       - "5448:5432"
+
+  db:
+    build: ./compose/postgres
+    volumes:
+      - postgres_data_dev2:/var/lib/postgresql/data
+      - postgres_backup_dev2:/backups
+    environment:
+      - DB_USER=pyconnigeria
+      - DB_PASS=postgres
+      - DB_NAME=pyconnigeria
+    ports:
+      - "5550:5432"
 
   django:
     build:
@@ -32,6 +47,8 @@ services:
       - USE_DOCKER=yes
     volumes:
       - .:/app
+    sdin_open: true
+    tty: true
     ports:
       - "8007:8000"
     links:
