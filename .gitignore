@@ -89,3 +89,5 @@ design/dist
 *startup.sh
 venv*
 *node_modules
+*dist/
+*deploy.sh

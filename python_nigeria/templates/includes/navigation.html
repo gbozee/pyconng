@@ -8,8 +8,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-             {% box "other_navigations_items" %}
-             {% if request.user.is_authenticated %}
+          {% box "other_navigations_items" %}
+            
+          {% if request.user.is_authenticated %}
                 {% comment %} <li class="nav-item">
                     <a href="designs/dist/83dfd8b971de1adeeb96cc8aace504fd.html" class="link-button btn btn-success">BUY TICKETS</a>
                 </li> {% endcomment %}
@@ -32,6 +33,5 @@
                 </li>
                 {% endif %}
         </ul>
-
     </div>
 </nav>

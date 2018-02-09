@@ -15,113 +15,76 @@
 </div>
 {% endblock %} 
 {% block content %}
-
-{% comment %} <section id="become-sponsor" class="wide-100 become-sponsor division">	
-    <div class="container">
-        <div class="row white-color">
-        
-        
-            <div class="col-md-8">
-                {% box "speaker_box" %}                
+<div id="about-section">
+    <h1 class="section-description text-right">&lt;PyCon.About /&gt;</h1>
+    <h3 class="section-title">About Pycon Nigeria</h3>
+    <div class="about-details">
+        <div class="description"> The PyConNG 2017 is the largest annual gathering of Python geeks in Nigeria. It is organised by members of the Python
+            Users Nigeria Group, a nonprofit organisation dedicated to advancing the Python community in Nigeria. Python
+            developers get to learn, network and collaborate during the workshops, it’s a place to be! </div>
+        <div class="highlights">
+            <div class="highlight-detail">
+                <h1>2</h1>
+                <span>Days</span>
             </div>
-            
-            <!-- Button -->
-            <div class="col-md-4 text-center">						
-                <a href="{% url 'speaker_create' %}" class="btn btn-lg">Become a speaker</a>							
+            <div class="highlight-detail">
+                <h1>6</h1>
+                <span>Workshops</span>
             </div>
-        
-        
-        </div>	<!-- End row -->
-    </div>	  <!-- End container -->
-</section>  <!-- END BECOME A SPONSOR -->		 {% endcomment %}
-{% box "ticket_call_to_action" %}
-                
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1 padding-top_bottom-50">
-            <div class="front-page-facets narrow">
-            <div class="flex-items-thumbnail">
-                <img class="icon-size" src="{% static "images/home/light-bulb.png" %}">
-                {% box "icon_1_text" %}
+            <div class="highlight-detail">
+                <h1>12</h1>
+                <span>Speakers</span>
             </div>
-            <div class="flex-items-thumbnail">
-                <img class="icon-size" src="{% static "images/home/conference.png" %}">
-                {% box "icon_2_text" %}
+            <div class="highlight-detail">
+                <h1>500+</h1>
+                <span>Attendees</span>
             </div>
-            <div class="flex-items-thumbnail">
-                <img class="icon-size" src="{% static "images/home/team.png" %}">
-                {% box "icon_3_text" %}
-            </div>
-
-        </div>    
         </div>
-
     </div>
-    
+    <div class="call-to-action-area">
+        <h3> Interested to speak at PyCon 2018? </h3>
+        <p> We want you to submit a proposal. We are interested in a range of topics including web development, Design, Data
+            Science, Networks, and anything else related to Python </p>
+        <a href="{% url 'speaker_create' %}"> YES! I WANT TO SPEAK AT PYCON </a>
+    </div>
+    <div class="image-section">
+        <div class="image-1">
+            <img src="{% static 'designs/dist/7fcb64ac986811e854f3b6ead427f66d.jpg' %}"> </div>
+        <div class="image-2">
+            <img src="{% static 'designs/dist/93347aff7540790d52f5281d85a8b07b.jpg' %}"> </div>
+    </div>
 </div>
-
-            
-<!-- SPONSORS
-============================================= -->				
-<section id="sponsors" class="bg-grey wide-90 sponsors-section division">
-    <div class="container">	
-
-        
-        <!-- SECTION TITLE -->				
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 section-title">
-            
-                <!-- Title -->
-                <h3>Partners/Sponsors</h3>	
-                <p>A huge thanks to all our amazing partners. We couldn’t have a conference without you!</p>	
-                                            
-            </div>
+<div id="speaker-section"> </div>
+<div class="call-to-action">
+    <div>
+        <div class="action-area">
+            <img src="{% static 'designs/dist/b898919216de277fee395f22470e02fe.svg' %}" alt="">
+            <h3>CALL FOR PROPOSALS</h3>
+            <p>If you wish to speak in PyConNG 2018. Click here to submit a proposal.</p>
+            <a href="{% url 'speaker_create' %}">Submit a Proposal</a>
         </div>
-
+        <div class="action-area">
+            <img src="{% static 'designs/dist/96cc0ecda9e2f4bb5ab9f9307351eb4f.svg' %}" alt="">
+            <h3>SPONSOR INQUIRY</h3>
+            <p>If you wish to sponsor PyConNG 2018. Click here to request a sponsor slot.</p>
+            <a href="{% url 'sponsor_apply' %}">Request Sponsorship</a>
+        </div>
+    </div>
+</div>
+<!-- SPONSORS
+    ============================================= -->				
     
-        <div class="row">
-            <ul class="sponsors-holder text-center">
-        
-                {% for sponsor in sponsors %}
-                
-                <li class="col-xs-6 col-sm-4 col-md-3 m-bottom-10">
-                    <a target="_blank" href="{{sponsor.url}}">
-                    <img class="img-responsive" src="{{sponsor.image.url}}" alt="sponsor-logo">
-                    </a>
-                </li>
-                                           
-                {% endfor %}                                                  
-                <!-- SPONSOR LOGO -->      
-                
-            </ul>
-        </div>	
-        <!-- End row -->
-        
-        
-    </div>	   <!-- End container -->
-</section>  <!-- END SPONSORS -->
-
-
-<!-- BECOME A SPONSOR
-============================================= -->	
-<section id="become-sponsor" class="wide-100 become-sponsor division">	
-    <div class="container">
-        <div class="row white-color">
-        
-        
-            <div class="col-md-8">
-                {% box "sponsor_text" %}                
-            </div>
-            
-            <!-- Button -->
-            <div class="col-md-4 text-center">						
-                <a href="{% url 'sponsor_apply' %}" class="btn btn-lg">Request Now</a>							
-            </div>
-        
-        
-        </div>	<!-- End row -->
-    </div>	  <!-- End container -->
-</section>  <!-- END BECOME A SPONSOR -->		
+    
+    <!-- BECOME A SPONSOR
+        ============================================= -->	
+<div class="call-to-action-area">
+    <h3> Interested in being a sponsor ? </h3>
+    <p> If you or your company is interested in sponsoring PyCon Nigeria. Click the button below and we’ll get right back to
+        you or send us an email on
+        <span>sponsorship@pycon.ng</span>
+    </p>
+    <a href="{% url 'sponsor_apply' %}"> YES! I WANT TO BE A SPONSOR </a>
+</div>            
 
 
 {% endblock %}

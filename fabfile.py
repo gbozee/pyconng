@@ -1,7 +1,7 @@
 import os
 from fabric.api import local, run, cd, env, sudo, settings, lcd
 from fabric.decorators import hosts
-env.hosts = ['pycon@104.236.214.189']
+env.hosts = ['root@ci.tuteria.com']
 
 password = os.getenv('PYCON_PRODUCTION_PASSWORD', '')
 
@@ -18,6 +18,14 @@ def common_code(code_dir):
             # sudo("docker-compose run django python manage.py collectstatic --noinput")
             # sudo("docker-compose run django python manage.py migrate --noinput")
 
+def deploy_staging():
+    with settings(user="root", password=password):
+        with cd(code_dir):
+            run("pwd")
+            run("git pull")
+            run("git checkout cfp")
+            sudo("docker-compose -f dev.yml build django2")
+            sudo("docker-compose -f dev.yml up -d django2")
 
 def deploy_current():
     print("hello World")

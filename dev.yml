@@ -32,7 +32,7 @@ services:
     ports:
       - "5550:5432"
 
-  django:
+  django2:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile-dev
@@ -50,7 +50,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "8007:8000"
+      - "8008:8000"
     links:
       - postgres
 
