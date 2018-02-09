@@ -20,10 +20,10 @@ def common_code(code_dir):
 
 def deploy_staging():
     with settings(user="root", password=password):
-        with cd(code_dir):
+        with cd("/root/pyconng"):
             run("pwd")
             run("git pull")
-            run("git checkout cfp")
+            run("git checkout origin/cfp")
             sudo("docker-compose -f dev.yml build django2")
             sudo("docker-compose -f dev.yml up -d django2")
 
