@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({177:[function(require,module,exports) {
+})({99:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -100,7 +100,7 @@ function getBaseURL(url) {
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 
-},{}],165:[function(require,module,exports) {
+},{}],85:[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -132,13 +132,13 @@ function reloadCSS() {
 
 module.exports = reloadCSS;
 
-},{"./bundle-url":177}],20:[function(require,module,exports) {
+},{"./bundle-url":99}],50:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./fonts\\MaisonNeue-Book.eot":166,"./fonts\\MaisonNeueWEB-Book.woff":167,"./fonts\\MaisonNeue-Book.svg":168,"./fonts\\MaisonNeue-Mono.eot":169,"./fonts\\maisonneuemono.ttf":170,"./fonts\\MaisonNeue-Mono.woff":172,"./fonts\\MaisonNeueWEB-Bold.woff":171,"./..\\img\\backgrounds\\pycon-homepage-bg.jpg":173,"./..\\img\\backgrounds\\speaker-page-bg.jpg":174,"./..\\img\\backgrounds\\ticket-bg.jpg":175,"./..\\img\\backgrounds\\code-of-conduct.jpg":176,"_css_loader":165}],179:[function(require,module,exports) {
+},{"./fonts\\MaisonNeue-Book.eot":91,"./fonts\\MaisonNeueWEB-Book.woff":88,"./fonts\\MaisonNeue-Book.svg":86,"./fonts\\MaisonNeue-Mono.eot":87,"./fonts\\maisonneuemono.ttf":96,"./fonts\\MaisonNeue-Mono.woff":89,"./fonts\\MaisonNeueWEB-Bold.woff":92,"./..\\img\\backgrounds\\pycon-homepage-bg.jpg":90,"./..\\img\\backgrounds\\speaker-page-bg.jpg":93,"./..\\img\\backgrounds\\ticket-bg.jpg":94,"./..\\img\\backgrounds\\code-of-conduct.jpg":95,"_css_loader":85}],136:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -158,7 +158,7 @@ module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
-  var ws = new WebSocket('ws://' + hostname + ':' + '60492' + '/');
+  var ws = new WebSocket('ws://' + hostname + ':' + '50948' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -259,7 +259,7 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}],177:[function(require,module,exports) {
+},{}],99:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -290,7 +290,7 @@ function getBaseURL(url) {
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 
-},{}],180:[function(require,module,exports) {
+},{}],137:[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundlesLazy(bundles) {
@@ -369,7 +369,7 @@ LazyPromise.prototype.catch = function (onError) {
   return this.promise || (this.promise = new Promise(this.executor).catch(onError));
 };
 
-},{"./bundle-url":177}],0:[function(require,module,exports) {
-var b=require(180);b.load([["a75643a3438f5aa0e21332a7ff3656c9.eot",166],["3d415c16cda0d5a7ffb16c3fd931d728.woff",167],["fec103805c9813da73d30368d2f3b8a2.svg",168],["65e89b922d3e618ae0b2d0c5149bfaa9.eot",169],["f0e2610a07b14f567307c4a592f70a97.ttf",170],["090c6978768ef73f1248a9137fee14af.woff",172],["40942f76ca12ef4941b9df794b0854d8.woff",171],["361d2455e395be7ab7ce59286fffc842.jpg",173],["863446ac13fe5754f8c7633e69d4a84d.jpg",174],["b3378c6b3f19064bad03213ad44184d2.jpg",175],["58b87a13dc5cef89f14133be9bb0092c.jpg",176]]);
-},{}]},{},[179,0])
+},{"./bundle-url":99}],0:[function(require,module,exports) {
+var b=require(137);b.load([["a75643a3438f5aa0e21332a7ff3656c9.eot",91],["3d415c16cda0d5a7ffb16c3fd931d728.woff",88],["fec103805c9813da73d30368d2f3b8a2.svg",86],["65e89b922d3e618ae0b2d0c5149bfaa9.eot",87],["f0e2610a07b14f567307c4a592f70a97.ttf",96],["090c6978768ef73f1248a9137fee14af.woff",89],["40942f76ca12ef4941b9df794b0854d8.woff",92],["361d2455e395be7ab7ce59286fffc842.jpg",90],["863446ac13fe5754f8c7633e69d4a84d.jpg",93],["b3378c6b3f19064bad03213ad44184d2.jpg",94],["58b87a13dc5cef89f14133be9bb0092c.jpg",95]]);
+},{}]},{},[136,0])
 //# sourceMappingURL=/dist/3def92b007890507cd3d78fe146e0d96.map

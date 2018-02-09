@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({178:[function(require,module,exports) {
+})({100:[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {};
@@ -256,7 +256,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],150:[function(require,module,exports) {
+},{}],98:[function(require,module,exports) {
 var global = (1,eval)("this");
 var process = require("process");
 /*!
@@ -10513,7 +10513,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{"process":178}],151:[function(require,module,exports) {
+},{"process":100}],97:[function(require,module,exports) {
 var global = (1,eval)("this");
 'use strict';
 
@@ -12951,7 +12951,7 @@ Popper.Defaults = Defaults;
 
 exports.default = Popper;
 //# sourceMappingURL=popper.js.map
-},{}],149:[function(require,module,exports) {
+},{}],84:[function(require,module,exports) {
 var global = (1,eval)("this");
 /*!
   * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
@@ -16846,7 +16846,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 })));
 //# sourceMappingURL=bootstrap.js.map
 
-},{"jquery":150,"popper.js":151}],22:[function(require,module,exports) {
+},{"jquery":98,"popper.js":97}],53:[function(require,module,exports) {
 "use strict";
 
 var _jquery = require("jquery");
@@ -16884,7 +16884,7 @@ function onPageLoad() {
 (0, _jquery2.default)(document).ready(function () {
   onPageLoad();
 });
-},{"jquery":150,"popper.js":151,"./bootstrap":149}],179:[function(require,module,exports) {
+},{"jquery":98,"popper.js":97,"./bootstrap":84}],101:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -16904,7 +16904,7 @@ module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
-  var ws = new WebSocket('ws://' + hostname + ':' + '60492' + '/');
+  var ws = new WebSocket('ws://' + hostname + ':' + '50948' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -17005,5 +17005,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[179,22])
+},{}]},{},[101,53])
 //# sourceMappingURL=/dist/8081b84912ac59bcef8762f268eb18e9.map
