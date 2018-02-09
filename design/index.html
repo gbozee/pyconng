@@ -1,4 +1,7 @@
 <extends src="./base.html">
+
+  <block name="title">PyConNG 2018 is Coming!</block>
+
   <block name="header-section">
     <div id="header-section" class="jumbotron jumbotron-fluid">
       <div class="container">
@@ -129,21 +132,24 @@
           </div>
         </div>
       </div>
-      <div class="call-to-action">
-        <div class="action-area">
-          <img src="./img/icons/call-for-proposal.svg" alt="">
-          <h3>CALL FOR PROPOSALS</h3>
-          <p>If you wish to speak in PyConNG 2018. Click here to submit a proposal.</p>
-          <button>Submit a Proposal</button>
-        </div>
-        <div class="action-area">
-          <img src="./img/icons/sponsor-inquiry.svg" alt="">
-          <h3>SPONSOR INQUIRY</h3>
-          <p>If you wish to sponsor PyConNG 2018. Click here to request a sponsor slot.</p>
-          <button>Request Sponsorship</button>
-        </div>
-      </div>
     </div>
+        <div class="call-to-action">
+          <div>
+            <div class="action-area">
+              <img src="./img/icons/call-for-proposal.svg" alt="">
+              <h3>CALL FOR PROPOSALS</h3>
+              <p>If you wish to speak in PyConNG 2018. Click here to submit a proposal.</p>
+              <a href="">Submit a Proposal</a>
+            </div>
+            <div class="action-area">
+              <img src="./img/icons/sponsor-inquiry.svg" alt="">
+              <h3>SPONSOR INQUIRY</h3>
+              <p>If you wish to sponsor PyConNG 2018. Click here to request a sponsor slot.</p>
+              <a href="">Request Sponsorship</a>
+            </div>
+
+          </div>
+        </div>
     <div id="workshop-section">
       <h1 class="section-description text-right">&lt;PyCon.Workshops /&gt;</h1>
       <h3 class="section-title">what am i going to learn?</h3>
@@ -158,16 +164,27 @@
       </div>
 
       <div class="workshops-details">
-        <div>
-          <h3>Reduce Stress: Automate with Python and XMPP</h3>
-          <p class="author">— By Daniel Osaetin</p>
+        <div class="workshop-detail">
+          <div class="img-container">
+            <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+          </div>
+          <div>
+            <h3>Reduce Stress: Automate with Python and XMPP</h3>
+            <p class="author">— By Daniel Osaetin</p>
+          </div>
         </div>
-        <div>
-          <h3>Continuous Integration for Python applications with Gitlab CI</h3>
-          <p class="author">— By Biola Oyeniyi</p>
+        <div class="workshop-detail">
+          <div class="img-container">
+            <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+          </div>
+          <div>
+            <h3>Continuous Integration for Python applications with Gitlab CI</h3>
+            <p class="author">— By Biola Oyeniyi</p>
+          </div>
         </div>
-        <button>view the full schdule</button>
       </div>
+      <a href="">view the full schdule</a>
+    </div>
     </div>
     <div id="venue-section">
       <h1 class="section-description text-right">&lt;PyCon.Venue /&gt;</h1>
@@ -206,49 +223,50 @@
       </div>
 
       <div class="sponsor-images">
-        <div>
+        <a>
           <img src="./img/sponsors/andela@2x.png" alt="Andela">
-        </div>
-        <div>
+        </a>
+        <a>
           <img src="./img/sponsors/cowrywise@2x.png" alt="CowryWise">
-        </div>
-        <div>
+        </a>
+        <a>
           <img src="./img/sponsors/datamatrix@2x.png" alt="DataMatrix">
-        </div>
-        <div>
+        </a>
+        <a>
           <img src="./img/sponsors/flutterwave@2x.png" alt="FlutterWave">
-        </div>
-        <div>
+        </a>
+        <a>
           <img src="./img/sponsors/psf@2x.png" alt="PSF">
-        </div>
+        </a>
         <div>
           <img src="./img/sponsors/andela@2x.png" alt="GPay">
         </div>
-        <div>
+        <a>
           <img src="./img/sponsors/andela@2x.png" alt="DevCenter">
-        </div>
-        <div>
+        </a>
+        <a>
           <img src="./img/sponsors/github@2x.png" alt="Github">
-        </div>
-        <div>
+        </a>
+        <a>
           <img src="./img/sponsors/paylater@2x.png" alt="PayLater">
-        </div>
-        <div>
+        </a>
+        <a>
           <img src="./img/sponsors/django@2x.png" alt="Django">
-        </div>
+        </a>
       </div>
-      <div class="call-to-action-area">
-        <h3>
-          Interested in being a sponsor ?
-        </h3>
-        <p>
-          If you or your company is interested in sponsoring PyCon Nigeria. Click the button below and we’ll get right back to you
-          or send us an email on sponsorship@pycon.ng
-        </p>
-        <button>
-          YES! I WANT TO BE A SPONSOR
-        </button>
-      </div>
+      
+    </div>
+    <div class="call-to-action-area">
+      <h3>
+        Interested in being a sponsor ?
+      </h3>
+      <p>
+        If you or your company is interested in sponsoring PyCon Nigeria. Click the button below and we’ll get right back to you
+        or send us an email on <span>sponsorship@pycon.ng</span>
+      </p>
+      <a>
+        YES! I WANT TO BE A SPONSOR
+      </a>
     </div>
   </block>
 </extends>
