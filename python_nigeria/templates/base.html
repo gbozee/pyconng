@@ -22,22 +22,29 @@
     <link rel="apple-touch-icon" href="{% static 'images/icons/apple-touch-icon.png' %}">
 
     <!-- Bootstrap CSS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'designs/dist/3def92b007890507cd3d78fe146e0d96.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
 
+    <style>
+        .content-box.editable{
+               display: flex;
+        }
+    </style>
+    {% block extra_stylings %}
     
+    {% endblock extra_stylings %}
     <!-- SITE TITLE -->
 
     <title>{% block head_title %}{{title}}{% endblock head_title %}Pycon Nigeria</title>
 
 </head>
 {% block body_tag %}
-<body>
+<body class="{% block body_class %}{% endblock %}">
     {% hijack_notification %}
 
   {% block navigation %}
-      {% include "includes/navigation.html" with class="home" %}
+      {% include "includes/navigation.html" %}
       <!-- remove the class if we want to have a background color for the navbar -->
   {% endblock %}
 

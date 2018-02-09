@@ -47,7 +47,7 @@ services:
       - USE_DOCKER=yes
     volumes:
       - .:/app
-    sdin_open: true
+    stdin_open: true
     tty: true
     ports:
       - "8007:8000"

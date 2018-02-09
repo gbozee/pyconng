@@ -54,8 +54,11 @@ to download postgres for your respective OS
     $ python manage.py loaddata fixtures/*
     ```
 10. If everything above was successful, you can go ahead and start the server
-    ```
-    python manage.py runserver
+    ```bash
+    $ python manage.py runserver_plus 
+    
+    #there  is a chance you might run into segfault with runsrver
+
     # if running on cloud9
     python manage.py runserver $IP:$PORT
     ```
