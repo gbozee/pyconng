@@ -223,9 +223,9 @@ def sponsor_apply(request):
     else:
         form = NewSponsorApplicationForm(**params)
 
-    return render_to_response("symposion/sponsorship/apply.html", {
-        "form": form,
-    }, context_instance=RequestContext(request))
+    return render(request, "symposion/sponsorship/apply.html", {
+        "form": form
+    }, )
 
 
 class HomeRedirectView(RedirectView):

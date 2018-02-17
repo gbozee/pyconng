@@ -63,6 +63,13 @@ button, .link-button {
     padding: 15px !important;
   }
 }
+// Form elements
+.help-block{
+  font-size: 0.8em;
+}
+.control-label{
+  font-weight: 700;
+}
 
 .bg-dark {
   background-color: black !important;
@@ -381,7 +388,8 @@ padding: 66px 121px;
     background-color: $primary_color;
     &:hover{
       cursor: pointer;
-      // background-color: darken($color: buttonface, 20);
+      text-decoration:none;
+      background-color: darken($primary_color, 10);
     }
   }
 }

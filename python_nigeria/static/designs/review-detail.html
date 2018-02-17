@@ -1,0 +1,303 @@
+<extends src="./base.html">
+
+    <block name="title">PyConNG 2018 is Coming!</block>
+    <block name="navigation">
+        <include src="./includes/navigation_regular.html"></include>
+    </block>
+    <block name="header-section">
+
+    </block>
+
+    <block name="content">
+        <div class="main-content container mt-5 mb-5">
+            <div class="poster-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <ul class="nav flex-column">
+                                <li class="nav-header">
+                                    Tutorials
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/reviews/section/tutorials/all/">All Reviews</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/reviews/section/tutorials/status/">Voting Status</a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/reviews/section/tutorials/notification/accepted/">Result Notification</a>
+                                </li>
+
+
+                                <li class="nav-header">
+                                    General Sessions
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/reviews/section/general-sessions/all/">
+                                        All Reviews
+                                    </a>
+                                </li>
+
+                                <li class="nav-link">
+                                    <a href="/reviews/section/general-sessions/status/">
+                                        Voting Status
+                                    </a>
+                                </li>
+
+                                <li class="nav-link">
+                                    <a href="/reviews/section/general-sessions/notification/accepted/">Result Notification</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-9">
+                        
+                        
+                            <div class="pull-right">
+                                <form class="result-form form-inline" method="POST" action="">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="hQXQimT5oRFWQkmWx21mPaSF7S89oVzlynkU9Z5BlSugba8Q0qXK6ZQGtccZcE4Z">
+                                    <div class="btn-group">
+                        
+                        
+                        
+                                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Standby
+                                            <span class="caret"></span>
+                                        </a>
+                                        <div class="dropdown-menu pull-right" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <div class="btn-group">
+                                                <input type="submit" name="result_submit" value="accept" class="btn btn-xs btn-success">
+                                                <input type="submit" name="result_submit" value="reject" class="btn btn-xs btn-danger">
+                                                <input type="submit" name="result_submit" value="undecide" class="btn btn-default btn-xs">
+                                            </div>
+                                        </div>
+                        
+                        
+                        
+                                    </div>
+                                </form>
+                            </div>
+                        
+                        
+                            <h3>
+                                #013: Using Web Sockets with Django
+                        
+                        
+                            </h3>
+                        
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a href="#proposal-detail" class="nav-link" data-toggle="tab">Proposal Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#proposal-reviews" class="nav-link" data-toggle="tab">Reviews
+                                            <span class="badge">2</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#proposal-feedback" class="nav-link active show" data-toggle="tab">Speaker Feedback
+                                            <span class="badge">0</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane pt-3" id="proposal-detail">
+                        
+                        
+                        
+                                        <dl class="dl-horizontal">
+                        
+                        
+                                            <dt>Audience Level</dt>
+                                            <dd>&nbsp;</dd>
+                        
+                        
+                        
+                                            <dt>Category</dt>
+                                            <dd>tutorial&nbsp;</dd>
+                        
+                                            <dt>Description</dt>
+                                            <dd>The aim of the tutorial is to bring about the awareness and consciousness of what web socket is and how
+                                                to leverage its use in a Python/Django project.&nbsp;</dd>
+                        
+                                            <dt>Abstract</dt>
+                                            <dd>
+                                                <ol>
+                                                    <li>Brief introduction of what the WebSocket protocol is and give the audience a final look of what
+                                                        they are about to learn. </li>
+                                                    <li>A link to the source code on GitHub will be given.</li>
+                                                    <li>A well-described snippet showing how the final product was reached will be presented in sequence.</li>
+                                                </ol>&nbsp;</dd>
+                        
+                                            <dt>Notes</dt>
+                                            <dd>
+                                                <p>Python Django developer with 2 years + experience</p>&nbsp;</dd>
+                        
+                        
+                        
+                                            <dt>Documents</dt>
+                                            <dd>
+                        
+                                                No supporting documents attached to this proposal.
+                        
+                                            </dd>
+                                        </dl>
+                        
+                                    </div>
+                                    <div class="tab-pane pt-3" id="proposal-reviews">
+                        
+                                        <h4>Current Results</h4>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>+1 votes</th>
+                                                    <th>+0 votes</th>
+                                                    <th>-0 votes</th>
+                                                    <th>-1 votes</th>
+                                                    <th>Total Responses
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>0</td>
+                                                    <td>2</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                        
+                                        <hr>
+                        
+                        
+                                        <form method="POST" action="" class="review-form">
+                                            <legend>Submit Review</legend>
+                                            <p>Enter your vote and any comment to go along with it. You can revise your vote or comment multiple times
+                                                with an existing vote (your previously recorded score will be replaced during calculations).
+                                                <b>Your vote and comments are not public and will only be viewable by other reviewers.</b>
+                                            </p>
+                                            <input type="hidden" name="csrfmiddlewaretoken" value="hQXQimT5oRFWQkmWx21mPaSF7S89oVzlynkU9Z5BlSugba8Q0qXK6ZQGtccZcE4Z">
+                        
+                        
+                                            <div id="div_id_vote" class="form-group">
+                                                <label for="id_vote_0" class="control-label  requiredField">
+                                                    Vote
+                                                    <span class="asteriskField">*</span>
+                                                </label>
+                                                <div class="controls ">
+                                                    <div class="radio">
+                                                        <label for="id_vote_1" class="">
+                                                            <input type="radio" name="vote" id="id_vote_1" value="+1">+1 — Good proposal and I will argue for it to be accepted.
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label for="id_vote_2" class="">
+                                                            <input type="radio" name="vote" id="id_vote_2" value="+0">+0 — OK proposal, but I will not argue for it to be accepted.
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label for="id_vote_3" class="">
+                                                            <input type="radio" name="vote" id="id_vote_3" value="−0">−0 — Weak proposal, but I will not argue strongly against acceptance.
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label for="id_vote_4" class="">
+                                                            <input type="radio" name="vote" id="id_vote_4" value="−1">−1 — Serious issues and I will argue to reject this proposal.
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="div_id_comment" class="form-group">
+                                                <label for="id_comment" class="control-label  requiredField">
+                                                    Comment
+                                                    <span class="asteriskField">*</span>
+                                                </label>
+                                                <div class="controls ">
+                                                    <textarea class="textarea form-control" cols="40" id="id_comment" name="comment" rows="10" required=""></textarea> </div>
+                                            </div>
+                        
+                                            <div class="form-action">
+                                                <input type="submit" class="btn btn-primary" name="vote_submit" value="Submit Review">
+                                            </div>
+                                        </form>
+                        
+                        
+                        
+                                        <h5>Review Comments</h5>
+                        
+                                        <div class="review-box">
+                                            <div class="vote">
+                                                <span class="label label-pill label-primary">+0</span>
+                                            </div>
+                        
+                                            <div class="review-content">
+                        
+                        
+                        
+                        
+                        
+                                                <span class "muted"=""> 6&nbsp;months, 2&nbsp;weeks ago </span>
+                                                <p>maybe</p>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="review-box">
+                                            <div class="vote">
+                                                <span class="label label-pill label-primary">+0</span>
+                                            </div>
+                        
+                                            <div class="review-content">
+                        
+                        
+                        
+                        
+                        
+                                                <span class "muted"=""> 6&nbsp;months, 2&nbsp;weeks ago </span>
+                                                <p>The proposal author was generous to inform about what will pass an introduction to websockets in
+                                                    Django. I'm not impressed however that this leaves out specific details about what the attendees
+                                                    will benefit from attending the tutorial.</p>
+                                            </div>
+                                        </div>
+                        
+                        
+                                    </div>
+                                    <div class="tab-pane active show pt-3" id="proposal-feedback">
+                        
+                        
+                                        <form action="" method="POST" accept-charset="utf-8">
+                                            <legend>Send a message</legend>
+                                            <p>
+                        
+                                                If you'd like to communicate with the submitter, use the following form and he or she will be notified and given the opportunity
+                                                to respond.
+                        
+                                            </p>
+                                            <input type="hidden" name="csrfmiddlewaretoken" value="hQXQimT5oRFWQkmWx21mPaSF7S89oVzlynkU9Z5BlSugba8Q0qXK6ZQGtccZcE4Z">
+                        
+                        
+                                            <div id="div_id_message" class="form-group">
+                                                <label for="id_message" class="control-label  requiredField">
+                                                    Message
+                                                    <span class="asteriskField">*</span>
+                                                </label>
+                                                <div class="controls ">
+                                                    <textarea class="textarea form-control" cols="40" id="id_message" name="message" rows="10" required=""></textarea> </div>
+                                            </div>
+                        
+                                            <div class="form-actions">
+                                                <input type="submit" class="btn btn-primary" name="message_submit" value="Send Message">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </block>
+</extends>
