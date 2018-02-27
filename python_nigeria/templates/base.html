@@ -23,7 +23,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'designs/dist/ecf68ab4f2d551182c196abd5c41ddff.css' %}">
+    <link rel="stylesheet" href="{% static 'designs/dist/302d6969462b7053b8bb5eec0b530ba7.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
 
     <style>
@@ -44,7 +44,7 @@
     {% hijack_notification %}
 
   {% block navigation %}
-      {% include "includes/navigation.html" %}
+      {% include "includes/nav_pre-launch.html" %}
       <!-- remove the class if we want to have a background color for the navbar -->
   {% endblock %}
 
@@ -60,7 +60,7 @@
                 </div>
             </div>
         {% endblock %}
-        <div class="main-content container">
+        <div class="main-content container {% block content_class %}{% endblock %}">
                  {% if messages %} {% for message in messages %}
                 <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
                 {% endfor %} {% endif %}
@@ -73,7 +73,7 @@
     {% block footer %}
         {% include "includes/footer.html" %}
     {% endblock %}
-    <script src="{% static 'designs/dist/8081b84912ac59bcef8762f268eb18e9.js' %}"></script> </body>
+    <script src="{% static 'designs/dist/9f30b84ddf0a13ca2b3a2ebe16b78543.js' %}"></script> </body>
 
 </body>
 

@@ -1,4 +1,5 @@
 {% extends "symposion/base.html" %}
+{% load static pinax_boxes_tags %}
 
 {% load sitetree %}
 {% load i18n %}
@@ -24,35 +25,10 @@
   }
   </style>
 {% endblock %}
-{% block body %}
 
-<!-- INTRO-3
-============================================= -->
-<section id="intro-3" class="intro-section">
-    <div class="overlay division">
-        <div class="container">
-            <div id="intro-3-content" class="row">
-                <!-- INTRO TEXT -->
-                <div class="col-md-12 col-lg-10 col-lg-offset-1 intro-txt text-center white-color">
-
-                    <!-- Title -->
-                    <h2>{{ page.title }}</h2>
-                </div>
-
-
-            </div>	 <!-- End Intro Content -->
-        </div>    <!-- End container -->
-    </div>	   <!-- End overlay -->
-</section>	<!-- END INTRO-3 -->
-
-
-<!-- <div class="small-header poster-wrapper">
-  <h1></h1>
-</div> -->
-
-<div class="poster-wrapper">
-  <div class="container">
-    {% if editable %}
+{% block body_tag %}
+<body>
+{% if editable %}
     <div class="row">
       <a href="{% url 'pages_page_edit' page.path %}" class="btn btn-sm btn-default">
         <i class="fa fa-pencil"></i>
@@ -60,18 +36,16 @@
       </a>
     </div>
     {% endif %}
+    {% block navigation %}
+      {% include "includes/nav_pre-launch.html" with class="home" %}
+      <!-- remove the class if we want to have a background color for the navbar -->
+  {% endblock %}
+    {{ page.body_html|safe }}
+    {% block footer %}
+        {% include "includes/footer.html" %}
+    {% endblock %}
+    <script src="{% static 'designs/dist/9f30b84ddf0a13ca2b3a2ebe16b78543.js' %}"></script> </body>
 
-    <div class="row">
-      {% if 'venue' in page.path %}
-        {{page.body_html|safe}}
-      {% else %}
-      <div class="col-md-9 col-md-offset-2 page-content">
-        {{ page.body_html|safe }}
-      </div>
-      {% endif %}
-    </div>
-
-  </div>
-</div>
-
+</body>
 {% endblock %}
+

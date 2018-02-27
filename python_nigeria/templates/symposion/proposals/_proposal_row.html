@@ -7,16 +7,16 @@
 
     <td>
         {% if proposal.cancelled %}
-            <span class="label label-danger">Cancelled</span>
+            <span class="badge badge-danger">Cancelled</span>
         {% else %}
             {% if request.user == proposal.speaker.user %}
                 {% if proposal.result.status == "accepted" %}
-                    <span class="label label-success">Accepted</span>
+                    <span class="badge badge-success">Accepted</span>
                 {% else %}
-                    <span class="label label-default">Submitted</span>
+                    <span class="badge badge-default">Submitted</span>
                 {% endif %}
             {% else %}
-                <span class="label label-default">Associated</span>
+                <span class="badge badge-default">Associated</span>
             {% endif %}
         {% endif %}
     </td>

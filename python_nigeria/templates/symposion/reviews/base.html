@@ -3,7 +3,9 @@
 {% load i18n %}
 {% load sitetree %}
 {% block stylings %}
-
+{% block navigation %}
+{% include "includes/navigation.html" %}
+{% endblock %}
 {% block extra_style %}
     <style type="text/css">
         div.dataTables_length label {
@@ -51,7 +53,9 @@
 
 {% endblock %}
 {% block body_class %}reviews{% endblock %}
-
+{% block header-section %}
+    {% endblock %}
+ {% block content_class %}mt-5 mb-5{% endblock %}
 {% block body %}
 <div class="small-header poster-wrapper">
   <h1>{% block review_heading %}Reviews{% endblock review_heading %}</h1>
@@ -62,31 +66,31 @@
     <div class="row">
         <div class="col-md-3">
             {% block sidebar %}
-            <ul class="nav nav-list well">
+            <ul class="nav nav-flex-column well">
                 {% for section in review_sections %}
                     <li class="nav-header">
                         {{ section }}
                     </li>
-                    <li>
-                        <a href="{% url "review_section" section.section.slug %}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "review_section" section.section.slug %}">
                             {% trans "All Reviews" %}
                         </a>
                     </li>
                     {% comment %}
-                    <li>
-                        <a href="{% url "review_section_assignments" section.section.slug %}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "review_section_assignments" section.section.slug %}">
                             {% trans "Your Assignments" %}
                         </a>
                     </li>
                     {% endcomment %}
-                    <li>
-                        <a href="{% url "review_status" section.section.slug %}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "review_status" section.section.slug %}">
                             {% trans "Voting Status" %}
                         </a>
                     </li>
                     {% if request.user.is_staff %}
-                        <li>
-                            <a href="{% url "result_notification" section.section.slug 'accepted' %}">Result Notification</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "result_notification" section.section.slug 'accepted' %}">Result Notification</a>
                         </li>
                     {% endif %}
                 {% endfor %}
