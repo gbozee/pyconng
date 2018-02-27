@@ -90,3 +90,4 @@ design/dist
 venv*
 *node_modules
 *deploy.sh
+*.out
