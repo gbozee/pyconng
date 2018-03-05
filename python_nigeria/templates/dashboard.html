@@ -204,41 +204,43 @@
 {% endif %}
     {% if review_sections %}
 
-       <div class="card dashboard-card mb-5">
-          <div class="card-header">
+      <div class="panel panel-default card dashboard-card">
+        <div class="card-header">
           <h3>{% trans "Reviews" %}</h3>
         </div>
 
-        <div class="card-body">
-          <h4>Reviews by Section</h4>
-          <ul>
-            {% for section in review_sections %}
-              <h5>{{ section }}</h5>
-              <li><a href="{% url "review_section" section.section.slug %}">All</a></li>
-              <li><a href="{% url "user_reviewed" section.section.slug %}">Reviewed by you</a></li>
-              <li><a href="{% url "user_not_reviewed" section.section.slug %}">Not Reviewed by you</a></li>
-            {% endfor %}
-          </ul>
+        <div class="card-block">
+          <div class="card-block panel-body">
+            <h4>Reviews by Section</h4>
+            <ul>
+              {% for section in review_sections %}
+                <h5>{{ section }}</h5>
+                <li><a href="{% url "review_section" section.section.slug %}">All</a></li>
+                <li><a href="{% url "user_reviewed" section.section.slug %}">Reviewed by you</a></li>
+                <li><a href="{% url "user_not_reviewed" section.section.slug %}">Not Reviewed by you</a></li>
+              {% endfor %}
+            </ul>
 
-                {% comment %}
-                <h4>My Assignments</h4>
-                <table class="table">
-                    <thead>
-                        <td>Proposal Title</td>
-                        <td>Score</td>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Title Three</td>
-                            <td>-1</td>
-                        </tr>
-                        <tr>
-                            <td>Title Four</td>
-                            <td>+2</td>
-                        </tr>
-                    </tbody>
-                </table>
-                {% endcomment %}
+            {% comment %}
+              <h4>My Assignments</h4>
+              <table class="table">
+                  <thead>
+                      <td>Proposal Title</td>
+                      <td>Score</td>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Title Three</td>
+                          <td>-1</td>
+                      </tr>
+                      <tr>
+                          <td>Title Four</td>
+                          <td>+2</td>
+                      </tr>
+                  </tbody>
+              </table>
+            {% endcomment %}
+          </div>
 
         </div>
       </div>
