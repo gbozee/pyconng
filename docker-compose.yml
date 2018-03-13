@@ -34,7 +34,7 @@ services:
       - redis
     volumes:
       - mediafiles:/var/pyconng
-      - staticfiles:/var/pyconng
+      - staticfiles:/var/pyconng_static
     command: /gunicorn.sh
     env_file: ./new.env
 
@@ -48,7 +48,7 @@ services:
     depends_on:
       - django
     volumes:
-      - staticfiles:/var/pyconng
+      - staticfiles:/var/pyconng_static
       - mediafiles:/var/pyconng
     environment:
       - VIRTUAL_HOST=www.pycon.ng
