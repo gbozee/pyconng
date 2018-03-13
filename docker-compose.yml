@@ -3,6 +3,7 @@ version: '2'
 volumes:
   postgres_data: {}
   postgres_backup: {}
+  lets_encrypt_dev: {}
   staticfiles: {}
   mediafiles: {}
 
