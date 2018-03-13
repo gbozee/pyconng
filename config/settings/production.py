@@ -114,7 +114,7 @@ STATICFILES_STORAGE ='django.contrib.staticfiles.storage.StaticFilesStorage'
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
-                         default='PyconNG 2018 <donotreply@pycon.ng>')
+                         default='PyconNG 2018 <donotreply@mg.pycon.ng>')
 EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[Pycon NG 2018] ')
 SERVER_EMAIL = env('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
 
