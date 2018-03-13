@@ -166,7 +166,7 @@ CACHES = {
 
 RAVEN_CONFIG = {
     'dsn': 'https://19984e0aa9d04b088508212e3e379a68:388d4b71e7ad44de85d2067c1a743b76@sentry.io/181096',
-    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+    # 'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
 }
 
 LOGGING = {
