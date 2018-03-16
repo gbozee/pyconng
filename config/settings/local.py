@@ -19,7 +19,7 @@ from .common import *  # noqa
 DEBUG = env.bool('DJANGO_DEBUG', default=True)
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
-ALLOWED_HOSTS = ['ci.tuteria.com','staging.pycon.ng']
+ALLOWED_HOSTS = ['ci.tuteria.com','staging.pycon.ng','localhost']
 
 
 # SECRET CONFIGURATION
