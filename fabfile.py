@@ -22,7 +22,7 @@ def deploy_staging():
     with settings(user="root", password=password):
         with cd("/root/pyconng"):
             run("pwd")
-            run("git branch --set-upstream-to=origin/cfp cfp")
+            run("git checkout cfp")
             run("git pull")
             sudo("docker-compose -f dev.yml build django2")
             sudo("docker-compose -f dev.yml up -d django2")
