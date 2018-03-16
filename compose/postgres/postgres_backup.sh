@@ -3,7 +3,7 @@
 TIMESTAMP=%d-%m-%Y-%T
 DELDATE=`date --date="-7 day" +${TIMESTAMP}`
 DateTimeStamp=$(date +${TIMESTAMP})
-HHOME=/home/pycon
+HHOME=/home/sama
 if [ "$2" != "" ]; then
 	BackupFileName=$2
 else

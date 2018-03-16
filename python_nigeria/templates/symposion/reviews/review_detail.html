@@ -75,10 +75,10 @@
             <li class="nav-item"><a href="#proposal-feedback" class="nav-link" data-toggle="tab">{% trans "Speaker Feedback" %} <span class="badge">{{ proposal.messages.all|length }}</span></a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="proposal-detail">
+            <div class="tab-pane active pt-3" id="proposal-detail">
                 {% include "symposion/proposals/_proposal_fields.html" %}
             </div>
-            <div class="tab-pane" id="proposal-reviews">
+            <div class="tab-pane pt-3" id="proposal-reviews">
 
                 <h4>{% trans "Current Results" %}</h4>
                 <table class="table table-striped">
@@ -149,7 +149,7 @@
                     {% endfor %}
                 {% endif %}
             </div>
-            <div class="tab-pane" id="proposal-feedback">
+            <div class="tab-pane pt-3" id="proposal-feedback">
                 {% if review_messages %}
                     <h3>{% trans "Conversation with the submitter" %}</h3>
                     {% for message in review_messages %}
