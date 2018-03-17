@@ -1,13 +1,14 @@
 import os
 from fabric.api import local, run, cd, env, sudo, settings, lcd
 from fabric.decorators import hosts
-env.hosts = ['root@ci.tuteria.com']
+username = os.getenv('PYCON_USERNAME')
+env.hosts = [f'{username}@www.pycon.ng']
 
 password = os.getenv('PYCON_PRODUCTION_PASSWORD', '')
 
 
 def common_code(code_dir):
-    with settings(user="pycon", password=password):
+    with settings(user=username, password=password):
         with cd(code_dir):
             run("pwd")
             run("git pull")
@@ -30,7 +31,7 @@ def deploy_staging():
 def deploy_current():
     print("hello World")
     run("pwd")
-    code_dir = '/home/pycon/pyconng'
+    code_dir = f'/home/{username}/pyconng'
     common_code(code_dir)
 
 def display_logs():
