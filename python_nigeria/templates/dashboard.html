@@ -43,18 +43,18 @@
 
    <div class="">
       <div class="panel dashboard-card card panel-default mb-5">
-          <div class="card-header panel-heading d-flex p-3 justify-content-between">
+          <div class="card-header panel-heading d-flex p-3 flex-sm-column justify-content-between">
           <h3>{% trans "Speaking" %}</h3>
           {% if not user.speaker_profile %}
           <div class="card-header-actions">
             <a href="{% url "speaker_create" %}" class="btn btn-primary btn-sm">
-                  <i class="fa fa-plus-sign"></i> Create a speaker profile
+                  <i class="fas fa-plus-sign"></i> Create a speaker profile
               </a>
           </div>
           {% else %}
           <div class="card-header-actions">
               <a href="{% url "speaker_edit" %}" class="btn btn-primary btn-sm">
-                  <i class="fa fa-pencil"></i> Edit your speaker profile
+                  <i class="fas fa-pencil"></i> Edit your speaker profile
               </a>
                 {% if can_submit %}
                   <a href="{% url "proposal_submit" %}" class="btn btn-primary btn-sm">
@@ -130,7 +130,7 @@
       </div>
 
        <div class="panel dashboard-card card panel-default mb-5">
-          <div class="card-header panel-heading d-flex p-3 justify-content-between">
+          <div class="card-header panel-heading d-flex flex-column flex-sm-row p-3 justify-content-between">
           <h3>{% trans "Sponsorship" %}</h3>
           {% if not user.sponsorships.exists %}
             <div class="card-header-actions">
