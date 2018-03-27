@@ -43,7 +43,7 @@
 
    <div class="">
       <div class="panel dashboard-card card panel-default mb-5">
-          <div class="card-header panel-heading d-flex p-3 flex-sm-column justify-content-between">
+          <div class="card-header panel-heading d-flex flex-column flex-sm-row p-3 justify-content-between">
           <h3>{% trans "Speaking" %}</h3>
           {% if not user.speaker_profile %}
           <div class="card-header-actions">
@@ -56,11 +56,11 @@
               <a href="{% url "speaker_edit" %}" class="btn btn-primary btn-sm">
                   <i class="fas fa-pencil"></i> Edit your speaker profile
               </a>
-                {% if can_submit %}
-                  <a href="{% url "proposal_submit" %}" class="btn btn-primary btn-sm">
+                {#{% if can_submit %}#}
+                  <a href="{% url "proposal_submit" %}" class="btn btn-primary btn-sm mt-1">
                   <i class="fa fa-plus-sign"></i> Submit a new proposal
               </a>
-                {% endif %}
+                {#{% endif %}#}
               
           </div>
           {% endif %}
@@ -304,3 +304,7 @@
   </div>
 </div>
 {% endblock %}
+{% block footer_1 %}
+
+{% endblock footer_1 %}
+{% block footer_class %}{% endblock footer_class %}
