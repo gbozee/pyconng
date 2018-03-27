@@ -6113,6 +6113,9 @@ button, .link-button {
   font-family: "Maison Neue Mono", -apple-system, system-ui, sans-serif; }
   .content-section .sidebar {
     width: 30px; }
+    @media (max-width: 768px) {
+      .content-section .sidebar {
+        display: none; } }
     .content-section .sidebar .python-start {
       position: absolute;
       margin-top: -23px;
@@ -6558,6 +6561,9 @@ h3.section-title {
   max-width: 750px;
   margin-top: 10%;
   margin-left: 15%; }
+  @media (max-width: 768px) {
+    #code-of-conduct {
+      margin-left: 10px; } }
   #code-of-conduct p {
     color: #000000;
     font-family: "Maison Neue Mono";

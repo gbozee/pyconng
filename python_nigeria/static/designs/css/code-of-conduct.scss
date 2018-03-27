@@ -49,6 +49,9 @@
   max-width: 750px;
   margin-top: 10%;
   margin-left: 15%;
+  @media(max-width:768px){
+    margin-left: 10px;
+  }
   p {
     color: $site_color;
     font-family: $mono_font_name;
