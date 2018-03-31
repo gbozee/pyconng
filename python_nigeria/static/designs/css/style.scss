@@ -124,6 +124,9 @@ button, .link-button {
   font-family: $text_font;
   .sidebar{
     width: 30px;
+    @media(max-width: 768px){
+      display: none;
+    }
     .python-start{
       position: absolute;
     margin-top: -23px;
@@ -514,3 +517,9 @@ padding: 66px 121px;
 // *********************
 //  #End styles for the footer
 // *********************
+
+// @media(max-width: 768px){
+//   .card-header.panel-heading.d-flex{
+//     flex-direction: column;
+//   }
+// }

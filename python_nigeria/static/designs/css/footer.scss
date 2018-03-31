@@ -50,11 +50,13 @@
     height: 19.9px;
     width: 24px;
   }
-
+.tto{
+  text-align: center;
+    width: 80%;
+}
   .pycon-snake-image {
     height: 163px;
     width: 241px;
-    margin-left: 102%;
     @media(max-width:$desktop){
       display: none;
     }

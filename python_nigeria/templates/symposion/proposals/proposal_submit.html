@@ -20,12 +20,15 @@
     {% if kinds %}
         <p>Select what kind of proposal you'd like to submit:</p>
 
-        {% for kind in kinds %}
-            {% if kind.slug != "tutorial" %}
-            <a href="{% url "proposal_submit_kind" kind.slug %}" class="btn btn-primary btn-sm">{{ kind }}</a>
-            {% endif %}
-            
-        {% endfor %}
+          <p>
+            {% for kind in kinds %}
+                {% if kind.slug != "tutorial" %}
+                <a href="{% url "proposal_submit_kind" kind.slug %}" class="btn btn-primary btn-sm">{{ kind }}</a>
+                {% endif %}
+                
+            {% endfor %}
+
+          </p>
     {% else %}
         <p>Proposals are not currently open for submission.</p>
     {% endif %}

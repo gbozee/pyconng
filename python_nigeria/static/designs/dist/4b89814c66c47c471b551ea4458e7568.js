@@ -71,7 +71,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({75:[function(require,module,exports) {
+})({347:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -101,7 +101,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],53:[function(require,module,exports) {
+},{}],326:[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -132,13 +132,13 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":75}],6:[function(require,module,exports) {
+},{"./bundle-url":347}],23:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./fonts\\MaisonNeue-Book.eot":54,"./fonts\\MaisonNeueWEB-Book.woff":60,"./fonts\\MaisonNeue-Book.svg":55,"./fonts\\MaisonNeue-Mono.eot":59,"./fonts\\maisonneuemono.ttf":56,"./fonts\\MaisonNeue-Mono.woff":63,"./fonts\\MaisonNeueWEB-Bold.woff":58,"./..\\img\\backgrounds\\pycon-homepage-bg.jpg":61,"./..\\img\\backgrounds\\speaker-page-bg.jpg":57,"./..\\img\\backgrounds\\ticket-bg.jpg":62,"./..\\img\\backgrounds\\code-of-conduct.jpg":68,"./..\\img\\backgrounds\\loki.jpg":64,"./..\\img\\backgrounds\\loki2.jpg":66,"./..\\img\\backgrounds\\loki3.jpg":67,"./..\\img\\backgrounds\\loki4.jpg":65,"./..\\img\\backgrounds\\loki5.jpg":69,"./..\\img\\backgrounds\\loki6.jpg":71,"./..\\img\\backgrounds\\loki7.jpg":70,"./..\\img\\backgrounds\\keynote.jpg":72,"_css_loader":53}],77:[function(require,module,exports) {
+},{"./fonts\\MaisonNeue-Book.eot":328,"./fonts\\MaisonNeueWEB-Book.woff":327,"./fonts\\MaisonNeue-Book.svg":329,"./fonts\\MaisonNeue-Mono.eot":331,"./fonts\\maisonneuemono.ttf":332,"./fonts\\MaisonNeue-Mono.woff":330,"./fonts\\MaisonNeueWEB-Bold.woff":334,"./..\\img\\backgrounds\\pycon-homepage-bg.jpg":337,"./..\\img\\backgrounds\\speaker-page-bg.jpg":333,"./..\\img\\backgrounds\\ticket-bg.jpg":335,"./..\\img\\backgrounds\\code-of-conduct.jpg":336,"./..\\img\\backgrounds\\loki.jpg":339,"./..\\img\\backgrounds\\loki2.jpg":338,"./..\\img\\backgrounds\\loki3.jpg":340,"./..\\img\\backgrounds\\loki4.jpg":341,"./..\\img\\backgrounds\\loki5.jpg":342,"./..\\img\\backgrounds\\loki6.jpg":345,"./..\\img\\backgrounds\\loki7.jpg":343,"./..\\img\\backgrounds\\keynote.jpg":344,"_css_loader":326}],348:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -160,7 +160,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57576' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '55646' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -261,7 +261,7 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}],79:[function(require,module,exports) {
+},{}],349:[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundlesLazy(bundles) {
@@ -340,7 +340,7 @@ LazyPromise.prototype.then = function (onSuccess, onError) {
 LazyPromise.prototype.catch = function (onError) {
   return this.promise || (this.promise = new Promise(this.executor).catch(onError));
 };
-},{"./bundle-url":75}],0:[function(require,module,exports) {
-var b=require(79);b.load([["3dc5505cb65f2e0153b1e76dc3b1f2fe.eot",54],["3a19cad25d02989e22b4fc6910e55b57.woff",60],["b2bdbfa033d2c4ebfe2dd440f0db31c7.svg",55],["545ef30be110b33e4b9b3179e9b7606e.eot",59],["2a6bf54ac6673fdbe75688b30fbb825e.ttf",56],["ee847e229c7e53cb7c0268c9b0dca50d.woff",63],["a02ba4f861dd063fc999359aad76b9a7.woff",58],["bd153d5629e9320924878bf5e35bdb97.jpg",61],["283374a38805266464500a4dfa47d4c6.jpg",57],["9c5e2070c581a8bee01f6c593b114db7.jpg",62],["c7c5018872a6e490d69d358261f6a99e.jpg",68],["669a3b46f129df379adcfb38bec91d64.jpg",64],["1e197309b2ce8a13036528cd5da62fc6.jpg",66],["ae4d925f16e3e7aa0b71faf9b362adcb.jpg",67],["6571603f972b4ffdbd8fc0b6da9d0b45.jpg",65],["043c4de1c70f5ef0991383a5417ee032.jpg",69],["7c47cd6a5692b634c2abe862f93c8926.jpg",71],["84ae6bf264c13b8d3a76105751be029c.jpg",70],["a253d6ff6902c597e02c2237ab7bc06f.jpg",72]]);
-},{}]},{},[77,0])
+},{"./bundle-url":347}],0:[function(require,module,exports) {
+var b=require(349);b.load([["3dc5505cb65f2e0153b1e76dc3b1f2fe.eot",328],["3a19cad25d02989e22b4fc6910e55b57.woff",327],["b2bdbfa033d2c4ebfe2dd440f0db31c7.svg",329],["545ef30be110b33e4b9b3179e9b7606e.eot",331],["2a6bf54ac6673fdbe75688b30fbb825e.ttf",332],["ee847e229c7e53cb7c0268c9b0dca50d.woff",330],["a02ba4f861dd063fc999359aad76b9a7.woff",334],["bd153d5629e9320924878bf5e35bdb97.jpg",337],["283374a38805266464500a4dfa47d4c6.jpg",333],["9c5e2070c581a8bee01f6c593b114db7.jpg",335],["c7c5018872a6e490d69d358261f6a99e.jpg",336],["669a3b46f129df379adcfb38bec91d64.jpg",339],["1e197309b2ce8a13036528cd5da62fc6.jpg",338],["ae4d925f16e3e7aa0b71faf9b362adcb.jpg",340],["6571603f972b4ffdbd8fc0b6da9d0b45.jpg",341],["043c4de1c70f5ef0991383a5417ee032.jpg",342],["7c47cd6a5692b634c2abe862f93c8926.jpg",345],["84ae6bf264c13b8d3a76105751be029c.jpg",343],["a253d6ff6902c597e02c2237ab7bc06f.jpg",344]]);
+},{}]},{},[348,0])
 //# sourceMappingURL=/dist/4b89814c66c47c471b551ea4458e7568.map

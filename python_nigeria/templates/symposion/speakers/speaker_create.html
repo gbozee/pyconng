@@ -8,26 +8,21 @@
 {% block page_title %}{% trans "Create Speaker Profile" %}{% endblock %}
 
 {% block body %}
-<div class="small-header poster-wrapper">
-  <h1>{% trans "Create Speaker Profile" %}</h1>
-</div>
-
-<div class="poster-wrapper">
+<div class="poster-wrapper mt-5 mb-5">
   <div class="container">
     <div class="row">
-        <div  class="col-md-6 col-md-offset-3">
-        {% box "speaker-profile" %}
+      {% box "speaker-profile" %}
 
         <form method="POST" action="" enctype="multipart/form-data">
             {% csrf_token %}
             <legend>{% trans "Create Speaker Profile" %}</legend>
             {{ speaker_form|crispy }}
-            <div class="form-actions">
-                <input class="btn btn-primary" type="submit" value="Save" />
-                <a class="btn btn-default" href="{% url "dashboard" %}">Cancel</a>
+            <div class="form-actions d-flex justify-content-between">
+            
+              <input class="btn btn-success btn-lg" type="submit" value="Save" />
+              <a class="btn btn-lg btn-outline-dark" href="{% url "dashboard" %}">Cancel</a>
             </div>
         </form>
-        </div>
     </div>
   </div>
 </div>

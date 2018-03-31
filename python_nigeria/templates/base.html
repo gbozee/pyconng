@@ -1,4 +1,4 @@
-<!doctype html> {% load static %} {% load hijack_tags %}
+<!doctype html> {% load static pinax_boxes_tags %} {% load hijack_tags %}
 
 <html lang="en">
 
@@ -518,6 +518,23 @@
         .panel-danger>.panel-footer+.panel-collapse>.panel-body {
             border-bottom-color: #ebccd1;
         }
+        #content_footer_1.content-box, #content_footer_2.content-box{
+            display: block;
+        }
+        @media(max-width:768px){
+            .sidebar{
+                display: none;
+            }
+            #code-of-conduct{
+                margin-left: 0;
+            }
+            .visible-xs{
+                display: none;
+            }
+            .btn-primary{
+                padding: 15px 20px !important;
+            }
+        }
     </style>
     {% block extra_stylings %} {% endblock extra_stylings %}
     <!-- SITE TITLE -->
@@ -560,7 +577,17 @@
     </div>
 
     {% block footer %}
-    {% include "includes/footer.html" %}
+    <footer id="footer">
+        {% block footer_1 %}
+        {% box "footer_1" %}
+      
+        {% endblock footer_1 %}
+        {% block footer_2 %}
+        {% box "footer_2" %}
+        
+        {% endblock footer_2 %}
+        
+    </footer>
     {% endblock %}
 
     <script src="{% static 'designs/dist/9f30b84ddf0a13ca2b3a2ebe16b78543.js' %}"></script> </body>

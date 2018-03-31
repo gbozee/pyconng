@@ -1,4 +1,5 @@
 {% extends "apply.html" %} 
+ {% load static pinax_boxes_tags %}
 {% load static from staticfiles %} 
 {% load pinax_boxes_tags %} 
 {% block head_title %}
@@ -8,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div id="content_homepage-about" class="padding-bottom-50">
-            {% box "home_introduction" %}
+           
         </div>
 
     </div>
@@ -18,29 +19,8 @@
 <div id="about-section">
     <h1 class="section-description text-right">&lt;PyCon.About /&gt;</h1>
     <h3 class="section-title">About Pycon Nigeria</h3>
-    <div class="about-details">
-        <div class="description"> The PyConNG 2017 is the largest annual gathering of Python geeks in Nigeria. It is organised by members of the Python
-            Users Nigeria Group, a nonprofit organisation dedicated to advancing the Python community in Nigeria. Python
-            developers get to learn, network and collaborate during the workshops, it’s a place to be! </div>
-        <div class="highlights">
-            <div class="highlight-detail">
-                <h1>2</h1>
-                <span>Days</span>
-            </div>
-            <div class="highlight-detail">
-                <h1>6</h1>
-                <span>Workshops</span>
-            </div>
-            <div class="highlight-detail">
-                <h1>12</h1>
-                <span>Speakers</span>
-            </div>
-            <div class="highlight-detail">
-                <h1>500+</h1>
-                <span>Attendees</span>
-            </div>
-        </div>
-    </div>
+    {% box "about_home_section" %}
+
     <div class="call-to-action-area">
         <h3> Interested to speak at PyCon 2018? </h3>
         <p> We want you to submit a proposal. We are interested in a range of topics including web development, Design, Data
@@ -49,7 +29,7 @@
     </div>
     <div class="image-section">
         <div class="image-1">
-            <img src="{% static 'designs/dist/c43cf89e507719b62a12d6b7035a7ee4.jpg' %}"> </div>
+            <img src="{% static 'designs/dist/3a5f30909404e3594804be378e8ae208.jpg' %}"> </div>
         <div class="image-2">
             <img src="{% static 'designs/dist/ed15188ec8bf7bcd28c0e40ef2a82fc6.jpg' %}"> </div>
     </div>
@@ -77,14 +57,6 @@
     
     <!-- BECOME A SPONSOR
         ============================================= -->	
-<div class="call-to-action-area">
-    <h3> Interested in being a sponsor ? </h3>
-    <p> If you or your company is interested in sponsoring PyCon Nigeria. Click the button below and we’ll get right back to
-        you or send us an email on
-        <span>sponsorship@pycon.ng</span>
-    </p>
-    <a href="{% url 'sponsor_apply' %}"> YES! I WANT TO BE A SPONSOR </a>
-</div>            
-
+{% box "sponsor-call-to-action" %}
 
 {% endblock %}

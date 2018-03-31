@@ -91,3 +91,4 @@ venv*
 *node_modules
 *deploy.sh
 *.out
+*startup.bat
