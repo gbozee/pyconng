@@ -5,7 +5,7 @@
         <include src="./includes/navigation_regular.html"></include>
     </block>
     <block name="header-section">
-        
+
     </block>
 
     <block name="content">
@@ -15,7 +15,7 @@
                     <div class="small-header poster-wrapper pt-5 pb-2">
                         <h1>Dashboard</h1>
                     </div>
-                    
+
 
                     <div class=" d-flex p-2" style="margin-bottom: 20px;">
                         <div class="pr-2">
@@ -31,60 +31,61 @@
                     <div class="">
 
                         <div class="panel dashboard-card card panel-default mb-5">
-                            <div class="card-header panel-heading d-flex p-3 justify-content-between">
+                            <div class="card-header panel-heading d-flex flex-column flex-sm-row p-3 justify-content-between">
                                 <h3>Speaking</h3>
                                 <div class="card-header-actions">
                                     <a href="./edit-speaker.html" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-pencil"></i> Edit your speaker profile
+                                        <i class="fas fa-pencil"></i> Edit your speaker profile
                                     </a>
                                 </div>
                             </div>
                             <div class="card-body panel-body">
 
                                 <h4 class="card-title">Your Proposals</h4>
+                                <div class="table-responsive">
+                                    <table class="table card-text">
+                                        <tbody>
+                                            <tr scope=>
+                                                <th>Title</th>
+                                                <th>Session type</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
 
-                                <table class="table card-text">
-                                    <tbody>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Session type</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="./proposal-detail.html">The Learning Process</a>
+                                                </td>
 
-                                        <tr>
-                                            <td>
-                                                <a href="./proposal-detail.html">The Learning Process</a>
-                                            </td>
+                                                <td>25 minute talk</td>
 
-                                            <td>25 minute talk</td>
-
-                                            <td>
-
-
-
-                                                <span class="badge badge-success">Accepted</span>
+                                                <td>
 
 
 
-                                            </td>
-
-                                            <td>
+                                                    <span class="badge badge-success">Accepted</span>
 
 
-                                                <a href="./proposal-edit.html" class="btn btn-xs">
-                                                    <i class="fa fa-pencil"></i> Edit</a>
-                                                <a href="./proposal-add-speaker.html" class="btn btn-xs">
-                                                    <i class="fa fa-user"></i> Manage Additional Speakers</a>
+
+                                                </td>
+
+                                                <td>
 
 
-                                            </td>
-                                        </tr>
+                                                    <a href="./proposal-edit.html" class="btn btn-xs">
+                                                        <i class="fa fa-pencil"></i> Edit</a>
+                                                    <a href="./proposal-add-speaker.html" class="btn btn-xs">
+                                                        <i class="fa fa-user"></i> Manage Additional Speakers</a>
 
 
-                                    </tbody>
-                                </table>
+                                                </td>
+                                            </tr>
 
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
 
 
 
@@ -97,7 +98,7 @@
                         </div>
 
                         <div class="panel dashboard-card card panel-default mb-5">
-                            <div class="card-header panel-heading d-flex p-3 justify-content-between">
+                            <div class="card-header panel-heading d-flex p-3 flex-column flex-sm-row justify-content-between">
                                 <h3>Sponsorship</h3>
 
                                 <div class="card-header-actions">

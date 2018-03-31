@@ -1,7 +1,7 @@
 
 #footer {
   background-color: #232323;
-  padding: 61px 252px 0px 96px;
+  padding: 61px 96px 0px 96px;
   font-family: $text_font;
   @media(max-width:$desktop){
     padding: 15px;
@@ -51,11 +51,13 @@
     height: 19.9px;
     width: 24px;
   }
-
+.tto{
+  text-align: center;
+    width: 80%;
+}
   .pycon-snake-image {
     height: 163px;
     width: 241px;
-    margin-left: 102%;
     @media(max-width:$desktop){
       display: none;
     }
