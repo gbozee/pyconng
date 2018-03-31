@@ -14,10 +14,11 @@ import time
 from zipfile import ZipFile, ZipInfo
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.db.utils import IntegrityError
 from django.contrib import messages
 from django.views.generic import RedirectView, FormView, TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse,HttpResponseBadRequest
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.shortcuts import render
 from django.template import RequestContext
@@ -198,28 +199,31 @@ def sponsor_apply(request):
     if request.method == "POST":
         form = NewSponsorApplicationForm(request.POST, **params)
         if form.is_valid():
-            sponsor = form.save()
-            send_mail("New Sponsor Application",
-                      ("A new sponsor just applied\n %s"
-                       "%s \n %s") % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
-                      "noreply@pycon.ng", ["hello@pycon.ng"])
-            send_mail("[Pycon NG] Thanks for being a Sponsor",
-                      ("Thank you for choosing to sponsor Pycon NG. \n You "
-                       "should be contacted shortly by the Sponsorship team. "
-                       "\n"), "no_reply@pycon.ng", [sponsor.contact_email])
-            user = sponsor.applicant
-            user.backend = 'django.contrib.auth.backends.ModelBackend'
-            login(request, user)
-            if sponsor.sponsor_benefits.all():
-                # Redirect user to sponsor_detail to give extra information.
-                messages.success(request, _("Thank you for your sponsorship "
-                                            "application. Please update your "
-                                            "benefit details below."))
-                return redirect("sponsor_detail", pk=sponsor.pk)
-            else:
-                messages.success(request, _("Thank you for your sponsorship "
-                                            "application."))
-                return redirect("dashboard")
+            try:
+                sponsor = form.save()
+                send_mail("New Sponsor Application",
+                        ("A new sponsor just applied\n %s"
+                        "%s \n %s") % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
+                        "noreply@pycon.ng", ["hello@pycon.ng"])
+                send_mail("[Pycon NG] Thanks for being a Sponsor",
+                        ("Thank you for choosing to sponsor Pycon NG. \n You "
+                        "should be contacted shortly by the Sponsorship team. "
+                        "\n"), "no_reply@pycon.ng", [sponsor.contact_email])
+                user = sponsor.applicant
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                login(request, user)
+                if sponsor.sponsor_benefits.all():
+                    # Redirect user to sponsor_detail to give extra information.
+                    messages.success(request, _("Thank you for your sponsorship "
+                                                "application. Please update your "
+                                                "benefit details below."))
+                    return redirect("sponsor_detail", pk=sponsor.pk)
+                else:
+                    messages.success(request, _("Thank you for your sponsorship "
+                                                "application."))
+                    return redirect("dashboard")
+            except IntegrityError:
+                return HttpResponseBadRequest("The user with the email already exist")
     else:
         form = NewSponsorApplicationForm(**params)
 
