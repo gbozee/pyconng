@@ -5,7 +5,11 @@
 {% load i18n %}
 
 {% block page_title %}Submit a Proposal for a {{ kind.name }}{% endblock %}
-
+ {% block extra_stylings %}
+ <style>#footer{
+  padding: 0;
+}
+ </style> {% endblock extra_stylings %}
 {% block body %}
 <div class="blog-header poster-wrapper ">
   <h1>Proposal</h1>
@@ -33,3 +37,7 @@
   </div>
 </div>
 {% endblock %}
+
+{% block footer_1 %}
+
+{% endblock footer_1 %}

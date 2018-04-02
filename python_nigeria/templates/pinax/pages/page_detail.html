@@ -42,8 +42,11 @@
   {% endblock %}
     {{ page.body_html|safe }}
     {% block footer %}
-        {% include "includes/footer.html" %}
-    {% endblock %}
+    {{ block.super }}
+    {% endblock footer %}
+     {% block footer_2 %}
+     
+     {% endblock footer_2 %}
     <script src="{% static 'designs/dist/9f30b84ddf0a13ca2b3a2ebe16b78543.js' %}"></script> </body>
 
 </body>
