@@ -22,9 +22,9 @@
 
           <p>
             {% for kind in kinds %}
-                {% if kind.slug != "tutorial" %}
+                {% comment %} {% if kind.slug != "tutorial" %} {% endcomment %}
                 <a href="{% url "proposal_submit_kind" kind.slug %}" class="btn btn-primary btn-sm">{{ kind }}</a>
-                {% endif %}
+                {% comment %} {% endif %} {% endcomment %}
                 
             {% endfor %}
 
