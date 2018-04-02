@@ -18,7 +18,7 @@ from django.db.utils import IntegrityError
 from django.contrib import messages
 from django.views.generic import RedirectView, FormView, TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
-from django.http import Http404, HttpResponse,HttpResponseBadRequest
+from django.http import Http404, HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.shortcuts import render
 from django.template import RequestContext
@@ -30,6 +30,9 @@ from django.contrib.auth import login
 from symposion.sponsorship.forms import SponsorApplicationForm, Sponsor, forms
 from symposion.speakers.forms import SpeakerForm
 from symposion.speakers.models import Speaker
+from pinax.blog import forms as pinax_forms
+from pinax.blog import views as pinax_views
+from pinax.blog import models as pinax_models
 from symposion import views as symposion_views
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -157,10 +160,13 @@ class NewSpeakerEditView(LoginRequiredMixin, FormView):
             "speaker_form": form,
         })
 
+
 from captcha.fields import ReCaptchaField
+
 
 class NewSponsorApplicationForm(forms.ModelForm):
     captcha = ReCaptchaField()
+
     def __init__(self, *args, **kwargs):
         super(NewSponsorApplicationForm, self).__init__(*args, **kwargs)
 
@@ -177,7 +183,7 @@ class NewSponsorApplicationForm(forms.ModelForm):
     def save(self, commit=True):
         obj = super(NewSponsorApplicationForm, self).save(commit=False)
         user, _ = User.objects.get_or_create(
-             email=obj.contact_email,
+            email=obj.contact_email,
             defaults=dict(first_name=obj.name, username=obj.contact_name))
         obj.applicant = user
         if commit:
@@ -202,13 +208,13 @@ def sponsor_apply(request):
             try:
                 sponsor = form.save()
                 send_mail("New Sponsor Application",
-                        ("A new sponsor just applied\n %s"
-                        "%s \n %s") % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
-                        "noreply@pycon.ng", ["hello@pycon.ng"])
+                          ("A new sponsor just applied\n %s"
+                           "%s \n %s") % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
+                          "noreply@pycon.ng", ["hello@pycon.ng"])
                 send_mail("[Pycon NG] Thanks for being a Sponsor",
-                        ("Thank you for choosing to sponsor Pycon NG. \n You "
-                        "should be contacted shortly by the Sponsorship team. "
-                        "\n"), "no_reply@pycon.ng", [sponsor.contact_email])
+                          ("Thank you for choosing to sponsor Pycon NG. \n You "
+                           "should be contacted shortly by the Sponsorship team. "
+                           "\n"), "no_reply@pycon.ng", [sponsor.contact_email])
                 user = sponsor.applicant
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request, user)
@@ -263,3 +269,58 @@ class HomePage(TemplateView):
 
         context.update(sponsors=sponsors)
         return context
+
+
+class PostForm(pinax_forms.PostFormMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        if pinax_models.Section.objects.count() < 2:
+            self.section = pinax_models.Section.objects.first()
+        else:
+            self.section = None
+        super(PostForm, self).__init__(*args, **kwargs)
+    teaser = forms.CharField(widget=forms.Textarea)
+    content = forms.CharField(widget=forms.Textarea)
+
+    def save(self, blog=None, author=None):
+        post = super(PostForm, self).save(commit=False)
+        if blog:
+            post.blog = blog
+        if author:
+            post.author = author
+            post.image_set = pinax_models.ImageSet.objects.create(created_by=author)
+        if self.section:
+            post.section = self.section
+        post.slug = pinax_forms.slugify(post.title)
+        post.markup = self.markup_choice
+        return self.save_post(post)
+
+    class Meta:
+        model = pinax_models.Post
+        fields = [
+            "section",
+            "title",
+            # "teaser",
+            # "content",
+            "markup",
+            "description",
+            "state"
+        ]
+
+
+class ManageCreatePost(pinax_views.ManageCreatePost):
+
+    form_class = PostForm
+    template_name = "pinax/blog/manage_post_create.html"
+
+    def form_valid(self, form):
+        form.save(blog=self.blog, author=self.request.user)
+        return redirect(self.get_success_url())
+
+
+class ManageUpdatePost(pinax_views.ManageUpdatePost):
+    form_class = PostForm
+    pk_url_kwarg = "post_pk"
+    template_name = "pinax/blog/manage_post_update.html"
+
+    def get_queryset(self):
+        return super(ManageUpdatePost, self).get_queryset().filter(blog=self.blog)

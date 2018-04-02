@@ -59,6 +59,9 @@ urlpatterns += [
     url(r'^sponsors/', include('symposion.sponsorship.urls')),
     url(r'^teams/', include('symposion.teams.urls')),
     url(r'^boxes/', include('pinax.boxes.urls')),
+    url(r"^blog/manage/posts/create/$", o_views.ManageCreatePost.as_view(), name="manage_post_create"),
+    url(r"^blog/manage/posts/(?P<post_pk>\d+)/update/$", o_views.ManageUpdatePost.as_view(), name="manage_post_update"),
+
     url(r'^blog/', include('pinax.blog.urls', namespace="pinax_blog")),
     url(r'^', include('pinax.pages.urls')),
 
