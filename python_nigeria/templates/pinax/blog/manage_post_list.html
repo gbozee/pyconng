@@ -3,9 +3,9 @@
 {% block head_title_base %}{{ SITE_NAME }}{% endblock %}
 
 {% block content %}
+<a style="float:right;" class="btn btn-outline btn-primary" href="{% url 'pinax_blog:manage_post_create' %}">Create new post</a>
   {% if post_list %}
     <div class="post-list">
-        <a style="float:right;" class="btn btn-outline btn-primary" href="{% url 'pinax_blog:manage_post_create' %}">Create new post</a>
       {% for post in post_list %}
         <div class="post">          
           <h2><a href="{% url 'pinax_blog:manage_post_update' post.pk %}">{{ post.title }}</a></h2>
