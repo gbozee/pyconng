@@ -461,8 +461,11 @@ padding: 66px 121px;
 #header-section {
   background: url("../img/backgrounds/pycon-homepage-bg.jpg");
   background-size: cover;
+  &.ticket-section{
+    background: url("../img/backgrounds//loki5.jpg");
+    height: 600px !important; 
+  }
 }
-
 
 // *********************
 //  #End styles for the home page
