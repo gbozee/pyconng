@@ -443,8 +443,11 @@ padding: 66px 121px;
 #header-section {
   background: url("../img/backgrounds/pycon-homepage-bg.jpg");
   background-size: cover;
+  &.ticket-section{
+    background: url("../img/backgrounds//loki5.jpg");
+    height: 600px !important; 
+  }
 }
-
 
 // *********************
 //  #End styles for the home page
@@ -505,3 +508,40 @@ padding: 66px 121px;
 //     flex-direction: column;
 //   }
 // }
+
+.ticket-category {
+  background-color: #D5D5D5;
+  padding: 26px 0 36px;
+  a{
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  h6 {
+    // padding-top: 26px;
+    text-align: center;
+    font-weight: bold;
+  }
+  img{
+    width: 132px;
+    & + p{
+      padding: 35px 38px 24px;
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+  }
+  h3.price{
+    font-weight: bold;
+    margin-bottom: 23px;
+    &.strike{
+      text-decoration: line-through #0BB784;
+    }
+  }
+  p.notice{
+    background-color: #FFDF3C;
+    margin: 0px 70px 12px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+}

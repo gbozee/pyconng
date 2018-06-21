@@ -68,6 +68,9 @@ class ProposalAdmin(admin.ModelAdmin):
 class TalkProposalAdmin(ProposalAdmin):
     pass
 
+@admin.register(models.TutorialProposal)
+class TutorialProposal(ProposalAdmin):
+    pass
 
 # @admin.register(models.TutorialProposal)
 # class TutorialProposalAdmin(ProposalAdmin):

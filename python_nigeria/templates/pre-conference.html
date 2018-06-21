@@ -52,8 +52,32 @@
     </div>
 </div>
 <!-- SPONSORS
-    ============================================= -->				
+    ============================================= -->	
+    {% if sponsors|length > 0 %}
     
+    <div id="sponsorship-section">
+      <h1 class="section-description text-right">&lt;PyCon.Sponsors /&gt;</h1>
+      <h3 class="section-title">Sponsors & Exhibit Opportunities</h3>
+      <div class="about-details">
+        <div class="description">
+          A huge thanks to all our amazing partners. We couldn’t have a conference without you! PyCon 2018 provides a unique opportunity
+          for sponsors and exhibitors to showcase their product or research.
+        </div>
+        <div class="highlights">
+        </div>
+      </div>
+    
+      <div class="sponsor-images">
+          {% for sponsor in sponsors %}
+            <a href="{{sponsor.url}}" target="_blank">
+            <img src="{{sponsor.image}}" alt="{{sponsor.image}}">
+            </a>
+          {% endfor %}
+       
+      </div>
+    
+    </div>
+    {% endif %}			
     
     <!-- BECOME A SPONSOR
         ============================================= -->	
