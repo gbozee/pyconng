@@ -16908,7 +16908,7 @@ function onPageLoad() {
 (0, _jquery2.default)(document).ready(function () {
   onPageLoad();
 });
-},{"jquery":344,"popper.js":345,"./bootstrap":342}],76:[function(require,module,exports) {
+},{"jquery":344,"popper.js":345,"./bootstrap":342}],70:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -16937,7 +16937,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57163' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50356' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -17078,5 +17078,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[76,38], null)
+},{}]},{},[70,38], null)
 //# sourceMappingURL=/js.68eb18e9.map

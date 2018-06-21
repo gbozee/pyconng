@@ -169,7 +169,7 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts\\MaisonNeue-Book.eot":372,"./fonts\\MaisonNeueWEB-Book.woff":373,"./fonts\\MaisonNeue-Book.svg":374,"./fonts\\MaisonNeue-Mono.eot":375,"./fonts\\maisonneuemono.ttf":376,"./fonts\\MaisonNeue-Mono.woff":377,"./fonts\\MaisonNeueWEB-Bold.woff":378,"./..\\img\\backgrounds\\pycon-homepage-bg.jpg":380,"./..\\img\\backgrounds\\loki5.jpg":387,"./..\\img\\backgrounds\\speaker-page-bg.jpg":379,"./..\\img\\backgrounds\\ticket-bg.jpg":381,"./..\\img\\backgrounds\\code-of-conduct.jpg":382,"./..\\img\\backgrounds\\loki.jpg":383,"./..\\img\\backgrounds\\loki2.jpg":384,"./..\\img\\backgrounds\\loki3.jpg":385,"./..\\img\\backgrounds\\loki4.jpg":386,"./..\\img\\backgrounds\\loki6.jpg":388,"./..\\img\\backgrounds\\loki7.jpg":389,"./..\\img\\backgrounds\\keynote.jpg":390,"_css_loader":391}],76:[function(require,module,exports) {
+},{"./fonts\\MaisonNeue-Book.eot":372,"./fonts\\MaisonNeueWEB-Book.woff":373,"./fonts\\MaisonNeue-Book.svg":374,"./fonts\\MaisonNeue-Mono.eot":375,"./fonts\\maisonneuemono.ttf":376,"./fonts\\MaisonNeue-Mono.woff":377,"./fonts\\MaisonNeueWEB-Bold.woff":378,"./..\\img\\backgrounds\\pycon-homepage-bg.jpg":380,"./..\\img\\backgrounds\\loki5.jpg":387,"./..\\img\\backgrounds\\speaker-page-bg.jpg":379,"./..\\img\\backgrounds\\ticket-bg.jpg":381,"./..\\img\\backgrounds\\code-of-conduct.jpg":382,"./..\\img\\backgrounds\\loki.jpg":383,"./..\\img\\backgrounds\\loki2.jpg":384,"./..\\img\\backgrounds\\loki3.jpg":385,"./..\\img\\backgrounds\\loki4.jpg":386,"./..\\img\\backgrounds\\loki6.jpg":388,"./..\\img\\backgrounds\\loki7.jpg":389,"./..\\img\\backgrounds\\keynote.jpg":390,"_css_loader":391}],70:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -198,7 +198,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57163' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50356' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -418,4 +418,4 @@ LazyPromise.prototype.catch = function (onError) {
 };
 },{"./bundle-url":392}],0:[function(require,module,exports) {
 var b=require(394);b.load([["MaisonNeue-Book.ff3656c9.eot",372],["MaisonNeueWEB-Book.d931d728.woff",373],["MaisonNeue-Book.d2f3b8a2.svg",374],["MaisonNeue-Mono.149bfaa9.eot",375],["maisonneuemono.92f70a97.ttf",376],["MaisonNeue-Mono.7fee14af.woff",377],["MaisonNeueWEB-Bold.4b0854d8.woff",378],["pycon-homepage-bg.6fffc842.jpg",380],["loki5.5cc1cdb1.jpg",387],["speaker-page-bg.69d4a84d.jpg",379],["ticket-bg.d44184d2.jpg",381],["code-of-conduct.9bb0092c.jpg",382],["loki.ed818abf.jpg",383],["loki2.d7ca5b25.jpg",384],["loki3.26b58b9f.jpg",385],["loki4.bc861694.jpg",386],["loki6.86a6c59f.jpg",388],["loki7.db6d5ee3.jpg",389],["keynote.da42db33.jpg",390]]);
-},{}]},{},[76,0], null)
+},{}]},{},[70,0], null)
