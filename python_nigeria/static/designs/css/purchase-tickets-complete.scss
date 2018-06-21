@@ -1,3 +1,4 @@
+@import "./variables";
 #tickets-complete-section {
   background-color: #F6FFFC;
   background-size: cover;
@@ -40,7 +41,7 @@
       margin: 5%;
     }
     h3 {
-	    color: #site_color;
+	    color: $site_color;
 	    font-family: $normal_font_name;
 	    font-size: 16px;
 	    font-weight: bold;
