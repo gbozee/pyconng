@@ -299,6 +299,7 @@ CONFERENCE_ID = 1
 PROPOSAL_FORMS = {
     "tutorial": "python_nigeria.proposals.forms.TutorialProposalForm",
     "talk-25-min": "python_nigeria.proposals.forms.TalkProposalForm",
+    "pydata": "python_nigeria.proposals.forms.TalkProposalForm",
     "talk-45-min": "python_nigeria.proposals.forms.TalkProposalForm",
     "open-space": "python_nigeria.proposals.forms.OpenSpaceProposalForm",
 }
