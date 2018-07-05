@@ -24,6 +24,7 @@ urlpatterns = [
         url(r'^hijack/', include('hijack.urls')),
     url(r'^account/', include('account.urls')),
     url(r'^contact/', include('contact_form.urls')),
+    # url(r'^captcha/', include('captcha.urls')),
     url(r'^we-are-allowed/', include(admin.site.urls)),
     url(r'^tickets/', include("python_nigeria.tickets.urls", namespace="tickets"))
 ]

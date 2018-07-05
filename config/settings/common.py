@@ -79,7 +79,7 @@ THIRD_PARTY_APPS = (
     'hijack',
     'compat',
     'hijack_admin',
-    'captcha',
+    # 'captcha',
 )
 
 # Apps specific for this project go here.
