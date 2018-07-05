@@ -315,7 +315,7 @@ class HomePage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         xx = Sponsor.objects.select_related("image_link").exclude(image_link=None).all()
-        sponsors = [{"url": x.external_url, "image": x.image_link.image} for x in xx]
+        sponsors = [{"url": x.external_url, "image": x.image_link.image,'active':x.active} for x in xx]
 
         context.update(sponsors=sponsors)
         return context

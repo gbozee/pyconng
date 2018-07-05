@@ -69,9 +69,12 @@
     
       <div class="sponsor-images" style="align-items: center;">
           {% for sponsor in sponsors %}
-            <a href="{{sponsor.url}}" target="_blank">
-            <img src="/media/{{sponsor.image}}" alt="{{sponsor.image}}">
-            </a>
+          {% if sponsor.active %}
+          <a href="{{sponsor.url}}" target="_blank">
+          <img src="/media/{{sponsor.image}}" alt="{{sponsor.image}}">
+          </a>
+          
+          {% endif %}
           {% endfor %}
        
       </div>
