@@ -6005,17 +6005,17 @@ a.text-dark:focus, a.text-dark:hover {
 
 @font-face {
   font-family: "Maison Neue";
-  src: url("3dc5505cb65f2e0153b1e76dc3b1f2fe.eot?#iefix");
-  src: url("3dc5505cb65f2e0153b1e76dc3b1f2fe.eot?#iefix") format("embedded-opentype"), url("3a19cad25d02989e22b4fc6910e55b57.woff") format("woff"), url("b2bdbfa033d2c4ebfe2dd440f0db31c7.svg#@%7Bicon-font-svg-id%7D") format("svg"); }
+  src: url("./fonts/MaisonNeue-Book.eot?#iefix");
+  src: url("./fonts/MaisonNeue-Book.eot?#iefix") format("embedded-opentype"), url("./fonts/MaisonNeueWEB-Book.woff") format("woff"), url("./fonts/MaisonNeue-Book.svg#@{icon-font-svg-id}") format("svg"); }
 
 @font-face {
   font-family: "Maison Neue Mono";
-  src: url("545ef30be110b33e4b9b3179e9b7606e.eot?#iefix");
-  src: url("545ef30be110b33e4b9b3179e9b7606e.eot?#iefix") format("embedded-opentype"), url("2a6bf54ac6673fdbe75688b30fbb825e.ttf") format("ttf"), url("ee847e229c7e53cb7c0268c9b0dca50d.woff") format("woff"); }
+  src: url("./fonts/MaisonNeue-Mono.eot?#iefix");
+  src: url("./fonts/MaisonNeue-Mono.eot?#iefix") format("embedded-opentype"), url("./fonts/maisonneuemono.ttf") format("ttf"), url("./fonts/MaisonNeue-Mono.woff") format("woff"); }
 
 @font-face {
   font-family: "Maison Neue Bold";
-  src: url("a02ba4f861dd063fc999359aad76b9a7.woff") format("woff"); }
+  src: url("./fonts/MaisonNeueWEB-Bold.woff") format("woff"); }
 
 * {
   box-sizing: border-box; }
@@ -6026,20 +6026,17 @@ button {
   font-family: "Maison Neue", -apple-system,  system-ui, sans-serif;
   --text-color: #0BB784; }
 
-a,
-.link-button {
+a, .link-button {
   text-decoration: none; }
 
-button,
-.link-button {
+button, .link-button {
   padding: 15px 44px !important;
   border: none !important;
   font-weight: 700 !important;
   border-radius: 0 !important;
   color: black !important; }
   @media (max-width: 544px) {
-    button,
-    .link-button {
+    button, .link-button {
       font-size: 13px;
       font-weight: bold !important;
       padding: 15px !important; } }
@@ -6086,57 +6083,29 @@ button,
     #navbar.home + #speakers-section, #navbar.home + #code-of-conduct-section, #navbar.home + .custom-image-section {
       height: 100%; } }
 
-#header-section,
-#speakers-section,
-#purchase-tickets-section,
-#code-of-conduct-section,
-.custom-image-section {
+#header-section, #speakers-section, #purchase-tickets-section, #code-of-conduct-section, .custom-image-section {
   font-family: "Maison Neue Mono"; }
-  #header-section h1,
-  #speakers-section h1,
-  #purchase-tickets-section h1,
-  #code-of-conduct-section h1,
-  .custom-image-section h1 {
+  #header-section h1, #speakers-section h1, #purchase-tickets-section h1, #code-of-conduct-section h1, .custom-image-section h1 {
     color: #02efa8;
     text-transform: uppercase;
     letter-spacing: 10px;
     font-size: 54px;
     line-height: 74px; }
     @media (max-width: 544px) {
-      #header-section h1,
-      #speakers-section h1,
-      #purchase-tickets-section h1,
-      #code-of-conduct-section h1,
-      .custom-image-section h1 {
+      #header-section h1, #speakers-section h1, #purchase-tickets-section h1, #code-of-conduct-section h1, .custom-image-section h1 {
         font-size: 2rem; } }
-  #header-section p,
-  #speakers-section p,
-  #purchase-tickets-section p,
-  #code-of-conduct-section p,
-  .custom-image-section p {
+  #header-section p, #speakers-section p, #purchase-tickets-section p, #code-of-conduct-section p, .custom-image-section p {
     color: white;
     font-size: 20px;
     line-height: 2; }
     @media (min-width: 992px) {
-      #header-section p.lead,
-      #speakers-section p.lead,
-      #purchase-tickets-section p.lead,
-      #code-of-conduct-section p.lead,
-      .custom-image-section p.lead {
+      #header-section p.lead, #speakers-section p.lead, #purchase-tickets-section p.lead, #code-of-conduct-section p.lead, .custom-image-section p.lead {
         width: 60%; } }
   @media (min-width: 992px) {
-    #header-section,
-    #speakers-section,
-    #purchase-tickets-section,
-    #code-of-conduct-section,
-    .custom-image-section {
+    #header-section, #speakers-section, #purchase-tickets-section, #code-of-conduct-section, .custom-image-section {
       height: 630px; } }
   @media (min-width: 1500px) {
-    #header-section .container,
-    #speakers-section .container,
-    #purchase-tickets-section .container,
-    #code-of-conduct-section .container,
-    .custom-image-section .container {
+    #header-section .container, #speakers-section .container, #purchase-tickets-section .container, #code-of-conduct-section .container, .custom-image-section .container {
       max-width: 1450px; } }
 
 .content-section {
@@ -6351,106 +6320,55 @@ h3.section-title {
       text-decoration: none;
       background-color: #02bc84; }
 
-#about-section,
-#speaker-section,
-#workshop-section,
-#venue-section,
-#sponsorship-section {
+#about-section, #speaker-section, #workshop-section, #venue-section, #sponsorship-section {
   --bottom-padding: 70px; }
-  #about-section h1.header-text,
-  #speaker-section h1.header-text,
-  #workshop-section h1.header-text,
-  #venue-section h1.header-text,
-  #sponsorship-section h1.header-text {
+  #about-section h1.header-text, #speaker-section h1.header-text, #workshop-section h1.header-text, #venue-section h1.header-text, #sponsorship-section h1.header-text {
     font-size: 59px;
     letter-spacing: 10px;
     line-height: 71px; }
-  #about-section .about-details,
-  #speaker-section .about-details,
-  #workshop-section .about-details,
-  #venue-section .about-details,
-  #sponsorship-section .about-details {
+  #about-section .about-details, #speaker-section .about-details, #workshop-section .about-details, #venue-section .about-details, #sponsorship-section .about-details {
     --padding-width: 62px;
     --top-padding: 30px;
     padding-top: var(--top-padding);
     padding-bottom: var(--bottom-padding);
     display: flex; }
     @media (max-width: 768px) {
-      #about-section .about-details,
-      #speaker-section .about-details,
-      #workshop-section .about-details,
-      #venue-section .about-details,
-      #sponsorship-section .about-details {
+      #about-section .about-details, #speaker-section .about-details, #workshop-section .about-details, #venue-section .about-details, #sponsorship-section .about-details {
         flex-direction: column; } }
-    #about-section .about-details .description,
-    #speaker-section .about-details .description,
-    #workshop-section .about-details .description,
-    #venue-section .about-details .description,
-    #sponsorship-section .about-details .description {
+    #about-section .about-details .description, #speaker-section .about-details .description, #workshop-section .about-details .description, #venue-section .about-details .description, #sponsorship-section .about-details .description {
       flex: 2;
       padding-right: var(--padding-width);
       font-size: 17px;
       line-height: 36px; }
-    #about-section .about-details .highlights,
-    #speaker-section .about-details .highlights,
-    #workshop-section .about-details .highlights,
-    #venue-section .about-details .highlights,
-    #sponsorship-section .about-details .highlights {
+    #about-section .about-details .highlights, #speaker-section .about-details .highlights, #workshop-section .about-details .highlights, #venue-section .about-details .highlights, #sponsorship-section .about-details .highlights {
       flex: 1;
       display: grid;
       grid-row-gap: 34px;
       grid-template-columns: 1fr 1fr;
       padding-left: var(--padding-width); }
       @media (max-width: 768px) {
-        #about-section .about-details .highlights,
-        #speaker-section .about-details .highlights,
-        #workshop-section .about-details .highlights,
-        #venue-section .about-details .highlights,
-        #sponsorship-section .about-details .highlights {
+        #about-section .about-details .highlights, #speaker-section .about-details .highlights, #workshop-section .about-details .highlights, #venue-section .about-details .highlights, #sponsorship-section .about-details .highlights {
           padding-left: 0; } }
-      #about-section .about-details .highlights .highlight-detail h1,
-      #speaker-section .about-details .highlights .highlight-detail h1,
-      #workshop-section .about-details .highlights .highlight-detail h1,
-      #venue-section .about-details .highlights .highlight-detail h1,
-      #sponsorship-section .about-details .highlights .highlight-detail h1 {
+      #about-section .about-details .highlights .highlight-detail h1, #speaker-section .about-details .highlights .highlight-detail h1, #workshop-section .about-details .highlights .highlight-detail h1, #venue-section .about-details .highlights .highlight-detail h1, #sponsorship-section .about-details .highlights .highlight-detail h1 {
         color: var(--text-color);
         margin-bottom: 0;
         font-size: 72px;
         line-height: 72px; }
-  #about-section .image-section,
-  #speaker-section .image-section,
-  #workshop-section .image-section,
-  #venue-section .image-section,
-  #sponsorship-section .image-section {
+  #about-section .image-section, #speaker-section .image-section, #workshop-section .image-section, #venue-section .image-section, #sponsorship-section .image-section {
     display: flex;
     padding-bottom: var(--bottom-padding); }
-    #about-section .image-section img,
-    #speaker-section .image-section img,
-    #workshop-section .image-section img,
-    #venue-section .image-section img,
-    #sponsorship-section .image-section img {
+    #about-section .image-section img, #speaker-section .image-section img, #workshop-section .image-section img, #venue-section .image-section img, #sponsorship-section .image-section img {
       max-width: 100%;
       max-height: 100%; }
-    #about-section .image-section .image-1,
-    #speaker-section .image-section .image-1,
-    #workshop-section .image-section .image-1,
-    #venue-section .image-section .image-1,
-    #sponsorship-section .image-section .image-1 {
+    #about-section .image-section .image-1, #speaker-section .image-section .image-1, #workshop-section .image-section .image-1, #venue-section .image-section .image-1, #sponsorship-section .image-section .image-1 {
       flex: 1; }
-    #about-section .image-section .image-2,
-    #speaker-section .image-section .image-2,
-    #workshop-section .image-section .image-2,
-    #venue-section .image-section .image-2,
-    #sponsorship-section .image-section .image-2 {
+    #about-section .image-section .image-2, #speaker-section .image-section .image-2, #workshop-section .image-section .image-2, #venue-section .image-section .image-2, #sponsorship-section .image-section .image-2 {
       flex: 1.5;
       padding-left: 20px; }
 
 #header-section {
-  background: url("bd153d5629e9320924878bf5e35bdb97.jpg");
+  background: url("../img/backgrounds/pycon-homepage-bg.jpg");
   background-size: cover; }
-  #header-section.ticket-section {
-    background: url("043c4de1c70f5ef0991383a5417ee032.jpg");
-    height: 600px !important; }
 
 #bottom-description {
   margin-top: 110px !important;
@@ -6469,7 +6387,7 @@ h3.section-title {
     font-size: 16px; }
 
 #speakers-section {
-  background: url("283374a38805266464500a4dfa47d4c6.jpg");
+  background: url("../img/backgrounds/speaker-page-bg.jpg");
   background-size: cover; }
 
 #speaker {
@@ -6507,7 +6425,7 @@ h3.section-title {
 
 #purchase-tickets-section {
   height: 850px;
-  background: url("9c5e2070c581a8bee01f6c593b114db7.jpg");
+  background: url("../img/backgrounds/ticket-bg.jpg");
   background-size: cover; }
   #purchase-tickets-section .logo {
     padding-bottom: 95px; }
@@ -6603,39 +6521,39 @@ h3.section-title {
     opacity: 0.5; }
 
 #code-of-conduct-section {
-  background: url("c7c5018872a6e490d69d358261f6a99e.jpg");
+  background: url("../img/backgrounds/code-of-conduct.jpg");
   background-size: cover; }
 
 .custom-image-section.background-option-1 {
-  background: url("669a3b46f129df379adcfb38bec91d64.jpg");
+  background: url("../img/backgrounds/loki.jpg");
   background-size: cover; }
 
 .custom-image-section.background-option-2 {
-  background: url("1e197309b2ce8a13036528cd5da62fc6.jpg");
+  background: url("../img/backgrounds/loki2.jpg");
   background-size: cover; }
 
 .custom-image-section.background-option-3 {
-  background: url("ae4d925f16e3e7aa0b71faf9b362adcb.jpg");
+  background: url("../img/backgrounds/loki3.jpg");
   background-size: cover; }
 
 .custom-image-section.background-option-4 {
-  background: url("6571603f972b4ffdbd8fc0b6da9d0b45.jpg");
+  background: url("../img/backgrounds/loki4.jpg");
   background-size: cover; }
 
 .custom-image-section.background-option-5 {
-  background: url("043c4de1c70f5ef0991383a5417ee032.jpg");
+  background: url("../img/backgrounds/loki5.jpg");
   background-size: cover; }
 
 .custom-image-section.background-option-6 {
-  background: url("7c47cd6a5692b634c2abe862f93c8926.jpg");
+  background: url("../img/backgrounds/loki6.jpg");
   background-size: cover; }
 
 .custom-image-section.background-option-7 {
-  background: url("84ae6bf264c13b8d3a76105751be029c.jpg");
+  background: url("../img/backgrounds/loki7.jpg");
   background-size: cover; }
 
 .custom-image-section.background-option-8 {
-  background: url("a253d6ff6902c597e02c2237ab7bc06f.jpg");
+  background: url("../img/backgrounds/keynote.jpg");
   background-size: cover;
   background-position: 50%; }
 
@@ -6735,9 +6653,6 @@ h3.section-title {
       background-color: white;
       box-shadow: 0 2px 4px 0 rgba(100, 100, 100, 0.3);
       margin-bottom: 1%; }
-      @media (max-width: 768px) {
-        #tickets-complete-section .social-share .share, #tickets-complete-section .social-share .post, #tickets-complete-section .social-share .tweet {
-          margin-bottom: 5%; } }
       #tickets-complete-section .social-share .share img, #tickets-complete-section .social-share .post img, #tickets-complete-section .social-share .tweet img {
         margin: 20px 37px 5px; }
       #tickets-complete-section .social-share .share p, #tickets-complete-section .social-share .post p, #tickets-complete-section .social-share .tweet p {
@@ -6806,85 +6721,3 @@ h3.section-title {
     @media (max-width: 544px) {
       #footer .pycon-snake-image {
         display: none; } }
-
-.ticket-category {
-  background-color: #D5D5D5;
-  padding: 26px 0 36px; }
-  .ticket-category a:hover {
-    cursor: pointer; }
-  .ticket-category h6 {
-    text-align: center;
-    font-weight: bold; }
-  .ticket-category img {
-    width: 132px; }
-    .ticket-category img + p {
-      padding: 35px 38px 24px;
-      font-size: 15px;
-      margin-bottom: 0; }
-  .ticket-category h3.price {
-    font-weight: bold;
-    margin-bottom: 23px; }
-    .ticket-category h3.price.strike {
-      text-decoration: line-through #0BB784; }
-  .ticket-category p.notice {
-    background-color: #FFDF3C;
-    margin: 0px 70px 12px;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 14px; }
-
-#ticket-value-section {
-  margin-top: 50px; }
-  #ticket-value-section .value-title {
-    display: inline-block;
-    text-transform: uppercase;
-    font-size: 17px;
-    background-color: black;
-    width: fit-content;
-    color: #FFFFFF;
-    padding: 8px 30px 10px 23px;
-    margin-bottom: 0; }
-  #ticket-value-section .value-description {
-    width: 60%;
-    padding-bottom: 50px; }
-    @media (max-width: 768px) {
-      #ticket-value-section .value-description {
-        width: 100%; } }
-
-@media (max-width: 768px) {
-  .packages > .col-sm-12.col-md-4 {
-    padding-bottom: 20px; } }
-
-@media (max-width: 768px) {
-  .hide-mobile {
-    display: none; } }
-
-#goodies-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1.3fr 1fr;
-  grid-template-areas: ". . ." ". . .";
-  grid-column-gap: 10%; }
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    #goodies-section {
-      display: -ms-grid;
-      -ms-grid-columns: 1fr 1fr 1fr;
-      -ms-grid-rows: 1fr 1fr; } }
-  @media (max-width: 768px) {
-    #goodies-section {
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-areas: "." "." "." "." "." ".";
-      grid-template-columns: 1fr; } }
-  @media (max-width: 768px) {
-    #goodies-section .goodie-item {
-      text-align: center; } }
-  #goodies-section .goodie-item img {
-    width: 100px;
-    margin-bottom: 30px; }
-
-.s-share {
-  justify-content: space-around; }
-  @media (max-width: 768px) {
-    .s-share {
-      flex-direction: column;
-      align-items: center; } }
