@@ -56,11 +56,11 @@
               <a href="{% url "speaker_edit" %}" class="btn btn-primary btn-sm">
                   <i class="fas fa-pencil"></i> Edit your speaker profile
               </a>
-                {#{% if can_submit %}#}
+                {% if can_submit %}
                   <a href="{% url "proposal_submit" %}" class="btn btn-primary btn-sm mt-1">
                   <i class="fa fa-plus-sign"></i> Submit a new proposal
               </a>
-                {#{% endif %}#}
+                {% endif %}
               
           </div>
           {% endif %}

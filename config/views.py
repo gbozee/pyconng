@@ -214,6 +214,12 @@ class NewSponsorApplicationForm(forms.ModelForm):
             obj.save()
         return obj
 
+def sponsors_list(request):
+    return render(
+        request,
+        "symposion/sponsorship/apply.html",
+        {},
+    )
 
 def sponsor_apply(request):
     params = {}
@@ -298,8 +304,7 @@ def dashboard(request):
         return redirect("speaker_create_token", request.session["pending-token"])
     orders = Ticket.objects.not_booked(request.user)
     my_ticket = TicketSale.objects.filter(user=request.user)
-    deadline = datetime.datetime(2017, 7, 29, 11, 59, 00, 00, pytz.UTC)
-    difference = deadline - timezone.now()
+    difference = settings.DEADLINE_DATE - timezone.now()
     overide = request.user.email in ["pyconnigeria@pycon.ng"]
     can_submit = difference.days > 0 or overide
     return render(

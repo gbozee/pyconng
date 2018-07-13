@@ -65,6 +65,7 @@ urlpatterns += [
     url(r"^reviews/", include("symposion.reviews.urls")),
     url(r"^schedule/", include("symposion.schedule.urls")),
     url(r"^speaker/", include("symposion.speakers.urls")),
+    url(r"^sponsors$", o_views.sponsors_list,name="sponsor_list"),
     url(r"^sponsors/apply", o_views.sponsor_apply, name="sponsor_apply"),
     url(r"^sponsors/", include("config.schedule_urls")),
     url(r"^teams/", include("symposion.teams.urls")),
