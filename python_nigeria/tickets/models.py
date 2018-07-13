@@ -38,9 +38,42 @@ class TicketPrice(models.Model):
         'Personal': {"amount": 10000, "count": 120},
         'Student': {"amount": 4000, "count": 20},
     }
+    URL = {
+        "Company":{
+                "name": "CORPORATE Package",
+                "short_name": "Corporate",
+                "style":"",
+                "url": "/static/designs/img/tickets/coporate.svg",
+                "description":"For the working class who are python experts in the industry",
+                "early_price": 10000,
+                "price": 20000,
+            },
+        'Personal':{
+                "name": "Individual Package",
+                "short_name": "Individual",
+                "url": "/static/designs/img/tickets/female-logo.png",
+                "style": "width:200px;",
+                "description": "For hobbyist python developers and interested individuals",
+                "early_price": 6000,
+                "price": 10000,
+            },
+        "Student":{
+                "name": "Student Package",
+                "short_name":"Student",
+                "style":"",
+                "url": "/static/designs/img/tickets/student-package@2x.png",
+                "description":"For pupils, undergraduate students interested in Python",
+                "early_price": 3000,
+                "price": 4000,
+            },
+    }
 
     def __str__(self):
         return self.name
+
+    @property
+    def ticket_details(self):
+        return self.URL[self.name]
 
     @property
     def current_price(self):
@@ -58,7 +91,7 @@ class TicketPrice(models.Model):
 
     @classmethod
     def populate_count_price(cls):
-        for o in cls.objects.all():
+        for o in cls.objects.filter(name__in=['Company','Personal',"Student"]):
             if o.early_price == 0:
                 record = dict(cls.EARLY_BIRD)[o.name]
                 o.early_price = record['amount']

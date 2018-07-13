@@ -258,7 +258,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],33:[function(require,module,exports) {
+},{}],31:[function(require,module,exports) {
 var global = (1,eval)("this");
 var process = require("process");
 /*!
@@ -10626,7 +10626,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{"process":34}],32:[function(require,module,exports) {
+},{"process":34}],33:[function(require,module,exports) {
 var global = (1,eval)("this");
 'use strict';
 
@@ -16947,7 +16947,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   Object.defineProperty(exports, '__esModule', { value: true });
 });
 //# sourceMappingURL=bootstrap.js.map
-},{"jquery":33,"popper.js":32}],4:[function(require,module,exports) {
+},{"jquery":31,"popper.js":33}],4:[function(require,module,exports) {
 "use strict";
 
 var _jquery = require("jquery");
@@ -16985,7 +16985,7 @@ function onPageLoad() {
 (0, _jquery2.default)(document).ready(function () {
   onPageLoad();
 });
-},{"jquery":33,"popper.js":32,"./bootstrap":10}],35:[function(require,module,exports) {
+},{"jquery":31,"popper.js":33,"./bootstrap":10}],35:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -17007,7 +17007,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57587' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58571' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

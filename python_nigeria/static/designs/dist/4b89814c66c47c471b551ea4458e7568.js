@@ -71,7 +71,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({31:[function(require,module,exports) {
+})({32:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -132,13 +132,13 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":31}],2:[function(require,module,exports) {
+},{"./bundle-url":32}],2:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./fonts\\MaisonNeue-Book.eot":12,"./fonts\\MaisonNeueWEB-Book.woff":13,"./fonts\\MaisonNeue-Book.svg":14,"./fonts\\MaisonNeue-Mono.eot":15,"./fonts\\maisonneuemono.ttf":16,"./fonts\\MaisonNeue-Mono.woff":18,"./fonts\\MaisonNeueWEB-Bold.woff":19,"./..\\img\\backgrounds\\pycon-homepage-bg.jpg":17,"./..\\img\\backgrounds\\loki5.jpg":21,"./..\\img\\backgrounds\\speaker-page-bg.jpg":23,"./..\\img\\backgrounds\\ticket-bg.jpg":20,"./..\\img\\backgrounds\\code-of-conduct.jpg":22,"./..\\img\\backgrounds\\loki.jpg":25,"./..\\img\\backgrounds\\loki2.jpg":28,"./..\\img\\backgrounds\\loki3.jpg":24,"./..\\img\\backgrounds\\loki4.jpg":27,"./..\\img\\backgrounds\\loki6.jpg":30,"./..\\img\\backgrounds\\loki7.jpg":26,"./..\\img\\backgrounds\\keynote.jpg":29,"_css_loader":11}],97:[function(require,module,exports) {
+},{"./fonts\\MaisonNeue-Book.eot":12,"./fonts\\MaisonNeueWEB-Book.woff":15,"./fonts\\MaisonNeue-Book.svg":21,"./fonts\\MaisonNeue-Mono.eot":13,"./fonts\\maisonneuemono.ttf":14,"./fonts\\MaisonNeue-Mono.woff":16,"./fonts\\MaisonNeueWEB-Bold.woff":17,"./..\\img\\backgrounds\\pycon-homepage-bg.jpg":19,"./..\\img\\backgrounds\\loki5.jpg":18,"./..\\img\\backgrounds\\speaker-page-bg.jpg":22,"./..\\img\\backgrounds\\ticket-bg.jpg":30,"./..\\img\\backgrounds\\code-of-conduct.jpg":20,"./..\\img\\backgrounds\\loki.jpg":23,"./..\\img\\backgrounds\\loki2.jpg":24,"./..\\img\\backgrounds\\loki3.jpg":29,"./..\\img\\backgrounds\\loki4.jpg":25,"./..\\img\\backgrounds\\loki6.jpg":26,"./..\\img\\backgrounds\\loki7.jpg":28,"./..\\img\\backgrounds\\keynote.jpg":27,"_css_loader":11}],35:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -160,7 +160,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57587' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58571' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -261,7 +261,7 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}],98:[function(require,module,exports) {
+},{}],37:[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundlesLazy(bundles) {
@@ -340,7 +340,7 @@ LazyPromise.prototype.then = function (onSuccess, onError) {
 LazyPromise.prototype.catch = function (onError) {
   return this.promise || (this.promise = new Promise(this.executor).catch(onError));
 };
-},{"./bundle-url":31}],0:[function(require,module,exports) {
-var b=require(98);b.load([["3dc5505cb65f2e0153b1e76dc3b1f2fe.eot",12],["3a19cad25d02989e22b4fc6910e55b57.woff",13],["b2bdbfa033d2c4ebfe2dd440f0db31c7.svg",14],["545ef30be110b33e4b9b3179e9b7606e.eot",15],["2a6bf54ac6673fdbe75688b30fbb825e.ttf",16],["ee847e229c7e53cb7c0268c9b0dca50d.woff",18],["a02ba4f861dd063fc999359aad76b9a7.woff",19],["bd153d5629e9320924878bf5e35bdb97.jpg",17],["043c4de1c70f5ef0991383a5417ee032.jpg",21],["283374a38805266464500a4dfa47d4c6.jpg",23],["9c5e2070c581a8bee01f6c593b114db7.jpg",20],["c7c5018872a6e490d69d358261f6a99e.jpg",22],["669a3b46f129df379adcfb38bec91d64.jpg",25],["1e197309b2ce8a13036528cd5da62fc6.jpg",28],["ae4d925f16e3e7aa0b71faf9b362adcb.jpg",24],["6571603f972b4ffdbd8fc0b6da9d0b45.jpg",27],["7c47cd6a5692b634c2abe862f93c8926.jpg",30],["84ae6bf264c13b8d3a76105751be029c.jpg",26],["a253d6ff6902c597e02c2237ab7bc06f.jpg",29]]);
-},{}]},{},[97,0])
+},{"./bundle-url":32}],0:[function(require,module,exports) {
+var b=require(37);b.load([["3dc5505cb65f2e0153b1e76dc3b1f2fe.eot",12],["3a19cad25d02989e22b4fc6910e55b57.woff",15],["b2bdbfa033d2c4ebfe2dd440f0db31c7.svg",21],["545ef30be110b33e4b9b3179e9b7606e.eot",13],["2a6bf54ac6673fdbe75688b30fbb825e.ttf",14],["ee847e229c7e53cb7c0268c9b0dca50d.woff",16],["a02ba4f861dd063fc999359aad76b9a7.woff",17],["bd153d5629e9320924878bf5e35bdb97.jpg",19],["043c4de1c70f5ef0991383a5417ee032.jpg",18],["283374a38805266464500a4dfa47d4c6.jpg",22],["9c5e2070c581a8bee01f6c593b114db7.jpg",30],["c7c5018872a6e490d69d358261f6a99e.jpg",20],["669a3b46f129df379adcfb38bec91d64.jpg",23],["1e197309b2ce8a13036528cd5da62fc6.jpg",24],["ae4d925f16e3e7aa0b71faf9b362adcb.jpg",29],["6571603f972b4ffdbd8fc0b6da9d0b45.jpg",25],["7c47cd6a5692b634c2abe862f93c8926.jpg",26],["84ae6bf264c13b8d3a76105751be029c.jpg",28],["a253d6ff6902c597e02c2237ab7bc06f.jpg",27]]);
+},{}]},{},[35,0])
 //# sourceMappingURL=/dist/4b89814c66c47c471b551ea4458e7568.map
