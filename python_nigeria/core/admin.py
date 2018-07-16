@@ -7,6 +7,8 @@ from import_export import resources
 from hijack_admin.admin import HijackUserAdminMixin
 from symposion.sponsorship.admin import SponsorAdmin
 from .models import Sponsor, SponsorImage
+from symposion.proposals.models import ProposalSection
+from django.contrib.auth.models import Permission
 from symposion.speakers.models import Speaker
 User = get_user_model()
 admin.site.unregister(User)
@@ -30,6 +32,7 @@ class UserResource(resources.ModelResource):
 class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
     resource_class = UserResource
     list_display = UserAdmin.list_display
+    actions = ['add_permissions']
 
     def get_list_display(self, request):
         """
@@ -40,6 +43,13 @@ class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
         if email in ["gbozee@gmail.com", "gbozee@example.com", "pyconnigeria@pycon.ng"]:
             return self.list_display + ('hijack_field',)
         return self.list_display
+
+    def add_permissions(self, request, queryset):
+        permissions = Permission.objects.filter(codename__icontains='add_review')
+        
+        for x in queryset.all():
+            x.user_permissions.add(*permissions)
+        self.message_user(request, "permissions added")
 
 
 admin.site.register(User, UserAdmin)

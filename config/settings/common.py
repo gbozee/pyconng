@@ -203,6 +203,7 @@ TEMPLATES = [
                 # Your stuff: custom template context processors go here
                 "account.context_processors.account",
                 "symposion.reviews.context_processors.reviews",
+                "config.context_processors.consts"
             ],
         },
     }
@@ -323,7 +324,7 @@ HIJACK_LOGIN_REDIRECT_URL = (
     "/dashboard/"
 )  # Where admins are redirected to after hijacking a user
 HIJACK_LOGOUT_REDIRECT_URL = (
-    "/admin/auth/user/"
+    "/we-are-allowed/auth/user/"
 )  # Where admins are redirected to after releasing a user
 HIJACK_ALLOW_GET_REQUESTS = True
 
