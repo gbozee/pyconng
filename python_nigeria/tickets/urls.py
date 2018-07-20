@@ -12,7 +12,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', views.TicketHomeView.as_view(), name='home'),
     url(r'^coupons$', views.valid_coupons, name='coupons'),
-    url(r'^purchase/$', views.PurchaseView.as_view(), name='purchase'),
+    url(r'^purchase/$', login_required(views.PurchaseView.as_view()), name='purchase'),
     url(r'^checkout/(?P<order>[\w.@+-]+)/$', views.CheckoutView.as_view(), name='checkout_view'),
     # url(r'^checkout/(?P<order>[\w.@+-]+)/$', login_required(views.CheckoutView.as_view()), name='checkout_view'),
     url(r'^detail/(?P<order>[\w.@+-]+)/$', login_required(views.TicketDetailPage.as_view()), name="detail"),

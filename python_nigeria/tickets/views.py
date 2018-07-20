@@ -190,7 +190,7 @@ class PurchaseView(TemplateView):
             {"name": "Corporate ticket", "amount": amount("Company")},
             # {"data_fare": "TRSPP", "amount": amount("Paetron")},
         ]
-        context.update(tickets=tickets)
+        context.update(tickets=tickets, public_key=settings.PAYSTACK_PUBLIC_KEY)
         return context
 
 
