@@ -22,12 +22,20 @@ class TicketHomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TicketHomeView, self).get_context_data(**kwargs)
-        tickets = TicketPrice.objects.filter(name__in=["Company","Personal","Student"])
+        tickets = TicketPrice.objects.filter(
+            name__in=["Company", "Personal", "Student", "Tutorial"]
+        )
         ticket_types = [x.ticket_details for x in tickets]
-        ticket_types = sorted(ticket_types, key=lambda x: x['price'])
-        
+        ticket_types = sorted(ticket_types, key=lambda x: x["price"])
+
         context.update({"plans": ticket_types})
         return context
+
+
+def intermediate_purchase(request):
+    selected = request.GET.get("selected_plan")
+    request.session["selected_plan"] = selected
+    return redirect("tickets:purchase")
 
 
 class PurchaseForm(forms.Form):
@@ -176,21 +184,34 @@ class PurchaseView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PurchaseView, self).get_context_data(**kwargs)
-        tickets = TicketPrice.objects.filter(name__in=["Company","Personal","Student"])
-        ticket_types = [{"ticket_details":x.ticket_details,'name':x.name,"current_price":x.current_price} for x in tickets]
-        
+        tickets = TicketPrice.objects.filter(
+            name__in=["Company", "Personal", "Student","Tutorial"]
+        )
+        ticket_types = [
+            {
+                "ticket_details": x.ticket_details,
+                "name": x.name,
+                "current_price": x.current_price,
+            }
+            for x in tickets
+        ]
+
         # ticket_price = TicketPrice.objects.all()
 
         def amount(y):
-            return [x['current_price'] for x in ticket_types if x['name'] == y][0]
+            return [x["current_price"] for x in ticket_types if x["name"] == y][0]
 
         tickets = [
-            {"name": "Student ticket", "amount": amount("Student")},
-            {"name": "Personal ticket", "amount": amount("Personal")},
-            {"name": "Corporate ticket", "amount": amount("Company")},
-            # {"data_fare": "TRSPP", "amount": amount("Paetron")},
+            {"name": "Student ticket","short_name":"Student", "amount": amount("Student")},
+            {"name": "Personal ticket","short_name":"Personal", "amount": amount("Personal")},
+            {"name": "Corporate ticket","short_name":"Company", "amount": amount("Company")},
+            {"name": "Tutorial ticket","short_name": "Tutorial", "amount": amount("Tutorial")},
         ]
-        context.update(tickets=tickets, public_key=settings.PAYSTACK_PUBLIC_KEY)
+        context.update(
+            tickets=tickets,
+            public_key=settings.PAYSTACK_PUBLIC_KEY,
+            default_plan=self.request.session.get("selected_plan"),
+        )
         return context
 
 

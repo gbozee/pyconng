@@ -18,12 +18,25 @@
     }
   }
   .hide-section{
-    display: none;
+    display: none !important;
   }
   .show-section{
     display: block;
   }
-
+  .form-content p {
+    margin-top: 0;
+}
+.coupon-code{
+  display: flex;
+}
+.coupon-code button{
+  padding: 0 30px !important;
+  cursor: pointer;
+}
+.discount_value{
+  display: flex;
+ justify-content: space-between;
+}
 </style>
 {% endblock extra_stylings %} {% block header-section %} {% comment %}
 <div id="header-section" class="jumbotron jumbotron-fluid">
@@ -86,8 +99,8 @@
                     <input type="password" class="form-control" id="password" placeholder="Enter that hashed password here :-)" required>
                   </div> {% endcomment %}
                   <form>
-                    <script src="https://js.paystack.co/v1/inline.js"></script>
                     <button id="toStep2" class="link-button btn btn-block btn-success">CONTINUE TO STEP 2.</a>
+                    <script src="https://js.paystack.co/v1/inline.js"></script>
                   </form>
                   </div>
               </div>
@@ -96,7 +109,7 @@
                 <form>
                   <ul class="container">
                     {% for ticket in tickets %}
-                    <li class="row">
+                    <li id="{{ticket.short_name}}" class="row ticket-select">
                       <div class="col-sm-9">
                         <p>{{ticket.name}}</p>
                         <span>N{{ticket.amount}}</span>
@@ -116,15 +129,23 @@
                     {% endfor %}
                   </ul>
 
-                  <p>Have a discount code?
-                    <a href="#">Click here</a>
+                  <p id="initiate-discount">Have a discount code?
+                    <a style="cursor: pointer;">Click here</a>
                   </p>
+                  <div class="form-group discount_value hide-section">
+                    <p>Discount</p>
+                    <p ><span id="percent-value">0</span>%</p>
+                  </div>
+                <div class="form-group coupon-code hide-section">
+                  <input type="text" class="form-control" id="coupon_value" value="" placeholder="Input coupon code" >
+                  <button id="code_btn" class="btn btn-primary">Validate code</button>
+                </div>
 
-                  <button type="submit" id="pstackButton" class="btn btn-block btn-success">CHECKOUT</button>
+                  <button type="submit" id="pstackButton" disabled class="btn btn-block btn-success">CHECKOUT</button>
 
                   <div id="tickets-summary" class="row">
-                    <p class="col-sm-12 col-md-4">QTY: 3</p>
-                    <p class="col-sm -12 col-md-8 total-fee">TOTAL FEE: N21,000</p>
+                    <p class="col-sm-12 col-md-4">QTY: <span id="ticket-count"></span></p>
+                    <p class="col-sm -12 col-md-8 total-fee">TOTAL FEE: N<span id="total-fee">0</span></p>
                   </div>
 
                   <div id="tickets-payment-option" class="row">
@@ -149,6 +170,40 @@
   </div>
 </div> {% endcomment %} {% endblock %} {% block content %} {% endblock %} {% block footer %} {% endblock %} {% block js_script %}
 <script>
+  let pricings = {}
+  {% for ticket in tickets %}
+  pricings["{{ticket.short_name}}"] = {{ticket.amount}}
+  {% endfor %}
+  function getNumberOfTickets(){
+    let result = {}
+    Object.keys(pricings).forEach(p=>{
+      result[p] = document.querySelector(`li#${p} select`).value
+    })
+    return result
+  }
+  function determineTotal(){
+  let prices = getNumberOfTickets()
+      let total = 0
+      let ticket_counts = 0
+      Object.keys(prices).forEach(i=>{
+        let prev = pricings[i]
+          total += (parseInt(prev) * prices[i])
+          ticket_counts += parseInt(prices[i])
+      })
+      let discount = document.querySelector("#percent-value").textContent
+      let discountValue = total * parseInt(discount) / 100
+      total = total - discountValue
+      document.querySelector("#ticket-count").textContent = ticket_counts;
+      document.querySelector("#total-fee").textContent = total.toLocaleString()
+      if(total > 0){
+        document.querySelector("#pstackButton").disabled = false
+      }
+      return total
+  }
+  getNumberOfTickets()
+ document.querySelectorAll('li select').forEach(node=>{
+   node.addEventListener("change",determineTotal)
+ })
   var button = document.getElementById("toStep2")
   button.addEventListener("click",toNextStep)
  document.getElementById('pstackButton').addEventListener('click',payWithPaystack)
@@ -197,6 +252,60 @@ if(status){
 }else{
  err.className = `${err.className.replace('hide-section',"")} hide-section`
 }
+  }
+  function InitialDiscountLink(klass){
+ let node = document.querySelector('#initiate-discount')
+   node.className = klass 
+  }
+ document.querySelector('#initiate-discount').addEventListener("click",(e)=>{
+   let coupon_section = document.querySelector('.coupon-code')
+   coupon_section.className = coupon_section.className.replace("hide-section","")
+   InitialDiscountLink("hide-section")
+ })
+ document.querySelector("#code_btn").addEventListener("click",e=>{
+   e.preventDefault()
+ let coupon_value = document.querySelector('#coupon_value').value
+ validateCoupon(coupon_value,(data)=>{
+   if(Boolean(data)){
+     if(data.status > 0){
+      let discountDisplay = document.querySelector(".discount_value")
+      let coupon_section = document.querySelector('.coupon-code')
+      coupon_section.className = `${coupon_section.className} hide-section`
+      discountDisplay.className = discountDisplay.className.replace("hide-section","")
+      document.querySelector("#percent-value").textContent = data.status
+      determineTotal()
+     }else{
+      InitialDiscountLink("")
+     }
+   }
+ })
+ })
+  function validateCoupon(value,callback){
+    var xmlhttp = new XMLHttpRequest();
+    var url = `{% url 'tickets:coupons' %}?value=${value}`;
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            callback(myArr);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  }
+  function Ticketslug(callback){
+    var xmlhttp = new XMLHttpRequest();
+
+    var url = `{% url 'tickets:coupons' %}?value=${value}`;
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            callback(myArr);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+ xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+ xmlhttp.send(JSON.stringify({coupon:document.querySelector('#coupon_value').value,
+tickets: getNumberOfTickets() }));
   }
 </script>
 {% endblock js_script %}

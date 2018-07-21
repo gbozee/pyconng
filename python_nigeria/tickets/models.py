@@ -31,32 +31,16 @@ class TicketPrice(models.Model):
     EARLY_BIRD = {
         'Company': {"amount": 12000, "count": 5},
         'Personal': {"amount": 6000, "count": 10},
-        'Student': {"amount": 3000, "count": 5}
+        'Student': {"amount": 3000, "count": 5},
+        'Tutorial': {"amount": 3000, "count": 5},
     }
     REGULAR = {
         'Company': {"amount": 20000, "count": 60},
         'Personal': {"amount": 10000, "count": 120},
         'Student': {"amount": 4000, "count": 20},
+        'Tutorial': {"amount": 4000, "count": 20},
     }
     URL = {
-        "Company":{
-                "name": "CORPORATE Package",
-                "short_name": "Corporate",
-                "style":"",
-                "url": "/static/designs/img/tickets/coporate.svg",
-                "description":"For the working class who are python experts in the industry",
-                "early_price": 10000,
-                "price": 20000,
-            },
-        'Personal':{
-                "name": "Individual Package",
-                "short_name": "Individual",
-                "url": "/static/designs/img/tickets/female-logo.png",
-                "style": "width:200px;",
-                "description": "For hobbyist python developers and interested individuals",
-                "early_price": 6000,
-                "price": 10000,
-            },
         "Student":{
                 "name": "Student Package",
                 "short_name":"Student",
@@ -66,6 +50,33 @@ class TicketPrice(models.Model):
                 "early_price": 3000,
                 "price": 4000,
             },
+        'Personal':{
+                "name": "Individual Package",
+                "short_name": "Individual",
+                "url": "/static/designs/img/tickets/female-logo.png",
+                "style": "individual",
+                "description": "For hobbyist python developers and interested individuals",
+                "early_price": 6000,
+                "price": 10000,
+            },
+        "Company":{
+                "name": "CORPORATE Package",
+                "short_name": "Corporate",
+                "style":"",
+                "url": "/static/designs/img/tickets/coporate.svg",
+                "description":"For the working class who are python experts in the industry",
+                "early_price": 10000,
+                "price": 20000,
+            },
+        "Tutorial":{
+            "name": "Tutorial Package",
+            "short_name": "Tutorial",
+            "style":"",
+            "url": "/static/designs/img/tickets/tutorial.svg",
+            "description":"For the working class who are python experts in the industry",
+            "early_price": 10000,
+            "price": 20000,
+        }
     }
 
     def __str__(self):
@@ -91,7 +102,7 @@ class TicketPrice(models.Model):
 
     @classmethod
     def populate_count_price(cls):
-        for o in cls.objects.filter(name__in=['Company','Personal',"Student"]):
+        for o in cls.objects.filter(name__in=['Company','Personal',"Student","Tutorial"]):
             if o.early_price == 0:
                 record = dict(cls.EARLY_BIRD)[o.name]
                 o.early_price = record['amount']
@@ -106,8 +117,9 @@ class TicketPrice(models.Model):
         company, _ = cls.objects.get_or_create(name='Company')
         personal, _ = cls.objects.get_or_create(name='Personal')
         student, _ = cls.objects.get_or_create(name='Student')
-        paetron,_ = cls.objects.get_or_create(name="Paetron")
-        return company, student, personal,paetron
+        # paetron,_ = cls.objects.get_or_create(name="Paetron")
+        tutorial,_ = cls.objects.get_or_create(name="Tutorial")
+        return company, student, personal,tutorial
 
 
 class TicketQuerySet(models.QuerySet):

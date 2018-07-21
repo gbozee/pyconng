@@ -11,6 +11,7 @@ urlpatterns = [
     # url(r'^404$', TemplateView.as_view(template_name='500.html'), name='404'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', views.TicketHomeView.as_view(), name='home'),
+    url(r'^selected-plan$', views.intermediate_purchase, name='selected-plan'),
     url(r'^coupons$', views.valid_coupons, name='coupons'),
     url(r'^purchase/$', login_required(views.PurchaseView.as_view()), name='purchase'),
     url(r'^checkout/(?P<order>[\w.@+-]+)/$', views.CheckoutView.as_view(), name='checkout_view'),
