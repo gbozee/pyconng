@@ -170,142 +170,15 @@
   </div>
 </div> {% endcomment %} {% endblock %} {% block content %} {% endblock %} {% block footer %} {% endblock %} {% block js_script %}
 <script>
-  let pricings = {}
+  window.INITIALIZER = {
+    pricings:{},
+    public_key: "{{public_key}}",
+    purchase_url: "{% url 'tickets:purchase' %}",
+ coupon_url: "{% url 'tickets:coupons' %}"
+  }
   {% for ticket in tickets %}
-  pricings["{{ticket.short_name}}"] = {{ticket.amount}}
+  window.INITIALIZER.pricings["{{ticket.short_name}}"] = {{ticket.amount}}
   {% endfor %}
-  function getNumberOfTickets(){
-    let result = {}
-    Object.keys(pricings).forEach(p=>{
-      result[p] = document.querySelector(`li#${p} select`).value
-    })
-    return result
-  }
-  function determineTotal(){
-  let prices = getNumberOfTickets()
-      let total = 0
-      let ticket_counts = 0
-      Object.keys(prices).forEach(i=>{
-        let prev = pricings[i]
-          total += (parseInt(prev) * prices[i])
-          ticket_counts += parseInt(prices[i])
-      })
-      let discount = document.querySelector("#percent-value").textContent
-      let discountValue = total * parseInt(discount) / 100
-      total = total - discountValue
-      document.querySelector("#ticket-count").textContent = ticket_counts;
-      document.querySelector("#total-fee").textContent = total.toLocaleString()
-      if(total > 0){
-        document.querySelector("#pstackButton").disabled = false
-      }
-      return total
-  }
-  getNumberOfTickets()
- document.querySelectorAll('li select').forEach(node=>{
-   node.addEventListener("change",determineTotal)
- })
-  var button = document.getElementById("toStep2")
-  button.addEventListener("click",toNextStep)
- document.getElementById('pstackButton').addEventListener('click',payWithPaystack)
-  function payWithPaystack(e){
-    e.preventDefault()
-    var handler = PaystackPop.setup({
-      key: '{{public_key}}',
-      email: 'customer@email.com',
-      amount: 10000,
-      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-      metadata: {
-         custom_fields: [
-            {
-                display_name: "Mobile Number",
-                variable_name: "mobile_number",
-                value: "+2348012345678"
-            }
-         ]
-      },
-      callback: function(response){
-          alert('success. transaction ref is ' + response.reference);
-      },
-      onClose: function(){
-          alert('window closed');
-      }
-    });
-    handler.openIframe();
-  }
-  function toNextStep(e) {
-    e.preventDefault()
-    let first_name = document.querySelector('#first_name').value
-    let last_name = document.querySelector('#last_name').value
-    let email = document.querySelector('#email').value
-    if (Boolean(first_name) && Boolean(last_name) && Boolean(email)) {
-      displayError(false)
-      document.querySelector('#payment-link').click()
-    }else{
-      displayError(true)
-    }
-  }
-  function displayError(status){
-let err = document.querySelector('#error-section') 
-if(status){
-  err.className = err.className.replace('hide-section',"")
-
-}else{
- err.className = `${err.className.replace('hide-section',"")} hide-section`
-}
-  }
-  function InitialDiscountLink(klass){
- let node = document.querySelector('#initiate-discount')
-   node.className = klass 
-  }
- document.querySelector('#initiate-discount').addEventListener("click",(e)=>{
-   let coupon_section = document.querySelector('.coupon-code')
-   coupon_section.className = coupon_section.className.replace("hide-section","")
-   InitialDiscountLink("hide-section")
- })
- document.querySelector("#code_btn").addEventListener("click",e=>{
-   e.preventDefault()
- let coupon_value = document.querySelector('#coupon_value').value
- validateCoupon(coupon_value,(data)=>{
-   if(Boolean(data)){
-     if(data.status > 0){
-      let discountDisplay = document.querySelector(".discount_value")
-      let coupon_section = document.querySelector('.coupon-code')
-      coupon_section.className = `${coupon_section.className} hide-section`
-      discountDisplay.className = discountDisplay.className.replace("hide-section","")
-      document.querySelector("#percent-value").textContent = data.status
-      determineTotal()
-     }else{
-      InitialDiscountLink("")
-     }
-   }
- })
- })
-  function validateCoupon(value,callback){
-    var xmlhttp = new XMLHttpRequest();
-    var url = `{% url 'tickets:coupons' %}?value=${value}`;
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            callback(myArr);
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-  }
-  function Ticketslug(callback){
-    var xmlhttp = new XMLHttpRequest();
-
-    var url = `{% url 'tickets:coupons' %}?value=${value}`;
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            callback(myArr);
-        }
-    };
-    xmlhttp.open("GET", url, true);
- xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
- xmlhttp.send(JSON.stringify({coupon:document.querySelector('#coupon_value').value,
-tickets: getNumberOfTickets() }));
-  }
 </script>
+<script src="{% static "js/purchase.js" %}"></script>
 {% endblock js_script %}

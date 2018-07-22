@@ -100,6 +100,8 @@ class TicketPrice(models.Model):
             return self.amount
         return None
 
+        
+
     @classmethod
     def populate_count_price(cls):
         for o in cls.objects.filter(name__in=['Company','Personal',"Student","Tutorial"]):
@@ -225,6 +227,13 @@ class Ticket(models.Model):
             Ticket.objects.filter(
                 user=self.user, multiple_tickets=True).update(status=self.PAYED)
 
+    def get_total(self):
+        if self.multiple_tickets:
+            others = Ticket.objects.issued(self.user)
+        else:
+            others = [self]
+        total = sum(x.amount for x in others)
+        return total
 
     @transaction.atomic
     def create_sales(self, **kwargs):

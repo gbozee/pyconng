@@ -563,6 +563,7 @@
             </div>
         </div>
         {% endblock %}
+        {% block messages %}
         <div class="main-content container">
             {% if messages %}
                 {% for message in messages %}
@@ -574,6 +575,8 @@
             
             {% block extra_body %}{% endblock extra_body %}
         </div>
+        
+        {% endblock messages %}
     </div>
 
     {% block footer %}
