@@ -17,13 +17,13 @@
     <div class="small-header poster-wrapper pt-5 pb-2">
     <h1>{% trans "Dashboard" %}</h1>
   </div>
-  <div class=" d-flex p-2" style="margin-bottom: 20px;">
+<div class=" d-flex p-2" style="margin-bottom: 20px;flex-wrap: wrap;">
       {% if orders|length > 0 and my_ticket|length == 0 %}
           {% box "ticket_purchase_notice" %}
       {% endif %}
       {% if my_ticket|length > 0 %}
         {% for tic in my_ticket  %}
-        <div class="pr-2">
+        <div class="pr-2" style="margin-bottom: 20px;">
             <a href="{% url "tickets:detail" tic.ticket_id %}" class="btn btn-primary btn-block">
                {% if my_ticket|length > 1 %}
                {{tic.full_name}}<br/>

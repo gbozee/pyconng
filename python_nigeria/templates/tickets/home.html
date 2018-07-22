@@ -65,13 +65,17 @@
       <div class="ticket-category">
         <h6>{{plan.name|upper}}</h6>
         <img src="{{plan.url}}" class="{{plan.style}}" />
-
         <p>{{plan.description}}</p>
+        
+        {% if plan.early_bird %}
         <h3 class="price strike">N{{plan.price}}</h3>
-  
         <p class="notice">Early Bird Pricing</p>
   
-        <h3 class="price">N{{plan.early_price}}</h3>
+        <h3 class="price">N{{plan.current_price}}</h3>
+        
+        {% else %}
+        <h3 class="price">N{{plan.current_price}}</h3>
+        {% endif %}
   
 <a href="{% url 'tickets:selected-plan' %}?selected_plan={{plan.short_name}}" class="link-button btn btn-success buy-tickets-button">BUY TICKETS</a>
       </div>

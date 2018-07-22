@@ -30,7 +30,7 @@ function determineTotal() {
     }
     return total
 }
-getNumberOfTickets()
+determineTotal()
 document.querySelectorAll('li select').forEach(node => {
     node.addEventListener("change", determineTotal)
 })
@@ -42,17 +42,14 @@ function payWithPaystack(e) {
     e.preventDefault()
     Ticketslug((value) => {
         if (value.order) {
+            let details = getUserDetails()
             var handler = PaystackPop.setup({
                 key: public_key,
-                email: 'customer@email.com',
+                email: details.email,
                 amount: value.total * 100,
                 ref: value.order, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
                 metadata: {
-                    custom_fields: [{
-                        display_name: "Mobile Number",
-                        variable_name: "mobile_number",
-                        value: "+2348012345678"
-                    }]
+                    custom_fields: [details]
                 },
                 callback: function (response) {
                     validateReference(value.order, response.reference, (data) => {
@@ -86,6 +83,13 @@ function toNextStep(e) {
         document.querySelector('#payment-link').click()
     } else {
         displayError(true)
+    }
+}
+function getUserDetails(){
+    return {
+        first_name: document.querySelector('#first_name').value,
+        last_name: document.querySelector('#last_name').value,
+        email: document.querySelector('#email').value
     }
 }
 

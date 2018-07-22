@@ -1,0 +1,40 @@
+{% extends "base-old.html" %} {% load pinax_boxes_tags static %} {% block stylings %} {{block.super}}
+<style>
+  .icon-size {
+    height: 200px;
+  }
+  .media-body{
+    width: 100%;
+  }
+ .navbar-nav > li > a {
+   line-height: 17px;
+ }
+ #content_other_navigations_items{ display: flex; }
+ @media(max-width: 768px){
+     .all-tickets{
+ display: flex; flex-direction: column; align-items: center;
+     }
+ }
+</style>
+{% endblock stylings %} 
+{% block navigation %}
+<!-- INTRO-3
+============================================= -->
+ {% include "includes/navigation.html" %}
+{% block home_banner %}
+<section id="intro-3" style="height: 250px !important" class="intro-section height_400">
+  <div class="overlay division">
+    <div class="container">
+      <div id="intro-3-content" style="padding-top: 65px;" class="row">
+        <!-- INTRO TEXT -->
+        {% box "pre_conference_banner" %}
+      </div>
+      <!-- End Intro Content -->
+    </div>
+    <!-- End container -->
+  </div>
+  <!-- End overlay -->
+</section>
+<!-- END INTRO-3 -->
+
+{% endblock home_banner %} {% block extra_nav %} {% endblock %} {% endblock %}

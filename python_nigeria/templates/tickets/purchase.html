@@ -115,9 +115,9 @@
                         <span>N{{ticket.amount}}</span>
                       </div>
                       <div class="col-sm-3">
-                        <select>
+<select value="">
                           <option>0</option>
-                          <option>1</option>
+                          <option {% if default_plan == ticket.short_name %}selected{% endif %}>1</option>
                           <option>2</option>
                           <option>3</option>
                           <option>4</option>

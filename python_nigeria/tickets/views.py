@@ -25,8 +25,16 @@ class TicketHomeView(TemplateView):
         tickets = TicketPrice.objects.filter(
             name__in=["Company", "Personal", "Student", "Tutorial"]
         )
-        ticket_types = [x.ticket_details for x in tickets]
-        ticket_types = sorted(ticket_types, key=lambda x: x["price"])
+        ticket_types = [
+            {
+                **x.ticket_details,
+                "current_price": x.current_price,
+                # "early_bird": False,
+                "early_bird": x.early_bird_remaining(),
+            }
+            for x in tickets if x.current_price
+        ]
+        ticket_types = sorted(ticket_types, key=lambda x: x["current_price"])
 
         context.update({"plans": ticket_types})
         return context
@@ -101,7 +109,11 @@ class PurchaseForm(forms.Form):
             Ticket.objects.filter(pk__in=[x.pk for x in tickets]).update(
                 multiple_tickets=True
             )
-        return tickets[0], self.get_total(tickets[0], user)
+        Ticket.objects.filter(pk__in=[x.pk for x in tickets]).update(
+            related=tickets[0].pk
+        )
+        tk = Ticket.objects.get(pk=tickets[0].pk)
+        return tickets[0], self.get_total(tk, user)
 
 
 class PurchaseView(TemplateView):
@@ -120,6 +132,7 @@ class PurchaseView(TemplateView):
     def post(self, request, *args, **kwargs):
         logger.info(request.body)
         data = json.loads(request.body)
+        request.session.pop("selected_plan", None)
         # {'coupon': '', 'tickets': {'Student': '0', 'Personal': '0', 'Company': '2', 'Tutorial': '0'}}
         form = PurchaseForm({**data["tickets"], "coupon": data.get("coupon")})
         if form.is_valid():
@@ -221,10 +234,16 @@ def valid_coupons(request):
 def purchase_complete(request, order):
     d = get_object_or_404(Ticket, pk=order)
     if d.status == Ticket.PAYED:
-        messages.info(request, "Your payment was successful")
-        return render(request, "tickets/purchase-complete.html", {"ticket": d})
+        # sales = d.ticketsale_set.select_related("ticket__ticket_type").filter(
+        #     user=request.user
+        # )
+        count = Ticket.objects.filter(status=Ticket.PAYED, related=order).count()
+        return render(
+            request, "tickets/purchase-complete.html", {"ticket": d, "count": count}
+        )
     messages.error(request, "Oops! You haven't made any payment yet")
     return redirect("tickets:purchase")
+
 
 def validate_paystack_ref(request, order, code):
     v = PayStack().validate_transaction(code)

@@ -45,19 +45,24 @@
 
           <h3>Share PyCon 2018 with your friends</h3>
 
-          <div class="row s-share">
-            <div class="tweet">
-<img src="{% static 'designs/img/purchase-tickets-complete/twitter-1.svg' %}" alt="tweet" />
-              <p>Tweet</p>
+<div class="row s-share" style=" justify-content: flex-start;">
+            <div class="tweet" style="margin-right: 20px;">
+<a href="https://twitter.com/home?status=I%20just%20purchased%20my%20%23pyconNG%20tickets.%20You%20can%20do%20so%20here%20https%3A//www.pycon.ng/tickets">
+                <img src="{% static 'designs/img/purchase-tickets-complete/twitter-1.svg' %}" alt="tweet" />
+                              <p>Tweet</p>
+
+              </a>
             </div>
             <div class="share">
-<img src="{% static 'designs/img/purchase-tickets-complete/facebook-2.svg' %}" alt="share" />
-              <p>Share</p>
+<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.pycon.ng/tickets">
+  <img src="{% static 'designs/img/purchase-tickets-complete/facebook-2.svg' %}" alt="share" />
+                <p>Share</p>
+</a>
             </div>
-            <div class="post">
+            {% comment %} <div class="post">
 <img src="{% static 'designs/img/purchase-tickets-complete/linkedin-2.svg' %}" alt="post" />
               <p>Post</p>
-            </div>
+            </div> {% endcomment %}
           </div>
         </div>
 
@@ -65,8 +70,13 @@
           <h3>Your order has been received:</h3>
           <ol>
             <li> Order
-              <span>#{{ticket.pk}}</span> 3 tickets of &#8358;{{ticket.get_total}}</li>
-            <li> Click <a href="{% url 'tickets:detail' ticket.pk %}">Here</a> to view your tickets </li>
+              <span>#{{ticket.pk}}</span> {{count}} tickets of &#8358;{{ticket.total_amount}}</li>
+              {% if ticket.created_tickets %}
+<li> Click
+  <a href="{% url 'tickets:detail' ticket.pk %}">Here</a> to view your tickets </li>
+              {% else %}
+              <li> Click <a href="{% url 'tickets:create_ticket' ticket.pk %}">Here</a> to create your tickets </li>
+              {% endif %}
           </ol>
         </div>
 
