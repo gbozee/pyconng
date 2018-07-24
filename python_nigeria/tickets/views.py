@@ -29,6 +29,8 @@ class TicketHomeView(TemplateView):
             {
                 **x.ticket_details,
                 "current_price": x.current_price,
+                "early_price": x.early_price,
+                "amount": x.amount,
                 # "early_bird": False,
                 "early_bird": x.early_bird_remaining(),
             }

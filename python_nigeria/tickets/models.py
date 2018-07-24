@@ -32,16 +32,16 @@ class TicketPrice(models.Model):
     objects = TicketPriceQuerySet.as_manager()
 
     EARLY_BIRD = {
-        "Company": {"amount": 12000, "count": 5},
-        "Personal": {"amount": 6000, "count": 10},
-        "Student": {"amount": 3000, "count": 5},
-        "Tutorial": {"amount": 3000, "count": 5},
+        "Company": {"amount": 15000, "count": 5},
+        "Personal": {"amount": 7500, "count": 30},
+        "Student": {"amount": 4000, "count": 10},
+        "Tutorial": {"amount": 0, "count": 0},
     }
     REGULAR = {
-        "Company": {"amount": 20000, "count": 60},
-        "Personal": {"amount": 10000, "count": 120},
-        "Student": {"amount": 4000, "count": 20},
-        "Tutorial": {"amount": 4000, "count": 20},
+        "Company": {"amount": 20000, "count": 20},
+        "Personal": {"amount": 10000, "count": 165},
+        "Student": {"amount": 5000, "count": 50},
+        "Tutorial": {"amount": 5000, "count": 90},
     }
     URL = {
         "Student": {
@@ -76,7 +76,7 @@ class TicketPrice(models.Model):
             "short_name": "Tutorial",
             "style": "",
             "url": "/static/designs/img/tickets/tutorial.svg",
-            "description": "For the working class who are python experts in the industry",
+            "description": " For Beginners or Professionals who want an intensive training on Python",
             "early_price": 10000,
             "price": 20000,
         },

@@ -26,6 +26,9 @@
   .form-content p {
     margin-top: 0;
 }
+strong#ticket-count, strong#total-fee{
+  font-size: 25px;
+}
 .coupon-code{
   display: flex;
 }
@@ -50,7 +53,7 @@
             <p>>>> Purchase Tickets</p>
             <h1 class="display-4">Python Conference 2018</h1>
             <p class="lead">
-              September 15 — 17, 2018 08:00AM - O5:00PM Lagos, Nigeria
+              September 13 — 15, 2018 08:00AM - O5:00PM Lagos, Nigeria
             </p>
 
           </div>
@@ -140,12 +143,17 @@
                   <input type="text" class="form-control" id="coupon_value" value="" placeholder="Input coupon code" >
                   <button id="code_btn" class="btn btn-primary">Validate code</button>
                 </div>
-
+                <div class="form-group"> 
+                  <div id="div_id_recording_release" class="checkbox"> 
+                    <label for="coc_confirm" class=""> 
+<input type="checkbox" style="height: auto;" id="coc_confirm" name="code_of_conduct_confirm" class="checkboxinput" >
+                      Code of Conduct
+                </label> <p id="hint_id_recording_release" class="help-block">By purchasing a ticket, you agree to abide by every rule indicated in the Pycon Nigeria Code of Conduct.</p> </div> </div>
                   <button type="submit" id="pstackButton" disabled class="btn btn-block btn-success">CHECKOUT</button>
 
                   <div id="tickets-summary" class="row">
-                    <p class="col-sm-12 col-md-4">QTY: <span id="ticket-count"></span></p>
-                    <p class="col-sm -12 col-md-8 total-fee">TOTAL FEE: N<span id="total-fee">0</span></p>
+                    <p class="col-sm-12 col-md-4">QTY: <strong id="ticket-count"></span></strong>
+                    <p class="col-sm -12 col-md-8 total-fee">TOTAL FEE: N<strong id="total-fee">0</strong></p>
                   </div>
 
                   <div id="tickets-payment-option" class="row">

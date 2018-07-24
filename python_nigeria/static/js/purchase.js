@@ -10,7 +10,9 @@ function getNumberOfTickets() {
     })
     return result
 }
-
+document.querySelector('#coc_confirm').addEventListener("change",()=>{
+    determineTotal()
+})
 function determineTotal() {
     let prices = getNumberOfTickets()
     let total = 0
@@ -22,11 +24,14 @@ function determineTotal() {
     })
     let discount = document.querySelector("#percent-value").textContent
     let discountValue = total * parseInt(discount) / 100
+    let checked = document.querySelector('#coc_confirm').checked
     total = total - discountValue
     document.querySelector("#ticket-count").textContent = ticket_counts;
     document.querySelector("#total-fee").textContent = total.toLocaleString()
-    if (total > 0) {
+    if (total > 0 && checked) {
         document.querySelector("#pstackButton").disabled = false
+    }else{
+        document.querySelector("#pstackButton").disabled = true
     }
     return total
 }
