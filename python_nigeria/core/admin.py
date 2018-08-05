@@ -56,7 +56,7 @@ class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
     resource_class = UserResource
     list_display = UserAdmin.list_display
-    actions = ["add_permissions"]
+    actions = ["remove_permission"]
 
     def get_list_display(self, request):
         """
@@ -68,11 +68,11 @@ class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
             return self.list_display + ("hijack_field",)
         return self.list_display
 
-    def add_permissions(self, request, queryset):
+    def remove_permission(self, request, queryset):
         permissions = Permission.objects.filter(codename__icontains="add_review")
 
         for x in queryset.all():
-            x.user_permissions.add(*permissions)
+            x.user_permissions.remove(*permissions)
         self.message_user(request, "permissions added")
 
 
