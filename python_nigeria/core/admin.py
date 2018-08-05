@@ -44,6 +44,10 @@ class ProposalResultResource(resources.ModelResource):
             "score",
             "vote_count",
             "accepted",
+            "plus_one",
+            "plus_zero",
+            "minus_zero",
+            "minus_one"
         )
 
 
