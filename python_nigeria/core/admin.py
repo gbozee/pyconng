@@ -51,7 +51,7 @@ class ProposalResultResource(resources.ModelResource):
 class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = ProposalResultResource
     list_display = ["proposal", "status", "score", "vote_count", "accepted","pk"]
-
+    list_filter = ['proposal__kind__name']
 
 class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
     resource_class = UserResource
