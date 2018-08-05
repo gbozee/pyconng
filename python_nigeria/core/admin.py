@@ -50,7 +50,7 @@ class ProposalResultResource(resources.ModelResource):
 @admin.register(ProposalResult)
 class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = ProposalResultResource
-    list_display = ["proposal", "status", "score", "vote_count", "accepted"]
+    list_display = ["proposal", "status", "score", "vote_count", "accepted","pk"]
 
 
 class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
