@@ -36,6 +36,7 @@ class ProposalResultResource(resources.ModelResource):
     class Meta:
         model = ProposalResult
         fields = (
+            "pk",
             "proposal_id",
             "proposal__title",
             "proposal__kind__name",
