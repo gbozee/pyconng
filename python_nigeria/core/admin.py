@@ -37,7 +37,7 @@ class ProposalResultResource(resources.ModelResource):
         model = ProposalResult
         fields = (
             "pk",
-            "proposal_id",
+            "proposal__pk",
             "proposal__title",
             "proposal__kind__name",
             "status",
