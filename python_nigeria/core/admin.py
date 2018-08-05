@@ -35,6 +35,14 @@ class UserResource(resources.ModelResource):
 class ProposalResultResource(resources.ModelResource):
     class Meta:
         model = ProposalResult
+        fields = (
+            "proposal__title",
+            "proposal__kind__name",
+            "status",
+            "score",
+            "vote_count",
+            "accepted",
+        )
 
 
 @admin.register(ProposalResult)
