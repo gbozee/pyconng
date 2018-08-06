@@ -1,6 +1,6 @@
 {% extends "symposion/base.html" %}
 
-{% load i18n %}
+{% load i18n static %}
 {% load sitetree %}
 {% block stylings %}
 {% block navigation %}
@@ -101,32 +101,36 @@
             {% block actual_content %}
             {% endblock actual_content %}
         </div>
+        <script src="{% static "js/jquery-2.2.4.min.js" %}"></script>
+        {% block extra_script %}
+<script src="{{ STATIC_URL }}datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}tabletools/js/TableTools.min.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}datatables/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function () {
+$(".tip").tooltip();
+$("table.table-reviews").dataTable({
+  "sDom": "<'row'<'col-md-4'l><'col-md-4'T><'col-md-4'f>r>t<'row'<'col-md-3'i><'col-md-5'p>>",
+  "sPaginationType": "bootstrap",
+  "bStateSave": true,
+  "aLengthMenu": [
+    [10, 25, 50, 100, -1],
+    [10, 25, 50, 100, "All"]
+  ],
+  "oTableTools": {
+    "aButtons": [
+      "copy",
+      "csv",
+      "print"
+    ],
+    "sSwfPath": "{{ STATIC_URL }}tabletools/swf/copy_csv_xls.swf"
+  }
+});
+});
+</script>
+        {% endblock extra_script %}
     </div>
   </div>
 </div>
 {% endblock %}
 
-{% block extra_script %}
-    <script src="{{ STATIC_URL }}datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}tabletools/js/TableTools.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}datatables/js/dataTables.bootstrap.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function() {
-            $(".tip").tooltip();
-            $("table.table-reviews").dataTable({
-                "sDom": "<'row'<'col-md-4'l><'col-md-4'T><'col-md-4'f>r>t<'row'<'col-md-3'i><'col-md-5'p>>",
-                "sPaginationType": "bootstrap",
-                "bStateSave": true,
-                "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                "oTableTools": {
-                    "aButtons": [
-                        "copy",
-                        "csv",
-                        "print"
-                    ],
-                    "sSwfPath": "{{ STATIC_URL }}tabletools/swf/copy_csv_xls.swf"
-                }
-            });
-        });
-    </script>
-{% endblock %}
