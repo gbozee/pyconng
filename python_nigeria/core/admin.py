@@ -47,15 +47,50 @@ class ProposalResultResource(resources.ModelResource):
             "plus_one",
             "plus_zero",
             "minus_zero",
-            "minus_one"
+            "minus_one",
         )
+
+
+class TwitterProposalResource(resources.ModelResource):
+    talk_title = resources.Field()
+    speaker = resources.Field()
+    photo = resources.Field()
+    twitter = resources.Field()
+
+    class Meta:
+        model = ProposalResult
+        fields = ("talk_title", "speaker","twitter", "photo", )
+
+    def dehydrate_talk_title(self, book):
+        return book.proposal.title
+
+    def get_speaker(self, obj):
+        return obj.proposal.speaker
+
+    def dehydrate_speaker(self, book):
+        speaker = self.get_speaker(book)
+        return speaker.name
+
+    def dehydrate_photo(self, book):
+        speaker = self.get_speaker(book)
+        if speaker.photo:
+            return speaker.photo.url
+
+    def twitter(self, book):
+        speaker = self.get_speaker(book)
+        return speaker.twitter_username
 
 
 @admin.register(ProposalResult)
 class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = ProposalResultResource
-    list_display = ["proposal", "status", "score", "vote_count", "accepted","pk"]
-    list_filter = ['proposal__kind__name']
+    resource_class = TwitterProposalResource
+    # resource_class = ProposalResultResource
+    list_display = ["proposal", "status", "score", "vote_count", "accepted", "pk"]
+    list_filter = ["proposal__kind__name", "status"]
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related("proposal__speaker")
+
 
 class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
     resource_class = UserResource
