@@ -155,6 +155,7 @@ h3.section-title {
   @media(max-width: $mobile) {
     font-size: 1.3rem;
     letter-spacing: 0px;
+    line-height: 20px;
   }
 }
 
@@ -552,7 +553,7 @@ h3.section-title {
   .value-description {
     width: 60%;
     padding-bottom: 50px;
-    @media(max-width: 768px){
+    @media(max-width: 768px) {
       width: 100%;
     }
   }
@@ -566,11 +567,12 @@ h3.section-title {
   }
 }
 
-.hide-mobile{
-  @media(max-width:768px){
+.hide-mobile {
+  @media(max-width: 768px) {
     display: none;
   }
 }
+
 #goodies-section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -582,13 +584,13 @@ h3.section-title {
     -ms-grid-columns: 1fr 1fr 1fr;
     -ms-grid-rows: 1fr 1fr;
   }
-  @media(max-width: 768px){
+  @media(max-width: 768px) {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: "." "." "." "." "." ".";
     grid-template-columns: 1fr;
   }
   .goodie-item {
-    @media(max-width: 768px){
+    @media(max-width: 768px) {
       text-align: center;
     }
     img {
@@ -597,10 +599,120 @@ h3.section-title {
     }
   }
 }
-.s-share{
+
+.s-share {
   justify-content: space-around;
-  @media(max-width:768px){
+  @media(max-width: 768px) {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@mixin logos() {
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+}
+
+#sTab {
+  display: none;
+  @media(max-width:768px){
+    display: block;
+    li {
+      a {
+        background-color: #11BD8A;
+        color: #fff;
+      }
+    }
+
+  }
+}
+
+#schedule-container {
+  display: flex;
+  #schedule-12 {
+    .s-date {
+      opacity: 0;
+      @media(max-width: 768px) {
+        opacity: 1;
+      }
+    }
+  }
+  #scheduleTab {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    .s-date {
+      flex: 1;
+    }
+    li.nav-item {
+      flex: 2;
+      margin-right: 30px;
+      @media(max-width:768px){
+        display: none;
+      }
+      a {
+        background-color: #11BD8A;
+        color: #fff;
+      }
+    }
+  }
+  .breakfast {
+    background: #F1E7C0;
+  }
+  .schedule-day {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 30px 0;
+    .s-date {
+      flex: 1;
+      padding-left: 20px;
+    }
+    .row-2 {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      .row-1 {
+        margin-top: 10px;
+      }
+    }
+    .row-1 {
+      flex: 2;
+      display: flex;
+      .s-text {
+        flex: 0.9;
+      }
+    }
+    .s-logo {
+      flex: 0.2;
+      &.food {
+        background: url("../img/icons/cocktail.svg");
+        @include logos();
+      }
+      &.hour-glass {
+        background: url("../img/icons/hourglass.svg");
+        @include logos();
+      }
+      &.launch {
+        background: url("../img/icons/cutlery-76.svg");
+        @include logos();
+      }
+      &.tea {
+        background: url("../img/icons/coffee.svg");
+        @include logos();
+      }
+      &.love {
+        background: url("../img/icons/heart-2.svg");
+        @include logos();
+      }
+      &.img {
+        flex: 0.3;
+      }
+      img {
+        max-width: 100%;
+        height: 48px;
+        border-radius: 50%;
+      }
+    }
   }
 }

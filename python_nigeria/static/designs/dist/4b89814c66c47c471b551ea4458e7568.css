@@ -6471,6 +6471,9 @@ h3.section-title {
 #speakers-section {
   background: url("283374a38805266464500a4dfa47d4c6.jpg");
   background-size: cover; }
+  #speakers-section.schedule {
+    background: url("0f41ab315f56ab77204d3660a5b67ca9.jpg");
+    background-size: cover; }
 
 #speaker {
   color: #000000;
@@ -6888,3 +6891,10 @@ h3.section-title {
     .s-share {
       flex-direction: column;
       align-items: center; } }
+
+#schedule-container #scheduleTab {
+  margin-left: 25%;
+  width: 70%; }
+  #schedule-container #scheduleTab li.nav-item a {
+    background-color: #11BD8A;
+    color: #fff; }

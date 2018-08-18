@@ -26,4 +26,14 @@ function onPageLoad() {
 }
 $(document).ready(function() {
   onPageLoad();
+  kickoffMobileTab()
 });
+
+function kickoffMobileTab(){
+  if(window.matchMedia){
+    if(window.matchMedia("(max-width: 768px)").matches){
+      // $('#sTab li#f-t a').tab("hide")
+      $('#schedule-12').removeClass(["active","show"])
+    }
+  }
+}

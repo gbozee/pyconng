@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="27px" height="32px" viewBox="0 0 27 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>hourglass</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Schedule" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-681.000000, -1093.000000)">
+        <g id="hourglass" transform="translate(681.000000, 1093.000000)" fill="#292929" fill-rule="nonzero">
+            <path d="M25.65,2.66666667 L1.35,2.66666667 C0.54,2.66666667 0,2.13333333 0,1.33333333 C0,0.533333333 0.54,0 1.35,0 L25.65,0 C26.46,0 27,0.533333333 27,1.33333333 C27,2.13333333 26.46,2.66666667 25.65,2.66666667 Z" id="Shape"></path>
+            <path d="M25.65,32 L1.35,32 C0.54,32 0,31.4666667 0,30.6666667 C0,29.8666667 0.54,29.3333333 1.35,29.3333333 L25.65,29.3333333 C26.46,29.3333333 27,29.8666667 27,30.6666667 C27,31.4666667 26.46,32 25.65,32 Z" id="Shape"></path>
+            <path d="M9.585,16 C6.885,18 4.86,21.8666667 4.185,26.6666667 L22.68,26.6666667 C22.14,21.8666667 20.115,18 17.28,16 C19.98,14 22.005,10.1333333 22.68,5.33333333 L4.185,5.33333333 C4.725,10.1333333 6.885,14 9.585,16 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

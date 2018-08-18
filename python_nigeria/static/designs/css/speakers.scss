@@ -27,6 +27,10 @@
 #speakers-section {
   background: url("../img/backgrounds/speaker-page-bg.jpg");
   background-size: cover;
+  &.schedule{
+    background: url("../img/backgrounds/schedule-bg.jpg");
+    background-size: cover;
+  }
 }
 
 #speaker {
