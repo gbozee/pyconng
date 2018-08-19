@@ -1,0 +1,157 @@
+{% load pinax_boxes_tags static %}
+{% load core_tags %}   
+
+{% regroup timetable.slots_qs by start as slots %}
+<div>
+
+  <div class="schedule-day breakfast">
+    <div class="s-date">8:00 AM</div>
+    <div class="row-1">
+      <div class="s-text">Breakfast</div>
+      <div class="s-logo food"></div>
+    </div>
+
+  </div>
+  <div class="schedule-day">
+    <div class="s-date">9:00 AM</div>
+    <div class="row-1">
+      <div class="s-text">Welcome Reception/Run down of the day</div>
+      <div class="s-logo"></div>
+    </div>
+
+  </div>
+  <div class="schedule-day">
+    <div class="s-date">9:15 AM</div>
+    <div class="row-2">
+      <div class="row-1">
+        <div class="s-text">Keynote- Is OpenSource a Luxury in Africa?</div>
+        <div class="s-logo"></div>
+      </div>
+      <div class="row-1">
+        <strong class="s-text">— Iwan Vosloo</strong>
+        <div class="s-logo img">
+          <div style="width:48px; height: 48px;">
+            <img style="width: 100%; height: 100%;" src="https://pycon.ng/media/speaker_photos/15894705_1239935079453004_1919156562834535276_n.jpg"
+              alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-2">
+      <div class="row-1">
+        <div class="s-text">Keynote- Is OpenSource a Luxury in Africa?</div>
+        <div class="s-logo"></div>
+      </div>
+      <div class="row-1">
+        <strong class="s-text">— Iwan Vosloo</strong>
+        <div class="s-logo img">
+          <div style="width:48px; height:48px;">
+            <img style="height: 100%; width: 100%;" src="./img/speakers/Speaker-1.jpg" alt="">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="schedule-day breakfast">
+    <div class="s-date">8:00 AM</div>
+    <div class="row-1">
+      <div class="s-text">Break</div>
+      <div class="s-logo hour-glass"></div>
+    </div>
+
+  </div>
+  <div class="schedule-day breakfast">
+    <div class="s-date">8:00 AM</div>
+    <div class="row-1">
+      <div class="s-text">Lunch break</div>
+      <div class="s-logo launch"></div>
+    </div>
+  </div>
+  <div class="schedule-day breakfast">
+    <div class="s-date">8:00 AM</div>
+    <div class="row-1">
+      <div class="s-text">Tea Break</div>
+      <div class="s-logo tea"></div>
+    </div>
+  </div>
+  <div class="schedule-day breakfast">
+    <div class="s-date">8:00 AM</div>
+    <div class="row-1">
+      <div class="s-text">Vote of thanks and rounding off</div>
+      <div class="s-logo love"></div>
+    </div>
+  </div>
+</div>
+
+{% for slot_group in slots %}
+<!-- Event Time / Event Room -->
+{% for slot in slot_group.list|sort_by_m2m:"rooms.order" %}
+  <div class="row schedule-event b-bottom {% if not slot.kind.label == "Session" %}grey{% endif %}">
+      <div class="card-group {% if forloop.last %} last{% endif %}">
+        <div class="col-md-2 event-data">
+            <span class="event-time">{{ slot_group.grouper|time:"h:i A"}}-{{ slot.end|time:"h:i A" }}</span>
+            <span class="event-room">Main Hall</span>
+        </div>
+        {% if slot.content %}
+        <div class="col-md-4 col-lg-3 event-speaker clearfix">
+            <!-- Keynote Speaker -->
+            {% with spek=slot.content.speaker %}
+            <div class="keynote-speaker">
+                <div class="speaker-avatar"><img src="{% if spek.photo %}https://pycon.ng{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %}
+                {% endif %}" alt="{{spek.name}}"></div>
+                <div class="speaker-data">
+                    <h5>{{spek.name}}</h5>
+                    <p>{{spek}}</p>
+                </div>
+            </div>
+            
+            {% endwith %}
+          </div>
+           <!-- Event Description -->
+           <div class="col-md-6 col-lg-7 event-description">
+              <h4><a href="{% url 'schedule_presentation_detail' slot.content.pk %}">{{ slot.content.title }}</a></h4>
+              {% if slot.content.proposal.audience_level != 4 %}
+              <span class="label label-primary label-level">{{ slot.content.proposal.get_audience_level_display }} Level</span>
+              <p>{{slot.content.description}}</p>
+            {% endif %}
+          </div>
+
+          {% else %}
+          {% if slot.content_override %}
+          <div class="col-md-10 event-description">
+              {{ slot.content_override_html|safe }}
+          </div>
+          {% else %}
+          {% endif %}
+          
+          {% endif %}
+        <div class="card text-xs-center card-{{ slot.kind }} {% for room in slot.rooms %}{{ room.name|slugify}} {% endfor %}">
+          <div class="card-header">
+            {% if slot.rooms %}
+              {% for room in slot.rooms %}
+                <span>{{ room.name }}{% if not forloop.last %}, {% endif %}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+ 
+          {# These should all be slot.end - 5 minutes #}
+         
+        </div>
+
+      {% if not forloop.last and forloop.counter|divisibleby:"3"%}
+        </div>
+        <div class="card-group">
+      {% endif %}
+
+    </div>
+  </div>
+    {% endfor %}
+
+      
+{% endfor %}
+
+
+{% with timetable.day.date.day|slugify as day %}
+    {% box "schedule_day_"|add:day %}
+{% endwith %}

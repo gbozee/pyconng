@@ -1,0 +1,11 @@
+{% extends "apply.html" %}
+{% load static %}
+
+{% block js_script %}
+<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block extra_script %} {% endblock %} {% if development %}
+<script src="http://localhost:8080/bundles/bundle.js"></script>
+{% else %}
+<script src="{% static 'js/bundle.js' %}"></script>
+{% endif %} {% endblock js_script %}

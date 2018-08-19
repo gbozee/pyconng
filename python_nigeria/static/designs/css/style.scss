@@ -629,7 +629,10 @@ h3.section-title {
 }
 
 #schedule-container {
-  display: flex;
+  // display: flex;
+  #schedule-1{
+    flex:1;
+  }
   #schedule-12 {
     .s-date {
       opacity: 0;
@@ -657,13 +660,16 @@ h3.section-title {
       }
     }
   }
-  .breakfast {
+  .breakfast,.lightning,.launch,.lunch,.tea,.vote {
     background: #F1E7C0;
   }
   .schedule-day {
     display: flex;
     margin-bottom: 20px;
     padding: 30px 0;
+    @media(max-width:768px){
+      flex-direction: column;
+    }
     .s-date {
       flex: 1;
       padding-left: 20px;
@@ -687,6 +693,10 @@ h3.section-title {
       flex: 0.2;
       &.food {
         background: url("../img/icons/cocktail.svg");
+        @include logos();
+      }
+      &.lightning {
+        background: url("../img/icons/lightning.svg");
         @include logos();
       }
       &.hour-glass {

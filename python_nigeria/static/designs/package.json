@@ -6,7 +6,6 @@
   "scripts": {
     "start": "parcel index.html",
     "build-css": "node-sass-chokidar  --include-path ./css --include-path ./node_modules css/ -o css/"
-    
   },
   "dependencies": {
     "jquery": "^3.2.1",
@@ -16,7 +15,8 @@
     "popper.js": "^1.12.9"
   },
   "devDependencies": {
-    "posthtml-extend": "^0.2.0",
-    "posthtml-include": "^1.1.0"
+    "cssnano": "^4.0.5",
+    "posthtml-extend": "^0.2.1",
+    "posthtml-include": "^1.2.0"
   }
 }
