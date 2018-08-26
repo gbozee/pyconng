@@ -72,7 +72,7 @@ class TicketPrice(models.Model):
             "price": 20000,
         },
         "Tutorial": {
-            "name": "Tutorial Package",
+            "name": "Tutorial Day",
             "short_name": "Tutorial",
             "style": "",
             "url": "/static/designs/img/tickets/tutorial.svg",
