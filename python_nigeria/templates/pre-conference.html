@@ -2,6 +2,22 @@
  {% load static pinax_boxes_tags %}
 {% load static from staticfiles %} 
 {% load pinax_boxes_tags %} 
+{% block extra_stylings %}
+{{block.super}}
+<style>
+ .highlights{
+     align-items: center;
+ }
+    .google-btn2{
+        border: none!important;
+        border-radius: 0!important;
+        color: #000!important;
+        font-weight: 700!important;
+        padding: 15px 44px!important;
+        background-color: rgb(221,221,221);
+    }
+</style>
+{% endblock extra_stylings %}
 {% block head_title %}
     Home Page |
 {% endblock head_title %}
@@ -34,8 +50,145 @@
             <img src="{% static 'designs/dist/ed15188ec8bf7bcd28c0e40ef2a82fc6.jpg' %}"> </div>
     </div>
 </div>
-<div id="speaker-section"> </div>
-<div class="call-to-action">
+{% box "speaker-section" %}
+{% comment %} <div id="speaker-section">
+  <h1 class="section-description text-right">&lt;PyCon.Speakers /&gt;</h1>
+  <h3 class="section-title">Who will be speaking?</h3>
+  <div class="about-details">
+    <div class="description">
+      Our stellar speaker lineup includes expert in python development, tech team leadership and product development.
+    </div>
+    <div class="highlights">
+    </div>
+  </div>
+  <div class="speaker-list">
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Iwan Vosloo</h3>
+        <p>Chief Tech Officer,PayStack</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Chukwudi Nwachukwu</h3>
+        <p>Chief Technology Officer</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Seun Awoyele</h3>
+        <p>Senior Developer, Hypia</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Osaetin Daniel</h3>
+        <p>Facebook VR Designer</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Opetunde Adepoju</h3>
+        <p>DevOps Manager, TechPoint</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Abiola Oyeniyi</h3>
+        <p>Product Manager, Tuteria</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Damola Aderinwale</h3>
+        <p>Web developer & Author</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Shehu Awwal</h3>
+        <p>Fullstack Developer</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Cleopatra Douglas</h3>
+        <p>Chief Technology Officer</p>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+{% box "workshop-section" %}
+{% comment %} <div id="workshop-section">
+  <h1 class="section-description text-right">&lt;PyCon.Workshops /&gt;</h1>
+  <h3 class="section-title">what am i going to learn?</h3>
+  <div class="about-details">
+    <div class="description">
+      This year, we wanted to enlarge the learning experience and we decided to give to you three amazing workshops. From how to
+      get started with Python to advance tips and tricks taught by experienced mentors. We’re sure that these will empower
+      your development career.
+    </div>
+    <div class="highlights">
+    </div>
+  </div>
+  <div class="workshops-details">
+    <div class="workshop-detail">
+      <div class="img-container">
+        <img src="/static/designs/dist/pycon-teacher-1.035a7ee4.jpg" alt="">
+      </div>
+      <div>
+        <h3>Reduce Stress: Automate with Python and XMPP</h3>
+        <p class="author">— By Daniel Osaetin</p>
+      </div>
+    </div>
+    <div class="workshop-detail">
+      <div class="img-container">
+        <img src="/static/designs/dist/pycon-teacher-1.035a7ee4.jpg" alt="">
+      </div>
+      <div>
+        <h3>Continuous Integration for Python applications with Gitlab CI</h3>
+        <p class="author">— By Biola Oyeniyi</p>
+      </div>
+    </div>
+  </div>
+  <a href="/schedule">view the full schdule</a>
+</div> {% endcomment %}
+{% box "venue_information" %}
+ {% comment %} <div id="venue-section">
+  <h1 class="section-description text-right">&lt;PyCon.Venue /&gt;</h1>
+  <h3 class="section-title">THE VENUE FOR PYCON 2018?</h3>
+  <div class="about-details">
+    <div class="description">
+      PyCon Conference will take place in Lagos Chamber of Commerce and Industry Building, Ikeja, It’s a very open and comfortable
+      environment located in one of the principle areas of Lagos, Ikeja.
+    </div>
+    <div class="highlights">
+      <a href="https://goo.gl/maps/nSUaqE2MphM2" target="_blank" class="google-btn2 btn">
+<img src="/static/designs/dist/google-map.137bf608.svg" alt=""> View on Google Maps
+      </a>
+    </div>
+  </div>
+
+  <div class="location-images">
+    <div>
+<img src="/static/designs/dist/venue-1.0efc9f4f.jpg" alt="">
+    </div>
+    <div>
+<img src="/static/designs/dist/venue-2.6096be35.jpg" alt="">
+    </div>
+  </div>
+</div>  {% endcomment %}
+
+{% comment %} <div class="call-to-action">
     <div>
         <div class="action-area">
             <img src="{% static 'designs/dist/531af2867c5d952c327275733473c0a0.svg' %}" alt="">
@@ -50,7 +203,7 @@
             <a href="{% url 'sponsor_apply' %}">Request Sponsorship</a>
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 <!-- SPONSORS
     ============================================= -->	
     {% if sponsors|length > 0 %}
