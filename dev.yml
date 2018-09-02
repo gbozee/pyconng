@@ -6,6 +6,8 @@ volumes:
   
   postgres_data_dev2: {}
   postgres_backup_dev2: {}
+  postgres_data2: {}
+  postgres_backup2: {}
 
 services:
   postgres:
@@ -19,6 +21,19 @@ services:
       - DB_NAME=pyconnigeria
     ports:
       - "5448:5432"
+
+  
+  postgres2:
+    build: ./compose/postgres
+    volumes:
+      - postgres_data2:/var/lib/postgresql/data
+      - postgres_backup2:/backups
+    environment:
+      - DB_USER=pyconnigeria
+      - DB_PASS=postgres
+      - DB_NAME=pyconnigeria
+    ports:
+      - "5435:5432"
 
   db:
     build: ./compose/postgres
