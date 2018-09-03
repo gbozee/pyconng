@@ -71,19 +71,25 @@ width: 100%;
              <div class="tab-content" style="flex: 1;" id="schedule-container">
             <div style="flex: 1;" class="tab-pane fade show active" id="schedule-1">
                 {% comment %} {% cache 600 "schedule-table" section.schedule.section %} {% endcomment %}
-                <ul class="" id="scheduleTab">
+                <!-- <ul class="" id="scheduleTab">
                     <div class="s-date"></div>
                     {% for timetable in section.days %}
                         <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#schedule-1" role="tab" aria-selected="true">Day {{forloop.counter1}}</span> {{timetable.day.date}}</a>
                         </li>
                         {% endfor %}
-                </ul>
+                </ul> -->
             <div class="col-md-12">
                           <!-- SCHEDULE TABS NAV -->
                           {% for timetable in section.days %}
                           <!-- SCHEDULE TAB #1 CONTENT (DAY #1) -->
-                          
+                            <ul class="" id="scheduleTab">
+                            <div class="s-date"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#schedule-1" role="tab" aria-selected="true">Day {{forloop.counter1}}</span>
+                                {{timetable.day.date}}</a>
+                            </li>
+                            </ul>
                           <div id="tab-{{forloop.counter}}" class="tab-pane day-{{forloop.counter}} {% if forloop.first %}active {% endif %}">
   
                               {% include "symposion/schedule/_grid.html" %}
@@ -107,7 +113,7 @@ width: 100%;
           </div>
 
 
-        <!-- SCHEDULE DOWNLOAD BUTTON -->
+        SCHEDULE DOWNLOAD BUTTON
         <div class="row m-top-50">
             <div class="col-md-12 schedule-download text-center">
                 <a href="#" class="btn btn-lg">Download Schedule</a>
