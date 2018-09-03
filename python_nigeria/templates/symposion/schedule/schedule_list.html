@@ -25,12 +25,7 @@
     </style>
     {% endblock %}
     {% block extra_stylings %} 
-    <style>
-        .schedule-day,.card-group{
-            width: 100%;
-        }
-        
-</style>
+    
 {% endblock extra_stylings %}
 {% block breadcrumbs %}{% sitetree_breadcrumbs from "main" %}{% endblock %}
 
@@ -40,6 +35,12 @@
 </div>
 
 <div class="poster-wrapper">
+<style>
+  .schedule-day,
+  .card-group {
+    width: 100%;
+  }
+</style>
   <div class="container">
     <div class="row">
     {% cache 600 "schedule-list" schedule.section.name %}
