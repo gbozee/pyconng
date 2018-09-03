@@ -21,13 +21,17 @@
             margin-bottom: 0.5em;
             line-height: 1.2em;
         }
+        
+    </style>
+    {% endblock %}
+    {% block extra_stylings %} 
+    <style>
         .schedule-day,.card-group{
             width: 100%;
         }
         
-    </style>
-{% endblock %}
-
+</style>
+{% endblock extra_stylings %}
 {% block breadcrumbs %}{% sitetree_breadcrumbs from "main" %}{% endblock %}
 
 {% block body %}
