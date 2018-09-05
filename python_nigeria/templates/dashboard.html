@@ -32,11 +32,11 @@
             </a>
         </div>
         {% endfor %}
-        {% if request.user.is_staff %}
+        {% comment %} {% if request.user.is_staff %} {% endcomment %}
         <div class="pl-2">
             <a href="/schedule" class="btn btn-primary btn-block">View Schedule</a>
         </div>
-        {% endif %}
+        {% comment %} {% endif %} {% endcomment %}
       </div>
       {% endif %}
     </div>

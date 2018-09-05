@@ -19,10 +19,39 @@ style="position:absolute;"
 .card-group {
 width: 100%;
 }
+.card-group .schedule-day{
+background-color: rgba(234, 234, 234, 0.3);
+}
+.tab-content{
+    margin-bottom: 20px;
+}
+#schedule-container #scheduleTab li.nav-item {
+margin-bottom: 20px;
+margin-right: 0;
+/* margin-right: 30px; */
+}
+#schedule-container .schedule-day {
+align-items: center;
+}
+#schedule-container #scheduleTab li.nav-item {
+/* display: none; */
+flex: 1;
+}
+#schedule-container .schedule-day .row-1 {
+margin-left: 20px;
+}
  @media(max-width: 768px){
      .schedule-day{
         flex-direction: column;
      }
+    #schedule-container .schedule-day {
+    align-items: normal;
+    }
+    #schedule-container #scheduleTab li.nav-item {
+    /* display: none; */
+    display:block;
+    flex: 10;
+    }
  }
 </style>
 {% endblock extra_stylings %}
@@ -68,7 +97,7 @@ width: 100%;
         <div class="row">
                 
           {% for section in sections %}
-             <div class="tab-content" style="flex: 1;" id="schedule-container">
+             <div class="tab-content {% if not forloop.first %}row{% endif %}" style="flex: 1;" id="schedule-container">
             <div style="flex: 1;" class="tab-pane fade show active" id="schedule-1">
                 {% comment %} {% cache 600 "schedule-table" section.schedule.section %} {% endcomment %}
                 <!-- <ul class="" id="scheduleTab">
@@ -83,7 +112,7 @@ width: 100%;
                           <!-- SCHEDULE TABS NAV -->
                           {% for timetable in section.days %}
                           <!-- SCHEDULE TAB #1 CONTENT (DAY #1) -->
-                            <ul class="" id="scheduleTab">
+                            <ul class="row" id="scheduleTab">
                             <div class="s-date"></div>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#schedule-1" role="tab" aria-selected="true">Day {{forloop.counter1}}</span>
@@ -96,7 +125,7 @@ width: 100%;
                               
                           </div>	<!-- END SCHEDULE TAB #1 CONTENT (DAY #1) -->
                       
-                  
+                        </div>
                           {% endfor %}
                   </div>
               </div>	<!-- END SCHEDULE TABS HOLDER -->
