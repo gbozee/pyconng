@@ -145,7 +145,7 @@ class PurchaseView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PurchaseView, self).get_context_data(**kwargs)
         tickets = TicketPrice.objects.filter(
-            name__in=["Company", "Personal", "Student", "Tutorial"]
+            name__in=["Company", "Personal", "Tutorial"]
         )
         ticket_types = [
             {
@@ -162,11 +162,11 @@ class PurchaseView(TemplateView):
             return [x["current_price"] for x in ticket_types if x["name"] == y][0]
 
         tickets = [
-            {
-                "name": "Student ticket",
-                "short_name": "Student",
-                "amount": amount("Student"),
-            },
+            # {
+            #     "name": "Student ticket",
+            #     "short_name": "Student",
+            #     "amount": amount("Student"),
+            # },
             {
                 "name": "Personal ticket",
                 "short_name": "Personal",
