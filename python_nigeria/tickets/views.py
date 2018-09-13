@@ -49,7 +49,7 @@ def intermediate_purchase(request):
 
 
 class PurchaseForm(forms.Form):
-    Student = forms.IntegerField(required=False)
+    # Student = forms.IntegerField(required=False)
     Company = forms.IntegerField(required=False)
     Personal = forms.IntegerField(required=False)
     Tutorial = forms.IntegerField(required=False)
