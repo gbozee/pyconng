@@ -51,10 +51,10 @@ services:
       - staticfiles:/var/pyconng_static
       - mediafiles:/var/pyconng
     environment:
-      - VIRTUAL_HOST=www.pycon.ng
+      - VIRTUAL_HOST=pycon.pythonnigeria.org
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=www.pycon.ng
+      - LETSENCRYPT_HOST=pycon.pythonnigeria.org
       - LETSENCRYPT_EMAIL=gbozee@gmail.com
 
   django-server2:
@@ -69,10 +69,10 @@ services:
       - staticfiles:/var/pyconng_static
       - mediafiles:/var/pyconng
     environment:
-      - VIRTUAL_HOST=pycon.ng
+      - VIRTUAL_HOST=www.pycon.ng
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=pycon.ng
+      - LETSENCRYPT_HOST=www.pycon.ng
       - LETSENCRYPT_EMAIL=gbozee@gmail.com
 
   letsencrypt-nginx-proxy-companion:
