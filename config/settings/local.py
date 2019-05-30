@@ -19,6 +19,9 @@ from .common import *  # noqa
 DEBUG = env.bool('DJANGO_DEBUG', default=True)
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
+ALLOWED_HOSTS = ['ci.tuteria.com','staging.pycon.ng','localhost']
+
+
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
@@ -28,9 +31,9 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='_zmu=w_8zg)a2y+7w=w39rnraick!7r%d
 # Mail settings
 # ------------------------------------------------------------------------------
 
-EMAIL_PORT = 1025
+EMAIL_PORT = 2201
 
-EMAIL_HOST = env("EMAIL_HOST", default='mailhog')
+EMAIL_HOST = env("EMAIL_HOST", default='127.0.0.1')
 
 
 # CACHING
@@ -47,7 +50,8 @@ CACHES = {
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INSTALLED_APPS += ('debug_toolbar', )
 
-INTERNAL_IPS = ['127.0.0.1', '10.0.2.2', ]
+INTERNAL_IPS = ['127.0.0.1', '10.0.2.2','ci.tuteria.com','45.32.237.130',
+'staging.pycon.ng' ]
 # tricks to have debug toolbar when developing with docker
 if os.environ.get('USE_DOCKER') == 'yes':
     ip = socket.gethostbyname(socket.gethostname())
@@ -58,6 +62,7 @@ DEBUG_TOOLBAR_CONFIG = {
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
+    'SHOW_TOOLBAR_CALLBACK': 'config.middleware.callback'
 }
 
 # django-extensions

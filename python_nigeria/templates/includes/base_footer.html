@@ -1,0 +1,41 @@
+{% load static %}
+<footer id="footer">
+  <div class="row main-footer-content">
+    <div class="col-sm-12 col-md-3">
+      <img src="{% static 'designs/dist/1a3ee193d37519b32ff3f0de5629e35f.svg' %}" alt="footer-logo"> </div>
+    <div class="col-sm-12 col-md-3">
+      <h4>CONTACT US</h4>
+      <br>
+      <p>info@pyconng.com</p>
+      <p>+2348012345596</p>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <h4>LEGAL STUFF</h4>
+      <br>
+      <a href="designs/dist/1622b66d73d212db695e9615e4be6ca9.html">
+        <p>CODE OF CONDUCT</p>
+      </a>
+      <p>PRIVACY POLICY</p>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <h4>FOLLOW US</h4>
+      <br>
+      <p>FB, TWITTER, INSTAGRAM, FLICKR</p>
+    </div>
+  </div>
+
+  {% block snake %}
+  <div class="row">
+    <div class="col-sm-12 col-md-7 offset-md-3">
+      <p class="credits text-white">&lt;/&gt; WITH
+        <img class="heart-image" src="{% static 'designs/dist/7276029e9baad06480738e0800677938.png' %}" alt="heart-image"> BY PYCON FOLKS. DESIGNED BY
+        <a href="#">SAGE</a>
+      </p>
+    </div>
+    <div class="col-sm-12 col-md-2">
+      <img class="pycon-snake-image" src="{% static 'designs/dist/b58a7590312dafab97fa4e51db8072e2.png' %}" alt="pycon-snake-image">
+    </div>
+  </div>
+  {% endblock %}
+
+</footer>

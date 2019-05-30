@@ -25,6 +25,8 @@
           {% csrf_token %}
           <legend>{% trans "Apply to Be a Sponsor" %}</legend>
           {{ form|crispy }}
+          <script src='https://www.google.com/recaptcha/api.js'></script>
+          <div class="g-recaptcha" data-sitekey="{{site_key}}"></div>
           <div class="form-actions">
             <input class="btn btn-primary" type="submit" value="Apply" />
             <a class="btn btn-default" href="{% url "dashboard" %}">Cancel</a>

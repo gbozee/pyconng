@@ -1,0 +1,112 @@
+{% extends "apply.html" %} {% load static pinax_boxes_tags %} 
+{% load static from staticfiles %} 
+{% load pinax_boxes_tags %} 
+{% block navigation %}
+
+{% endblock  %}
+{% block sidebar-counter %} {% endblock sidebar-counter %} 
+{% block content %} {% endblock content %}
+{% block messages %} {% endblock messages %}
+{% block header-section %}
+ <div class="main-content container">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                {% endfor %}
+            {% endif %} 
+            
+        </div>
+<div id="tickets-complete-section" class="jumbotron jumbotron-fluid">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+
+<img class="logo" src="{% static 'designs/img/logo-dark.svg' %}" alt="pyconng logo" />
+
+        <div class="tickets">
+          <p>>>> Ticket purchase complete</p>
+
+<img src="{% static 'designs/img/purchase-tickets-complete/ticket-icon.svg' %}" alt="tickets">
+        </div>
+
+        <h1 class="display-4">You’re going to PyConNG 2018!</h1>
+        {% comment %} <div class="add-google">
+          <span>
+            <i class="far fa-calendar-plus"></i>
+          </span>
+          <h3>Add to Google Calendar</h3>
+        </div> {% endcomment %}
+
+        <hr>
+
+
+        <div class="social-share">
+
+          <h3>Share PyCon 2018 with your friends</h3>
+
+<div class="row s-share" style=" justify-content: flex-start;">
+            <div class="tweet" style="margin-right: 20px;">
+<a href="https://twitter.com/home?status=I%20just%20purchased%20my%20%23pyconNG2018%20tickets.%20I%20am%20super%20excited%20about%20attending%20the%20conference.%20You%20too%20can%20get%20yours%20%20https%3A//www.pycon.ng/tickets">
+                <img src="{% static 'designs/img/purchase-tickets-complete/twitter-1.svg' %}" alt="tweet" />
+                              <p>Tweet</p>
+
+              </a>
+            </div>
+            <div class="share">
+<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.pycon.ng/tickets">
+  <img src="{% static 'designs/img/purchase-tickets-complete/facebook-2.svg' %}" alt="share" />
+                <p>Share</p>
+</a>
+            </div>
+            {% comment %} <div class="post">
+<img src="{% static 'designs/img/purchase-tickets-complete/linkedin-2.svg' %}" alt="post" />
+              <p>Post</p>
+            </div> {% endcomment %}
+          </div>
+        </div>
+
+        <div class="tickets-order">
+          <h3>Your order has been received:</h3>
+          <ol>
+            <li> Order
+              <span>#{{ticket.pk}}</span> {{count}} tickets of &#8358;{{ticket.total_amount}}</li>
+              {% if ticket.created_tickets %}
+<li> Click
+  <a href="{% url 'tickets:detail' ticket.pk %}">Here</a> to view your tickets </li>
+              {% else %}
+              <li> Click <a href="{% url 'tickets:create_ticket' ticket.pk %}">Here</a> to create your tickets </li>
+              {% endif %}
+          </ol>
+        </div>
+
+      </div>
+      <div class="col-md-5 offset-md-1 d-none d-sm-block">
+<img src="{% static 'designs/img/purchase-tickets-complete/pythonista-party.svg' %}" alt="pythonista party" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="copyright">
+  <p class="text-center">COPYRIGHT 2017. PYCON NIGERIA 2018</p>
+</div>
+{% endblock header-section %}
+{% comment %} <extends src="./base.html">
+
+  <body>
+    <block name="title">Purchase Tickets - Complete</block>
+
+    <block name="navigation"></block>
+
+    <block name="header-section">
+
+    </block>
+  </body>
+  <block name="footer">
+
+  </block>
+
+</extends> {% endcomment %}
+{% block footer %}
+
+{% endblock footer %}

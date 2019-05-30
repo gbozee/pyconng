@@ -60,7 +60,7 @@ class TicketSaleAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = TicketSaleResource
     list_display = ['the_ticket_id', 'full_name', 'ticket_type', 'diet', 'tagline', 'ticket']
     list_filter = ['ticket__ticket_type']
-    search_fields = ['user__email','user__username']
+    search_fields = ['user__email','full_name','user__username',]
 
     def get_queryset(self, request):
         return super().get_queryset(request).order_by('pk')

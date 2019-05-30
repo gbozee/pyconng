@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/style.458e7568.css">
+    <!-- Bootstrap CSS -->
+    <script defer="" src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>
+      PyConNG 2018 is Coming!
+    </title>
+  </head>
+
+  <body>
+    
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/index.html">
+        <img src="/logo-light.c9175e6d.svg" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Speak
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Overview</a>
+                    <a class="dropdown-item" href="#">Proposing a talk</a>
+                    <a class="dropdown-item" href="#">Proposing a tutorial</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/code_of_conduct.html">Code of Conduct</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/staff.html">Staff</a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard.html" class="link-button btn btn-success">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/code_of_conduct.html">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    
+    
+
+    
+
+    <div class="content-section container-fluid">
+      
+        <div class="sidebar">
+          <span class="python-start"> &#60;&#47; </span>
+          <div class="numbers">
+            <!-- Inserted with jQuery -->
+          </div>
+        </div>
+      
+      <div class="main-content container">
+        
+        <div class="main-content container mt-5 mb-5">
+            <div class="poster-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div id="edit_speaker-profile" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form id="edit_form_speaker-profile" accept-charset="UTF-8" class="modal-form" method="POST" action="/boxes/speaker-profile/edit/?next=/speaker/edit/">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title">Editing content: speaker-profile</h4>
+                                        </div>
+                                        <div class="modal-body form-group">
+                                            <input type="hidden" name="csrfmiddlewaretoken" value="tZKl3YeKxthQM0qWB286GoqJlO2WMM0iKw7pUBqguu6a7QcQ4q4uXdoKH86MAvvW">
+                                            <textarea cols="40" id="id_speaker-profile-content" name="speaker-profile-content" rows="10"></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="content_speaker-profile" class="content-box editable">
+                            <a href="#edit_speaker-profile" data-toggle="modal" class="btn btn-default btn-sm edit-toggle">
+                                <i class="fa fa-pencil"></i>
+                                Edit this content
+                            </a>
+                        </div>
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="tZKl3YeKxthQM0qWB286GoqJlO2WMM0iKw7pUBqguu6a7QcQ4q4uXdoKH86MAvvW">
+                            <legend>Edit Speaker Profile</legend>
+                            <div id="div_id_name" class="form-group">
+                                <label for="id_name" class="control-label  requiredField">
+                                    Name
+                                    <span class="asteriskField">*</span>
+                                </label>
+                                <div class="controls ">
+                                    <input class="textinput textInput form-control" id="id_name" maxlength="100" name="name" type="text" value="Abiola Oyeniyi" required="">
+                                    <p id="hint_id_name" class="help-block">As you would like it to appear in the conference program.</p>
+                                </div>
+                            </div>
+                            <div id="div_id_biography" class="form-group">
+                                <label for="id_biography" class="control-label ">
+                                    Biography
+                                </label>
+                                <div class="controls ">
+                                    <textarea class="textarea form-control" cols="40" id="id_biography" name="biography" rows="10">I am the lead developer/CTO/Co-founder at Tuteria. My two favorite programming languages are Python and JavaScript. 
+I am involved in all aspect of web development across the stack from backend, frontend, operations.</textarea>
+                                    <p id="hint_id_biography" class="help-block">A little bit about you. Edit using
+                                        <a href="http://warpedvisions.org/projects/markdown-cheat-sheet/" target="_blank">Markdown</a>.</p>
+                                </div>
+                            </div>
+                            Currently:
+                            <a href="">speaker_photos/profile_pic_best_dWdZ3Qx.png</a>
+                            <input id="photo-clear_id" name="photo-clear" type="checkbox">
+                            <label for="photo-clear_id">Clear</label>
+                            <br>Change:
+                            <input id="id_photo" name="photo" type="file">
+
+                            <p class="help-block error">
+                                <strong>The image size must not be above 600kb.</strong>
+                            </p>
+                            <br>
+                            <div id="div_id_twitter_username" class="form-group">
+
+                                <label for="id_twitter_username" class="control-label ">
+                                    Twitter username
+                                </label>
+
+                                <div class="controls ">
+                                    <input class="textinput textInput form-control" id="id_twitter_username" maxlength="15" name="twitter_username" type="text" value="Beee_sama">
+                                    <p id="hint_id_twitter_username" class="help-block">Your Twitter account</p>
+                                </div>
+                            </div>
+                            <div class="form-actions d-flex justify-content-between">
+                                <input class="btn btn-success btn-lg" type="submit" value="Save">
+                                <a class="btn btn-lg btn-outline-dark" href="/dashboard/">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+      </div>
+    </div>
+    
+    <script src="/js.e1125e14.js"></script>
+  </body>
+
+</html>

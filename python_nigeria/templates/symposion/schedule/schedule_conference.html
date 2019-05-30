@@ -1,4 +1,4 @@
-{% extends "site_base.html" %}
+{% extends "new_site_base.html" %}
 {% load i18n %}
 {% load pinax_boxes_tags %}
 {% load cache %}
@@ -12,35 +12,71 @@ style="position:absolute;"
 {% endblock header_style %}
 {% block right %}
 {% endblock %}
+{% block extra_stylings %}
+<style>
+ .keynote-speaker .speaker-avatar img{ width: 200px; }
+.schedule-day,
+.card-group {
+width: 100%;
+}
+.card-group .schedule-day{
+background-color: rgba(234, 234, 234, 0.3);
+}
+.tab-content{
+    margin-bottom: 20px;
+}
+#schedule-container #scheduleTab li.nav-item {
+margin-bottom: 20px;
+margin-right: 0;
+/* margin-right: 30px; */
+}
+#schedule-container .schedule-day {
+align-items: center;
+}
+#schedule-container #scheduleTab li.nav-item {
+/* display: none; */
+flex: 1;
+}
+#schedule-container .schedule-day .row-1 {
+margin-left: 20px;
+}
+ @media(max-width: 768px){
+     .schedule-day{
+        flex-direction: column;
+     }
+    #schedule-container .schedule-day {
+    align-items: normal;
+    }
+    #schedule-container #scheduleTab li.nav-item {
+    /* display: none; */
+    display:block;
+    flex: 10;
+    }
+ }
+</style>
+{% endblock extra_stylings %}
 {% block logo-images %}
 <!-- LOGO IMAGE -->
 <!-- Recommended sizes 150x34px; -->
 <a class="navbar-brand logo-white" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt="logo" height="60"></a>
 <a class="navbar-brand logo-black" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt="logo" height="60"></a>
 {% endblock %}
-{% block home_banner %}
-<section id="intro-3" style="height: 250px !important" class="intro-section height_400">
-    <div class="overlay division">
-        <div class="container">
-            <div id="intro-3-content" style="padding-top: 65px;" class="row">
-                <!-- INTRO TEXT -->
-                <div class="col-md-12 col-lg-10 col-lg-offset-1 intro-txt text-center white-color">
-                  
-                    <!-- Title -->
-                    <h4>PyCon Nigeria Annual Conference </h4>
-                    <h3>Conference <span>Schedule</span></h3>
-                    {% box "schedule_top" %}
-    
-                  </div>
-            </div>	 <!-- End Intro Content -->
-        </div>    <!-- End container -->
-    </div>	   <!-- End overlay -->
-  </section>	<!-- END INTRO-3 -->
-  
-{% endblock home_banner %}
-{% block body %}
+{% block header-section %}
+<div id="speakers-section" class="schedule jumbotron jumbotron-fluid">
+  <div class="container">
+    <p>>>> The plan to mastery</p>
+    <h1 class="display-4">SCHEDULE</h1>
+ {% box "schedule_top" %}
+  </div>
+</div>  
+{% endblock header-section %}
+{% block content %}
 
-
+<div class="main-content container">
+        <h1 class="section-description text-right">&lt;PYCON SCHEDULE /&gt;</h1>
+     
+        
+      </div>
 <div class="poster-wrapper schedule-wrapper">
   <div class="container">
     <div class="row">
@@ -61,53 +97,57 @@ style="position:absolute;"
         <div class="row">
                 
           {% for section in sections %}
-              {% comment %} {% cache 600 "schedule-table" section.schedule.section %} {% endcomment %}
-              <div class="col-md-12">
-                      <div id="tabs-holder">
-                          <div class="tab-content">
-                              <!-- SCHEDULE TABS NAV -->
-                              <div class="row">
-                                  <!-- Schedule Tabs Navigation -->
-                                  <div class="col-md-12 tabs-nav m-bottom-50 text-center">
-                                      <ul class="nav nav-tabs" role="tablist">
-                                          {% for timetable in section.days %}
-                                          <li class="{% if forloop.first %}active{% endif %}"><a href="#tab-{{forloop.counter}}" role="tab" data-toggle="tab">
-                                              <span>Day {{forloop.counter1}}</span> {{timetable.day.date}}</a></li>
-                                          {% endfor %}
-                                        
-                                      </ul>
-                                  </div>
-                              </div>
-                              {% for timetable in section.days %}
-                               <!-- SCHEDULE TAB #1 CONTENT (DAY #1) -->
-                             
-                                <div id="tab-{{forloop.counter}}" class="tab-pane day-{{forloop.counter}} {% if forloop.first %}active {% endif %}">
-        
-                                  {% include "symposion/schedule/_grid.html" %}
-                                  
-                                </div>	<!-- END SCHEDULE TAB #1 CONTENT (DAY #1) -->
-                            
-                        
-                                {% endfor %}
-                            </div>
-                          </div>
-                      </div>
-                  </div>	<!-- END SCHEDULE TABS HOLDER -->
-            
-             
-              {% comment %} {% endcache %} {% endcomment %}
+             <div class="tab-content {% if not forloop.first %}row{% endif %}" style="flex: 1;" id="schedule-container">
+            <div style="flex: 1;" class="tab-pane fade show active" id="schedule-1">
+                {% comment %} {% cache 600 "schedule-table" section.schedule.section %} {% endcomment %}
+                <!-- <ul class="" id="scheduleTab">
+                    <div class="s-date"></div>
+                    {% for timetable in section.days %}
+                        <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#schedule-1" role="tab" aria-selected="true">Day {{forloop.counter1}}</span> {{timetable.day.date}}</a>
+                        </li>
+                        {% endfor %}
+                </ul> -->
+            <div class="col-md-12">
+                          <!-- SCHEDULE TABS NAV -->
+                          {% for timetable in section.days %}
+                          <!-- SCHEDULE TAB #1 CONTENT (DAY #1) -->
+                            <ul class="row" id="scheduleTab">
+                            <div class="s-date"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#schedule-1" role="tab" aria-selected="true">Day {{forloop.counter1}}</span>
+                                {{timetable.day.date}}</a>
+                            </li>
+                            </ul>
+                          <div id="tab-{{forloop.counter}}" class="tab-pane day-{{forloop.counter}} {% if forloop.first %}active {% endif %}">
+  
+                              {% include "symposion/schedule/_grid.html" %}
+                              
+                          </div>	<!-- END SCHEDULE TAB #1 CONTENT (DAY #1) -->
+                      
+                        </div>
+                          {% endfor %}
+                  </div>
+              </div>	<!-- END SCHEDULE TABS HOLDER -->
+          
+           
+            {% comment %} {% endcache %} {% endcomment %}
+           
+            </div>
+       
+        </div>
           {% endfor %}
       
           {% box "schedule_bottom" %}
           </div>
 
 
-        <!-- SCHEDULE DOWNLOAD BUTTON -->
+        <!-- SCHEDULE DOWNLOAD BUTTON
         <div class="row m-top-50">
             <div class="col-md-12 schedule-download text-center">
                 <a href="#" class="btn btn-lg">Download Schedule</a>
             </div>
-        </div>
+        </div> -->
 
 
     </div>	  <!-- End container -->
@@ -116,20 +156,5 @@ style="position:absolute;"
    
   </div>
 </div>
-{% block footer %}
-<!-- FOOTER
-============================================= -->
-<footer id="footer" class="bg-dark p-top-40 p-bottom-40 footer division">
-    <div class="container">
-        <div class="row">
-            <div id="footer-copyright" class="col-md-12 text-center">
-                <!-- FOOTER COPYRIGHT -->
-                <p>Copyright &copy; 2017 Python Nigeria</p>
-                <img height="165" src="{% static "images/logo.svg" %}" alt="">
-                <div class="hidden">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-            </div>
-        </div>
-    </div>	   <!-- End container -->
-</footer>	<!-- END FOOTER -->
-{% endblock %}
-{% endblock body %}
+
+{% endblock content %}

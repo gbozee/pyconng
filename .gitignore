@@ -86,3 +86,9 @@ design/dist
 
 # Parcel-bundler
 /design/dist
+*startup.sh
+venv*
+*node_modules
+*deploy.sh
+*.out
+*startup.bat

@@ -1,298 +1,192 @@
-{% extends "apply.html" %} 
+{% extends "apply.html" %} {% load static pinax_boxes_tags %} 
 {% load static from staticfiles %} 
 {% load pinax_boxes_tags %} 
-{% block head_title %}
-    Purchase Ticket |
-{% endblock head_title %}
-{% block stylings %}
-{{block.super}}
+{% block navigation %} 
+{% endblock %} {% block head_title %} Purchase Ticket | 
+{% endblock head_title %} 
+{% block extra_stylings %} {{block.super}}
 <style>
-    .margin-top-50{
-        margin-top: 50px;
+  @media (min-width: 992px) {
+    #navbar.home+#header-section,
+    #navbar.home+#speakers-section,
+    #navbar.home+#purchase-tickets-section,
+    #navbar.home+#code-of-conduct-section,
+    #navbar.home+.custom-image-section {
+      margin-top: -120px;
+      padding-top: 80px;
+      height: 500px !important;
     }
-    .margin-bottom-20{
-        margin-bottom: 20px;
-    }
-    .text-left{
-        text-align: left;
-    }
-    h2{
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .text-left h3{
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .table {
-    width: 100%;
-    max-width: 100%;
-    border-top: 2px solid #8d897c;
-    margin-bottom: 1.5em;
+  }
+  .hide-section{
+    display: none !important;
+  }
+  .show-section{
+    display: block;
+  }
+  .form-content p {
+    margin-top: 0;
 }
-    table {
-    max-width: 100%;
-    background-color: transparent;
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+strong#ticket-count, strong#total-fee{
+  font-size: 25px;
 }
-.table th, .table td {
-    padding: 8px;
-    /* vertical-align: top; */
-    border-top: 1px solid #d4d2cd;
-    line-height: 1.5em;
-    text-align: left;
+.coupon-code{
+  display: flex;
 }
-#form-cart .total {
-    padding: 0.75em 0;
-    text-align: center;
-    background: #f8c7d2;
+.coupon-code button{
+  padding: 0 30px !important;
+  cursor: pointer;
 }
-section {
-    padding: 1.5em 0;
-}
-h3.no-margin{
-    margin-top: -20px;
-
+.discount_value{
+  display: flex;
+ justify-content: space-between;
 }
 </style>
-{% endblock stylings %}
-{% block home_banner %}
-{% endblock home_banner %}
-{% block content %}
-<div class="container text-left margin-top-50">
-    <div class="row">
-<div class="page clearfix">
-    
-    
-    
+{% endblock extra_stylings %} {% block header-section %} {% comment %}
+<div id="header-section" class="jumbotron jumbotron-fluid">
+  {% box "home_introduction" %} {% endcomment %}
+  <div id="purchase-tickets-section" class="ticket-section jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <img class="logo" src="{% static 'designs/img/logo-light.svg' %}" />
+          <div class="hide-mobile">
+            <p>>>> Purchase Tickets</p>
+            <h1 class="display-4">Python Conference 2018</h1>
+            <p class="lead">
+              September 13 — 15, 2018 08:00AM - O5:00PM Lagos, Nigeria
+            </p>
 
-
-
-
-
-
-
-
-
-<form id="form-cart" action="{% url 'tickets:purchase' %}" method="post" class="">
-{% csrf_token %}
-<section>
-    <div class="grid-container">
-    <div class="grid-100">
-
-        <h1>Buy tickets (1 of 2)</h1>
-
-        <div class="page-summary">
-            <p>Select conference tickets and additional services.</p>
+          </div>
         </div>
 
-        
+        <div class="col-md-5 offset-md-2">
+          <div class="form-content">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#personal-info" role="tab" aria-selected="true">1. PERSONAL INFO</a>
+              </li>
+              <li class="nav-item">
+                <a id="payment-link" class="nav-link" data-toggle="tab" href="#make-payment" role="tab" aria-selected="false">2. MAKE PAYMENT</a>
+              </li>
+            </ul>
 
-    </div><!--/grid -->
-</div><!-- /grid-container -->
-</section>
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="personal-info" role="tabpanel">
+                <div>
+                  {% with user=request.user %}
+                  <div id="error-section" class="hide-section alert alert-warning password-alert" role="alert">
+                    Please ensure you fill out all the fields.
+                  </div>
+                  <div class="form-group">
+                    <label for="first_name">pythonista.first_name</label>
+                    <input type="text" class="form-control" id="first_name" value="{{user.first_name}}" placeholder="Enter your first name here"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <label for="last_name">pythonista.last_name</label>
+                    <input type="text" value="{{user.last_name}}" class="form-control" id="last_name" placeholder="Enter your last name here"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">pythonista.email</label>
+                    <input type="text" class="form-control" value="{{user.email}}" id="email" placeholder="Enter your email address here" required>
+                  </div>
 
-<!--
-= ORDER TYPE ===================================================================
--->
+                  {% endwith %} {% comment %}
+                  <div class="alert alert-warning password-alert" role="alert">
+                    By providing a password, you’ll get access to speaker keynotes and development resources.
+                  </div>
 
+                  <div class="form-group">
+                    <label for="password">pythonista.password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter that hashed password here :-)" required>
+                  </div> {% endcomment %}
+                  <form>
+                    <button id="toStep2" class="link-button btn btn-block btn-success">CONTINUE TO STEP 2.</a>
+                    <script src="https://js.paystack.co/v1/inline.js"></script>
+                  </form>
+                  </div>
+              </div>
 
-<!--
-= TICKETS ======================================================================
--->
-<section>
-    <div class="grid-container">
-    <div class="grid-100">
-        <fieldset class="tickets conference-tickets">
-            
-            <legend>Conference tickets</legend>
-               <table id="ticket_table" class="table">
-                    <colgroup><col>
+              <div class="tab-pane fade" id="make-payment" role="tabpanel">
+                <form>
+                  <ul class="container">
+                    {% for ticket in tickets %}
+                    <li id="{{ticket.short_name}}" class="row ticket-select">
+                      <div class="col-sm-9">
+                        <p>{{ticket.name}}</p>
+                        <span>N{{ticket.amount}}</span>
+                      </div>
+                      <div class="col-sm-3">
+<select value="">
+                          <option>0</option>
+                          <option {% if default_plan == ticket.short_name %}selected{% endif %}>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                        </select>
+                      </div>
+                    </li>
 
-                    <col style="background: #E5E2D3">
-                    <col style="background: #E5E2D3">
+                    {% endfor %}
+                  </ul>
 
-                    <col>
-                    <col>
-
-                    <col style="background: #E5E2D3">
-                    <col style="background: #E5E2D3">
-
-                    </colgroup><thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th colspan="2">Student {% if tickets.0.amount < 4000 %}
-                             <small>(Early Bird)</small>
-                            {% endif %} </th>
-                            <th colspan="2">Personal {% if tickets.1.amount < 6000 %}
-                             <small>(Early Bird)</small>
-                            {% endif %} </th>
-                            <th colspan="2">Business {% if tickets.2.amount < 12000 %}
-                             <small>(Early Bird)</small>
-                            {% endif %} </th>
-                            <th colspan="2">Paetron {% if tickets.3.amount < 50000 %}
-                             <small>(Early Bird)</small>
-                            {% endif %} </th>
-                        </tr>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th>Price</th>
-                            <th>Q.ty</th>
-                            <th>Price</th>
-                            <th>Q.ty</th>
-                            <th>Price</th>
-                            <th>Q.ty</th>
-                            <th>Price</th>
-                            <th>Q.ty</th>
-                        </tr>
-                    </thead>
-
-                
-
-                    <tbody>
-                        
-
-<tr>
-    <td>PyconNG 2017 - Regular Ticket<br><small>Ticket to attend PyconNG at the regular ticket price.</small></td>
-    {% for ticke in tickets %}
-        {% if ticke.amount > 0 %}
-        <td class="fare" data-fare="{{ticke.data_fare}}">
-            
-            <div id="fare-{{ticke.data_fare}}" data-amount="{{ticke.amount}}">
-                ₦ <span class="fare">{{ticke.amount|floatformat:"2"}}</span></div>
-        </td> 
-        <td class="fare" data-fare="{{ticke.data_fare}}">
-            <input type="text" size="2" name="{{ticke.data_fare}}" value="">            
-        </td>
-        {% else %}
-        <td class="fare">
-            Exhausted
-        </td>
-        <td class="fare">
-        </td>
-        {% endif %}
-    
-    {% endfor %}
-</tr>
-
-<tr>
-    <td><br><small></small></td>
-    {% for x in "******" %}
-        <td class="fare" data-fare=""> </td> 
-    {% endfor %}
-</tr>
-
-<tr>
-    <td><br><small></small></td>
-     {% for x in "******" %}
-        <td class="fare" data-fare=""> </td> 
-    {% endfor %}
-</tr>
-
-
-                    </tbody>
-                </table>
-                <div class="total">
-                    Conference tickets total <b>₦ 0</b>
+                  <p id="initiate-discount">Have a discount code?
+                    <a style="cursor: pointer;">Click here</a>
+                  </p>
+                  <div class="form-group discount_value hide-section">
+                    <p>Discount</p>
+                    <p ><span id="percent-value">0</span>%</p>
+                  </div>
+                <div class="form-group coupon-code hide-section">
+                  <input type="text" class="form-control" id="coupon_value" value="" placeholder="Input coupon code" >
+                  <button id="code_btn" class="btn btn-primary">Validate code</button>
                 </div>
-            
-        </fieldset>
+                <div class="form-group"> 
+                  <div id="div_id_recording_release" class="checkbox"> 
+                    <label for="coc_confirm" class=""> 
+<input type="checkbox" style="height: auto;" id="coc_confirm" name="code_of_conduct_confirm" class="checkboxinput" >
+                      Code of Conduct
+                </label> <p id="hint_id_recording_release" class="help-block">By purchasing a ticket, you agree to abide by every rule indicated in the Pycon Nigeria Code of Conduct.</p> </div> </div>
+                  <button type="submit" id="pstackButton" disabled class="btn btn-block btn-success">CHECKOUT</button>
 
-    </div><!--/grid -->
-</div><!-- /grid-container -->
-</section>
+                  <div id="tickets-summary" class="row">
+                    <p class="col-sm-12 col-md-4">QTY: <strong id="ticket-count"></span></strong>
+                    <p class="col-sm -12 col-md-8 total-fee">TOTAL FEE: N<strong id="total-fee">0</strong></p>
+                  </div>
 
-
-<!--
-= COUPON ======================================================================
--->
-<section>
-    <div class="grid-container">
-    <div class="grid-100">
-
-        <fieldset class="tickets coupon">
-            <legend>Coupon code</legend>
-            
-<div class="control-group coupon field textinput charfield">
-    <label class="control-label" for="id_coupon">Insert your discount code and save money!</label>
-    <div class="controls">
-        <input id="id_coupon" maxlength="10" name="coupon" size="10" type="text">
-        
+                  <div id="tickets-payment-option" class="row">
+                    <div class="col-sm-12 text-center">
+                      Verve, MasterCard, Visa
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
- <span></span>
-            
-        </fieldset>
+  </div>
+  <div class="copyright">
+    <p class="text-center">COPYRIGHT 2017. PYCON NIGERIA 2018</p>
+  </div>
+  {% comment %}
+  <div class="container-fluid">
 
-    </div><!--/grid -->
-
-</div><!-- /grid-container -->
-</section>
-
-<!--
-= TOTAL AND PROCEED ============================================================
--->
-
-<section>
-    <div class="grid-container">
-    <div class="grid-100">
-
-            <fieldset class="tickets">
-                <div class="total grand">
-                    Grand total <b>₦ 0</b>
-                </div>
-            </fieldset>
-
-            <fieldset style="margin-top: 20px;">
-                {% if tickets.0.amount > 0 or tickets.1.amount > 0 or tickets.2.amount > 0 %}
-                
-                <button id="checkoutbtn" class="btn btn-primary" value="" name="" type="submit">Proceed to Checkout →</button>
-                {% else %}
-                <strong>No available tickets</strong>
-                {% endif %}
-            </fieldset>
-        <script type="text/javascript">
-            
-        </script>
-
-    </div><!--/grid -->
-</div><!-- /grid-container -->
-</section>
-
-</form>
-
-    
-
-
-
-</div>
-    </div>
-
-</div>
-            {% endblock content %}
-
-{% block extra_script %}
-  <script src="https://www.pycon.ng/static/js/bundle-ticket.js"></script>  
- <!-- <script src="{% static "js/bundle-ticket.js" %}"></script>  -->
-<script type="text/javascript">
-    $("#ticket_table").change(max_tickets);
-    function max_tickets() {
-        //alert("The text has been changed.");
-        t = document.getElementById("ticket_table");
-        inp_list = t.getElementsByTagName("input");
-        var changed = (1<0)
-        for (i = 0; i < inp_list.length; i++) {
-            val = inp_list[i].value
-                if (val > 6) {
-                    inp_list[i].value = 6;
-                    changed = (1>0);
-                }
-        }
-        if (changed) {
-            location.reload();
-        }
-    }
+  </div>
+</div> {% endcomment %} {% endblock %} {% block content %} {% endblock %} {% block footer %} {% endblock %} {% block js_script %}
+<script>
+  window.INITIALIZER = {
+    pricings:{},
+    public_key: "{{public_key}}",
+    purchase_url: "{% url 'tickets:purchase' %}",
+ coupon_url: "{% url 'tickets:coupons' %}"
+  }
+  {% for ticket in tickets %}
+  window.INITIALIZER.pricings["{{ticket.short_name}}"] = {{ticket.amount}}
+  {% endfor %}
 </script>
-{% endblock extra_script %}
+<script src="{% static "js/purchase.js" %}"></script>
+{% endblock js_script %}

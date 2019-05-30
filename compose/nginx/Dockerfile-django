@@ -1,0 +1,4 @@
+# ./nginx/Dockerfile
+FROM wernight/alpine-nginx-pagespeed
+ADD nginx-django.conf /etc/nginx/nginx.conf
+EXPOSE 80 443

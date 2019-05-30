@@ -4,13 +4,25 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load static from staticfiles %}
-
+{% block extra_stylings %}
+<style>
+  .container{
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* justify-content: space-around*/
+  }
+</style>
+}
+{% endblock extra_stylings %}
 
 {% block header_title %}{% trans "About Our Sponsors" %}{% endblock %}
 
 {% block body_class %}sponsorships-list{% endblock %}
-
-{% block body %}
+{% block body_tag %}
+{% block navigation %} {% include "includes/nav_pre-launch.html" %}
+<!-- remove the class if we want to have a background color for the navbar -->
+{% endblock %}
 
 <div class="blog-header poster-wrapper blue-header">
   <h1>{% trans "About Our Sponsors" %}</h1>
@@ -32,11 +44,11 @@
             {% if sponsor.website_logo %}
 
               {% if level.name == 'Diamond' %}
-                <div class="col-md-4 diamond">
+                <div class="diamond">
               {% elif level.name == 'Platinum' %}
-                <div class="col-md-4 platinum">
+                <div class="platinum">
               {% else %}
-                <div class="col-md-3">
+                <div class="">
               {% endif %}
 
                 <a class="card-link" href="{{ sponsor.external_url }}">

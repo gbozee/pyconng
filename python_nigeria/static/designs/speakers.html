@@ -1,0 +1,57 @@
+<extends src="./base.html">
+  <body>
+    <block name="title">Speakers</block>
+    <block name="header-section">
+      <div id="speakers-section" class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <p>>>> Meet the Python lords</p>
+          <h1 class="display-4">SPEAKERS</h1>
+        </div>
+      </div>
+    </block>
+    <block name="content">
+      <div class="main-content container">
+        <h1 class="section-description text-right">&lt;PYCON SPEAKERS /&gt;</h1>
+
+        <div id="speaker" class="row">
+          <div class="col-sm-12 col-md-3 speaker-name">
+            <h1 class="text-green font-weight-bold">Ivan
+              <br /> Vosloo</h1>
+
+            <ul>
+              <li>Twitter</li>
+              <li>Website</li>
+              <li class="font-weight-bold font-italic">Sept. 15 — 12:30am</li>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <img class="speaker-image" src="./img/speakers/Speaker-1.jpg" />
+          </div>
+          <div class="col-sm-12 col-md-5 speaker-description">
+            <h2 class="text-green font-weight-bold">Developer and Mentor, Reahl</h2>
+            <p class="text-justify">
+              Ivan runs a small consultancy in South Africa, from which he mentors agile teams in the financial industry. This includes
+              helping programmers to apply practices such as testing, pair programming and object oriented design within
+              the context of existing systems that have grown convoluted and debilitating over time (something which makes
+              the application of such practices challenging)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="bottom-description">
+        <div class="col-md-8 offset-2">
+          <h2 class="text-center font-weight-bold">Interested to Speak at PyCon 2018?</h2>
+          <br />
+
+          <p class="text-center">
+            We want you to submit a proposal. We are interested in a range of topics including web development, Design, Data Science,
+            Networks and anything else related to Python
+          </p>
+        </div>
+
+        <div class="col-md-4 offset-md-4 bottom-description-button">
+          <button class="btn btn-success btn-lg btn-block">YES! I WANT TO BE A SPEAKER</button>
+        </div>
+      </div>
+    </block>
+</extends>
