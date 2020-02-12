@@ -2,7 +2,7 @@
 
 -e git+git://github.com/pyung/symposion#egg=symposion
 
-django==1.11.8
+django==1.11.28
 
 # Configuration
 django-environ==0.4.4
