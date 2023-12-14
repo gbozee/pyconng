@@ -52,8 +52,6 @@ def console():
 
 @hosts("sama@app-dev.beeola.me")
 def deploy_current(branch="master",username='',r_password=''):
-    print('username',username)
-    print('password',r_password)
     print("hello World")
     run("pwd")
     code_dir = "/home/sama/app_code/pyconng"
