@@ -24,7 +24,7 @@ urlpatterns = [
         o_views.NewSpeakerEditView.as_view(),
         name="speaker_edit",
     ),
-    url(r"^hijack/", include("hijack.urls")),
+    # url(r"^hijack/", include("hijack.urls")),
     url(r"^account/", include("account.urls")),
     url(r"^contact/", include("contact_form.urls")),
     # url(r'^captcha/', include('captcha.urls')),

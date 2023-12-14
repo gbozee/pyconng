@@ -77,9 +77,9 @@ THIRD_PARTY_APPS = (
     "symposion.schedule",
     "symposion.sponsorship",
     "symposion.teams",
-    "hijack",
+    # "hijack",
     "compat",
-    "hijack_admin",
+    # "hijack_admin",
     # 'captcha',
 )
 

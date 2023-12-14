@@ -1,6 +1,6 @@
 # Bleeding edge Django
 
--e git+git://github.com/pyung/symposion#egg=symposion
+-e git+https://github.com/pyung/symposion#egg=symposion
 
 django==1.11.8
 
@@ -19,7 +19,8 @@ django-model-utils==3.0.0
 Pillow==4.3.0
 
 # Python-PostgreSQL Database Adapter
-psycopg2==2.7.3.2
+# psycopg2==2.7.3
+psycopg2-binary==2.7.3.2
 
 # Redis support
 django-redis==4.8.0

@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
-from hijack_admin.admin import HijackUserAdminMixin
+# from hijack_admin.admin import HijackUserAdminMixin
 from symposion.sponsorship.admin import SponsorAdmin
 from .models import Sponsor, SponsorImage
 from symposion.proposals.models import ProposalSection
@@ -89,7 +89,8 @@ class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         return super().get_queryset(request).select_related("proposal__speaker")
 
 
-class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
+# class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):
+class UserAdmin(UserAdmin, ImportExportModelAdmin):
     resource_class = UserResource
     list_display = UserAdmin.list_display
     actions = ["remove_permission"]

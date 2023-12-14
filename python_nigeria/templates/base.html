@@ -1,4 +1,5 @@
-<!doctype html> {% load static pinax_boxes_tags %} {% load hijack_tags %}
+<!doctype html> {% load static pinax_boxes_tags %}
+{#{% load hijack_tags %}#}
 
 <html lang="en">
 
@@ -23,7 +24,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'designs/dist/style.dbe15d5b.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
+   {# <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />#}
 
     <style>
         .content-box.editable,
@@ -545,13 +546,13 @@
 {% block body_tag %}
 
 <body class="{% block body_class %}{% endblock %}">
-    {% hijack_notification %}
-    
+    {#{% hijack_notification %}#}
+
     {% block navigation %}
     {% include "includes/navigation.html" %}
     <!-- remove the class if we want to have a background color for the navbar -->
     {% endblock %}
-    
+
     {% block header-section %} {% endblock %}
 
     <div class="content-section container-fluid">
@@ -569,13 +570,13 @@
                 {% for message in messages %}
                 <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
                 {% endfor %}
-            {% endif %} 
-            
-            {% block content %}{% endblock %} 
-            
+            {% endif %}
+
+            {% block content %}{% endblock %}
+
             {% block extra_body %}{% endblock extra_body %}
         </div>
-        
+
         {% endblock messages %}
     </div>
 
@@ -583,13 +584,13 @@
     <footer id="footer">
         {% block footer_1 %}
         {% box "footer_1" %}
-      
+
         {% endblock footer_1 %}
         {% block footer_2 %}
         {% box "footer_2" %}
-        
+
         {% endblock footer_2 %}
-        
+
     </footer>
     {% endblock %}
 

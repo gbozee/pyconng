@@ -48,3 +48,20 @@ def logs():
     
 def console():
     local('docker exec -i -t pyconng_django_1 bash')
+
+
+@hosts("sama@tutor-search.tuteria.com")
+def deploy_current(branch="master"):
+    print("hello World")
+    run("pwd")
+    code_dir = "/home/sama/app_code/pyung"
+    common_code(code_dir, "./boot_app.sh", branch=branch)
+    with settings(user="sama", password=password):
+        with cd(code_dir):
+            run("pwd")
+            run("git checkout -f %s" % branch)
+            if "code" in code_dir:
+                run("git pull -f")
+            else:
+                run("git pull -f")
+            run('./boot_app.sh')
