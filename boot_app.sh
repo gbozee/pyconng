@@ -1,7 +1,7 @@
-IMAGE_NAME="registry.gitlab.com/tuteria/pyconng"
-WEB_CONTAINER_IMAGE_NAME="registry.gitlab.com/tuteria/pyconng-app"
+BASE_PATH='registry.gitlab.com/tuteria/tuteria'
+IMAGE_NAME="$BASE_PATH/pyconng"
 
-echo $1 $2
+WEB_CONTAINER_IMAGE_NAME="$BASE_PATH/pyconng-app"
 
 cd /home/sama/app_code/pyconng && docker build -f compose/django/Dockerfile -t=$IMAGE_NAME .
 docker login -u $1 -p $2 registry.gitlab.com
