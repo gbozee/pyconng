@@ -35,9 +35,7 @@ services:
     env_file: ./new.env
    
   web:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile
+    image: registry.gitlab.com/tuteria/pyconng:latest
     # user: django
     depends_on:
       - postgres
@@ -49,7 +47,7 @@ services:
     env_file: ./new.env
 
 
-  app:
+  pycon_app:
     restart: always
     container_name: pycon-app
     build:
@@ -62,13 +60,13 @@ services:
       - mediafiles:/var/pyconng
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`app-dev.beeola.me`)"
-      - "traefik.http.routers.app.priority=1"
-      - "traefik.http.routers.app.entryPoints=web-secure"
-      - "traefik.http.routers.app.middlewares=csrf"
-      - "traefik.http.services.app.loadBalancer.sticky.cookie={}"
-      - "traefik.http.services.app.loadBalancer.server.port=80"
-      - "traefik.http.routers.app.tls.certResolver=letsencrypt"
+      - "traefik.http.routers.pycon_app.rule=Host(`pycon.beeola.me`)"
+      - "traefik.http.routers.pycon_app.priority=1"
+      - "traefik.http.routers.pycon_app.entryPoints=web-secure"
+      - "traefik.http.routers.pycon_app.middlewares=csrf"
+      - "traefik.http.services.pycon_app.loadBalancer.sticky.cookie={}"
+      - "traefik.http.services.pycon_app.loadBalancer.server.port=80"
+      - "traefik.http.routers.pycon_app.tls.certResolver=letsencrypt"
 
   traefik:
     image: traefik:v2.2

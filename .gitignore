@@ -92,3 +92,4 @@ venv*
 *deploy.sh
 *.out
 *startup.bat
+startup.sh
