@@ -2,7 +2,7 @@ import os
 from fabric.api import local, run, cd, env, sudo, settings, lcd
 from fabric.decorators import hosts
 username = os.getenv('PYCON_USERNAME')
-env.hosts = [f'{username}@www.pycon.ng']
+# env.hosts = [f'{username}@www.pycon.ng']
 
 password = os.getenv('PYCON_PRODUCTION_PASSWORD', '')
 
@@ -31,7 +31,7 @@ def deploy_staging():
 def deploy_current():
     print("hello World")
     run("pwd")
-    code_dir = f'/home/{username}/pyconng'
+    code_dir = '/home/{}/pyconng'.format(username)
     common_code(code_dir)
 
 def display_logs():
@@ -50,12 +50,13 @@ def console():
     local('docker exec -i -t pyconng_django_1 bash')
 
 
-@hosts("sama@tutor-search.tuteria.com")
-def deploy_current(branch="master"):
+@hosts("sama@app-dev.beeola.me")
+def deploy_current(branch="master",username='',r_password=''):
+    print('username',username)
+    print('password',r_password)
     print("hello World")
     run("pwd")
     code_dir = "/home/sama/app_code/pyconng"
-    common_code(code_dir, "./boot_app.sh", branch=branch)
     with settings(user="sama", password=password):
         with cd(code_dir):
             run("pwd")
@@ -64,4 +65,4 @@ def deploy_current(branch="master"):
                 run("git pull -f")
             else:
                 run("git pull -f")
-            run('./boot_app.sh')
+            run('./boot_app.sh {} {}'.format(username,r_password))
