@@ -35,7 +35,7 @@ services:
     env_file: ./new.env
    
   web:
-    image: registry.gitlab.com/tuteria/pyconng:latest
+    image: registry.gitlab.com/tuteria/tuteria/pyconng:latest
     # user: django
     depends_on:
       - postgres
@@ -49,10 +49,11 @@ services:
 
   pycon_app:
     restart: always
+    image: registry.gitlab.com/tuteria/tuteria/pycon-app:latest
     container_name: pycon-app
-    build:
-      context: ./compose/nginx
-      dockerfile: Dockerfile-django
+    # build:
+    #   context: ./compose/nginx
+    #   dockerfile: Dockerfile-django
     depends_on:
       - web
     volumes:
