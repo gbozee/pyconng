@@ -54,7 +54,7 @@ def console():
 def deploy_current(branch="master"):
     print("hello World")
     run("pwd")
-    code_dir = "/home/sama/app_code/pyung"
+    code_dir = "/home/sama/app_code/pyconng"
     common_code(code_dir, "./boot_app.sh", branch=branch)
     with settings(user="sama", password=password):
         with cd(code_dir):

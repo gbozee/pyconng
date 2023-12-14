@@ -1,6 +1,6 @@
-IMAGE_NAME="registry.gitlab.com/tuteria/pyung"
+IMAGE_NAME="registry.gitlab.com/tuteria/pyconng"
 
-cd /home/sama/app_code/pyung && docker build -f compose/django/Dockerfile -t=$IMAGE_NAME .
+cd /home/sama/app_code/pyconng && docker build -f compose/django/Dockerfile -t=$IMAGE_NAME .
 docker push $IMAGE_NAME 
 # cd /home/sama/tuteria && docker build -f compose/celery/Dockerfile -t=registry.gitlab.com/tuteria/tuteria/celery compose/celery
 # docker push registry.gitlab.com/tuteria/tuteria/celery
