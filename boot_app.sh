@@ -5,7 +5,7 @@ cd /home/sama/app_code/pyconng && docker build -f compose/django/Dockerfile -t=$
 docker login -u $1 -p $2 registry.gitlab.com
 docker push $IMAGE_NAME 
 
-cd /home/sama/app_code/pyconng && docker build -f compose/django/nginx/Dockerfile-django -t=$WEB_CONTAINER_IMAGE_NAME ./compose/nginx
+cd /home/sama/app_code/pyconng && docker build -f compose/nginx/Dockerfile-django -t=$WEB_CONTAINER_IMAGE_NAME ./compose/nginx
 docker push $WEB_CONTAINER_IMAGE_NAME
 
 docker image prune
