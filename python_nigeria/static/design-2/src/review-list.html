@@ -1,0 +1,113 @@
+<extends src="./base.html">
+
+    <block name="title">PyConNG 2018 is Coming!</block>
+    <block name="navigation">
+        <include src="./includes/navigation_regular.html"></include>
+    </block>
+    <block name="header-section">
+
+    </block>
+
+    <block name="content">
+        <div class="main-content container mt-5 mb-5">
+            <div class="poster-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <ul class="nav flex-column">
+                                <li class="nav-header">
+                                    Tutorials
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/reviews/section/tutorials/all/">All Reviews</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/reviews/section/tutorials/status/">Voting Status</a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/reviews/section/tutorials/notification/accepted/">Result Notification</a>
+                                </li>
+                                
+                                
+                                <li class="nav-header">
+                                    General Sessions
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/reviews/section/general-sessions/all/">
+                                        All Reviews
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-link">
+                                    <a href="/reviews/section/general-sessions/status/">
+                                        Voting Status
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-link">
+                                    <a href="/reviews/section/general-sessions/notification/accepted/">Result Notification</a>
+                                </li>
+                            </ul>
+            
+                        </div>
+                        <div class="col-md-9">
+            
+            
+                            <h4>All proposals</h4>
+            
+            
+            
+            
+                            <table class="table table-striped table-bordered table-reviews">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+            
+                                        <th>Title</th>
+            
+                                        <th>Category</th>
+                                        <th>
+                                            <i class="fa fa-comment-alt"></i>
+                                        </th>
+                                        <th>+1</th>
+                                        <th>+0</th>
+                                        <th>-0</th>
+                                        <th>-1</th>
+                                        <th>
+                                            <a href="#" class="tip" title="Your Rating">
+                                                <i class="fa fa-user"></i>
+                                            </a>
+                                        </th>
+                                    </tr>
+                                </thead>
+            
+                                <tbody>
+            
+                                    <tr class="no-vote">
+                                        <td>013</td>
+                                        <td>
+                                            <a href="./review-detail.html">
+            
+                                                Using Web Sockets with Django
+                                            </a>
+                                        </td>
+                                        <td>tutorial</td>
+                                        <td>2</td>
+                                        <td>0</td>
+                                        <td>2</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td></td>
+                                    </tr>
+            
+                                </tbody>
+                            </table>
+            
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </block>
+</extends>

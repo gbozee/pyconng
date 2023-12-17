@@ -1,0 +1,96 @@
+#purchase-tickets-section {
+  height: 850px;
+  background: url("../img/backgrounds/ticket-bg.jpg");
+  background-size: cover; }
+  #purchase-tickets-section .logo {
+    padding-bottom: 95px; }
+  #purchase-tickets-section .form-content {
+    background-color: #FFFFFF;
+    padding: 0px 52px 32px 52px; }
+  #purchase-tickets-section .nav-tabs {
+    border-bottom: 3px solid #11BD8A;
+    margin: 0 -52px 0px -52px;
+    font-weight: bold; }
+    #purchase-tickets-section .nav-tabs li {
+      padding: 10px; }
+    #purchase-tickets-section .nav-tabs .nav-link {
+      color: #000000;
+      opacity: 0.3;
+      margin: -10px;
+      margin-bottom: -9px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-radius: 0; }
+    #purchase-tickets-section .nav-tabs .nav-link.active {
+      border-color: transparent;
+      background-color: #eee;
+      color: #11BD8A;
+      opacity: 1; }
+  #purchase-tickets-section .tab-content {
+    padding-top: 44px; }
+    #purchase-tickets-section .tab-content a, #purchase-tickets-section .tab-content p {
+      color: #1E1E1E;
+      font-size: 15px; }
+    #purchase-tickets-section .tab-content #make-payment a {
+      text-decoration: underline; }
+  #purchase-tickets-section form label {
+    font-weight: bold;
+    font-size: 15px; }
+  #purchase-tickets-section form input, #purchase-tickets-section form .alert {
+    height: 48px;
+    border: 1px solid #DADADA;
+    padding: 11px 25px 11px 25px;
+    border-radius: 0; }
+  #purchase-tickets-section form li {
+    height: 102px;
+    margin-bottom: 24px;
+    padding: 25px 15px 0 15px;
+    list-style-type: none;
+    border: 1px solid #DEDEDE;
+    background-color: #F2F2F2;
+    border-left: 4px solid #11BD8A; }
+    @media (max-width: 544px) {
+      #purchase-tickets-section form li {
+        padding: 0; } }
+    #purchase-tickets-section form li p {
+      margin-bottom: -5px; }
+  #purchase-tickets-section form p, #purchase-tickets-section form span, #purchase-tickets-section form select, #purchase-tickets-section form .alert {
+    color: #1E1E1E; }
+  #purchase-tickets-section form p {
+    font-weight: bold;
+    font-size: 18px; }
+  #purchase-tickets-section form span {
+    font-size: 15px;
+    opacity: 0.7; }
+  #purchase-tickets-section form select {
+    height: 36px;
+    width: 71px;
+    border: 1px solid #DEDEDE;
+    background-color: #FFFFFF;
+    padding: 0 14px 0 14px;
+    opacity: 0.7; }
+  #purchase-tickets-section form .password-alert {
+    height: auto;
+    font-size: 12px; }
+  #purchase-tickets-section #tickets-summary {
+    margin-top: 36px; }
+    #purchase-tickets-section #tickets-summary p {
+      font-size: 18px;
+      font-weight: bold; }
+    #purchase-tickets-section #tickets-summary .total-fee {
+      text-align: right; }
+      @media (max-width: 544px) {
+        #purchase-tickets-section #tickets-summary .total-fee {
+          text-align: left; } }
+
+.copyright {
+  font-size: 16px;
+  margin-top: -32px;
+  color: #FFFFFF;
+  background-color: #232323;
+  padding: 28px 0 5px 0;
+  font-family: "Maison Neue";
+  letter-spacing: 1px;
+  line-height: 19px; }
+  .copyright p {
+    opacity: 0.5; }
