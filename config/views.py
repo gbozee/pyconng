@@ -315,6 +315,7 @@ def dashboard(request):
 
 
 class HomePage(TemplateView):
+    # template_name = "home.html"
     template_name = "pre-conference.html"
 
     def get_context_data(self, **kwargs):
