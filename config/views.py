@@ -244,7 +244,8 @@ def sponsor_apply(request):
                         "New Sponsor Application",
                         ("A new sponsor just applied\n %s" "%s \n %s")
                         % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
-                        "noreply@pycon.ng",
+                        settings.DEFAULT_FROM_EMAIL,
+                        # "noreply@pycon.ng",
                         ["hello@pycon.ng"],
                     )
                     send_mail(
@@ -254,7 +255,8 @@ def sponsor_apply(request):
                             "should be contacted shortly by the Sponsorship team. "
                             "\n"
                         ),
-                        "no_reply@pycon.ng",
+                        settings.DEFAULT_FROM_EMAIL,
+                        # "no_reply@pycon.ng",
                         [sponsor.contact_email],
                     )
                     user = sponsor.applicant
