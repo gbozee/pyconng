@@ -18,6 +18,8 @@ The project uses `python3` specifically python3.6
     ``` 
     $ python -m venv venv
     $ source venv\bin\activate
+    # ensure the version of pip is 18.1
+    $ pip install pip==18.1
     $ cd pycon
     
     # for window users

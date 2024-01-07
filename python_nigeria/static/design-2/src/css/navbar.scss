@@ -1,0 +1,33 @@
+@import "./variables";
+#navbar {
+  background-color: black;
+  .navbar-nav {
+    align-items: center;
+    .nav-item {
+      margin-right: 40px;
+      text-transform: uppercase;
+    }
+  }
+  @media (min-width: $desktop) {
+    height: 120px;
+  }
+  &.home {
+    @media(min-width: $desktop){
+      background-color: transparent !important;
+    }
+    & + #header-section, & + #speakers-section, & + #purchase-tickets-section, & + #code-of-conduct-section, & + .custom-image-section {
+      margin-top: -70px;
+      padding-top: 120px;
+      @media (min-width: $desktop) {
+        margin-top: -120px;
+        padding-top: 186px;
+        height: 750px;
+      }
+    }
+    & + #speakers-section, & + #code-of-conduct-section, & + .custom-image-section {
+      @media (min-width: $desktop) {
+        height: 100%;
+      }
+    }
+  }
+}

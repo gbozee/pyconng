@@ -1,0 +1,76 @@
+#code-of-conduct-section {
+  background: url("../img/backgrounds/code-of-conduct.jpg");
+  background-size: cover; }
+
+.custom-image-section.background-option-1 {
+  background: url("../img/backgrounds/loki.jpg");
+  background-size: cover; }
+
+.custom-image-section.background-option-2 {
+  background: url("../img/backgrounds/loki2.jpg");
+  background-size: cover; }
+
+.custom-image-section.background-option-3 {
+  background: url("../img/backgrounds/loki3.jpg");
+  background-size: cover; }
+
+.custom-image-section.background-option-4 {
+  background: url("../img/backgrounds/loki4.jpg");
+  background-size: cover; }
+
+.custom-image-section.background-option-5 {
+  background: url("../img/backgrounds/loki5.jpg");
+  background-size: cover; }
+
+.custom-image-section.background-option-6 {
+  background: url("../img/backgrounds/loki6.jpg");
+  background-size: cover; }
+
+.custom-image-section.background-option-7 {
+  background: url("../img/backgrounds/loki7.jpg");
+  background-size: cover; }
+
+.custom-image-section.background-option-8 {
+  background: url("../img/backgrounds/keynote.jpg");
+  background-size: cover;
+  background-position: 50%; }
+
+#code-of-conduct {
+  max-width: 750px;
+  margin-top: 10%;
+  margin-left: 15%; }
+  @media (max-width: 768px) {
+    #code-of-conduct {
+      margin-left: 10px; } }
+  #code-of-conduct p {
+    color: #000000;
+    font-family: "Maison Neue Mono";
+    margin-bottom: 10%; }
+    #code-of-conduct p strong {
+      font-weight: 700; }
+  #code-of-conduct #code-aims p {
+    opacity: 0.4;
+    font-size: 25px;
+    letter-spacing: -1px;
+    line-height: 47px; }
+  #code-of-conduct #code-conduct p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 34px; }
+  #code-of-conduct #code-contact .code-contact__head {
+    height: 57px;
+    width: 315px;
+    background-color: #11BD8A;
+    margin-bottom: 5%; }
+    #code-of-conduct #code-contact .code-contact__head p {
+      color: white;
+      font-size: 23px;
+      letter-spacing: -1px;
+      line-height: 28px;
+      padding: 16px; }
+  #code-of-conduct #code-contact p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 34px; }
+  #code-of-conduct #code-contact .contact p:nth-child(1) {
+    margin-bottom: 1%; }

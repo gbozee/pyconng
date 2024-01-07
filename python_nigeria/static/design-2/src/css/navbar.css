@@ -1,0 +1,24 @@
+#navbar {
+  background-color: black; }
+  #navbar .navbar-nav {
+    align-items: center; }
+    #navbar .navbar-nav .nav-item {
+      margin-right: 40px;
+      text-transform: uppercase; }
+  @media (min-width: 992px) {
+    #navbar {
+      height: 120px; } }
+  @media (min-width: 992px) {
+    #navbar.home {
+      background-color: transparent !important; } }
+  #navbar.home + #header-section, #navbar.home + #speakers-section, #navbar.home + #purchase-tickets-section, #navbar.home + #code-of-conduct-section, #navbar.home + .custom-image-section {
+    margin-top: -70px;
+    padding-top: 120px; }
+    @media (min-width: 992px) {
+      #navbar.home + #header-section, #navbar.home + #speakers-section, #navbar.home + #purchase-tickets-section, #navbar.home + #code-of-conduct-section, #navbar.home + .custom-image-section {
+        margin-top: -120px;
+        padding-top: 186px;
+        height: 750px; } }
+  @media (min-width: 992px) {
+    #navbar.home + #speakers-section, #navbar.home + #code-of-conduct-section, #navbar.home + .custom-image-section {
+      height: 100%; } }

@@ -1,0 +1,75 @@
+#tickets-complete-section {
+  background-color: #F6FFFC;
+  background-size: cover; }
+  #tickets-complete-section .logo {
+    margin-bottom: 10%; }
+  #tickets-complete-section .tickets {
+    margin-bottom: 5%; }
+    #tickets-complete-section .tickets p {
+      color: #000000;
+      font-family: "Maison Neue";
+      font-size: 20px;
+      line-height: 41px; }
+    #tickets-complete-section .tickets img {
+      float: right;
+      margin-top: -12%;
+      margin-right: 15%; }
+  #tickets-complete-section h1 {
+    color: #000000;
+    font-family: "Maison Neue";
+    font-size: 54px;
+    letter-spacing: 1px;
+    line-height: 74px;
+    margin-bottom: 5%; }
+  #tickets-complete-section .add-google {
+    height: 58px;
+    width: 351px;
+    background-color: #02efa8;
+    margin-bottom: 5%; }
+    #tickets-complete-section .add-google .fa-calendar-plus {
+      margin: 5%; }
+    #tickets-complete-section .add-google h3 {
+      color: #000000;
+      font-family: "Maison Neue";
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      line-height: 19px;
+      text-transform: uppercase;
+      margin-top: -11%;
+      margin-left: 15%; }
+  #tickets-complete-section hr {
+    margin-bottom: 5%; }
+  #tickets-complete-section .social-share {
+    margin-bottom: 10%; }
+    #tickets-complete-section .social-share h3 {
+      font-size: 20px;
+      line-height: 41px; }
+    #tickets-complete-section .social-share .share, #tickets-complete-section .social-share .post, #tickets-complete-section .social-share .tweet {
+      box-sizing: border-box;
+      height: 113px;
+      width: 123px;
+      border: 1px solid #E5E5E5;
+      border-radius: 9px;
+      background-color: white;
+      box-shadow: 0 2px 4px 0 rgba(100, 100, 100, 0.3);
+      margin-bottom: 1%; }
+      #tickets-complete-section .social-share .share img, #tickets-complete-section .social-share .post img, #tickets-complete-section .social-share .tweet img {
+        margin: 20px 37px 5px; }
+      #tickets-complete-section .social-share .share p, #tickets-complete-section .social-share .post p, #tickets-complete-section .social-share .tweet p {
+        margin: 0px 35px 0px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase; }
+    #tickets-complete-section .social-share.share {
+      float: right; }
+  #tickets-complete-section .tickets-order {
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 36px; }
+    #tickets-complete-section .tickets-order h3 {
+      font-weight: bold; }
+    #tickets-complete-section .tickets-order ol {
+      margin-left: -2%; }
+      #tickets-complete-section .tickets-order ol span {
+        color: #02efa8; }

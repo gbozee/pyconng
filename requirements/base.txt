@@ -20,6 +20,7 @@ Pillow==4.3.0
 
 # Python-PostgreSQL Database Adapter
 # psycopg2==2.7.3
+# psycopg2-binary==2.7.4
 psycopg2-binary==2.7.3.2
 
 # Redis support
