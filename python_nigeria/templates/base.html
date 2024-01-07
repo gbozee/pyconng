@@ -1,5 +1,5 @@
 <!doctype html> {% load static pinax_boxes_tags %}
-{#{% load hijack_tags %}#}
+{% load hijack_tags %}
 
 <html lang="en">
 
@@ -546,7 +546,7 @@
 {% block body_tag %}
 
 <body class="{% block body_class %}{% endblock %}">
-    {#{% hijack_notification %}#}
+    {% hijack_notification %}
 
     {% block navigation %}
     {% include "includes/navigation.html" %}

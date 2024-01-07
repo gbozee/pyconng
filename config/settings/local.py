@@ -31,9 +31,22 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='_zmu=w_8zg)a2y+7w=w39rnraick!7r%d
 # Mail settings
 # ------------------------------------------------------------------------------
 
-EMAIL_PORT = 2201
+# EMAIL_PORT = 2201
 
-EMAIL_HOST = env("EMAIL_HOST", default='127.0.0.1')
+# EMAIL_HOST = env("EMAIL_HOST", default='127.0.0.1')
+# EMAIL
+# ------------------------------------------------------------------------------
+DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
+                         default='PyconNG 2024 <hello@pynigeria.org>')
+EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[Pycon NG 2024] ')
+SERVER_EMAIL = env('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
+
+# Anymail with Mailgun
+INSTALLED_APPS += ("anymail", )
+ANYMAIL = {
+    'SENDGRID_API_KEY': env('SENDGRID_API_KEY'),
+}
+EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
 
 
 # CACHING

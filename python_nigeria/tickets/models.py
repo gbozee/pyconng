@@ -107,7 +107,7 @@ class TicketPrice(models.Model):
         )
         if current_count:
             return self.amount
-        return None
+        return 0
 
     @classmethod
     def populate_count_price(cls):
