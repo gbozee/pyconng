@@ -554,7 +554,7 @@
     {% endblock %}
 
     {% block header-section %} {% endblock %}
-
+    {% block main_content %}
     <div class="content-section container-fluid">
         {% block sidebar-counter %}
         <div class="sidebar">
@@ -579,6 +579,7 @@
 
         {% endblock messages %}
     </div>
+    {% endblock main_content %}
 
     {% block footer %}
     <footer id="footer">
@@ -594,13 +595,13 @@
     </footer>
     {% endblock %}
 
+
     <script src="{% static 'designs/dist/9f30b84ddf0a13ca2b3a2ebe16b78543.js' %}"></script>
-{% block js_script %}
+  {% block js_script %}
 
-{% endblock js_script %} </body>
+  {% endblock js_script %}
+  </body>
+  {% endblock body_tag %}
 
-</body>
-
-{% endblock body_tag %}
 
 </html>
