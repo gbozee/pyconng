@@ -19,7 +19,7 @@ from django.db.utils import IntegrityError
 from django.contrib import messages
 from django.views.generic import RedirectView, FormView, TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
-from django.http import Http404, HttpResponse, HttpResponseBadRequest
+from django.http import FileResponse, Http404, HttpResponse, HttpResponseBadRequest,JsonResponse
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.shortcuts import render
 from django.template import RequestContext
@@ -383,3 +383,16 @@ class ManageUpdatePost(pinax_views.ManageUpdatePost):
 
     def get_queryset(self):
         return super(ManageUpdatePost, self).get_queryset().filter(blog=self.blog)
+
+
+def sponsors_view(request):
+    # a pdf file called foo.pdf
+    response = HttpResponse(content_type="application/pdf")
+    response['Content-Disposition'] = 'attachment; filename="pycon-nigeria-2024.pdf"'
+    file_path = settings.PDF_DIR 
+    try:
+        return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
+    return JsonResponse({'status': 'ok', 'file_path': file_path})
+    

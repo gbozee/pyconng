@@ -30,6 +30,7 @@ urlpatterns = [
     # url(r'^captcha/', include('captcha.urls')),
     url(r"^we-are-allowed/", include(admin.site.urls)),
     url(r"^tickets/", include("python_nigeria.tickets.urls", namespace="tickets")),
+    url(r"^sponsorship/$", o_views.sponsors_view, name='sponsorship-proposal'),
 ]
 
 if settings.DEBUG:

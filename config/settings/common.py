@@ -123,6 +123,8 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
 FIXTURE_DIRS = (str(APPS_DIR.path("fixtures")),)
 
+PDF_DIR = str(ROOT_DIR.path("pycon-nigeria-2024.pdf"))
+
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = env(
