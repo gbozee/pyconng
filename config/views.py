@@ -394,5 +394,4 @@ def sponsors_view(request):
         return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
     except FileNotFoundError:
         raise Http404()
-    return JsonResponse({'status': 'ok', 'file_path': file_path})
     
