@@ -11,10 +11,23 @@
    {% block header-section %}
   <div id="header-section" class="jumbotron jumbotron-fluid">
      {% box "home_introduction" %}
-    
-    <div class="container-fluid">
-  
+     <div class="container">
+      <div class="col-sm-12 col-lg-6">
+        {% box "hero-label" %}
+        
+        <!-- <h1 class="display-4"> -->
+          {% box "hero-title" %}
+         
+        <!-- </h1> -->
+        <!-- <p class="lead"> -->
+          {% box "hero-subtitle" %}
+        <!-- </p> -->
+
+      </div>
     </div>
+    <!-- <div class="container-fluid">
+  
+    </div> -->
   </div>
   {% endblock %}
 

@@ -16,6 +16,30 @@
         padding: 15px 44px!important;
         background-color: rgb(221,221,221);
     }
+    .section-description{
+      opacity: .2;
+    }
+    #faq{
+      margin-top: 50px;
+    }
+    #video-embed{
+      margin-bottom: 100px;
+    }
+    @media(max-width: 992px){
+      .section-description{
+        font-size: 44px;
+      }
+      #bottom-description{
+        margin-top: 0 !important;
+      }
+    }
+    @media(min-width: 992px){
+        #navbar.home+#header-section{
+          height: 600px;
+          margin-bottom: 75px;
+        }
+
+    }
 </style>
 {% endblock extra_stylings %}
 {% block head_title %}
@@ -36,10 +60,44 @@
     <h1 class="section-description text-right">&lt;PyCon.About /&gt;</h1>
     <h3 class="section-title">About Pycon Nigeria</h3>
     {% box "about_home_section" %}
+    <div id="video-embed" class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+    </div>
 </div>
 {% box "speaker-section" %}
 <div id="speaker-section">
-
+    <h1 class="section-description text-right">&lt;PyCon.Sponsors /&gt;</h1>
+    <h3 class="section-title">Reach the Right Audience
+    </h3>
+    <div class="about-details">
+      <div class="description">
+        An industry conference with a community spirit.
+  More than half of our delegates are IT professionals, drawn from industry, research agencies, and government. We also attract a high number of University-level students, helping to shape the next generation of Python developers.
+  Many of our speakers and delegates are contributors to key Open Source Python projects, used by millions of developers around the world.
+  
+      </div>
+  
+      <!-- <div class="highlights"></div> -->
+    </div>
+    <h3 class="section-title">Recruit Top technical Talent  </h3>
+    <div class="about-details">
+    
+      <div class="description">
+        Take advantage of the conference by having access to some of the best Pythonistas in the Industry all in the same room. PYCON is the place to connect with skilled Python developers looking for job opportunities. Sponsoring allows you to promote open roles and recruit talent. 
+  
+  
+      </div>
+      <!-- <div class="highlights"></div> -->
+    </div>
+    <h3 class="section-title">Promote latest Products/Services</h3>
+    <div class="about-details">
+   
+      <div class="description">
+        The exhibition hall allows sponsors to showcase new products, technologies, and services. Provide first access to new innovations at PyCon Nigeria. PyCoon receives coverage in technical publications, media, and more. Sponsorship provides increased visibility through this coverage.
+  
+      </div>
+      <!-- <div class="highlights"></div> -->
+    </div>
 {% comment %} 
   <h1 class="section-description text-right">&lt;PyCon.Speakers /&gt;</h1>
   <h3 class="section-title">Who will be speaking?</h3>
@@ -199,6 +257,106 @@
  {% endcomment %}
 </div> 
 
+<div id="faq" >
+  <h1 class="section-description text-right">&lt; FAQ /&gt;</h1>
+    <div class="row">
+      <div class="col-xs-12 col-lg-6">
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Collapsible Group Item #1
+                </button>
+              </h2>
+            </div>
+        
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Collapsible Group Item #2
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                Some placeholder content for the second accordion panel. This panel is hidden by default.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Collapsible Group Item #3
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-6">
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Collapsible Group Item #1
+                </button>
+              </h2>
+            </div>
+        
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Collapsible Group Item #2
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                Some placeholder content for the second accordion panel. This panel is hidden by default.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Collapsible Group Item #3
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+</div>
 <!-- SPONSORS
     ============================================= -->	
     {% if sponsors|length > 0 %}
@@ -233,4 +391,5 @@
     <!-- BECOME A SPONSOR
         ============================================= -->	
 {% box "sponsor-call-to-action" %}
+
 {% endblock %}
