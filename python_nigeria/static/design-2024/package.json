@@ -1,0 +1,21 @@
+{
+  "name": "design-2024",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "watch": "tailwindcss -i ./src/input.css -o ./src/output.css --watch",
+    "start": "parcel serve src/index.html --public-url / --dist-dir dist",
+    "build": "parcel build src/index.html --public-url / --dist-dir dist",
+    "test": "npm run build"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.11.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.2",
+    "parcel": "^2.11.0",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1"
+  }
+}

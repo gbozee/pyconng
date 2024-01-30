@@ -36,12 +36,11 @@
     <h1 class="section-description text-right">&lt;PyCon.About /&gt;</h1>
     <h3 class="section-title">About Pycon Nigeria</h3>
     {% box "about_home_section" %}
-
-    {% box "speaker-section" %}
-   
 </div>
 {% box "speaker-section" %}
-{% comment %} <div id="speaker-section">
+<div id="speaker-section">
+
+{% comment %} 
   <h1 class="section-description text-right">&lt;PyCon.Speakers /&gt;</h1>
   <h3 class="section-title">Who will be speaking?</h3>
   <div class="about-details">
@@ -116,10 +115,30 @@
       </div>
     </div>
   </div>
-</div> {% endcomment %}
+  {% endcomment %}
+</div> 
+<div class="call-to-action">
+  {% comment %} 
+  {% endcomment %}
+    <div>
+        <div class="action-area">
+            <img src="{% static 'designs/dist/531af2867c5d952c327275733473c0a0.svg' %}" alt="">
+            <h3>CALL FOR PROPOSALS</h3>
+            <p>If you wish to speak in PyConNG 2024. Click here to submit a proposal.</p>
+            <a href="{% url 'speaker_create' %}">Submit a Proposal</a>
+        </div>
+        <div class="action-area">
+            <img src="{% static 'designs/dist/6ffa2454c3ebbc71f9f12a84b41d64a1.svg' %}" alt="">
+            <h3>SPONSOR INQUIRY</h3>
+            <p>If you wish to sponsor PyConNG 2024. Click here to request a sponsor slot.</p>
+            <a href="{% url 'sponsor_apply' %}">Request Sponsorship</a>
+        </div>
+    </div>
+</div> 
+<div id="workshop-section">
 {% box "workshop-section" %}
-{% comment %} <div id="workshop-section">
-  <h1 class="section-description text-right">&lt;PyCon.Workshops /&gt;</h1>
+{% comment %}  
+ <h1 class="section-description text-right">&lt;PyCon.Workshops /&gt;</h1>
   <h3 class="section-title">what am i going to learn?</h3>
   <div class="about-details">
     <div class="description">
@@ -151,9 +170,10 @@
     </div>
   </div>
   <a href="/schedule">view the full schdule</a>
-</div> {% endcomment %}
+ {% endcomment %}</div>
+ <div id="venue-section">
 {% box "venue_information" %}
- {% comment %} <div id="venue-section">
+ {% comment %} 
   <h1 class="section-description text-right">&lt;PyCon.Venue /&gt;</h1>
   <h3 class="section-title">THE VENUE FOR PYCON 2018?</h3>
   <div class="about-details">
@@ -176,24 +196,9 @@
 <img src="/static/designs/dist/venue-2.6096be35.jpg" alt="">
     </div>
   </div>
-</div>  {% endcomment %}
+ {% endcomment %}
+</div> 
 
-{% comment %} <div class="call-to-action">
-    <div>
-        <div class="action-area">
-            <img src="{% static 'designs/dist/531af2867c5d952c327275733473c0a0.svg' %}" alt="">
-            <h3>CALL FOR PROPOSALS</h3>
-            <p>If you wish to speak in PyConNG 2018. Click here to submit a proposal.</p>
-            <a href="{% url 'speaker_create' %}">Submit a Proposal</a>
-        </div>
-        <div class="action-area">
-            <img src="{% static 'designs/dist/6ffa2454c3ebbc71f9f12a84b41d64a1.svg' %}" alt="">
-            <h3>SPONSOR INQUIRY</h3>
-            <p>If you wish to sponsor PyConNG 2018. Click here to request a sponsor slot.</p>
-            <a href="{% url 'sponsor_apply' %}">Request Sponsorship</a>
-        </div>
-    </div>
-</div> {% endcomment %}
 <!-- SPONSORS
     ============================================= -->	
     {% if sponsors|length > 0 %}
@@ -228,5 +233,4 @@
     <!-- BECOME A SPONSOR
         ============================================= -->	
 {% box "sponsor-call-to-action" %}
-
 {% endblock %}
