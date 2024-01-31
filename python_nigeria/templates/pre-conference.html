@@ -25,12 +25,31 @@
     #video-embed{
       margin-bottom: 100px;
     }
+    .accordion button {
+      padding: 10px 0 !important;
+      text-wrap: pretty;
+      white-space: pre-line;
+    }
+
+    #want-to-speak,.bottom-description-button{
+      margin: 0 auto;
+    }
+    #best-practice .row{
+      gap: 30px;
+      justify-content: center;
+    }
+    #best-practice .row .card{
+      max-width: 22rem;
+    }
     @media(max-width: 992px){
       .section-description{
         font-size: 44px;
       }
       #bottom-description{
         margin-top: 0 !important;
+      }
+      #best-practice .row .card{
+        max-width: 100%;
       }
     }
     @media(min-width: 992px){
@@ -257,6 +276,75 @@
  {% endcomment %}
 </div> 
 
+<div id="best-practice">
+  <h1 class="section-description text-right">&lt;Why Python /&gt;</h1>
+  <div class="about-details">
+    <div class="description">
+     
+    </div>
+    <div class="highlights">
+    </div>
+  </div>
+  <div class="row">
+    <div class="card text-white bg-primary mb-3" >
+      
+      <div class="card-body">
+        <h5 class="card-title">Easy to learn</h5>
+        <p class="card-text">Python has simple, easy-to-read syntax that is great for beginners. It is a high-level language that allows you to focus on core programming concepts without getting bogged down in complex details. </p>
+      </div>
+    </div>
+    <div class="card text-white bg-secondary mb-3" >
+      
+      <div class="card-body">
+        <h5 class="card-title">Versatile</h5>
+        <p class="card-text">Python can be used for a wide range of applications including web development, data science, AI, machine learning, scripting, and more. It's a versatile language used across many fields. </p>
+      </div>
+    </div>
+    <div class="card text-white bg-success mb-3" >
+      
+      <div class="card-body">
+        <h5 class="card-title">Awesome Community</h5>
+        <p class="card-text">Python has a huge and active community of users who support each other in forums, meetups, conferences, and open-source projects. #CameForTheLanguageStayedForTheCommunity</p>
+      </div>
+    </div>
+    <div class="card text-white bg-danger mb-3" >
+      
+      <div class="card-body">
+        <h5 class="card-title">Interpreted Language</h5>
+        <p class="card-text">Python is an interpreted language which means execution is done line-by-line. This allows for dynamic and rapid application development.</p>
+      </div>
+    </div>
+    <div class="card text-white bg-warning mb-3" >
+      
+      <div class="card-body">
+        <h5 class="card-title">Portable</h5>
+        <p class="card-text">Python code can run on various operating systems like Windows, Linux, and Mac OS. This makes it highly portable across platforms. </p>
+      </div>
+    </div>
+    <div class="card text-white bg-info mb-3" >
+      
+      <div class="card-body">
+        <h5 class="card-title">Great Career Prospects</h5>
+        <p class="card-text">Python skills are in high demand with abundant job opportunities. Knowing Python opens doors for lucrative careers in fields like data science, machine learning, and web development.
+        </p>
+      </div>
+    </div>
+    <!-- <div class="card bg-light mb-3" >
+      
+      <div class="card-body">
+        <h5 class="card-title">Light card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <div class="card text-white bg-dark mb-3" >
+      
+      <div class="card-body">
+        <h5 class="card-title">Dark card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div> -->
+  </div>
+</div>
 <div id="faq" >
   <h1 class="section-description text-right">&lt; FAQ /&gt;</h1>
     <div class="row">
@@ -266,14 +354,14 @@
             <div class="card-header" id="headingOne">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Collapsible Group Item #1
+                  What are the dates for the conference? 
                 </button>
               </h2>
             </div>
         
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
-                Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                PyConNG will be held over 4 days from July 10- July 13.
               </div>
             </div>
           </div>
@@ -281,13 +369,13 @@
             <div class="card-header" id="headingTwo">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Collapsible Group Item #2
+                  Where is the conference being held? 
                 </button>
               </h2>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                Some placeholder content for the second accordion panel. This panel is hidden by default.
+                PyConNG will be held in The Zone, Gbagada, Lagos, Nigeria
               </div>
             </div>
           </div>
@@ -295,66 +383,93 @@
             <div class="card-header" id="headingThree">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Collapsible Group Item #3
+                  How much are tickets for the conference?
                 </button>
               </h2>
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-                And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+                Ticket sales will begin soon and prices would start from NGN15,000. Final prices will be published soon
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  What is the agenda/schedule for the conference? 
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div class="card-body">
+                Stay tuned for the final schedule. Call for Proposals will open in February
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="col-xs-12 col-lg-6">
-        <div class="accordion" id="accordionExample">
+        <div class="accordion" id="accordionExample2">
           <div class="card">
-            <div class="card-header" id="headingOne">
+            <div class="card-header" id="2headingOne">
               <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Collapsible Group Item #1
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#2collapseOne" aria-expanded="true" aria-controls="2collapseOne">
+                  Who are the keynote speakers at the conference? 
                 </button>
               </h2>
             </div>
         
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="2collapseOne" class="collapse" aria-labelledby="2headingOne" data-parent="#accordionExample2">
               <div class="card-body">
-                Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                Keynote Announcements would be finalised and made 2 months to the conference date
               </div>
             </div>
           </div>
           <div class="card">
-            <div class="card-header" id="headingTwo">
+            <div class="card-header" id="2headingTwo">
               <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Collapsible Group Item #2
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                  Will talks/presentations be livestreamed for those who can't attend in person?
                 </button>
               </h2>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div id="collapseTwo2" class="collapse" aria-labelledby="2headingTwo" data-parent="#accordionExample2">
               <div class="card-body">
-                Some placeholder content for the second accordion panel. This panel is hidden by default.
+                Unfortunately there would be no livestream, however talks would be recorded and published post event on our <a href="https://www.youtube.com/channel/UCXq7L06VgQ04xFHFG_qFh5A">PyCon Nigeria Youtube Channel</a>
               </div>
             </div>
           </div>
           <div class="card">
-            <div class="card-header" id="headingThree">
+            <div class="card-header" id="headingThree2">
               <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Collapsible Group Item #3
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                  Is there a code of conduct for conference attendees? 
                 </button>
               </h2>
             </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div id="collapseThree2" class="collapse" aria-labelledby="headingThree2" data-parent="#accordionExample">
               <div class="card-body">
-                And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+                All attendees, Speakers, Organisers, Vendors are bound by the Python Software <a href="http://pynigeria.org/coc/coc">Code of Conduct.</a>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour2">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
+                  I'm new to Python - will there be introductory talks for beginners?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour2" class="collapse" aria-labelledby="headingFour2" data-parent="#accordionExample">
+              <div class="card-body">
+                Yes we aim to make sure there are a range of talks happening simultaneously for all levels including beginners
               </div>
             </div>
           </div>
         </div>
       </div>
-  
     </div>
 </div>
 <!-- SPONSORS
