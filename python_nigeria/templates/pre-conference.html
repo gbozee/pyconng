@@ -1,10 +1,13 @@
-{% extends "apply.html" %} 
+{% extends "apply.html" %}
  {% load static pinax_boxes_tags %}
-{% load static from staticfiles %} 
-{% load pinax_boxes_tags %} 
+{% load static from staticfiles %}
+{% load pinax_boxes_tags %}
 {% block extra_stylings %}
 {{block.super}}
 <style>
+  #about-section .about-details .description, #speaker-section .about-details .description, #sponsorship-section .about-details .description, #venue-section .about-details .description, #workshop-section .about-details .description {
+    padding-right: 0;
+}
  .highlights{
      align-items: center;
  }
@@ -68,12 +71,12 @@
 <div class="container">
     <div class="row">
         <div id="content_homepage-about" class="padding-bottom-50">
-           
+
         </div>
 
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
 {% block content %}
 <div id="about-section">
     <h1 class="section-description text-right">&lt;PyCon.About /&gt;</h1>
@@ -93,31 +96,31 @@
         An industry conference with a community spirit.
   More than half of our delegates are IT professionals, drawn from industry, research agencies, and government. We also attract a high number of University-level students, helping to shape the next generation of Python developers.
   Many of our speakers and delegates are contributors to key Open Source Python projects, used by millions of developers around the world.
-  
+
       </div>
-  
+
       <!-- <div class="highlights"></div> -->
     </div>
     <h3 class="section-title">Recruit Top technical Talent  </h3>
     <div class="about-details">
-    
+
       <div class="description">
-        Take advantage of the conference by having access to some of the best Pythonistas in the Industry all in the same room. PYCON is the place to connect with skilled Python developers looking for job opportunities. Sponsoring allows you to promote open roles and recruit talent. 
-  
-  
+        Take advantage of the conference by having access to some of the best Pythonistas in the Industry all in the same room. PYCON is the place to connect with skilled Python developers looking for job opportunities. Sponsoring allows you to promote open roles and recruit talent.
+
+
       </div>
       <!-- <div class="highlights"></div> -->
     </div>
     <h3 class="section-title">Promote latest Products/Services</h3>
     <div class="about-details">
-   
+
       <div class="description">
         The exhibition hall allows sponsors to showcase new products, technologies, and services. Provide first access to new innovations at PyCon Nigeria. PyCoon receives coverage in technical publications, media, and more. Sponsorship provides increased visibility through this coverage.
-  
+
       </div>
       <!-- <div class="highlights"></div> -->
     </div>
-{% comment %} 
+{% comment %}
   <h1 class="section-description text-right">&lt;PyCon.Speakers /&gt;</h1>
   <h3 class="section-title">Who will be speaking?</h3>
   <div class="about-details">
@@ -193,9 +196,9 @@
     </div>
   </div>
   {% endcomment %}
-</div> 
+</div>
 <div class="call-to-action">
-  {% comment %} 
+  {% comment %}
   {% endcomment %}
     <div>
         <div class="action-area">
@@ -211,10 +214,10 @@
             <a href="{% url 'sponsor_apply' %}">Request Sponsorship</a>
         </div>
     </div>
-</div> 
+</div>
 <div id="workshop-section">
 {% box "workshop-section" %}
-{% comment %}  
+{% comment %}
  <h1 class="section-description text-right">&lt;PyCon.Workshops /&gt;</h1>
   <h3 class="section-title">what am i going to learn?</h3>
   <div class="about-details">
@@ -250,7 +253,7 @@
  {% endcomment %}</div>
  <div id="venue-section">
 {% box "venue_information" %}
- {% comment %} 
+ {% comment %}
   <h1 class="section-description text-right">&lt;PyCon.Venue /&gt;</h1>
   <h3 class="section-title">THE VENUE FOR PYCON 2018?</h3>
   <div class="about-details">
@@ -274,55 +277,55 @@
     </div>
   </div>
  {% endcomment %}
-</div> 
+</div>
 
 <div id="best-practice">
   <h1 class="section-description text-right">&lt;Why Python /&gt;</h1>
   <div class="about-details">
     <div class="description">
-     
+
     </div>
     <div class="highlights">
     </div>
   </div>
   <div class="row">
     <div class="card text-white bg-primary mb-3" >
-      
+
       <div class="card-body">
         <h5 class="card-title">Easy to learn</h5>
         <p class="card-text">Python has simple, easy-to-read syntax that is great for beginners. It is a high-level language that allows you to focus on core programming concepts without getting bogged down in complex details. </p>
       </div>
     </div>
     <div class="card text-white bg-secondary mb-3" >
-      
+
       <div class="card-body">
         <h5 class="card-title">Versatile</h5>
         <p class="card-text">Python can be used for a wide range of applications including web development, data science, AI, machine learning, scripting, and more. It's a versatile language used across many fields. </p>
       </div>
     </div>
     <div class="card text-white bg-success mb-3" >
-      
+
       <div class="card-body">
         <h5 class="card-title">Awesome Community</h5>
         <p class="card-text">Python has a huge and active community of users who support each other in forums, meetups, conferences, and open-source projects. #CameForTheLanguageStayedForTheCommunity</p>
       </div>
     </div>
     <div class="card text-white bg-danger mb-3" >
-      
+
       <div class="card-body">
         <h5 class="card-title">Interpreted Language</h5>
         <p class="card-text">Python is an interpreted language which means execution is done line-by-line. This allows for dynamic and rapid application development.</p>
       </div>
     </div>
     <div class="card text-white bg-warning mb-3" >
-      
+
       <div class="card-body">
         <h5 class="card-title">Portable</h5>
         <p class="card-text">Python code can run on various operating systems like Windows, Linux, and Mac OS. This makes it highly portable across platforms. </p>
       </div>
     </div>
     <div class="card text-white bg-info mb-3" >
-      
+
       <div class="card-body">
         <h5 class="card-title">Great Career Prospects</h5>
         <p class="card-text">Python skills are in high demand with abundant job opportunities. Knowing Python opens doors for lucrative careers in fields like data science, machine learning, and web development.
@@ -330,14 +333,14 @@
       </div>
     </div>
     <!-- <div class="card bg-light mb-3" >
-      
+
       <div class="card-body">
         <h5 class="card-title">Light card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
     <div class="card text-white bg-dark mb-3" >
-      
+
       <div class="card-body">
         <h5 class="card-title">Dark card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -354,11 +357,11 @@
             <div class="card-header" id="headingOne">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  What are the dates for the conference? 
+                  What are the dates for the conference?
                 </button>
               </h2>
             </div>
-        
+
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
                 PyConNG will be held over 4 days from July 10- July 13.
@@ -369,7 +372,7 @@
             <div class="card-header" id="headingTwo">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Where is the conference being held? 
+                  Where is the conference being held?
                 </button>
               </h2>
             </div>
@@ -397,7 +400,7 @@
             <div class="card-header" id="headingFour">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  What is the agenda/schedule for the conference? 
+                  What is the agenda/schedule for the conference?
                 </button>
               </h2>
             </div>
@@ -415,11 +418,11 @@
             <div class="card-header" id="2headingOne">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#2collapseOne" aria-expanded="true" aria-controls="2collapseOne">
-                  Who are the keynote speakers at the conference? 
+                  Who are the keynote speakers at the conference?
                 </button>
               </h2>
             </div>
-        
+
             <div id="2collapseOne" class="collapse" aria-labelledby="2headingOne" data-parent="#accordionExample2">
               <div class="card-body">
                 Keynote Announcements would be finalised and made 2 months to the conference date
@@ -444,7 +447,7 @@
             <div class="card-header" id="headingThree2">
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
-                  Is there a code of conduct for conference attendees? 
+                  Is there a code of conduct for conference attendees?
                 </button>
               </h2>
             </div>
@@ -473,9 +476,9 @@
     </div>
 </div>
 <!-- SPONSORS
-    ============================================= -->	
+    ============================================= -->
     {% if sponsors|length > 0 %}
-    
+
     <div id="sponsorship-section">
       <h1 class="section-description text-right">&lt;PyCon.Sponsors /&gt;</h1>
       <h3 class="section-title">Sponsors & Exhibit Opportunities</h3>
@@ -487,24 +490,24 @@
         <div class="highlights">
         </div>
       </div>
-    
+
       <div class="sponsor-images" style="align-items: center;">
           {% for sponsor in sponsors %}
           {% if sponsor.active %}
           <a href="{{sponsor.url}}" target="_blank">
           <img src="/media/{{sponsor.image}}" alt="{{sponsor.image}}">
           </a>
-          
+
           {% endif %}
           {% endfor %}
-       
+
       </div>
-    
+
     </div>
-    {% endif %}			
-    
+    {% endif %}
+
     <!-- BECOME A SPONSOR
-        ============================================= -->	
+        ============================================= -->
 {% box "sponsor-call-to-action" %}
 
 {% endblock %}
