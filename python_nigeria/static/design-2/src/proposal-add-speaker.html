@@ -1,0 +1,62 @@
+<extends src="./base.html">
+
+    <block name="title">PyConNG 2018 is Coming!</block>
+    <block name="navigation">
+        <include src="./includes/navigation_regular.html"></include>
+    </block>
+    <block name="header-section">
+
+    </block>
+
+    <block name="content">
+        <div class="main-content container mt-5 mb-5">
+            <div class="poster-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <h1>Proposal: The Learning Process</h1>
+
+                            <p>
+                                <a href="/proposals/31/edit/">Edit proposal
+                                </a>
+                            </p>
+
+                        </div>
+                        <div>
+
+                            <h2>Current Speakers</h2>
+
+
+
+                            <p>
+                                <b>Abiola Oyeniyi</b> — gbozee@gmail.com</p>
+
+
+
+                            <h2>Add another speaker</h2>
+
+                            <form method="POST" action="" enctype="multipart/form-data">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="DP7PYAmb2itJHuoZ6UFPjQwShdUfvN0tUmuTPdyHZji32kaTziBdAFuTDxY5jwv7">
+    
+    
+                                <div id="div_id_email" class="form-group">
+                                    <label for="id_email" class="control-label  requiredField">
+                                        Email address of new speaker (use their email address, not yours)
+                                        <span class="asteriskField">*</span>
+                                    </label>
+                                    <div class="controls ">
+                                        <input class="emailinput form-control" id="id_email" name="email" type="email" required=""> </div>
+                                </div>
+    
+                                <div class="form-action">
+                                    <input type="submit" value="Add speaker" class="btn btn-primary">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </block>
+    <block name="footer"></block>
+</extends>

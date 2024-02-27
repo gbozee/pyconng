@@ -16,18 +16,20 @@
 <div class="poster-wrapper">
   <div class="container">
     <div class="row">
+    <div class="d-flex flex-row-reverse justify-content-between mb-3">
+                        
 
-    <div class="pull-right">
+    <div class="pl-5">
         {% if not proposal.cancelled %}
             {% if request.user == proposal.speaker.user %}
-                <a href="{% url "proposal_edit" proposal.pk %}" class="btn btn-default">
+                <a href="{% url "proposal_edit" proposal.pk %}" class="btn btn-outline-secondary">
                     {% trans "Edit this proposal" %}
                 </a>
-                <a href="{% url "proposal_cancel" proposal.pk %}" class="btn btn-default">
+                <a href="{% url "proposal_cancel" proposal.pk %}" class="btn btn-outline-danger">
                     {% trans "Cancel this proposal" %}
                 </a>
             {% else %}
-                <a href="{% url "proposal_leave" proposal.pk %}" class="btn btn-default">
+                <a href="{% url "proposal_leave" proposal.pk %}" class="btn btn-outline-danger">
                     {% trans "Remove me from this proposal" %}
                 </a>
             {% endif %}
@@ -42,19 +44,19 @@
             ({{ proposal.speaker }})
         {% endflag %}
     </h3>
-
+    </div>
     <div class="tabbable">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#proposal-detail" data-toggle="tab">{% trans "Proposal Details" %}</a></li>
+        <ul class="nav nav-pills mb-3" role="tablist">
+            <li class="nav-item active"><a href="#proposal-detail" class="nav-link" data-toggle="tab">{% trans "Proposal Details" %}</a></li>
             {% if request.user == proposal.speaker.user %}
-                <li><a href="#proposal-documents" data-toggle="tab">{% trans "Supporting Documents" %}</a></li>
+                <li class="nav-item"><a href="#proposal-documents" class="nav-link" data-toggle="tab">{% trans "Supporting Documents" %}</a></li>
             {% endif %}
             {% if message_form %}
-                <li><a href="#proposal-feedback" data-toggle="tab">{% trans "Reviewer Feedback" %} <span class="badge">{{ proposal.messages.all|length }}</span></a></li>
+                <li class="nav-item"><a href="#proposal-feedback" class="nav-link" data-toggle="tab">{% trans "Reviewer Feedback" %} <span class="badge">{{ proposal.messages.all|length }}</span></a></li>
             {% endif %}
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="proposal-detail">
+            <div class="tab-pane show active" id="proposal-detail">
                 {% include "symposion/proposals/_proposal_fields.html" %}
             </div>
             {% if request.user == proposal.speaker.user %}

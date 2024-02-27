@@ -1,0 +1,8 @@
+@layer reset, base, tokens, recipes, utilities;
+:root {
+  --font-fira-code: "Montserrat", monospace;
+}
+
+body {
+  font-family: var(--font-fira-code);
+}

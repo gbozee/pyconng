@@ -1,0 +1,48 @@
+#footer {
+  background-color: #232323;
+  padding: 61px 252px 96px 96px;
+  font-family: "Maison Neue Mono", -apple-system, system-ui, sans-serif; }
+  @media (max-width: 992px) {
+    #footer {
+      padding: 15px;
+      padding-top: 30px; } }
+  @media (max-width: 544px) {
+    #footer {
+      padding: 15px;
+      padding-top: 30px; } }
+  #footer h4, #footer p {
+    color: #FFFFFF; }
+  #footer h4 {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 22px; }
+  #footer p {
+    font-family: "Maison Neue Mono";
+    opacity: 0.5;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 1px; }
+  #footer a {
+    color: #02efa8; }
+  @media (max-width: 544px) {
+    #footer .main-footer-content div {
+      margin-top: 30px; } }
+  #footer .credits {
+    opacity: 1;
+    margin-top: 88px; }
+  #footer .heart-image {
+    height: 19.9px;
+    width: 24px; }
+  #footer .tto {
+    text-align: center;
+    width: 80%; }
+  #footer .pycon-snake-image {
+    height: 163px;
+    width: 241px; }
+    @media (max-width: 992px) {
+      #footer .pycon-snake-image {
+        display: none; } }
+    @media (max-width: 544px) {
+      #footer .pycon-snake-image {
+        display: none; } }

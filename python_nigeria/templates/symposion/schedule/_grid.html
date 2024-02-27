@@ -1,270 +1,54 @@
 {% load pinax_boxes_tags static %}
-{% load core_tags %}
-{% comment %} 
-                                {% for event in "***" %}
-                                <div class="row schedule-event b-bottom grey">
-                                        
-                                    <!-- Event Time / Event Room -->
-                                    <div class="col-md-2 event-data">
-                                        <span class="event-time">9:00AM</span>
-                                        <span class="event-room">Main Hall</span>
-                                    </div>
-    
-                                    <!-- Event Speakers -->
-                                    <div class="col-md-4 col-lg-3 event-speaker clearfix">
-    
-                                        <!-- Keynote Speaker -->
-                                        <div class="keynote-speaker">
-                                            <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-3.jpg' %}" alt="Speaker Name"></div>
-                                            <div class="speaker-data">
-                                                <h5>Jonathan Barnes</h5>
-                                                <p>Conference CEO</p>
-                                            </div>
-                                        </div>
-    
-                                    </div>
-    
-                                    <!-- Event Description -->
-                                    <div class="col-md-6 col-lg-7 event-description">
-                                        <h4>Registration & Coffee </h4>
-                                        <p>Continental breakfast and registration for Eventry'16. Pick up your name badge and goodie bag</p>
-                                    </div>
-    
-                                </div> 
-                                {% endfor %}
-                                <!-- SCHEDULE EVENT #1-1 -->
-                                <div class="row schedule-event b-bottom grey">
-    
-                                    <!-- Event Time / Event Room -->
-                                    <div class="col-md-2 event-data">
-                                        <span class="event-time">9:00AM</span>
-                                        <span class="event-room">Main Hall</span>
-                                    </div>
-    
-                                    <!-- Event Speakers -->
-                                    <div class="col-md-4 col-lg-3 event-speaker clearfix">
-    
-                                        <!-- Keynote Speaker -->
-                                        <div class="keynote-speaker">
-                                            <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-3.jpg' %}" alt="Speaker Name"></div>
-                                            <div class="speaker-data">
-                                                <h5>Jonathan Barnes</h5>
-                                                <p>Conference CEO</p>
-                                            </div>
-                                        </div>
-    
-                                    </div>
-    
-                                    <!-- Event Description -->
-                                    <div class="col-md-6 col-lg-7 event-description">
-                                        <h4>Registration & Coffee </h4>
-                                        <p>Continental breakfast and registration for Eventry'16. Pick up your name badge and goodie bag</p>
-                                    </div>
-    
-                                </div>
-    
-    
-                                <!-- SCHEDULE EVENT #1-2 -->
-                                <div class="row schedule-event b-bottom">
-    
-                                    <!-- Event Time / Event Room -->
-                                    <div class="col-md-2 event-data">
-                                        <span class="event-time">9:30AM - 11:00AM</span>
-                                        <span class="event-room">Room 101</span>
-                                    </div>
-    
-                                    <!-- Event Speakers -->
-                                    <div class="col-md-4 col-lg-3 event-speaker clearfix">
-    
-                                        <!-- Keynote Speaker -->
-                                        <div class="keynote-speaker">
-                                            <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-1.jpg' %}" alt="Speaker Name"></div>
-                                            <div class="speaker-data">
-                                                <h5>Robert Peterson</h5>
-                                                <p>CEO of Company Name</p>
-                                            </div>
-                                        </div>
-    
-                                    </div>
-    
-                                    <!-- Event Description -->
-                                    <div class="col-md-6 col-lg-7 event-description">
-                                        <h4>Lorem in purus dui, lacinia id efficitur sit amet</h4>
-                                        <p>Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo praesent eu elit. Ut eu ligula.
-                                            Class aptent taciti sociosqu ad litora torquent per conubia nostra
-                                        </p>
-    
-                                        <!-- Description List -->
-                                        <ul class="event-description-list">
-                                            <li><i class="fa fa-angle-right" aria-hidden="true"></i> Luctus neque rhoncus ipsum viverra</li>
-                                            <li><i class="fa fa-angle-right" aria-hidden="true"></i> Cum sociis natoque et magnis dis parturient</li>
-                                        </ul>
-    
-                                    </div>
-    
-                                </div>
-    
-    
-                                <!-- SCHEDULE EVENT #1-3 -->
-                                <div class="row schedule-event b-bottom grey">
-    
-                                    <!-- Event Time/Event Room -->
-                                    <div class="col-md-2 event-data">
-                                        <span class="event-time">11:30AM - 12:30PM</span>
-                                        <span class="event-room">Cafeteria</span>
-                                    </div>
-    
-                                    <!-- Event Description -->
-                                    <div class="col-md-10 event-description">
-                                        <h4>Afternoon Break</h4>
-                                        <p>Four fantastic types of coffee from the awesome CoffeeeBox Melbourne</p>
-                                    </div>
-    
-                                </div>
-    
-    
-                                <!-- SCHEDULE EVENT #1-4 -->
-                                <div class="row schedule-event b-bottom">
-    
-                                    <!-- Event Time / Event Room -->
-                                    <div class="col-md-2 event-data">
-                                        <span class="event-time">1:30PM - 5:00PM</span>
-                                        <span class="event-room">Room 104C</span>
-                                    </div>
-    
-                                    <!-- Event Speakers -->
-                                    <div class="col-md-4 col-lg-3 event-speaker clearfix">
-    
-                                        <!-- Keynote Speaker -->
-                                        <div class="keynote-speaker">
-                                            <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-7.jpg' %}" alt="Speaker Name"></div>
-                                            <div class="speaker-data">
-                                                <h5>Matthew Anderson</h5>
-                                                <p>Author of "Some Book"</p>
-                                            </div>
-                                        </div>
-    
-                                        <!-- Keynote Speaker -->
-                                        <div class="keynote-speaker m-top-10">
-                                            <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-5.jpg' %}" alt="Speaker Name"></div>
-                                            <div class="speaker-data">
-                                                <h5>Benjamin Williams</h5>
-                                                <p>www.dsathemes.com</p>
-                                            </div>
-                                        </div>
-    
-                                    </div>
-    
-                                    <!-- Event Description -->
-                                    <div class="col-md-6 col-lg-7 event-description">
-                                        <h4>Maecenas laoreet augue egestas vitae egestas</h4>
-                                        <p>Praesent eu elit aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos ut nulla. Vivamus bibendum,
-                                            nulla ut congue fringilla lorem
-                                        </p>
-    
-                                        <!-- Description List -->
-                                        <ul class="event-description-list">
-                                            <li><i class="fa fa-angle-right" aria-hidden="true"></i> Luctus neque rhoncus ipsum viverra</li>
-                                            <li><i class="fa fa-angle-right" aria-hidden="true"></i> Vitae auctor eros erat nec magna morbi</li>
-                                            <li><i class="fa fa-angle-right" aria-hidden="true"></i> Cum sociis natoque et magnis dis parturient</li>
-                                        </ul>
-    
-                                    </div>
-    
-                                </div>
-    
-    
-                                <!-- SCHEDULE EVENT #1-5 -->
-                                <div class="row schedule-event b-bottom grey">
-    
-                                    <!-- Event Time / Event Room -->
-                                    <div class="col-md-2 event-data">
-                                        <span class="event-time">5:30PM - 7:30PM</span>
-                                        <span class="event-room">Room 103</span>
-                                    </div>
-    
-                                    <!-- Event Speakers -->
-                                    <div class="col-md-4 col-lg-3 event-speaker clearfix">
-    
-                                        <!-- Keynote Speaker -->
-                                        <div class="keynote-speaker">
-                                            <div class="speaker-avatar"><img src="{% static 'images/thumbs/speaker-8.jpg' %}" alt="Speaker Name"></div>
-                                            <div class="speaker-data">
-                                                <h5>Evelyn Martinez</h5>
-                                                <p>Chief Marketing & Sales <br />Officer</p>
-                                            </div>
-                                        </div>
-    
-                                    </div>
-    
-                                    <!-- Event Description -->
-                                    <div class="col-md-6 col-lg-7 event-description">
-                                        <h4>Pulvinar phasele nibh, ac massa</h4>
-                                        <p>Maecenas laoreet augue egestas vitae volutpat suscipit egestas lobortis magna, amet fermentum nisl
-                                            mauris interdum lectus neque dolor primis pretium neque
-                                        </p>
-    
-                                        <!-- Description List -->
-                                        <ul class="event-description-list">
-                                            <li><i class="fa fa-angle-right" aria-hidden="true"></i> Luctus neque rhoncus ipsum viverra</li>
-                                            <li><i class="fa fa-angle-right" aria-hidden="true"></i> Vitae auctor eros erat nec magna morbi</li>
-                                        </ul>
-    
-                                    </div>
-    
-                                </div>
-    
-    
-                   
-     {% endcomment %}
-                            
-    
+{% load core_tags %}   
 
 {% regroup timetable.slots_qs by start as slots %}
 
 {% for slot_group in slots %}
 <!-- Event Time / Event Room -->
-{% for slot in slot_group.list|sort_by_m2m:"rooms.order" %}
-  <div class="row schedule-event b-bottom {% if not slot.kind.label == "Session" %}grey{% endif %}">
-      <div class="card-group {% if forloop.last %} last{% endif %}">
-        <div class="col-md-2 event-data">
+{% if slot_group.list.0.content_override %}
+    {% with slot=slot_group.list.0 %}
+    <div class="row schedule-event b-bottom {% if not slot.kind.label == " Session " %}grey{% endif %}">
+    <div style="width: 100%;" class="schedule-day {{slot.kind}}">
+        <div class="s-date">{{ slot_group.grouper|time:"h:i A"}} - {{ slot.end|time:"h:i A" }}</div>
+        <div class="row-1">
+        <div class="s-text">{{slot.content_override_html|safe}}</div>
+<div class="s-logo {% if slot.content_override|lower == 'launch' or slot.content_override|lower == 'lunch' %}launch{% else %} {% if slot.kind.label == 'lightning' %}lightning{% else %}
+{% endif %} food{% endif %}"></div>
+        </div>
+    </div>
+    </div>
+    {% endwith %}
+
+{% else %}
+<div class="row schedule-event b-bottom {% if not slot.kind.label == " Session " %}grey{% endif %}">
+  <div class="card-group {% if forloop.last %} last{% endif %}">
+    <!-- <div class="col-md-2 event-data">
             <span class="event-time">{{ slot_group.grouper|time:"h:i A"}}-{{ slot.end|time:"h:i A" }}</span>
             <span class="event-room">Main Hall</span>
-        </div>
-        {% if slot.content %}
-        <div class="col-md-4 col-lg-3 event-speaker clearfix">
-            <!-- Keynote Speaker -->
-            {% with spek=slot.content.speaker %}
-            <div class="keynote-speaker">
-                <div class="speaker-avatar"><img src="{% if spek.photo %}{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %}
-                {% endif %}" alt="{{spek.name}}"></div>
-                <div class="speaker-data">
-                    <h5>{{spek.name}}</h5>
-                    <p>{{spek}}</p>
+        </div> -->
+    <div class="schedule-day ">
+<div class="s-date">{{ slot_group.grouper|time:"h:i A"}} - {{ slot_group.list.0.end|time:"h:i A" }}</div>
+{% for slot in slot_group.list %}
+          <div class="row-2">
+            <div class="row-1">
+                <div class="s-text">{{ slot.content.title }}</div>
+                <div class="s-logo"></div>
+            </div>
+            <div class="row-1">
+                {% with spek=slot.content.speaker %}
+                <strong class="s-text">— {{spek.name}}</strong>
+                <div class="s-logo img">
+                <div style="width:48px; height: 48px;">
+                    <img style="width: 100%; height: 100%;" src="{% if spek.photo %}https://pycon.ng{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %} {% endif %}" alt="{{spek.name}}">
                 </div>
             </div>
-            
-            {% endwith %}
-          </div>
-           <!-- Event Description -->
-           <div class="col-md-6 col-lg-7 event-description">
-              <h4><a href="{% url 'schedule_presentation_detail' slot.content.pk %}">{{ slot.content.title }}</a></h4>
-              {% if slot.content.proposal.audience_level != 4 %}
-              <span class="label label-primary label-level">{{ slot.content.proposal.get_audience_level_display }} Level</span>
-              <p>{{slot.content.description}}</p>
-            {% endif %}
-          </div>
-
-          {% else %}
-          {% if slot.content_override %}
-          <div class="col-md-10 event-description">
-              {{ slot.content_override_html|safe }}
-          </div>
-          {% else %}
-          {% endif %}
-          
-          {% endif %}
-        <div class="card text-xs-center card-{{ slot.kind }} {% for room in slot.rooms %}{{ room.name|slugify}} {% endfor %}">
+                
+                {% endwith %}
+            </div>
+        </div>
+          {% endfor %}
+    </div>
+    <!-- <div class="card text-xs-center card-{{ slot.kind }} {% for room in slot.rooms %}{{ room.name|slugify}} {% endfor %}">
           <div class="card-header">
             {% if slot.rooms %}
               {% for room in slot.rooms %}
@@ -275,20 +59,21 @@
  
           {# These should all be slot.end - 5 minutes #}
          
-        </div>
+        </div> -->
 
-      {% if not forloop.last and forloop.counter|divisibleby:"3"%}
-        </div>
-        <div class="card-group">
-      {% endif %}
-
-    </div>
+    {% if not forloop.last and forloop.counter|divisibleby:"3"%}
   </div>
+  <div class="card-group">
+    {% endif %}
+
+  </div>
+</div>
+{% endif %}
     {% endfor %}
-
-      
+{% comment %}
+    {% for slot in slot_group.list|sort_by_m2m:"rooms.order" %}
 {% endfor %}
-
+{% endcomment %}
 
 {% with timetable.day.date.day|slugify as day %}
     {% box "schedule_day_"|add:day %}

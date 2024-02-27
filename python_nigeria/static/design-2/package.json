@@ -1,0 +1,34 @@
+{
+  "name": "design-2",
+  "version": "1.0.0",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.10.3",
+    "babel-runtime": "^6.26.0",
+    "cssnano": "^6.0.2",
+    "parcel": "^2.10.3",
+    "postcss": "^8.4.31",
+    "posthtml-attrs-sorter": "^1.1.0",
+    "posthtml-beautify": "^0.7.0",
+    "posthtml-block": "^1.0.1",
+    "posthtml-doctype": "^1.1.1",
+    "posthtml-extend": "^0.6.5",
+    "posthtml-extend-attrs": "^1.0.0",
+    "posthtml-include": "^1.7.4",
+    "posthtml-inline-assets": "^3.1.0",
+    "posthtml-inline-css": "^1.2.3",
+    "posthtml-modules": "^0.9.1",
+    "posthtml-parser-title": "^0.1.1",
+    "posthtml-px2rem": "^0.0.3"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jquery-slim": "^3.0.0",
+    "popper.js": "^1.12.9"
+  }
+}

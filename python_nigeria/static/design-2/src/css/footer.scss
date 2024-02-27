@@ -1,0 +1,67 @@
+@import "./variables";
+#footer {
+  background-color: #232323;
+  padding: 61px 252px 96px 96px;
+  font-family: $text_font;
+  @media(max-width:$desktop){
+    padding: 15px;
+    padding-top: 30px;
+  }
+  @media(max-width:$mobile){
+    padding: 15px;
+    padding-top: 30px;
+  }
+
+  h4, p {
+    color: #FFFFFF;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 22px;
+  }
+
+  p {
+    font-family: $mono_font_name;
+    opacity: 0.5;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 1px;
+  }
+
+  a {
+    color: #02efa8;
+  }
+
+  .main-footer-content div {
+    @media(max-width:$mobile){
+      margin-top: 30px;
+    }
+  }
+
+  .credits {
+    opacity: 1;
+    margin-top: 88px;
+  }
+
+  .heart-image {
+    height: 19.9px;
+    width: 24px;
+  }
+.tto{
+  text-align: center;
+    width: 80%;
+}
+  .pycon-snake-image {
+    height: 163px;
+    width: 241px;
+    @media(max-width:$desktop){
+      display: none;
+    }
+    @media(max-width:$mobile){
+      display: none;
+    }
+  }
+}

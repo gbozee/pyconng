@@ -9,60 +9,55 @@
 {% block head_title %}Dashboard | {% endblock %}
 {% block fixed_navbar %}scroll{% endblock %}
 {% block body_class %}auth{% endblock %}
-
+{% block content_class %}mt-3{% endblock %}
 {% block content %}
-<div class="small-header poster-wrapper">
-  <h1>{% trans "Dashboard" %}</h1>
-</div>
+
 <div class="poster-wrapper">
   <div class="container">
-    {% if orders|length > 0 and my_ticket|length == 0 %}
-    {% box "ticket_purchase_notice" %}
-    {% endif %}
-{% if my_ticket|length > 0 %}
-    <div class="row" style="margin-bottom: 20px;">
-      {% for tic in my_ticket  %}
-      <div class="col-md-3">
-<a href="{% url "tickets:detail" tic.ticket_id %}" class="btn btn-primary btn-block">
- {% if my_ticket|length > 1 %}
- {{tic.full_name}}<br/>
- {% else %}
- {% endif %} View Ticket
-</a>
-      
-      </div>
-      
-      {% endfor %}
-      {% if request.user.is_staff %}
-            <div class="col-md-3">
-              <a href="/schedule" class="btn btn-primary btn-block">View Schedule</a>
-            
-            </div>
+    <div class="small-header poster-wrapper pt-5 pb-2">
+    <h1>{% trans "Dashboard" %}</h1>
+  </div>
+<div class=" d-flex p-2" style="margin-bottom: 20px;flex-wrap: wrap;">
+      {% if orders|length > 0 and my_ticket|length == 0 %}
+          {% box "ticket_purchase_notice" %}
       {% endif %}
-      {% comment %}<div class="col-md-3">
-<a href="" class="btn btn-primary btn-block"></a>
-      </div>{% endcomment %}
-      
+      {% if my_ticket|length > 0 %}
+        {% for tic in my_ticket  %}
+        <div class="pr-2" style="margin-bottom: 20px;">
+            <a href="{% url "tickets:detail" tic.ticket_id %}" class="btn btn-primary btn-block">
+               {% if my_ticket|length > 1 %}
+               {{tic.full_name}}<br/>
+               {% else %}
+               {% endif %} View Ticket
+            </a>
+        </div>
+        {% endfor %}
+        {% comment %} {% if request.user.is_staff %} {% endcomment %}
+        <div class="pl-2">
+            <a href="/schedule" class="btn btn-primary btn-block">View Schedule</a>
+        </div>
+        {% comment %} {% endif %} {% endcomment %}
+      </div>
+      {% endif %}
     </div>
-    {% endif %}
-    <div class="row">
 
-      <div class="panel dashboard-card panel-default">
-        <div class="panel-heading">
+   <div class="">
+      <div class="panel dashboard-card card panel-default mb-5">
+          <div class="card-header panel-heading d-flex flex-column flex-sm-row p-3 justify-content-between">
           <h3>{% trans "Speaking" %}</h3>
           {% if not user.speaker_profile %}
           <div class="card-header-actions">
-              <a href="{% url "speaker_create" %}" class="btn btn-primary btn-sm">
-                  <i class="fa fa-plus-sign"></i> Create a speaker profile
+            <a href="{% url "speaker_create" %}" class="btn btn-primary btn-sm">
+                  <i class="fas fa-plus-sign"></i> Create a speaker profile
               </a>
           </div>
           {% else %}
           <div class="card-header-actions">
               <a href="{% url "speaker_edit" %}" class="btn btn-primary btn-sm">
-                  <i class="fa fa-pencil"></i> Edit your speaker profile
+                  <i class="fas fa-pencil"></i> Edit your speaker profile
               </a>
                 {% if can_submit %}
-                  <a href="{% url "proposal_submit" %}" class="btn btn-primary btn-sm">
+                  <a href="{% url "proposal_submit" %}" class="btn btn-primary btn-sm mt-1">
                   <i class="fa fa-plus-sign"></i> Submit a new proposal
               </a>
                 {% endif %}
@@ -70,7 +65,9 @@
           </div>
           {% endif %}
         </div>
-        <div class="card-block panel-body">
+        
+        <div class="card-body panel-body">
+
           {% if not user.speaker_profile %}
               <p class="card-text">To submit a proposal, you must first <a href="{% url "speaker_create" %}">create a speaker profile</a>.</p>
           {% else %}
@@ -81,8 +78,8 @@
           {% endif %}
 
           {% if user.speaker_profile.proposals.exists %}
-              <table class="table">
-                  <tr>
+               <table class="table card-text">
+                 <tr>
                       <th>Title</th>
                       <th>Session type</th>
                       <th>Status</th>
@@ -132,8 +129,8 @@
         </div>
       </div>
 
-      <div class="panel panel-default card dashboard-card">
-        <div class="panel-heading card-header">
+       <div class="panel dashboard-card card panel-default mb-5">
+          <div class="card-header panel-heading d-flex flex-column flex-sm-row p-3 justify-content-between">
           <h3>{% trans "Sponsorship" %}</h3>
           {% if not user.sponsorships.exists %}
             <div class="card-header-actions">
@@ -145,7 +142,7 @@
         </div>
 
 
-        <div class="card-block panel-body">
+        <div class="card-body panel-body">
             {% if not user.sponsorships.exists %}
                 <p>If you or your organization would be interested in sponsorship opportunities, <a href="{% url "sponsor_apply" %}">use our online form to apply to be a sponsor</a>.</p>
             {% else %}
@@ -171,12 +168,11 @@
         </div>
       </div>
       {% if orders|length > 0 %}
-      <div class="panel panel-default dashboard-card">
-        <div class="panel-heading card-header">
+      <div class="card dashboard-card mb-5">
+          <div class="panel-heading card-header">
           <h3>Your Orders</h3>
         </div>
-        <div class="card-block panel-body">
-          
+        <div class="card-body">
               <table class="table">
                 <tbody>
                   <tr>
@@ -208,41 +204,43 @@
 {% endif %}
     {% if review_sections %}
 
-      <div class="card dashboard-card">
+      <div class="panel panel-default card dashboard-card">
         <div class="card-header">
           <h3>{% trans "Reviews" %}</h3>
         </div>
 
         <div class="card-block">
-          <h4>Reviews by Section</h4>
-          <ul>
-            {% for section in review_sections %}
-              <h5>{{ section }}</h5>
-              <li><a href="{% url "review_section" section.section.slug %}">All</a></li>
-              <li><a href="{% url "user_reviewed" section.section.slug %}">Reviewed by you</a></li>
-              <li><a href="{% url "user_not_reviewed" section.section.slug %}">Not Reviewed by you</a></li>
-            {% endfor %}
-          </ul>
+          <div class="card-block panel-body">
+            <h4>Reviews by Section</h4>
+            <ul>
+              {% for section in review_sections %}
+                <h5>{{ section }}</h5>
+                <li><a href="{% url "review_section" section.section.slug %}">All</a></li>
+                <li><a href="{% url "user_reviewed" section.section.slug %}">Reviewed by you</a></li>
+                <li><a href="{% url "user_not_reviewed" section.section.slug %}">Not Reviewed by you</a></li>
+              {% endfor %}
+            </ul>
 
-                {% comment %}
-                <h4>My Assignments</h4>
-                <table class="table">
-                    <thead>
-                        <td>Proposal Title</td>
-                        <td>Score</td>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Title Three</td>
-                            <td>-1</td>
-                        </tr>
-                        <tr>
-                            <td>Title Four</td>
-                            <td>+2</td>
-                        </tr>
-                    </tbody>
-                </table>
-                {% endcomment %}
+            {% comment %}
+              <h4>My Assignments</h4>
+              <table class="table">
+                  <thead>
+                      <td>Proposal Title</td>
+                      <td>Score</td>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Title Three</td>
+                          <td>-1</td>
+                      </tr>
+                      <tr>
+                          <td>Title Four</td>
+                          <td>+2</td>
+                      </tr>
+                  </tbody>
+              </table>
+            {% endcomment %}
+          </div>
 
         </div>
       </div>
@@ -251,14 +249,14 @@
     {% available_teams as available_teams %}
     {% if user.memberships.exists or available_teams %}
 
-      <div class="card dashboard-card">
+      <div class="card dashboard-card mb-5">
         <div class="card-header">
           <h3>{% trans "Teams" %}</h3>
         </div>
 
 
         {% if user.memberships.exists %}
-          <div class="card-block">
+          <div class="card-body">
             <h4>Your Teams</h4>
 
               <table class="table table-striped">
@@ -306,3 +304,7 @@
   </div>
 </div>
 {% endblock %}
+{% block footer_1 %}
+
+{% endblock footer_1 %}
+{% block footer_class %}{% endblock footer_class %}

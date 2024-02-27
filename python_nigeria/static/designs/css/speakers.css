@@ -1,0 +1,53 @@
+@charset "UTF-8";
+#bottom-description {
+  margin-top: 110px !important;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-color: #F7F7F7; }
+  #bottom-description h2 {
+    font-size: 32px;
+    font-family: "Maison Neue", -apple-system,  system-ui, sans-serif; }
+  #bottom-description p {
+    font-family: "Maison Neue Mono";
+    color: #000000;
+    font-size: 16px;
+    line-height: 36px; }
+  #bottom-description button {
+    font-size: 16px; }
+
+#speakers-section {
+  background: url("../img/backgrounds/speaker-page-bg.jpg");
+  background-size: cover; }
+
+#speaker {
+  color: #000000;
+  margin-top: 45px; }
+  #speaker h1, #speaker h2 {
+    color: #11BD8A;
+    font-family: "Maison Neue", -apple-system,  system-ui, sans-serif; }
+  #speaker h1 {
+    font-size: 36px; }
+  #speaker h2 {
+    font-size: 27px;
+    letter-spacing: 1px; }
+  #speaker ul {
+    list-style: none;
+    margin-left: -35px;
+    font-family: "Maison Neue Mono";
+    font-size: 17px; }
+    #speaker ul li {
+      line-height: 34px;
+      margin-top: 24px; }
+    #speaker ul li:last-child {
+      font-family: "Maison Neue"; }
+  #speaker .speaker-name {
+    padding-top: 20px; }
+  #speaker .speaker-image {
+    height: 351px;
+    width: 268px; }
+  @media (min-width: 992px) {
+    #speaker .speaker-description {
+      margin-left: -39px; } }
+  #speaker p {
+    font-family: "Maison Neue Mono";
+    font-size: 17px; }

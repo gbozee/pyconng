@@ -1,0 +1,17 @@
+{
+  "plugins": {
+      "posthtml-parser-title":{},
+    "posthtml-doctype": {
+      "doctype": "HTML 5"
+    },
+    "posthtml-include": {
+        "root": "./src"
+    },
+    // "posthtml-block": {
+
+    // },
+    "posthtml-extend": {
+        "root": "./src"
+    },
+  }
+}

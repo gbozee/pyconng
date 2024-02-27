@@ -1,0 +1,19 @@
+$mono_font_name: "Maison Neue Mono";
+$normal_font_name: "Maison Neue";
+$default_font: $normal_font_name, -apple-system,  system-ui, sans-serif;
+$text_font: $mono_font_name, -apple-system, system-ui, sans-serif;
+$site_color: #000000;
+$primary_color: #02efa8;
+$primary_color_text:#11BD8A; 
+$text_color: white;
+$default_font_size: 14px;
+$defualt-font-line-height: 17px;
+$desktop: 992px;
+$big-desktop: 1500px;
+$mobile: 544px;
+// $regular_font_size:
+
+@mixin fonts($font_size: $default_font_size,
+$line-height: $defualt-font-line-height) {
+  font-size: $font_size;
+}

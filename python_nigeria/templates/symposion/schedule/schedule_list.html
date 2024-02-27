@@ -21,9 +21,12 @@
             margin-bottom: 0.5em;
             line-height: 1.2em;
         }
+        
     </style>
-{% endblock %}
-
+    {% endblock %}
+    {% block extra_stylings %} 
+    
+{% endblock extra_stylings %}
 {% block breadcrumbs %}{% sitetree_breadcrumbs from "main" %}{% endblock %}
 
 {% block body %}
@@ -32,6 +35,9 @@
 </div>
 
 <div class="poster-wrapper">
+<style>
+
+</style>
   <div class="container">
     <div class="row">
     {% cache 600 "schedule-list" schedule.section.name %}

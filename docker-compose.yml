@@ -1,10 +1,21 @@
-version: '2'
+version: '3.8'
+
+networks:
+  app: null
 
 volumes:
   postgres_data: {}
   postgres_backup: {}
+  lets_encrypt_dev: {}
+  staticfiles: {}
+  mediafiles: {}
+  postgres_data_dev: {}
+  postgres_backup_dev: {}
+  admin_postgres_data_dev: {}
+  production_traefik: {}
   media_backups: {}
-  static_backups: {}
+  pocketbase_db: {}
+  postgres_data_dev_job_control: {}
 
 services:
   postgres:
@@ -23,53 +34,72 @@ services:
       - postgres:master
     env_file: ./new.env
    
-  django:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile
+  web:
+    image: registry.gitlab.com/tuteria/tuteria/pyconng:latest
     # user: django
     depends_on:
       - postgres
       - redis
     volumes:
-      - media_backups:/var/pyconng
+      - mediafiles:/var/pyconng
+      - staticfiles:/var/pyconng_static
     command: /gunicorn.sh
     env_file: ./new.env
 
-  nginx:
-    build: ./compose/nginx
+
+  pycon_app:
+    restart: always
+    image: registry.gitlab.com/tuteria/tuteria/pycon-app:latest
+    container_name: pycon-app
+    # build:
+    #   context: ./compose/nginx
+    #   dockerfile: Dockerfile-django
     depends_on:
-      - django
-
-      - certbot
-
-    ports:
-      - "0.0.0.0:80:80"
-
-    environment:
-      - MY_DOMAIN_NAME=pycon.ng
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
+      - web
     volumes:
-      - media_backups:/var/pyconng
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/lib/letsencrypt:/var/lib/letsencrypt
+      - staticfiles:/var/pyconng_static
+      - mediafiles:/var/pyconng
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pycon_app.rule=Host(`pycon.beeola.me`)"
+      - "traefik.http.routers.pycon_app.priority=1"
+      - "traefik.http.routers.pycon_app.entryPoints=web-secure"
+      - "traefik.http.routers.pycon_app.middlewares=csrf"
+      - "traefik.http.services.pycon_app.loadBalancer.sticky.cookie={}"
+      - "traefik.http.services.pycon_app.loadBalancer.server.port=80"
+      - "traefik.http.routers.pycon_app.tls.certResolver=letsencrypt"
 
-  certbot:
-    image: quay.io/letsencrypt/letsencrypt
-    command: bash -c "sleep 6 && certbot certonly -n --standalone -d pycon.ng -d www.pycon.ng --text --agree-tos --email hello@pycon.ng --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --keep-until-expiring --standalone-supported-challenges http-01"
-    entrypoint: ""
+  traefik:
+    image: traefik:v2.2
     volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/lib/letsencrypt:/var/lib/letsencrypt
-    ports:
-      - "80"
-      - "443"
-    environment:
-      - TERM=xterm
+      - /var/run/docker.sock:/var/run/docker.sock
+      - production_traefik:/etc/traefik/acme:z
+    command:
+      - --providers.docker
+      - --providers.docker.exposedbydefault=false
+      # - --providers.docker.swarmmode
+      # Enable the access log, with HTTP requests
+      - --accesslog
+      - --log
+      - "--api.dashboard=true"
+      - "--api.insecure=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entryPoint.to=web-secure"
+      - "--entrypoints.web-secure.address=:443"
+      - "--entrypoints.flower.address=:5555"
+      # - "--entrypoints.web.forwardedHeaders.insecure=true"
+      # - "--entrypoints.web-secure.forwardedHeaders.insecure=true"
+      - "--certificatesResolvers.letsencrypt_web.acme.email=biola@tuteria.com"
+      - "--certificatesResolvers.letsencrypt_web.acme.storage=/etc/traefik/acme/acme.json"
+      - "--certificatesResolvers.letsencrypt_web.acme.httpChallenge.entryPoint=web"
+      - "--certificatesResolvers.letsencrypt.acme.email=biola@tuteria.com"
+      - "--certificatesResolvers.letsencrypt.acme.storage=/etc/traefik/acme/acme.json"
+      - "--certificatesResolvers.letsencrypt.acme.dnsChallenge.provider=digitalocean"
+      - "--certificatesResolvers.letsencrypt.acme.dnsChallenge.delayBeforeCheck=0"
+
 
 
   redis:
-    image: redis:latest
+    image: redis:alpine
+    restart: always
 

@@ -1,6 +1,69 @@
-{% extends "apply.html" %} 
-{% load static from staticfiles %} 
-{% load pinax_boxes_tags %} 
+{% extends "apply.html" %}
+ {% load static pinax_boxes_tags %}
+{% load static from staticfiles %}
+{% load pinax_boxes_tags %}
+{% block extra_stylings %}
+{{block.super}}
+<style>
+  #about-section .about-details .description, #speaker-section .about-details .description, #sponsorship-section .about-details .description, #venue-section .about-details .description, #workshop-section .about-details .description {
+    padding-right: 0;
+}
+ .highlights{
+     align-items: center;
+ }
+    .google-btn2{
+        border: none!important;
+        border-radius: 0!important;
+        color: #000!important;
+        font-weight: 700!important;
+        padding: 15px 44px!important;
+        background-color: rgb(221,221,221);
+    }
+    .section-description{
+      opacity: .2;
+    }
+    #faq{
+      margin-top: 50px;
+    }
+    #video-embed{
+      margin-bottom: 100px;
+    }
+    .accordion button {
+      padding: 10px 0 !important;
+      text-wrap: pretty;
+      white-space: pre-line;
+    }
+
+    #want-to-speak,.bottom-description-button{
+      margin: 0 auto;
+    }
+    #best-practice .row{
+      gap: 30px;
+      justify-content: center;
+    }
+    #best-practice .row .card{
+      max-width: 22rem;
+    }
+    @media(max-width: 992px){
+      .section-description{
+        font-size: 30px;
+      }
+      #bottom-description{
+        margin-top: 0 !important;
+      }
+      #best-practice .row .card{
+        max-width: 100%;
+      }
+    }
+    @media(min-width: 992px){
+        #navbar.home+#header-section{
+          height: 600px;
+          margin-bottom: 75px;
+        }
+
+    }
+</style>
+{% endblock extra_stylings %}
 {% block head_title %}
     Home Page |
 {% endblock head_title %}
@@ -8,120 +71,443 @@
 <div class="container">
     <div class="row">
         <div id="content_homepage-about" class="padding-bottom-50">
-            {% box "home_introduction" %}
+
         </div>
 
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
 {% block content %}
-
-{% comment %} <section id="become-sponsor" class="wide-100 become-sponsor division">	
-    <div class="container">
-        <div class="row white-color">
-        
-        
-            <div class="col-md-8">
-                {% box "speaker_box" %}                
-            </div>
-            
-            <!-- Button -->
-            <div class="col-md-4 text-center">						
-                <a href="{% url 'speaker_create' %}" class="btn btn-lg">Become a speaker</a>							
-            </div>
-        
-        
-        </div>	<!-- End row -->
-    </div>	  <!-- End container -->
-</section>  <!-- END BECOME A SPONSOR -->		 {% endcomment %}
-{% box "ticket_call_to_action" %}
-                
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1 padding-top_bottom-50">
-            <div class="front-page-facets narrow">
-            <div class="flex-items-thumbnail">
-                <img class="icon-size" src="{% static "images/home/light-bulb.png" %}">
-                {% box "icon_1_text" %}
-            </div>
-            <div class="flex-items-thumbnail">
-                <img class="icon-size" src="{% static "images/home/conference.png" %}">
-                {% box "icon_2_text" %}
-            </div>
-            <div class="flex-items-thumbnail">
-                <img class="icon-size" src="{% static "images/home/team.png" %}">
-                {% box "icon_3_text" %}
-            </div>
-
-        </div>    
-        </div>
-
+<div id="about-section">
+    <h1 class="section-description text-right">&lt;PyCon.About /&gt;</h1>
+    <h3 class="section-title">About Pycon Nigeria</h3>
+    {% box "about_home_section" %}
+    <div id="video-embed" class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/X-Pzj8nhXRE?si=noxffb0YYoJSDTar" allowfullscreen></iframe>
     </div>
-    
+</div>
+{% box "speaker-section" %}
+<div id="speaker-section">
+    <h1 class="section-description text-right">&lt;PyCon.Sponsors /&gt;</h1>
+    <h3 class="section-title">Reach the Right Audience
+    </h3>
+    <div class="about-details">
+      <div class="description">
+        An industry conference with a community spirit.
+  More than half of our delegates are IT professionals, drawn from industry, research agencies, and government. We also attract a high number of University-level students, helping to shape the next generation of Python developers.
+  Many of our speakers and delegates are contributors to key Open Source Python projects, used by millions of developers around the world.
+
+      </div>
+
+      <!-- <div class="highlights"></div> -->
+    </div>
+    <h3 class="section-title">Recruit Top technical Talent  </h3>
+    <div class="about-details">
+
+      <div class="description">
+        Take advantage of the conference by having access to some of the best Pythonistas in the Industry all in the same room. PYCON is the place to connect with skilled Python developers looking for job opportunities. Sponsoring allows you to promote open roles and recruit talent.
+
+
+      </div>
+      <!-- <div class="highlights"></div> -->
+    </div>
+    <h3 class="section-title">Promote latest Products/Services</h3>
+    <div class="about-details">
+
+      <div class="description">
+        The exhibition hall allows sponsors to showcase new products, technologies, and services. Provide first access to new innovations at PyCon Nigeria. PyCoon receives coverage in technical publications, media, and more. Sponsorship provides increased visibility through this coverage.
+
+      </div>
+      <!-- <div class="highlights"></div> -->
+    </div>
+{% comment %}
+  <h1 class="section-description text-right">&lt;PyCon.Speakers /&gt;</h1>
+  <h3 class="section-title">Who will be speaking?</h3>
+  <div class="about-details">
+    <div class="description">
+      Our stellar speaker lineup includes expert in python development, tech team leadership and product development.
+    </div>
+    <div class="highlights">
+    </div>
+  </div>
+  <div class="speaker-list">
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Iwan Vosloo</h3>
+        <p>Chief Tech Officer,PayStack</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Chukwudi Nwachukwu</h3>
+        <p>Chief Technology Officer</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Seun Awoyele</h3>
+        <p>Senior Developer, Hypia</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Osaetin Daniel</h3>
+        <p>Facebook VR Designer</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Opetunde Adepoju</h3>
+        <p>DevOps Manager, TechPoint</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Abiola Oyeniyi</h3>
+        <p>Product Manager, Tuteria</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Damola Aderinwale</h3>
+        <p>Web developer & Author</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Shehu Awwal</h3>
+        <p>Fullstack Developer</p>
+      </div>
+    </div>
+    <div class="speaker-detail">
+      <img src="./img/backgrounds/pycon-teacher-1.jpg" alt="">
+      <div>
+        <h3>Cleopatra Douglas</h3>
+        <p>Chief Technology Officer</p>
+      </div>
+    </div>
+  </div>
+  {% endcomment %}
+</div>
+<div class="call-to-action">
+  {% comment %}
+  {% endcomment %}
+    <div>
+        <div class="action-area">
+            <img src="{% static 'designs/dist/531af2867c5d952c327275733473c0a0.svg' %}" alt="">
+            <h3>CALL FOR PROPOSALS</h3>
+            <p>If you wish to speak in PyConNG 2024. Click here to submit a proposal.</p>
+            <a href="{% url 'speaker_create' %}">Submit a Proposal</a>
+        </div>
+        <div class="action-area">
+            <img src="{% static 'designs/dist/6ffa2454c3ebbc71f9f12a84b41d64a1.svg' %}" alt="">
+            <h3>SPONSOR INQUIRY</h3>
+            <p>If you wish to sponsor PyConNG 2024. Click here to request a sponsor slot.</p>
+            <a href="{% url 'sponsor_apply' %}">Request Sponsorship</a>
+        </div>
+    </div>
+</div>
+<div id="workshop-section">
+{% box "workshop-section" %}
+{% comment %}
+ <h1 class="section-description text-right">&lt;PyCon.Workshops /&gt;</h1>
+  <h3 class="section-title">what am i going to learn?</h3>
+  <div class="about-details">
+    <div class="description">
+      This year, we wanted to enlarge the learning experience and we decided to give to you three amazing workshops. From how to
+      get started with Python to advance tips and tricks taught by experienced mentors. We’re sure that these will empower
+      your development career.
+    </div>
+    <div class="highlights">
+    </div>
+  </div>
+  <div class="workshops-details">
+    <div class="workshop-detail">
+      <div class="img-container">
+        <img src="/static/designs/dist/pycon-teacher-1.035a7ee4.jpg" alt="">
+      </div>
+      <div>
+        <h3>Reduce Stress: Automate with Python and XMPP</h3>
+        <p class="author">— By Daniel Osaetin</p>
+      </div>
+    </div>
+    <div class="workshop-detail">
+      <div class="img-container">
+        <img src="/static/designs/dist/pycon-teacher-1.035a7ee4.jpg" alt="">
+      </div>
+      <div>
+        <h3>Continuous Integration for Python applications with Gitlab CI</h3>
+        <p class="author">— By Biola Oyeniyi</p>
+      </div>
+    </div>
+  </div>
+  <a href="/schedule">view the full schdule</a>
+ {% endcomment %}</div>
+ <div id="venue-section">
+{% box "venue_information" %}
+ {% comment %}
+  <h1 class="section-description text-right">&lt;PyCon.Venue /&gt;</h1>
+  <h3 class="section-title">THE VENUE FOR PYCON 2018?</h3>
+  <div class="about-details">
+    <div class="description">
+      PyCon Conference will take place in Lagos Chamber of Commerce and Industry Building, Ikeja, It’s a very open and comfortable
+      environment located in one of the principle areas of Lagos, Ikeja.
+    </div>
+    <div class="highlights">
+      <a href="https://goo.gl/maps/nSUaqE2MphM2" target="_blank" class="google-btn2 btn">
+<img src="/static/designs/dist/google-map.137bf608.svg" alt=""> View on Google Maps
+      </a>
+    </div>
+  </div>
+
+  <div class="location-images">
+    <div>
+<img src="/static/designs/dist/venue-1.0efc9f4f.jpg" alt="">
+    </div>
+    <div>
+<img src="/static/designs/dist/venue-2.6096be35.jpg" alt="">
+    </div>
+  </div>
+ {% endcomment %}
 </div>
 
-            
-<!-- SPONSORS
-============================================= -->				
-<section id="sponsors" class="bg-grey wide-90 sponsors-section division">
-    <div class="container">	
+<div id="best-practice">
+  <h1 class="section-description text-right">&lt;Why Python /&gt;</h1>
+  <div class="about-details">
+    <div class="description">
 
-        
-        <!-- SECTION TITLE -->				
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 section-title">
-            
-                <!-- Title -->
-                <h3>Partners/Sponsors</h3>	
-                <p>A huge thanks to all our amazing partners. We couldn’t have a conference without you!</p>	
-                                            
+    </div>
+    <div class="highlights">
+    </div>
+  </div>
+  <div class="row">
+    <div class="card text-white bg-primary mb-3" >
+
+      <div class="card-body">
+        <h5 class="card-title">Easy to learn</h5>
+        <p class="card-text">Python has simple, easy-to-read syntax that is great for beginners. It is a high-level language that allows you to focus on core programming concepts without getting bogged down in complex details. </p>
+      </div>
+    </div>
+    <div class="card text-white bg-secondary mb-3" >
+
+      <div class="card-body">
+        <h5 class="card-title">Versatile</h5>
+        <p class="card-text">Python can be used for a wide range of applications including web development, data science, AI, machine learning, scripting, and more. It's a versatile language used across many fields. </p>
+      </div>
+    </div>
+    <div class="card text-white bg-success mb-3" >
+
+      <div class="card-body">
+        <h5 class="card-title">Awesome Community</h5>
+        <p class="card-text">Python has a huge and active community of users who support each other in forums, meetups, conferences, and open-source projects. #CameForTheLanguageStayedForTheCommunity</p>
+      </div>
+    </div>
+    <div class="card text-white bg-danger mb-3" >
+
+      <div class="card-body">
+        <h5 class="card-title">Interpreted Language</h5>
+        <p class="card-text">Python is an interpreted language which means execution is done line-by-line. This allows for dynamic and rapid application development.</p>
+      </div>
+    </div>
+    <div class="card text-white bg-warning mb-3" >
+
+      <div class="card-body">
+        <h5 class="card-title">Portable</h5>
+        <p class="card-text">Python code can run on various operating systems like Windows, Linux, and Mac OS. This makes it highly portable across platforms. </p>
+      </div>
+    </div>
+    <div class="card text-white bg-info mb-3" >
+
+      <div class="card-body">
+        <h5 class="card-title">Great Career Prospects</h5>
+        <p class="card-text">Python skills are in high demand with abundant job opportunities. Knowing Python opens doors for lucrative careers in fields like data science, machine learning, and web development.
+        </p>
+      </div>
+    </div>
+    <!-- <div class="card bg-light mb-3" >
+
+      <div class="card-body">
+        <h5 class="card-title">Light card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <div class="card text-white bg-dark mb-3" >
+
+      <div class="card-body">
+        <h5 class="card-title">Dark card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div> -->
+  </div>
+</div>
+<div id="faq" >
+  <h1 class="section-description text-right">&lt; FAQ /&gt;</h1>
+    <div class="row">
+      <div class="col-xs-12 col-lg-6">
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  What are the dates for the conference?
+                </button>
+              </h2>
             </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                PyConNG will be held over 4 days from July 10- July 13.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Where is the conference being held?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                PyConNG will be held in The Zone, Gbagada, Lagos, Nigeria
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  How much are tickets for the conference?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Ticket sales will begin soon and prices would start from NGN15,000. Final prices will be published soon
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  What is the agenda/schedule for the conference?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div class="card-body">
+                Stay tuned for the final schedule. Call for Proposals will open in February
+              </div>
+            </div>
+          </div>
         </div>
-
-    
-        <div class="row">
-            <ul class="sponsors-holder text-center">
-        
-                {% for sponsor in sponsors %}
-                
-                <li class="col-xs-6 col-sm-4 col-md-3 m-bottom-10">
-                    <a target="_blank" href="{{sponsor.url}}">
-                    <img class="img-responsive" src="{{sponsor.image.url}}" alt="sponsor-logo">
-                    </a>
-                </li>
-                                           
-                {% endfor %}                                                  
-                <!-- SPONSOR LOGO -->      
-                
-            </ul>
-        </div>	
-        <!-- End row -->
-        
-        
-    </div>	   <!-- End container -->
-</section>  <!-- END SPONSORS -->
-
-
-<!-- BECOME A SPONSOR
-============================================= -->	
-<section id="become-sponsor" class="wide-100 become-sponsor division">	
-    <div class="container">
-        <div class="row white-color">
-        
-        
-            <div class="col-md-8">
-                {% box "sponsor_text" %}                
+      </div>
+      <div class="col-xs-12 col-lg-6">
+        <div class="accordion" id="accordionExample2">
+          <div class="card">
+            <div class="card-header" id="2headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#2collapseOne" aria-expanded="true" aria-controls="2collapseOne">
+                  Who are the keynote speakers at the conference?
+                </button>
+              </h2>
             </div>
-            
-            <!-- Button -->
-            <div class="col-md-4 text-center">						
-                <a href="{% url 'sponsor_apply' %}" class="btn btn-lg">Request Now</a>							
-            </div>
-        
-        
-        </div>	<!-- End row -->
-    </div>	  <!-- End container -->
-</section>  <!-- END BECOME A SPONSOR -->		
 
+            <div id="2collapseOne" class="collapse" aria-labelledby="2headingOne" data-parent="#accordionExample2">
+              <div class="card-body">
+                Keynote Announcements would be finalised and made 2 months to the conference date
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="2headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                  Will talks/presentations be livestreamed for those who can't attend in person?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo2" class="collapse" aria-labelledby="2headingTwo" data-parent="#accordionExample2">
+              <div class="card-body">
+                Unfortunately there would be no livestream, however talks would be recorded and published post event on our <a href="https://www.youtube.com/channel/UCXq7L06VgQ04xFHFG_qFh5A">PyCon Nigeria Youtube Channel</a>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree2">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                  Is there a code of conduct for conference attendees?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree2" class="collapse" aria-labelledby="headingThree2" data-parent="#accordionExample">
+              <div class="card-body">
+                All attendees, Speakers, Organisers, Vendors are bound by the Python Software <a href="http://pynigeria.org/coc/coc">Code of Conduct.</a>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour2">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
+                  I'm new to Python - will there be introductory talks for beginners?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour2" class="collapse" aria-labelledby="headingFour2" data-parent="#accordionExample">
+              <div class="card-body">
+                Yes we aim to make sure there are a range of talks happening simultaneously for all levels including beginners
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- SPONSORS
+    ============================================= -->
+    {% if sponsors|length > 0 %}
+
+    <div id="sponsorship-section">
+      <h1 class="section-description text-right">&lt;PyCon.Sponsors /&gt;</h1>
+      <h3 class="section-title">Sponsors & Exhibit Opportunities</h3>
+      <div class="about-details">
+        <div class="description">
+          A huge thanks to all our amazing partners. We couldn’t have a conference without you! PyCon 2018 provides a unique opportunity
+          for sponsors and exhibitors to showcase their product or research.
+        </div>
+        <div class="highlights">
+        </div>
+      </div>
+
+      <div class="sponsor-images" style="align-items: center;">
+          {% for sponsor in sponsors %}
+          {% if sponsor.active %}
+          <a href="{{sponsor.url}}" target="_blank">
+          <img src="/media/{{sponsor.image}}" alt="{{sponsor.image}}">
+          </a>
+
+          {% endif %}
+          {% endfor %}
+
+      </div>
+
+    </div>
+    {% endif %}
+
+    <!-- BECOME A SPONSOR
+        ============================================= -->
+{% box "sponsor-call-to-action" %}
 
 {% endblock %}

@@ -1,0 +1,106 @@
+<extends src="./base.html">
+
+    <block name="title">PyConNG 2018 is Coming!</block>
+    <block name="navigation">
+        <include src="./includes/navigation_regular.html"></include>
+    </block>
+    <block name="header-section">
+
+    </block>
+
+    <block name="content">
+        <div class="main-content container mt-5 mb-5">
+            <div class="poster-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div id="edit_speaker-profile" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form id="edit_form_speaker-profile" accept-charset="UTF-8" class="modal-form" method="POST" action="/boxes/speaker-profile/edit/?next=/speaker/edit/">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title">Editing content: speaker-profile</h4>
+                                        </div>
+                                        <div class="modal-body form-group">
+                                            <input type="hidden" name="csrfmiddlewaretoken" value="tZKl3YeKxthQM0qWB286GoqJlO2WMM0iKw7pUBqguu6a7QcQ4q4uXdoKH86MAvvW">
+                                            <textarea cols="40" id="id_speaker-profile-content" name="speaker-profile-content" rows="10"></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="content_speaker-profile" class="content-box editable">
+                            <a href="#edit_speaker-profile" data-toggle="modal" class="btn btn-default btn-sm edit-toggle">
+                                <i class="fa fa-pencil"></i>
+                                Edit this content
+                            </a>
+                        </div>
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="tZKl3YeKxthQM0qWB286GoqJlO2WMM0iKw7pUBqguu6a7QcQ4q4uXdoKH86MAvvW">
+                            <legend>Edit Speaker Profile</legend>
+                            <div id="div_id_name" class="form-group">
+                                <label for="id_name" class="control-label  requiredField">
+                                    Name
+                                    <span class="asteriskField">*</span>
+                                </label>
+                                <div class="controls ">
+                                    <input class="textinput textInput form-control" id="id_name" maxlength="100" name="name" type="text" value="Abiola Oyeniyi"
+                                        required="">
+                                    <p id="hint_id_name" class="help-block">As you would like it to appear in the conference program.</p>
+                                </div>
+                            </div>
+                            <div id="div_id_biography" class="form-group">
+                                <label for="id_biography" class="control-label ">
+                                    Biography
+                                </label>
+                                <div class="controls ">
+                                    <textarea class="textarea form-control" cols="40" id="id_biography" name="biography" rows="10">I am the lead developer/CTO/Co-founder at Tuteria. My two favorite programming languages are Python and JavaScript. 
+I am involved in all aspect of web development across the stack from backend, frontend, operations.</textarea>
+                                    <p id="hint_id_biography" class="help-block">A little bit about you. Edit using
+                                        <a href="http://warpedvisions.org/projects/markdown-cheat-sheet/"
+                                            target="_blank">Markdown</a>.</p>
+                                </div>
+                            </div>
+                            Currently:
+                            <a href="">speaker_photos/profile_pic_best_dWdZ3Qx.png</a>
+                            <input id="photo-clear_id" name="photo-clear"
+                                type="checkbox">
+                            <label for="photo-clear_id">Clear</label>
+                            <br>Change:
+                            <input id="id_photo" name="photo" type="file">
+
+                            <p class="help-block error">
+                                <strong>The image size must not be above 600kb.</strong>
+                            </p>
+                            <br>
+                            <div id="div_id_twitter_username" class="form-group">
+
+                                <label for="id_twitter_username" class="control-label ">
+                                    Twitter username
+                                </label>
+
+                                <div class="controls ">
+                                    <input class="textinput textInput form-control" id="id_twitter_username" maxlength="15" name="twitter_username" type="text"
+                                        value="Beee_sama">
+                                    <p id="hint_id_twitter_username" class="help-block">Your Twitter account</p>
+                                </div>
+                            </div>
+                            <div class="form-actions d-flex justify-content-between">
+                                <input class="btn btn-success btn-lg" type="submit" value="Save">
+                                <a class="btn btn-lg btn-outline-dark" href="/dashboard/">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </block>
+    <block name="footer"></block>
+</extends>

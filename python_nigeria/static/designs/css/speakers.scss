@@ -1,0 +1,86 @@
+
+@import "./variables";
+#bottom-description {
+  margin-top: 110px !important;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-color: #F7F7F7;
+
+  h2 {
+    font-size: 32px;
+    font-family: $default_font;
+  }
+
+  p {
+    font-family: $mono_font_name;
+    color: #000000;
+    font-size: 16px;
+    line-height: 36px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
+
+
+#speakers-section {
+  background: url("../img/backgrounds/speaker-page-bg.jpg");
+  background-size: cover;
+  &.schedule{
+    background: url("../img/backgrounds/schedule-bg.jpg");
+    background-size: cover;
+  }
+}
+
+#speaker {
+  color: #000000;
+  margin-top: 45px;
+  h1, h2 {
+    color: #11BD8A;
+    font-family: $default_font;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 27px;
+    letter-spacing: 1px;
+  }
+
+  ul {
+    list-style: none;
+    margin-left: -35px;
+    font-family: $mono_font_name;
+    font-size: 17px;
+    li {
+      line-height: 34px;
+      margin-top: 24px;
+    }
+    li:last-child {
+      font-family: $normal_font_name;
+    }
+  }
+
+  .speaker-name {
+    padding-top: 20px;
+  }
+
+  .speaker-image {
+    height: 351px;
+    width: 268px;
+  }
+
+  .speaker-description {
+    @media(min-width:$desktop){
+      margin-left: -39px;
+    }
+  }
+
+  p {
+    font-family: $mono_font_name;
+    font-size: 17px;
+  }
+}

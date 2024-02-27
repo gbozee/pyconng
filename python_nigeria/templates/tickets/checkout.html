@@ -1,92 +1,145 @@
-{% extends "apply.html" %}
-{% load humanize pinax_boxes_tags %}
-{% block stylings %}
-{{block.super}}
+{% extends "apply.html" %} 
+{% load static pinax_boxes_tags %}
+{% load static from staticfiles %} 
+{% load pinax_boxes_tags %} 
+ {% block navigation %} 
+{% endblock %}
+{% block head_title %} Purchase Ticket | {% endblock head_title %}
+{% block extra_stylings %} {{block.super}}
 <style>
-     .margin-top-50{
-        margin-top: 50px;
-    }
-    .form-style{
-        font-size: 20px;
-    line-height: 2.5;
-    }
+@media (min-width: 992px){
+#navbar.home + #header-section, #navbar.home + #speakers-section, #navbar.home + #purchase-tickets-section, #navbar.home + #code-of-conduct-section, #navbar.home + .custom-image-section {
+        margin-top: -120px;
+    padding-top: 80px;
+    height: 500px !important;
+}}
 </style>
-{% endblock stylings %}
-{% block home_banner %}
-
-{% endblock home_banner %}
-{% block content %}
-<div class="container margin-top-50">
+{% endblock extra_stylings %}
+ {% block header-section %}
+{% comment %} <div id="header-section" class="jumbotron jumbotron-fluid">
+ {% box "home_introduction" %} {% endcomment %}
+<div id="purchase-tickets-section" class="ticket-section jumbotron jumbotron-fluid">
+  <div class="container">
     <div class="row">
-        {% box "ticket_purchase_notice" %}
-                
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4>Order Summary</h4>
-            </div>
-            <div class="panel-body">
-                   <div class="invoice-items">
-                        {% for display in tickets %}
-                            <div class="invoice-items-row">
-                            <div class="col-sm-8 col-xs-6">{{display.quantity}} {{display.ticket_type.name}} Ticket{{display.quantity|pluralize}} Order #{{display.order}}</div>
-                            <div class="col-sm-4 col-xs-6 text-right"><b>NGN {{display.amount|intcomma}}</b></div>
-                        </div>
-                        
+      <div class="col-md-5">
+        <img class="logo" src="{% static 'designs/img/logo-light.svg' %}" />
+        <div class="hide-mobile">
+          <p>>>> Purchase Tickets</p>
+          <h1 class="display-4">Python Conference 2018</h1>
+          <p class="lead">
+            September 15 — 17, 2018 08:00AM - O5:00PM Lagos, Nigeria
+          </p>
+
+        </div>
+      </div>
+
+      <div class="col-md-5 offset-md-2">
+        <div class="form-content">
+          <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#personal-info" role="tab" aria-selected="true">1. PERSONAL INFO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#make-payment" role="tab" aria-selected="false">2. MAKE PAYMENT</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="make-payment" role="tabpanel">
+              <form>
+                  <ul class="container">
+                        {% for ticket in tickets %}
+                            <li class="row">
+                            <div class="col-sm-9">
+                                <p>{{ticket.name}}</p>
+                                <span>N{{ticket.amount}}</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <select>
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                </select>
+                            </div>
+                            </li>
+
                         {% endfor %}
-                                                                                                                                                                                                                                                                                                            <div class="invoice-items-divider"></div>
-                        <div class="invoice-items-row">
-                            <div class="col-sm-8 col-xs-6"><b>Subtotal</b></div>
-                            <div class="col-sm-4 col-xs-6 text-right"><b>NGN {{total|intcomma}}</b></div>
-                        </div>
-                        
-                        <div class="invoice-items-divider"></div>
-                        <div class="invoice-items-row">
-                            <div class="col-sm-8 col-xs-6"><b>Total</b></div>
-                            <div class="col-sm-4 col-xs-6 text-right"><b>NGN {{total|intcomma}}</b></div>
-                        </div>
-                    </div>
-                           
+                </ul>
+
+                <p>Have a discount code?
+                  <a href="#">Click here</a>
+                </p>
                 <form id="paystack-card-form">
                     <script src="https://js.paystack.co/v1/inline.js"></script>
-                     <div class="col-xs-12 col-md-6 col-md-offset-3 col-xs-offset-0">
-<button onclick="payWithPaystack()" class="btn btn-primary btn-lg btn-block" type="button">
-                    Make Payment
-                </button>
-                </div>
-                    </form>
-               
+                    <div class="col-xs-12 col-md-6 col-md-offset-3 col-xs-offset-0">
+                                                                <button onclick="payWithPaystack()" class="btn btn-primary btn-lg btn-block" type="button">
+                                                                    Make Payment
+                                                                </button>
+    
+                    </div>
+                        </form>
+                {% comment %} <button type="submit" class="btn btn-block btn-success">CHECKOUT</button> {% endcomment %}
                 
+                <div id="tickets-summary" class="row">
+                    <p class="col-sm-12 col-md-4">QTY: 3</p>
+                    <p class="col-sm -12 col-md-8 total-fee">TOTAL FEE: N21,000</p>
+                </div>
+
+                <div id="tickets-payment-option" class="row">
+                  <div class="col-sm-12 text-center">
+                      Verve, MasterCard, Visa
+                    </div>
+                </div>
+            </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-{% endblock content %}
-{% block extra_script %}
+<div class="copyright">
+  <p class="text-center">COPYRIGHT 2017. PYCON NIGERIA 2018</p>
+</div>
+  {% comment %} <div class="container-fluid">
+
+  </div>
+</div> {% endcomment %}
+{% endblock %}
+
+ {% block content %}
+{% endblock %}
+
+    {% block footer %}
+   
+ {% endblock %}{% block extra_script %}
 <script>
-    function payWithPaystack(e){
-        var handler = PaystackPop.setup({
+  function payWithPaystack(e) {
+    var handler = PaystackPop.setup({
       key: "{{public_key}}",
       email: '{{request.user.email}}',
-      amount: parseInt("{{total}}")*100,
+      amount: parseInt("{{total}}") * 100,
       ref: '{{slug}}', // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-      metadata: {
+      metadata: {},
+      callback: function (response) {
+        $.get('/tickets/paystack/validate/' + '{{slug}}/' + response.trxref).then(function (data) {
+          console.log(data);
+          if (data.status == true) {
+            window.location.href = "/dashboard/"
+          } else {
+            window.location.href = "/tickets/checkout/{{data.order}}/"
+            alert("We couldn't verify this transaction. If it was successful please notify info@tuteria.com")
+          }
+        }) // window.location.reload()
       },
-      callback: function(response){
-           $.get('/tickets/paystack/validate/'+'{{slug}}/'+response.trxref).then(function(data){
-                console.log(data);
-                if(data.status == true){
-                    window.location.href="/dashboard/"
-                }else{
-                    window.location.href="/tickets/checkout/{{data.order}}/"
-                    alert("We couldn't verify this transaction. If it was successful please notify info@tuteria.com")
-                }
-           }) // window.location.reload()
-      },
-      onClose: function(){
-          alert('window closed');
+      onClose: function () {
+        alert('window closed');
       }
     });
     handler.openIframe();
-    }
+  }
 </script>
 {% endblock extra_script %}
