@@ -32,14 +32,13 @@ class TicketPriceAdmin(admin.ModelAdmin):
     list_display = ['name', 'amount', 'current_price', 'early_price_count', 'regular_count', 'total', 'remaining']
 
     def total(self, obj):
-        return obj.purchased_count
+        return (obj.purchased_count or 0)
 
-    def remaining(self, obj):
-        return obj.early_price_count + obj.regular_count - obj.purchased_count
+    def remaining(self, obj:TicketPrice):
+        return obj.early_price_count + obj.regular_count - (obj.purchased_count or 0)
 
     def get_queryset(self, request):
         query = super(TicketPriceAdmin, self).get_queryset(request)
-
         return query.with_tickets_purchased()
 
 

@@ -17,10 +17,10 @@ class Coupon(models.Model):
 
 class TicketPriceQuerySet(models.QuerySet):
     def with_tickets_purchased(self):
-        return self.filter(ticket__status=Ticket.PAYED).annotate(
-            purchased_count=models.Sum("ticket__quantity")
-        )
-        # return self.annotate(purchased_count=models.Sum('ticket__quantity'))
+        # return self.filter(ticket__status=Ticket.PAYED).annotate(
+        #     purchased_count=models.Sum("ticket__quantity")
+        # )
+        return self.annotate(purchased_count=models.Sum('ticket__quantity'))
 
 
 class TicketPrice(models.Model):

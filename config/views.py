@@ -309,6 +309,7 @@ def dashboard(request):
     difference = settings.DEADLINE_DATE - timezone.now()
     overide = request.user.email in ["pyconnigeria@pycon.ng"]
     can_submit = difference.days > 0 or overide
+    # can_submit = False
     return render(
         request,
         "dashboard.html",

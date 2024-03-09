@@ -157,7 +157,6 @@ class PurchaseView(TemplateView):
         ]
 
         # ticket_price = TicketPrice.objects.all()
-
         def amount(y):
             return [x["current_price"] for x in ticket_types if x["name"] == y][0]
 
