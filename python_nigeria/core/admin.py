@@ -84,9 +84,16 @@ class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     # resource_class = ProposalResultResource
     list_display = ["proposal", "status", "score", "vote_count", "accepted", "pk"]
     list_filter = ["proposal__kind__name", "status"]
+    actions = ["send_email_to_approved_talks", "send_email_to_rejected_talks"]
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related("proposal__speaker")
+    
+    def send_email_to_approved_talks(self, request, queryset):
+        pass 
+    
+    def send_email_to_rejected_talks(self, request, queryset):
+        pass
 
 
 class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):

@@ -2,7 +2,13 @@
 {% load i18n %}
 {% user_display message.user as user %}
 <p>
-  {% blocktrans with title=proposal.title %}<b>{{ user }}</b> has added a message on <b>{{ title }}</b>.{% endblocktrans %}
+  {% with title=proposal.title speaker=proposal.speaker.user %}
+  {% if user == speaker %}
+  <b>{{ user }}</b> has added a message on <b>{{ title }}</b>.
+  {% else %}
+  <b>A proposal reviewer</b> has added a message on <b>{{ title }}</b>.
+  {% endif %}
+  {% endwith %}
 </p>
 <blockquote>
     {{ message.message|safe }}
