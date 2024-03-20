@@ -49,10 +49,10 @@ def intermediate_purchase(request):
 
 
 class PurchaseForm(forms.Form):
-    # Student = forms.IntegerField(required=False)
+    Student = forms.IntegerField(required=False)
     Company = forms.IntegerField(required=False)
     Personal = forms.IntegerField(required=False)
-    Tutorial = forms.IntegerField(required=False)
+    Patron = forms.IntegerField(required=False)
     coupon = forms.CharField(required=False)
 
     def determine_cost(self, name, value=0):
