@@ -36,47 +36,21 @@
 }}
 </style>
 {% endblock extra_stylings %}
- {% block header-section %}
-{% comment %} <div id="header-section" class="jumbotron jumbotron-fluid">
- {% box "home_introduction" %} {% endcomment %}
-<div id="header-section" class="ticket-section jumbotron jumbotron-fluid">
-  <div class="container">
-    <div class="col-md-5">
-      <p>>>> Calling all Pythonistas!</p>
-      <h1 class="display-4">Python Conference 2018</h1>
-      <p class="lead">September 13 - 15, 2018 Lagos, Nigeria</p>
 
-    </div>
-  </div>
-  <div class="container-fluid">
-
-  </div>
-</div>
-  {% comment %} <div class="container-fluid">
-
-  </div>
-</div> {% endcomment %}
+{% block hero_label %}
+{% box 'ticket_home_label' %}
+{% endblock %}
+{% block hero_title %}
+{% box 'ticket_home_title' %}
+{% endblock %}
+{% block hero_subtitle %}
+{% box 'ticket_home_subtitle' %}
 {% endblock %}
 
+
  {% block content %}
-<div id="payment-section" class="alert mt-5">
-  <div class="row">
-    <div class="col-sm-12 col-md-9">
-      <p class="payment-description">
-<strong>NOTICE: </strong>Tutorial Day Tickets are only valid for the first day of the conference.
-<13th September only>. <p>
+ {% box 'ticket_home_alert' %}
 
-  To attend the remaining 2 days of the conference , you must purchase a Student, Personal or Corporate Ticket. 
-</p>
-<p>
-<strong>Note:</strong> Students
-  will be required to show student ID cards during conference registration
-
-</p>
-      </p>
-    </div>
-  </div>
-</div>
 
 <div class="packages row text-center  pt-5 mb-4">
     {% for plan in plans %}
@@ -109,58 +83,12 @@
     {% endfor %}
 </div>
 
-<div id="payment-section" class="alert">
-  <div class="row">
-    <div class="col-sm-12 col-md-7">
-      <p class="payment-description">
-        You can pay with MasterCard, Visa or Verve Cards. Tickets are invoiced by the Python Software Community.
-      </p>
-    </div>
-    <div class="col-sm-12 col-md-5">
-      <img class="supported-cards img-fluid" src="{% static 'designs/img/Group2@2x.png' %}" />
-    </div>
-  </div>
-</div>
+{% box 'ticket_home_payment_footer_alert' %}
 
-<div id="ticket-value-section" class="row pt-5">
-  <div class="col-sm-12">
-    <div class="value-title mb-5">THE VALUE FOR THE TICKET INCLUDES</div>
-    <br />
-    <p class="value-description">Purchasing tickets to the PyCon Event gives you access to the following awesome stuff:</p>
-  </div>
-</div>
+{% box 'ticket_home_value_heading' %}
 
-<div id="goodies-section">
-  <div class="goodie-item">
-    <img src="{% static 'designs/img/goodies/talsks@2x.png' %}" />
-    <p>More than 20 talks and exciting keynotes</p>
-  </div>
+  {% box 'ticket_home_value_description' %}
 
-  <div class="goodie-item">
-    <img src="{% static 'designs/img/goodies/foodie@2x.png' %}" />
-    <p>Light Breakfast, One buffet lunch and two coffee breaks</p>
-  </div>
-
-  <div class="goodie-item">
-    <img src="{% static 'designs/img/goodies/free-wfi@2x.png' %}" />
-    <p>Free Wi-Fi Internet Connectivity throughout</p>
-  </div>
-
-  <div class="goodie-item">
-    <img src="{% static 'designs/img/goodies/get-discovered@2x.png' %}" />
-    <p>Get discovered by companies looking to hire</p>
-  </div>
-
-  <div class="goodie-item">
-    <img src="{% static 'designs/img/goodies/awesome-gadgets@2x.png' %}" />
-    <p>Receive awesome gadgets offered by our sponsors</p>
-  </div>
-
-  <div class="goodie-item">
-    <img src="{% static 'designs/img/goodies/fun@2x.png' %}" />
-    <p>Lots of fun, activities and networking.</p>
-  </div>
-</div>
 <br />
 <br />
 <br />
