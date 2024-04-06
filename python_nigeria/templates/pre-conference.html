@@ -201,18 +201,9 @@
   {% comment %}
   {% endcomment %}
     <div>
-        <div class="action-area">
-            <img src="{% static 'designs/dist/531af2867c5d952c327275733473c0a0.svg' %}" alt="">
-            <h3>CALL FOR PROPOSALS</h3>
-            <p>If you wish to speak in PyConNG 2024. Click here to submit a proposal.</p>
-            <a href="{% url 'speaker_create' %}">Submit a Proposal</a>
-        </div>
-        <div class="action-area">
-            <img src="{% static 'designs/dist/6ffa2454c3ebbc71f9f12a84b41d64a1.svg' %}" alt="">
-            <h3>SPONSOR INQUIRY</h3>
-            <p>If you wish to sponsor PyConNG 2024. Click here to request a sponsor slot.</p>
-            <a href="{% url 'sponsor_apply' %}">Request Sponsorship</a>
-        </div>
+      {% box "proposal-action-section" %}
+      {% box "sponsor-action-section" %}
+        
     </div>
 </div>
 <div id="workshop-section">
