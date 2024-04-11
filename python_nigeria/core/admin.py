@@ -58,7 +58,7 @@ class TwitterProposalResource(resources.ModelResource):
 
     class Meta:
         model = ProposalResult
-        fields = ("talk_title", "speaker","proposal__speaker__twitter_username", "photo", )
+        fields = ("talk_title",'proposal__kind__name','score', "speaker","proposal__speaker__twitter_username", "photo", )
 
     def dehydrate_talk_title(self, book):
         return book.proposal.title
