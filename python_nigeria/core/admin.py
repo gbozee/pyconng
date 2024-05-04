@@ -86,12 +86,22 @@ class TwitterProposalResource(resources.ModelResource):
 class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = TwitterProposalResource
     # resource_class = ProposalResultResource
-    list_display = ["proposal", "status", "score", "vote_count", "accepted", "pk"]
+    list_display = ["proposal", "status",'speaker','profile_pic', "score", "vote_count", "accepted", "pk"]
     list_filter = ["proposal__kind__name", "status"]
     actions = ["send_email_to_approved_talks", "send_email_to_rejected_talks"]
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related("proposal__speaker")
+    
+    def speaker(self, obj):
+        return obj.proposal.speaker
+    
+    def profile_pic(self, obj):
+        url =  obj.proposal.speaker.photo.url
+        if url:
+            return '<a target="_blank" href="{}"><img style="width: 50px;" src="{}" alt="image" /></a>'.format(url,url)
+    profile_pic.allow_tags = True
+    
     
     def send_email_to_approved_talks(self, request, queryset):
         pass 
