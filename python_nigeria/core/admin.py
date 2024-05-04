@@ -97,8 +97,9 @@ class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         return obj.proposal.speaker
     
     def profile_pic(self, obj):
-        url =  obj.proposal.speaker.photo.url
+        url =  obj.proposal.speaker.photo
         if url:
+            url = url.url
             return '<a target="_blank" href="{}"><img style="width: 50px;" src="{}" alt="image" /></a>'.format(url,url)
     profile_pic.allow_tags = True
     
