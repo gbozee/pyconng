@@ -246,7 +246,7 @@ def sponsor_apply(request):
                         % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
                         settings.DEFAULT_FROM_EMAIL,
                         # "noreply@pycon.ng",
-                        ["hello@pycon.ng"],
+                        ["hello@pynigeria.org"],
                     )
                     send_mail(
                         "[Pycon NG] Thanks for being a Sponsor",

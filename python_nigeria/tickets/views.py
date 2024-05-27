@@ -351,7 +351,7 @@ class TicketTransferForm(forms.Form):
                 "Go to the dashboard to view details. \n"
                 "{}.\n Ensure you update the ticket details."
             ).format(old_owner.email, ticket.name, "https://www.pycon.ng/dashboard"),
-            "noreply@pycon.ng",
+            "hello@pynigeria.org",
             [email],
         )
         return ticket
