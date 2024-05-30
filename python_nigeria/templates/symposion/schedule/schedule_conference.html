@@ -97,7 +97,8 @@ margin-left: 20px;
         <div class="row">
                 
           {% for section in sections %}
-             <div class="tab-content {% if not forloop.first %}row{% endif %}" style="flex: 1;" id="schedule-container">
+             <div class="tab-content {% if not forloop.first %}row{% endif %}" 
+             id="schedule-container">
             <div style="flex: 1;" class="tab-pane fade show active" id="schedule-1">
                 {% comment %} {% cache 600 "schedule-table" section.schedule.section %} {% endcomment %}
                 <!-- <ul class="" id="scheduleTab">

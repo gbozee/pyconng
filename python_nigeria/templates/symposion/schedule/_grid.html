@@ -39,7 +39,8 @@
                 <strong class="s-text">— {{spek.name}}</strong>
                 <div class="s-logo img">
                 <div style="width:48px; height: 48px;">
-                    <img style="width: 100%; height: 100%;" src="{% if spek.photo %}https://pycon.ng{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %} {% endif %}" alt="{{spek.name}}">
+                    <img style="width: 100%; height: 100%;" src="{% if spek.photo %}{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %} {% endif %}" alt="{{spek.name}}">
+                    <!-- <img style="width: 100%; height: 100%;" src="{% if spek.photo %}https://pycon.ng{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %} {% endif %}" alt="{{spek.name}}"> -->
                 </div>
             </div>
                 
