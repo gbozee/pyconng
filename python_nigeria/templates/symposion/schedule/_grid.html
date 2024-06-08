@@ -28,39 +28,55 @@
         </div> -->
     <div class="schedule-day ">
 <div class="s-date">{{ slot_group.grouper|time:"h:i A"}} - {{ slot_group.list.0.end|time:"h:i A" }}</div>
-{% for slot in slot_group.list %}
-          <div class="row-2">
-            <div class="row-1">
-                <div class="s-text">{{ slot.content.title }}</div>
-                <div class="s-logo"></div>
-            </div>
-            <div class="row-1">
-                {% with spek=slot.content.speaker %}
-                <strong class="s-text">— {{spek.name}}</strong>
-                <div class="s-logo img">
-                <div style="width:48px; height: 48px;">
-                    <img style="width: 100%; height: 100%;" src="{% if spek.photo %}{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %} {% endif %}" alt="{{spek.name}}">
-                    <!-- <img style="width: 100%; height: 100%;" src="{% if spek.photo %}https://pycon.ng{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %} {% endif %}" alt="{{spek.name}}"> -->
-                </div>
-            </div>
-                
-                {% endwith %}
-            </div>
-        </div>
-          {% endfor %}
+  {% for slot in slot_group.list %}
+  <div class="row-2">
+    <div class="row-1">
+      <div class="s-text"><a href="/schedule/presentation/{{ slot.content.pk }}">{{ slot.content.title }}</a></div>
+      <div class="s-logo"></div>
     </div>
+    <div class="row-1">
+      {% with spek=slot.content.speaker %}
+      <strong class="s-text">— {{spek.name}}</strong>
+      <div class="s-logo img">
+        <div style="width:48px; height: 48px;">
+          <img style="width: 100%; height: 100%;" src="{% if spek.photo %}{{spek.photo.url}}{% else %}{% static "
+            images/placeholder.png" %} {% endif %}" alt="{{spek.name}}">
+          <!-- <img style="width: 100%; height: 100%;" src="{% if spek.photo %}https://pycon.ng{{spek.photo.url}}{% else %}{% static "images/placeholder.png" %} {% endif %}" alt="{{spek.name}}"> -->
+        </div>
+      </div>
+      {% endwith %}
+    </div>
+    <div class="row-1">
+
+      <div class="card text-xs-center card-{{ slot.kind }} {% for room in slot.rooms %}{{ room.name|slugify}} {% endfor %}">
+        <div class="card-header">
+          {% if slot.rooms %}
+          {% for room in slot.rooms %}
+          <span>Room: <strong>{{ room.name }}</strong>{% if not forloop.last %}, {% endif %}</span>
+          {% endfor %}
+          {% endif %}
+        </div>
+      
+        {# These should all be slot.end - 5 minutes #}
+      
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+  </div>
     <!-- <div class="card text-xs-center card-{{ slot.kind }} {% for room in slot.rooms %}{{ room.name|slugify}} {% endfor %}">
-          <div class="card-header">
-            {% if slot.rooms %}
-              {% for room in slot.rooms %}
-                <span>{{ room.name }}{% if not forloop.last %}, {% endif %}</span>
-              {% endfor %}
-            {% endif %}
-          </div>
- 
-          {# These should all be slot.end - 5 minutes #}
-         
-        </div> -->
+      <div class="card-header">
+        {% if slot.rooms %}
+        {% for room in slot.rooms %}
+        <span>{{ room.name }}{% if not forloop.last %}, {% endif %}</span>
+        {% endfor %}
+        {% endif %}
+      </div>
+    
+      {# These should all be slot.end - 5 minutes #}
+    
+    </div> -->
 
     {% if not forloop.last and forloop.counter|divisibleby:"3"%}
   </div>
