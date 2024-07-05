@@ -64,7 +64,7 @@ MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INSTALLED_APPS += ('debug_toolbar', )
 
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2','ci.tuteria.com','45.32.237.130',
-'staging.pycon.ng' ]
+'staging.pycon.ng','localhost' ]
 # tricks to have debug toolbar when developing with docker
 if os.environ.get('USE_DOCKER') == 'yes':
     ip = socket.gethostbyname(socket.gethostname())
