@@ -1,1 +1,9 @@
-{% load account_tags i18n %}{% user_display message.user as user %}{% blocktrans with title=proposal.title %}New message on "{{ title }}" from {{ user }}{% endblocktrans %}
+{% load account_tags i18n %}
+{% user_display message.user as user %}
+{% with title=proposal.title speaker=proposal.speaker.user %}
+{% if user == speaker %}
+New message on "{{ title }}" from {{ user }}
+{% else %}
+New message on "{{ title }}" from Reviewer
+{% endif %}
+{% endwith %}

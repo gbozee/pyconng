@@ -23,7 +23,7 @@ class TicketHomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TicketHomeView, self).get_context_data(**kwargs)
         tickets = TicketPrice.objects.filter(
-            name__in=["Company", "Personal", "Student", "Tutorial"]
+            name__in=["Company", "Personal", "Student", "Patron"]
         )
         ticket_types = [
             {
@@ -49,10 +49,10 @@ def intermediate_purchase(request):
 
 
 class PurchaseForm(forms.Form):
-    # Student = forms.IntegerField(required=False)
+    Student = forms.IntegerField(required=False)
     Company = forms.IntegerField(required=False)
     Personal = forms.IntegerField(required=False)
-    Tutorial = forms.IntegerField(required=False)
+    Patron = forms.IntegerField(required=False)
     coupon = forms.CharField(required=False)
 
     def determine_cost(self, name, value=0):
@@ -61,7 +61,7 @@ class PurchaseForm(forms.Form):
 
     def selected_tickets(self):
         considered = [
-            x for x, y in self.cleaned_data.items() if x != "coupon" and int(y) > 0
+            x for x, y in self.cleaned_data.items() if x != "coupon" and y and int(y) > 0
         ]
         return considered
 
@@ -145,7 +145,7 @@ class PurchaseView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PurchaseView, self).get_context_data(**kwargs)
         tickets = TicketPrice.objects.filter(
-            name__in=["Company", "Personal", "Tutorial"]
+            name__in=["Company", "Personal", "Student",'Patron']
         )
         ticket_types = [
             {
@@ -157,16 +157,15 @@ class PurchaseView(TemplateView):
         ]
 
         # ticket_price = TicketPrice.objects.all()
-
         def amount(y):
             return [x["current_price"] for x in ticket_types if x["name"] == y][0]
 
         tickets = [
-            # {
-            #     "name": "Student ticket",
-            #     "short_name": "Student",
-            #     "amount": amount("Student"),
-            # },
+            {
+                "name": "Student ticket",
+                "short_name": "Student",
+                "amount": amount("Student"),
+            },
             {
                 "name": "Personal ticket",
                 "short_name": "Personal",
@@ -178,9 +177,9 @@ class PurchaseView(TemplateView):
                 "amount": amount("Company"),
             },
             {
-                "name": "Tutorial ticket",
-                "short_name": "Tutorial",
-                "amount": amount("Tutorial"),
+                "name": "Patron ticket",
+                "short_name": "Patron",
+                "amount": amount("Patron"),
             },
         ]
         context.update(
@@ -352,7 +351,7 @@ class TicketTransferForm(forms.Form):
                 "Go to the dashboard to view details. \n"
                 "{}.\n Ensure you update the ticket details."
             ).format(old_owner.email, ticket.name, "https://www.pycon.ng/dashboard"),
-            "noreply@pycon.ng",
+            "hello@pynigeria.org",
             [email],
         )
         return ticket

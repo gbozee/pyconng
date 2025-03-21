@@ -37,7 +37,12 @@
     </div>
     {% endif %}
     {% block navigation %}
+
+    {% if page.path == 'venue/' %}
+      {% include "includes/nav_pre-launch.html" with class="" %}
+    {% else %}
       {% include "includes/nav_pre-launch.html" with class="home" %}
+    {% endif %}
       <!-- remove the class if we want to have a background color for the navbar -->
   {% endblock %}
     {{ page.body_html|safe }}

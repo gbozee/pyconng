@@ -42,7 +42,7 @@ style="position:absolute;"
                 
                   <!-- Title -->
                   <h4>PyCon Nigeria Annual Conference </h4>
-                  <h3>{{ presentation.title }}</h3>
+                  <h3 style="font-size: 1.65rem;">{{ presentation.title }}</h3>
                   
                 </div>
           </div>	 <!-- End Intro Content -->
@@ -61,7 +61,7 @@ style="position:absolute;"
             <div class="speaker">
                 
                 <!-- Speaker Photo  -->	
-                <div class="img-block">
+                <div class="img-block" style="display: flex; justify-content: center;">
                 
                     <!-- Photo Hower Content -->	
                     <div class="img-block-wrapper-hover">
@@ -71,7 +71,7 @@ style="position:absolute;"
                     </div>
                     
                     <!-- Photo Link -->	
-                    <img class="img-responsive" src="{% if speaker.photo %}{{speaker.photo.url}}{% else %}{% static 'images/placeholder.png' %}{% endif %}" alt="speaker-foto" >
+                    <img style="width: 14em;" class="img-responsive" src="{% if speaker.photo %}{{speaker.photo.url}}{% else %}{% static 'images/placeholder.png' %}{% endif %}" alt="speaker-foto" >
                     
                 </div>
                     

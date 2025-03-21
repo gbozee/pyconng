@@ -55,10 +55,11 @@ class TwitterProposalResource(resources.ModelResource):
     talk_title = resources.Field()
     speaker = resources.Field()
     photo = resources.Field()
+    speaker_email = resources.Field()
 
     class Meta:
         model = ProposalResult
-        fields = ("talk_title", "speaker","proposal__speaker__twitter_username", "photo", )
+        fields = ("talk_title",'proposal__kind__name','score', "speaker","proposal__speaker__twitter_username", "photo",'speaker_email' )
 
     def dehydrate_talk_title(self, book):
         return book.proposal.title
@@ -74,6 +75,9 @@ class TwitterProposalResource(resources.ModelResource):
         speaker = self.get_speaker(book)
         if speaker.photo:
             return speaker.photo.url
+        
+    def dehydrate_speaker_email(self, obj):
+        return obj.proposal.speaker.email
 
 
 
@@ -82,11 +86,29 @@ class TwitterProposalResource(resources.ModelResource):
 class ProposalResultAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = TwitterProposalResource
     # resource_class = ProposalResultResource
-    list_display = ["proposal", "status", "score", "vote_count", "accepted", "pk"]
+    list_display = ["proposal", "status",'speaker','profile_pic', "score", "vote_count", "accepted", "pk"]
     list_filter = ["proposal__kind__name", "status"]
+    actions = ["send_email_to_approved_talks", "send_email_to_rejected_talks"]
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related("proposal__speaker")
+    
+    def speaker(self, obj):
+        return obj.proposal.speaker
+    
+    def profile_pic(self, obj):
+        url =  obj.proposal.speaker.photo
+        if url:
+            url = url.url
+            return '<a target="_blank" href="{}"><img style="width: 50px;" src="{}" alt="image" /></a>'.format(url,url)
+    profile_pic.allow_tags = True
+    
+    
+    def send_email_to_approved_talks(self, request, queryset):
+        pass 
+    
+    def send_email_to_rejected_talks(self, request, queryset):
+        pass
 
 
 class UserAdmin(UserAdmin, ImportExportModelAdmin, HijackUserAdminMixin):

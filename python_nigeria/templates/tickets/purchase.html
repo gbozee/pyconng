@@ -48,13 +48,14 @@ strong#ticket-count, strong#total-fee{
     <div class="container">
       <div class="row">
         <div class="col-md-5">
-          <img class="logo" src="{% static 'designs/img/logo-light.svg' %}" />
+          <img class="logo" src="{% static 'designs/dist/pycon2024.svg' %}" />
           <div class="hide-mobile">
-            <p>>>> Purchase Tickets</p>
-            <h1 class="display-4">Python Conference 2018</h1>
-            <p class="lead">
-              September 13 — 15, 2018 08:00AM - O5:00PM Lagos, Nigeria
-            </p>
+            {% box "purchase_label" %}
+            {% box "purchase_title" %}
+            {% box "purchase_subtitle" %}
+            
+            
+            
 
           </div>
         </div>

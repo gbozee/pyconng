@@ -1,6 +1,6 @@
 # Bleeding edge Django
 
--e git+https://github.com/pyung/symposion#egg=symposion
+-e git+https://github.com/gbozee/symposion@0.0.2#egg=symposion
 
 django==1.11.8
 

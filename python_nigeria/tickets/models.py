@@ -17,10 +17,10 @@ class Coupon(models.Model):
 
 class TicketPriceQuerySet(models.QuerySet):
     def with_tickets_purchased(self):
-        return self.filter(ticket__status=Ticket.PAYED).annotate(
-            purchased_count=models.Sum("ticket__quantity")
-        )
-        # return self.annotate(purchased_count=models.Sum('ticket__quantity'))
+        # return self.filter(ticket__status=Ticket.PAYED).annotate(
+        #     purchased_count=models.Sum("ticket__quantity")
+        # )
+        return self.annotate(purchased_count=models.Sum('ticket__quantity'))
 
 
 class TicketPrice(models.Model):
@@ -71,12 +71,12 @@ class TicketPrice(models.Model):
             "early_price": 10000,
             "price": 20000,
         },
-        "Tutorial": {
-            "name": "Tutorial Day",
-            "short_name": "Tutorial",
+        "Patron": {
+            "name": "Patron",
+            "short_name": "Patron",
             "style": "",
             "url": "/static/designs/img/tickets/tutorial.svg",
-            "description": " For Beginners or Professionals who want an intensive training on Python",
+            "description": "For Patrons interested in supporting the community",
             "early_price": 10000,
             "price": 20000,
         },

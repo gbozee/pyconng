@@ -13,15 +13,21 @@
      {% box "home_introduction" %}
      <div class="container">
       <div class="col-sm-12 col-lg-6">
+        {% block hero_label %}
         {% box "hero-label" %}
+        {% endblock %}
         
         <!-- <h1 class="display-4"> -->
+        {% block hero_title %}
           {% box "hero-title" %}
+        {% endblock %}
          
         <!-- </h1> -->
         <!-- <p class="lead"> -->
+        {% block hero_subtitle %}
           {% box "hero-subtitle" %}
-        <!-- </p> -->
+        {% endblock %}
+          <!-- </p> -->
 
       </div>
     </div>

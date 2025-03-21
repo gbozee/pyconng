@@ -246,7 +246,7 @@ def sponsor_apply(request):
                         % (sponsor.contact_name, sponsor.contact_email, sponsor.level),
                         settings.DEFAULT_FROM_EMAIL,
                         # "noreply@pycon.ng",
-                        ["hello@pycon.ng"],
+                        ["hello@pynigeria.org"],
                     )
                     send_mail(
                         "[Pycon NG] Thanks for being a Sponsor",
@@ -309,6 +309,7 @@ def dashboard(request):
     difference = settings.DEADLINE_DATE - timezone.now()
     overide = request.user.email in ["pyconnigeria@pycon.ng"]
     can_submit = difference.days > 0 or overide
+    # can_submit = False
     return render(
         request,
         "dashboard.html",

@@ -62,6 +62,17 @@
         }
 
     }
+    .speaker-list{
+      margin-top: 20px;
+    }
+    #speaker-section .speaker-list .speaker-detail img {
+      height: 71% !important;
+      margin-bottom: 18px;
+      width: 100%;
+    }
+    #speaker-section .speaker-list .speaker-detail a h3{
+      color: #4f4f4f;
+    }
 </style>
 {% endblock extra_stylings %}
 {% block head_title %}
@@ -78,49 +89,57 @@
 </div>
 {% endblock %}
 {% block content %}
-<div id="about-section">
-    <h1 class="section-description text-right">&lt;PyCon.About /&gt;</h1>
-    <h3 class="section-title">About Pycon Nigeria</h3>
-    {% box "about_home_section" %}
-    <div id="video-embed" class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/X-Pzj8nhXRE?si=noxffb0YYoJSDTar" allowfullscreen></iframe>
-    </div>
-</div>
 {% box "speaker-section" %}
+<div id="about-section">
+  <h1 class="section-description text-right">&lt;PyCon.About /&gt;</h1>
+  <h3 class="section-title">About Pycon Nigeria</h3>
+  {% box "about_home_section" %}
+  <div id="video-embed" class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/X-Pzj8nhXRE?si=noxffb0YYoJSDTar" allowfullscreen></iframe>
+  </div>
+</div>
+
 <div id="speaker-section">
-    <h1 class="section-description text-right">&lt;PyCon.Sponsors /&gt;</h1>
-    <h3 class="section-title">Reach the Right Audience
-    </h3>
-    <div class="about-details">
-      <div class="description">
-        An industry conference with a community spirit.
-  More than half of our delegates are IT professionals, drawn from industry, research agencies, and government. We also attract a high number of University-level students, helping to shape the next generation of Python developers.
-  Many of our speakers and delegates are contributors to key Open Source Python projects, used by millions of developers around the world.
+  <h1 class="section-description text-right">&lt;PyCon.Sponsors /&gt;</h1>
+  <h3 class="section-title">Reach the Right Audience
+  </h3>
+  <div class="about-details">
+    <div class="description">
+      An industry conference with a community spirit.
+      More than half of our delegates are IT professionals, drawn from industry, research agencies, and government. We
+      also attract a high number of University-level students, helping to shape the next generation of Python
+      developers.
+      Many of our speakers and delegates are contributors to key Open Source Python projects, used by millions of
+      developers around the world.
 
-      </div>
-
-      <!-- <div class="highlights"></div> -->
     </div>
-    <h3 class="section-title">Recruit Top technical Talent  </h3>
-    <div class="about-details">
 
-      <div class="description">
-        Take advantage of the conference by having access to some of the best Pythonistas in the Industry all in the same room. PYCON is the place to connect with skilled Python developers looking for job opportunities. Sponsoring allows you to promote open roles and recruit talent.
+    <!-- <div class="highlights"></div> -->
+  </div>
+  <h3 class="section-title">Recruit Top technical Talent </h3>
+  <div class="about-details">
+
+    <div class="description">
+      Take advantage of the conference by having access to some of the best Pythonistas in the Industry all in the same
+      room. PYCON is the place to connect with skilled Python developers looking for job opportunities. Sponsoring
+      allows you to promote open roles and recruit talent.
 
 
-      </div>
-      <!-- <div class="highlights"></div> -->
     </div>
-    <h3 class="section-title">Promote latest Products/Services</h3>
-    <div class="about-details">
+    <!-- <div class="highlights"></div> -->
+  </div>
+  <h3 class="section-title">Promote latest Products/Services</h3>
+  <div class="about-details">
 
-      <div class="description">
-        The exhibition hall allows sponsors to showcase new products, technologies, and services. Provide first access to new innovations at PyCon Nigeria. PyCoon receives coverage in technical publications, media, and more. Sponsorship provides increased visibility through this coverage.
+    <div class="description">
+      The exhibition hall allows sponsors to showcase new products, technologies, and services. Provide first access to
+      new innovations at PyCon Nigeria. PyCoon receives coverage in technical publications, media, and more. Sponsorship
+      provides increased visibility through this coverage.
 
-      </div>
-      <!-- <div class="highlights"></div> -->
     </div>
-{% comment %}
+    <!-- <div class="highlights"></div> -->
+  </div>
+  {% comment %}
   <h1 class="section-description text-right">&lt;PyCon.Speakers /&gt;</h1>
   <h3 class="section-title">Who will be speaking?</h3>
   <div class="about-details">
@@ -197,22 +216,14 @@
   </div>
   {% endcomment %}
 </div>
+
 <div class="call-to-action">
   {% comment %}
   {% endcomment %}
     <div>
-        <div class="action-area">
-            <img src="{% static 'designs/dist/531af2867c5d952c327275733473c0a0.svg' %}" alt="">
-            <h3>CALL FOR PROPOSALS</h3>
-            <p>If you wish to speak in PyConNG 2024. Click here to submit a proposal.</p>
-            <a href="{% url 'speaker_create' %}">Submit a Proposal</a>
-        </div>
-        <div class="action-area">
-            <img src="{% static 'designs/dist/6ffa2454c3ebbc71f9f12a84b41d64a1.svg' %}" alt="">
-            <h3>SPONSOR INQUIRY</h3>
-            <p>If you wish to sponsor PyConNG 2024. Click here to request a sponsor slot.</p>
-            <a href="{% url 'sponsor_apply' %}">Request Sponsorship</a>
-        </div>
+      {% box "proposal-action-section" %}
+      {% box "sponsor-action-section" %}
+        
     </div>
 </div>
 <div id="workshop-section">
