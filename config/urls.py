@@ -9,12 +9,14 @@ from django.views.generic import TemplateView, RedirectView
 from symposion import views as symposion_views
 from django.views import defaults as default_views
 from . import views as o_views
+from python_nigeria.core import views as core_views
 
 urlpatterns = [
     # Examples:
     # url(r'^404$', TemplateView.as_view(template_name='500.html'), name='404'),
     # url(r'^blog/', include('blog.urls')),
     # url(r'^home/$', TemplateView.as_view(template_name='home.html'), name='home_page'),
+    url(r"^design/home/$", core_views.DesignHomeView.as_view(), name="design_home"),
     url(r"^home/$", o_views.HomeRedirectView.as_view(), name="home_page"),
     # url(r'^schedule/$', o_views.ScheduleConferenceView.as_view(), name='schedule_conference'),
     url(r"^$", o_views.HomePage.as_view(), name="home"),

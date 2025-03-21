@@ -8,6 +8,23 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+class DesignHomeView(TemplateView):
+    template_name = "design/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'page_title': 'PyCon Nigeria 2025',
+            'nav_items': [
+                {'title': 'Home', 'url': '/', 'active': True},
+                {'title': 'About', 'url': '/about/', 'has_dropdown': True},
+                {'title': 'Schedule', 'url': '/schedule/', 'has_dropdown': True},
+                {'title': 'Tickets', 'url': '/tickets/'},
+                {'title': 'Contact', 'url': '/contact/'},
+                {'title': 'Login', 'url': '/account/login/'},
+            ]
+        })
+        return context
 
 
 class OnlinePaymentRedirectView(RedirectView):

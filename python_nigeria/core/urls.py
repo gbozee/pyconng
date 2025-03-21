@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 import pytz
 from django.conf.urls import include, url
 
-from .import views
+from . import views
 
 urlpatterns = [
     url(regex=r'online-payment/(?P<tutor_slug>[\w.@+-]+)/(?P<slug>[\w.@+-]+)/$',
@@ -16,5 +16,4 @@ urlpatterns = [
     url(regex=r'client-payment-cancelled/(?P<order>[\w.@+-]+)/$',
         view=csrf_exempt(views.FailedPaymentRedirectView.as_view()),
         name='request_cancelled_redirect'),
-    
 ]
