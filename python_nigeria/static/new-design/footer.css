@@ -1,0 +1,127 @@
+/* footer.css */
+
+.site-footer {
+    background-color: var(--secondary-color);
+    padding: 64px 40px 20px 40px;
+    color: var(--light-text);
+  }
+  
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+  }
+  
+  .footer-logo img {
+    width: 200px;
+    height: auto;
+  }
+  
+  .footer-links {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+  }
+  
+  .footer-column h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: var(--font-family-dyna);
+  }
+  
+  .footer-column a {
+    display: block;
+    text-decoration: none;
+    color: var(--light-text);
+    font-size: 16px;
+    font-family: var(--font-family-body);
+    margin-bottom: 8px;
+  }
+  
+  .footer-column a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
+  .footer-bottom a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+  
+  .footer-bottom a:hover {
+    text-decoration: underline;
+  }
+  
+  /* MEDIA QUERIES */
+  @media (max-width: 992px) {
+    .footer-links {
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .site-footer {
+      padding: 40px 20px 20px;
+    }
+    
+    .footer-top {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .footer-logo {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .footer-column {
+      flex-basis: calc(50% - 15px);
+      text-align: center;
+    }
+    
+    .footer-column h3 {
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer-links {
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .footer-column {
+      flex-basis: 100%;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+  }
