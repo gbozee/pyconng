@@ -319,7 +319,8 @@ def dashboard(request):
 
 class HomePage(TemplateView):
     # template_name = "home.html"
-    template_name = "pre-conference.html"
+    template_name = "design/home.html"
+    # template_name = "pre-conference.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

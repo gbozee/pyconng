@@ -338,5 +338,5 @@ RECAPTCHA_PRIVATE_KEY = env(
 )
 
 # DEADLINE_DATE = datetime.datetime(2024, 3, 11, 9, tzinfo=pytz.UTC)
-DEADLINE_DATE = datetime.datetime(2024, 4, 9, 9, tzinfo=pytz.UTC)
+DEADLINE_DATE = datetime.datetime(2025, 6, 9, 9, tzinfo=pytz.UTC)
 

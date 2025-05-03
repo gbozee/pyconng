@@ -8,6 +8,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+class DesignDashboardView(TemplateView):
+    template_name = "design/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
 class DesignHomeView(TemplateView):
     template_name = "design/home.html"
 

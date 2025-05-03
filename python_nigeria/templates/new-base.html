@@ -1,5 +1,5 @@
-<!doctype html> {% load static pinax_boxes_tags %}
-{% load hijack_tags %}
+<!doctype html>
+{% load hijack_tags static %}
 
 <html lang="en">
 
@@ -23,7 +23,7 @@
   <style>
     .content-box.editable,
     .content-box {
-      display: flex;
+
     }
 
     a {
@@ -565,21 +565,9 @@
         <span></span>
         <span></span>
       </button>
-
-      <!-- Main Nav -->
-      <nav class="main-nav">
-        {% box "new_nav_items" %}
-          {% if request.user.is_authenticated %}
-          <a href="{% url "dashboard" %}" class="login">Dashboard</a>
-          <a href="{% url "account_logout" %}" class="login">Logout</a>
-          {% else %}
-          <a href="{% url "account_login" %}" class="login">Login</a>
-          <a href="{% url "account_signup" %}" class="signup">Sign Up</a>
-          {% endif %}
-        <!-- Auth Links -->
-        <div class="auth-links">
-        </div>
-      </nav>
+      {% block new_navigation %}
+     {% include "includes/new-navigation.html" %}
+     {% endblock new_navigation %}
     </div>
   </header>
 
@@ -590,12 +578,9 @@
     {% endblock content %}
   </main>
 
-  <!-- Footer -->
-<footer class="site-footer">
-
-  {% box "new-footer-section" %}
-  {% box "new-footer-bottom-section" %}
-</footer>
+  {% block new_footer %}
+  {% include "includes/new-footer.html" %}
+  {% endblock new_footer %}
 
 
   <!-- JavaScript -->

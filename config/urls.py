@@ -17,6 +17,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     # url(r'^home/$', TemplateView.as_view(template_name='home.html'), name='home_page'),
     url(r"^design/home/$", core_views.DesignHomeView.as_view(), name="design_home"),
+    url(r"^design/dashboard/$", core_views.DesignDashboardView.as_view(), name="design_dashboard_home"),
     url(r"^home/$", o_views.HomeRedirectView.as_view(), name="home_page"),
     # url(r'^schedule/$', o_views.ScheduleConferenceView.as_view(), name='schedule_conference'),
     url(r"^$", o_views.HomePage.as_view(), name="home"),
