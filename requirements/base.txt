@@ -2,7 +2,7 @@
 
 -e git+https://github.com/gbozee/symposion@0.0.2#egg=symposion
 
-django==1.11.8
+django==2.2.24
 
 # Configuration
 django-environ==0.4.4
