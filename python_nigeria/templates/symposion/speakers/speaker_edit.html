@@ -8,36 +8,37 @@
 {% block page_title %}{% trans "Edit Speaker Profile" %}{% endblock %}
 
 {% block body %}
-<div class="poster-wrapper mt-5">
-  <div class="container">
-    <div class="row">
-    {% box "speaker-profile" %}
 
-    <form method="POST" action="" enctype="multipart/form-data">
-        {% csrf_token %}
-        <legend>{% trans "Edit Speaker Profile" %}</legend>
-        {{ speaker_form.non_field_errors }}
+<div class="auth-form-wrapper">
+  <div class="auth-header">
+    <h1>Edit Speaker Profile</h1>
 
-        {{ speaker_form.name|as_crispy_field }}
-        {{ speaker_form.biography|as_crispy_field }}
+  </div>{% box "speaker-profile" %}
 
-        {{ speaker_form.photo.errors }}
-        {{ speaker_form.photo }}
-        {% if not speaker_form.photo.errors %}
-          <p class="help-block error"><strong>The image size must not be above 600kb.</strong></p>
-        {% endif %}
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ speaker_form.non_field_errors }}
 
-        <br />
+    {{ speaker_form.name|as_crispy_field }}
+    {{ speaker_form.biography|as_crispy_field }}
 
-        {{ speaker_form.twitter_username|as_crispy_field }}
+    {{ speaker_form.photo.errors }}
+    {{ speaker_form.photo }}
+    {% if not speaker_form.photo.errors %}
+    <p class="help-block error"><strong>The image size must not be above 600kb.</strong></p>
+    {% endif %}
 
-        <div class="form-actions d-flex justify-content-between">
-                            
-            <input class="btn btn-success btn-lg" type="submit" value="Save" />
-            <a class="btn btn-lg btn-outline-dark" href="{% url "dashboard" %}">Cancel</a>
-        </div>
-    </form>
+    <br />
+
+    {{ speaker_form.twitter_username|as_crispy_field }}
+
+    <div class="form-actions d-flex justify-content-between">
+
+      <input class="btn btn-success btn-lg" type="submit" value="Save" />
+      <a class="btn btn-lg btn-outline-dark" href="{% url "dashboard" %}">Cancel</a>
     </div>
-  </div>
+  </form>
+
 </div>
+
 {% endblock %}

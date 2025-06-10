@@ -7,8 +7,28 @@
 {% block header_style %} {% endblock header_style %}
 {% block head_title %}{% trans "Sign up" %}{% endblock %}
 
-{% block content %}
-<div class="small-header poster-wrapper smaller">
+{% block body %}
+<div class="auth-form-wrapper">
+  <div class="auth-header">
+    <h1>Join PyConNG 2025!</h1>
+    <p>Create your account to register for the conference</p>
+  </div>
+
+  <form class="auth-form" id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+    {% csrf_token %}
+    {{ form|crispy }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    
+    <button type="submit" class="auth-btn">Create Account</button>
+  </form>
+
+  <div class="auth-footer">
+    <p>Already have an account? <a href="{% urlnext 'account_login' %}"">Login here</a></p>
+  </div>
+</div>
+<!-- <div class="small-header poster-wrapper smaller">
 </div>
 
 <div class="poster-wrapper">
@@ -32,8 +52,19 @@
         </div>
     </div>
   </div>
+</div> -->
+{% endblock body %}
+
+{% block right_text %}
+<h2>Start Your Python Journey</h2>
+<p>Join hundreds of developers, data scientists, and tech enthusiasts.</p>
+<div class="benefits">
+  <div class="benefit-item">✓ Access to all talks and workshops</div>
+  <div class="benefit-item">✓ Networking opportunities</div>
+  <div class="benefit-item">✓ Conference materials and swag</div>
+  <div class="benefit-item">✓ Certificate of attendance</div>
 </div>
-{% endblock content %}
+{% endblock right_text %}
 
 {% block scripts %}
     {{ block.super }}

@@ -1,0 +1,188 @@
+/* code-of-conduct.css: styles for code of conduct page */
+
+/* Main container */
+.conduct-main {
+  background: var(--bg-color);
+  min-height: 100vh;
+  padding: 100px 20px 80px;
+}
+
+.conduct-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Content area */
+.conduct-content {
+  max-width: 800px;
+}
+
+.conduct-content h1 {
+  font-family: var(--font-family-head);
+  font-weight: 400;
+  font-size: 48px;
+  color: var(--text-color);
+  margin-bottom: 40px;
+  line-height: 1.2;
+}
+
+/* Sections */
+.conduct-section {
+  margin-bottom: 40px;
+}
+
+.conduct-section h2 {
+  font-family: var(--font-family-head);
+  font-weight: 400;
+  font-size: 32px;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.conduct-section p {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.conduct-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+.conduct-section a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.conduct-section a:hover {
+  text-decoration: underline;
+}
+
+/* List styling */
+.conduct-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.conduct-list li {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.conduct-list li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.conduct-list li strong {
+  font-weight: 600;
+}
+
+/* Warning caution icon */
+.conduct-icon {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 100px;
+}
+
+.caution-image {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.caution-image:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .conduct-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .conduct-icon {
+    order: -1;
+    padding-top: 0;
+    padding-bottom: 40px;
+  }
+  
+  .caution-image {
+    width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .conduct-main {
+    padding: 80px 20px 60px;
+  }
+  
+  .conduct-content h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .conduct-section h2 {
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+  }
+  
+  .conduct-section p,
+  .conduct-list li {
+    font-size: 15px;
+  }
+  
+  .conduct-container {
+    gap: 30px;
+  }
+  
+  .caution-image {
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .conduct-content h1 {
+    font-size: 28px;
+  }
+  
+  .conduct-section h2 {
+    font-size: 24px;
+  }
+  
+  .conduct-section p,
+  .conduct-list li {
+    font-size: 14px;
+  }
+  
+  .conduct-list li {
+    padding-left: 15px;
+  }
+  
+  .caution-image {
+    width: 80px;
+  }
+} 

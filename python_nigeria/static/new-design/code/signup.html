@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - PyCon Nigeria 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Global and partial CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="index.html">
+          <img src="../assets/logo.png" alt="PyCon Nigeria Logo" />
+        </a>
+      </div>
+      
+      <!-- Mobile Hamburger -->
+      <button class="hamburger" aria-label="Open Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <!-- Main Nav -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#">About 
+              <div class="arrow">
+                <div class="arrow-line"></div>
+                <div class="arrow-line"></div>
+              </div>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Who We Are</a></li>
+              <li><a href="#">Meet the Team</a></li>
+              <li><a href="#">Past Events</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Schedule 
+              <div class="arrow">
+                <div class="arrow-line"></div>
+                <div class="arrow-line"></div>
+              </div>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Day 1</a></li>
+              <li><a href="#">Day 2</a></li>
+              <li><a href="#">Workshops</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Tickets</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        
+        <!-- Auth Links -->
+        <div class="auth-links">
+          <a href="login.html" class="login">Login</a>
+          <a href="signup.html" class="signup active">Sign Up</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="auth-main">
+    <div class="auth-container">
+      <div class="auth-form-wrapper">
+        <div class="auth-header">
+          <h1>Join PyConNG 2025!</h1>
+          <p>Create your account to register for the conference</p>
+        </div>
+        
+        <form class="auth-form" action="#" method="POST"> 
+          <div class="form-field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
+          </div>
+          
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+          
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Create a password">
+          </div>
+          
+          <div class="form-field">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+          </div>
+
+          <button type="submit" class="auth-btn">Create Account</button>
+        </form>
+        
+        <div class="auth-footer">
+          <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+      </div>
+      
+      <div class="auth-visual">
+        <div class="visual-content">
+          <img src="../assets/pyconng2025.png" alt="PyConNG 2025" class="auth-logo" />
+          <h2>Start Your Python Journey</h2>
+          <p>Join hundreds of developers, data scientists, and tech enthusiasts.</p>
+          <div class="benefits">
+            <div class="benefit-item">✓ Access to all talks and workshops</div>
+            <div class="benefit-item">✓ Networking opportunities</div>
+            <div class="benefit-item">✓ Conference materials and swag</div>
+            <div class="benefit-item">✓ Certificate of attendance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html> 

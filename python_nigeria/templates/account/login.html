@@ -7,8 +7,38 @@
 {% block header_style %} {% endblock header_style %}
 {% block header_title %}{% trans "Log in" %}{% endblock header_title %}
 
-{% block content %}
-<div class="small-header poster-wrapper">
+{% block body %}
+<div class="auth-form-wrapper">
+  <div class="auth-header">
+    <h1>Welcome Back!</h1>
+    <p>Sign in to your PyCon Nigeria account</p>
+  </div>
+
+  <form class="auth-form" method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+    {% csrf_token %}
+    {{ form.username|as_crispy_field }}
+
+
+    {{ form.password|as_crispy_field }}
+
+    <div class="form-options">
+      <label for="id_remember" class="checkbox-label">
+        <input type="checkbox" name="remember" id="id_remember">
+        <span class="checkmark"></span>
+        Remember me
+      </label>
+      <a href="{% url "account_password_reset" %}" class="forgot-password">Forgot Password?</a>
+    </div>
+
+    <button type="submit" class="auth-btn">Login</button>
+  </form>
+{% if ACCOUNT_OPEN_SIGNUP %}
+  <div class="auth-footer">
+    <p>Don't have an account? <a href="{% urlnext 'account_signup' %}">Sign up here</a></p>
+  </div>
+  {% endif %}
+</div>
+<!-- <div class="small-header poster-wrapper">
   <h1>{% trans "Hi!" %}</h1>
 </div>
 <div class="poster-wrapper">
@@ -35,8 +65,8 @@
         </div>
     </div>
   </div>
-</div>
-{% endblock content %}
+</div> -->
+{% endblock body %}
 
 {% block scripts %}
     {{ block.super }}

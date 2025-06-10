@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - PyCon Nigeria 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Global and partial CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="index.html">
+          <img src="../assets/logo.png" alt="PyCon Nigeria Logo" />
+        </a>
+      </div>
+      
+      <!-- Mobile Hamburger -->
+      <button class="hamburger" aria-label="Open Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <!-- Main Nav -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#">About 
+              <div class="arrow">
+                <div class="arrow-line"></div>
+                <div class="arrow-line"></div>
+              </div>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Who We Are</a></li>
+              <li><a href="#">Meet the Team</a></li>
+              <li><a href="#">Past Events</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Schedule 
+              <div class="arrow">
+                <div class="arrow-line"></div>
+                <div class="arrow-line"></div>
+              </div>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Day 1</a></li>
+              <li><a href="#">Day 2</a></li>
+              <li><a href="#">Workshops</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Tickets</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        
+        <!-- Auth Links -->
+        <div class="auth-links">
+          <a href="login.html" class="login active">Login</a>
+          <a href="signup.html" class="signup">Sign Up</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="auth-main">
+    <div class="auth-container">
+      <div class="auth-form-wrapper">
+        <div class="auth-header">
+          <h1>Welcome Back!</h1>
+          <p>Sign in to your PyCon Nigeria account</p>
+        </div>
+        
+        <form class="auth-form" action="#" method="POST">
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+          
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+          
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" name="remember">
+              <span class="checkmark"></span>
+              Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+          
+          <button type="submit" class="auth-btn">Login</button>
+        </form>
+        
+        <div class="auth-footer">
+          <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+        </div>
+      </div>
+      
+      <div class="auth-visual">
+        <div class="visual-content">
+          <img src="../assets/pyconng2025.png" alt="PyConNG 2025" class="auth-logo" />
+          <h2>Join the Python Community</h2>
+          <p>Connect with developers, learn from experts, and be part of Nigeria's biggest Python conference.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html> 

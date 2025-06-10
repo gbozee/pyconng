@@ -1,14 +1,16 @@
 {#{% extends "theme_bootstrap/subnav_base.html" %}#}
-{% extends "new-base-internal.html" %}
+{% extends "account/base.html" %}
 {% block header_style %} {% endblock header_style %}
 {% load i18n %}
 {% block fixed_navbar %}scroll{% endblock fixed_navbar %}
+{% comment %}
 {% block content %}
 {% block body %}{% endblock body %}
 {% endblock content %}
 {% block body_class %}account{% endblock %}
 
 {% block content_class %}mt-5 mb-5{% endblock %}
+{% endcomment %}
 
 
 

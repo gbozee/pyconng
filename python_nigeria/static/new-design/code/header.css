@@ -1,0 +1,341 @@
+/* header.css: Debug version with proper dropdown styling */
+
+/* HEADER WRAPPER */
+.site-header {
+  background-color: var(--bg-color);
+  font-family: var(--font-family-head);
+  font-weight: 400;
+  padding: 16px 40px;
+  position: relative;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* LOGO */
+.logo img {
+  width: 70px;
+  height: auto;
+  display: block;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--nav-text-color);
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation when open */
+.nav-open .hamburger span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.nav-open .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-open .hamburger span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* NAV STYLES */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--nav-text-color);
+  font-weight: 400;
+  font-size: 16px;
+  display: block;
+}
+
+/* Active or hover states for desktop */
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--accent-color);
+}
+
+/* DROPDOWN MENU - NEW APPROACH */
+.dropdown {
+  position: relative;
+}
+
+.dropdown .arrow {
+  width: 24px;
+  height: 15px;
+  position: relative;
+  overflow: hidden;
+  margin-left: 4px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.dropdown .arrow-line {
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  left: 8px;
+  border-right: 2px solid var(--nav-text-color);
+  border-bottom: 2px solid var(--nav-text-color);
+  transform: rotate(45deg);
+}
+
+.dropdown .arrow-line:first-child {
+  top: 4px;
+}
+
+.dropdown .arrow-line:second-child {
+  top: 10px;
+}
+
+/* Scale arrow on hover */
+.dropdown:hover .arrow {
+  transform: scale(1.1);
+}
+
+/* Dropdown menu - hidden by default */
+.dropdown-menu {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #F4FD9E;
+  list-style: none;
+  min-width: 180px;
+  border: 2px solid #000000;
+  padding: 12px 0;
+  z-index: 999;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 12px;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  flex-direction: column;
+}
+
+/* Show on hover for desktop */
+.dropdown:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  padding: 5px 5px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  color: #000000;
+  border-radius: 8px;
+  margin: 4px 8px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.dropdown-menu a:hover {
+  border: 2px solid #000000;
+  color: #00B4A6;
+}
+
+/* AUTH LINKS */
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login {
+  color: var(--nav-text-color);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.main-nav .signup {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white !important;
+  text-decoration: none;
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  border: 2px solid var(--primary-color);
+}
+
+.main-nav .signup:hover {
+  background: transparent;
+  color: var(--primary-color) !important;
+}
+
+/* MEDIA QUERY (Mobile) */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 15px 20px;
+  }
+  
+  /* Show hamburger on mobile */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide the .main-nav unless toggled open */
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(240, 211, 203, 0.97);
+    padding: 80px 30px 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 99;
+    overflow-y: auto;
+  }
+
+  /* .nav-open class toggles the menu in main.js */
+  .main-nav.nav-open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* Mobile dropdown styles */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #F4FD9E;
+    list-style: none;
+    min-width: 180px;
+    border: 2px solid #000000;
+    padding: 12px 0;
+    z-index: 999;
+    box-shadow: 4px 4px 0px #000000;
+    border-radius: 12px;
+  }
+  
+  /* Override hover behavior on mobile */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Show when dropdown has active class */
+  .dropdown.active .dropdown-menu {
+    display: block !important;
+  }
+  
+  .dropdown-menu li {
+    margin: 5px 0;
+  }
+  
+  .dropdown-menu a {
+    padding: 20px 12px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    color: #000000;
+    border-radius: 8px;
+    margin: 4px 8px;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+
+  .dropdown-menu a:hover {
+    border: 2px solid #000000;
+    color: #00B4A6;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .main-nav a {
+    font-size: 20px;
+    padding: 10px 0;
+    display: block;
+    text-align: center;
+  }
+
+  /* Style auth links for mobile */
+  .auth-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .login, .signup {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .login {
+    border: 1px solid var(--nav-text-color);
+    border-radius: 10px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .logo img {
+    width: 50px;
+  }
+
+  .site-header {
+    padding: 12px 15px;
+  }
+
+  .main-nav a {
+    font-size: 18px;
+  }
+}

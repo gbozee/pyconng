@@ -1,13 +1,31 @@
 {#{% extends "theme_bootstrap/subnav_base.html" %}#}
-{% extends "base.html" %}
+{% extends "new-base.html" %}
+{% load static  %}
 
 {% load i18n %}
 {% block fixed_navbar %}scroll{% endblock fixed_navbar %}
 {% block content %}
+<!-- Main Content -->
+<main class="auth-main">
+  <div class="auth-container">
+
 {% block body %}{% endblock body %}
+    <div class="auth-visual">
+      <div class="visual-content">
+        <img src="{% static 'new-design/assets/pyconng2025.png' %}" alt="PyConNG 2025" class="auth-logo" />
+        {% block right_text %}
+        <h2>Join the Python Community</h2>
+        <p>Connect with developers, learn from experts, and be part of Nigeria's biggest Python conference.</p>
+        {% endblock right_text %}
+      </div>
+    </div>
+  </div>
+</main>
+
 {% endblock content %}
 
 {% block extra_stylings %}
+<link rel="stylesheet" href="{% static 'new-design/code/auth.css' %}" />
 {% endblock extra_stylings %}
 
 {% block body_class %}account{% endblock %}
@@ -15,7 +33,7 @@
 {% block sidebar-counter %}
 {% endblock %}
 
-{% block header-section %} 
+{% block header-section %}
 
 {% endblock %}
 {% block subnav %}
@@ -35,3 +53,5 @@
 </div>
 {% endblock %}
 
+{% block new_footer %}
+{% endblock %}

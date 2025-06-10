@@ -1,0 +1,231 @@
+/* style.css: global resets and shared variables */
+
+:root {
+  /* Color scheme based on provided images */
+  --bg-color: #F0D3CB;
+  --nav-text-color: #093128;
+  --primary-color: #093128;
+  --secondary-color: #E89AA3;
+  --accent-color: #11aa6d;
+  --water-color: #3CB9FC;
+  --sand-color: #FDDF8A;
+  --text-color: #202020 !important;
+  --light-text: #F4F0F0;
+  --font-family-head: 'Fredoka One', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+
+  /* Glitter effect variables */
+  --glitter-opacity: 0.9;
+  --glitter-blend-mode: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Reusable Components */
+.container {
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 80px 20px;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+/* Hero section has its own styles and should be full width */
+section.hero {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+section h1 {
+  font-family: var(--font-family-head);
+  font-weight: 400;
+  font-size: 56px;
+  margin-bottom: 20px;
+  /* text-align: center; */
+  color: var(--primary-color);
+}
+
+section h2 {
+  font-family: var(--font-family-head);
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+section h3 {
+  font-family: var(--font-family-head);
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+section p {
+  /* text-align: center; */
+  max-width: 800px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 400;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+}
+
+/* Glitter overlay effect - can be applied to any section */
+.glitter-overlay {
+  position: relative;
+  z-index: 1;
+}
+
+.glitter-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/Fixed Section background image.png") no-repeat center center;
+  background-size: cover;
+  z-index: -1; /* Place behind the content but above any other backgrounds */
+  opacity: var(--glitter-opacity); /* Use the CSS variable */
+  mix-blend-mode: var(--glitter-blend-mode); /* Use the CSS variable */
+  pointer-events: none; /* Makes sure clicks pass through to underlying elements */
+}
+
+/* Content inside glitter sections should be positioned above the glitter */
+.glitter-content {
+  position: relative;
+  z-index: 2; /* Ensure content is above glitter effect */
+}
+
+/* Modifier classes for glitter intensity */
+.glitter-subtle::before {
+  --glitter-opacity: 0.5;
+}
+
+.glitter-intense::before {
+  --glitter-opacity: 1;
+}
+
+/* Modifier classes for blend modes */
+.glitter-multiply::before {
+  --glitter-blend-mode: multiply;
+}
+
+.glitter-overlay-blend::before {
+  --glitter-blend-mode: overlay;
+}
+
+.glitter-screen::before {
+  --glitter-blend-mode: screen;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Media queries for global responsiveness */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 20px;
+  }
+
+  section h2 {
+    font-size: 32px;
+  }
+
+  section h3 {
+    font-size: 24px;
+  }
+
+  section p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 40px 15px;
+  }
+
+  section h2 {
+    font-size: 28px;
+  }
+
+  section h3 {
+    font-size: 22px;
+  }
+
+  section p {
+    font-size: 16px;
+  }
+}

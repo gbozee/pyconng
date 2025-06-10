@@ -26,34 +26,29 @@
   </style>
 {% endblock %}
 
-{% block body_tag %}
-<body>
-{% if editable %}
-    <div class="row">
-      <a href="{% url 'pages_page_edit' page.path %}" class="btn btn-sm btn-default">
-        <i class="fa fa-pencil"></i>
-          Edit this page
-      </a>
-    </div>
-    {% endif %}
-    {% block navigation %}
+{% block extra_stylings %}
+<link rel="stylesheet" href="{% static 'new-design/code/code-of-conduct.css' %}" />
+ {% endblock extra_stylings %}
 
-    {% if page.path == 'venue/' %}
-      {% include "includes/nav_pre-launch.html" with class="" %}
-    {% else %}
-      {% include "includes/nav_pre-launch.html" with class="home" %}
-    {% endif %}
-      <!-- remove the class if we want to have a background color for the navbar -->
-  {% endblock %}
-    {{ page.body_html|safe }}
-    {% block footer %}
-    {{ block.super }}
-    {% endblock footer %}
-     {% block footer_2 %}
-     
-     {% endblock footer_2 %}
-    <script src="{% static 'designs/dist/9f30b84ddf0a13ca2b3a2ebe16b78543.js' %}"></script> </body>
 
-</body>
+{% block content %}
+
+  {% if editable %}
+  <div class="row">
+    <a href="{% url 'pages_page_edit' page.path %}" class="btn btn-sm btn-default">
+      <i class="fa fa-pencil"></i>
+      Edit this page
+    </a>
+  </div>
+  {% endif %}
+
+  {{ page.body_html|safe }}
+  <!-- Main Content -->
+
+
+  <script src="{% static 'designs/dist/9f30b84ddf0a13ca2b3a2ebe16b78543.js' %}"></script>
+
 {% endblock %}
 
+{% block new_footer %}
+  {% endblock %}
