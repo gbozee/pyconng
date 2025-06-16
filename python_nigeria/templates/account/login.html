@@ -16,17 +16,15 @@
 
   <form class="auth-form" method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
     {% csrf_token %}
-    {{ form.username|as_crispy_field }}
+    {{ form|crispy }}
 
-
-    {{ form.password|as_crispy_field }}
 
     <div class="form-options">
-      <label for="id_remember" class="checkbox-label">
+      <!-- <label for="id_remember" class="checkbox-label">
         <input type="checkbox" name="remember" id="id_remember">
         <span class="checkmark"></span>
         Remember me
-      </label>
+      </label> -->
       <a href="{% url "account_password_reset" %}" class="forgot-password">Forgot Password?</a>
     </div>
 
