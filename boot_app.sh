@@ -12,7 +12,7 @@ docker push $IMAGE_NAME
 cd /home/sama/app_code/pyconng && docker build -f compose/nginx/Dockerfile-django -t=$WEB_CONTAINER_IMAGE_NAME ./compose/nginx
 docker push $WEB_CONTAINER_IMAGE_NAME
 
-cd /home/sama/app_code/pyconng && docker build -f compose/nginx/Dockerfile-django-backup -t=$WEB_CONTAINER_IMAGE_NAME_BACKUP ./compose/nginx
+cd /home/sama/app_code/pyconng && docker build -f compose/nginx/Dockerfile-backup -t=$WEB_CONTAINER_IMAGE_NAME_BACKUP ./compose/nginx
 docker push $WEB_CONTAINER_IMAGE_NAME_BACKUP
 
 cd /home/sama/app_code/pyconng && docker build -f compose/design/Dockerfile -t=$STATIC_CONTAINER_IMAGE_NAME ./python_nigeria/static/designs
